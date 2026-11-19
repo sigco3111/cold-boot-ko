@@ -43,31 +43,31 @@ export interface RoomDef4 {
 }
 
 export const ROOMS4: Record<RoomId4, RoomDef4> = {
-  lock4: { name: 'BIOLOGICAL SYSTEMS — OUTER LOCK', x0: -2, x1: 2, z0: 0, z1: 4, y0: D2, h: 3.0 },
-  gown: { name: 'GOWNING', x0: -4, x1: 4, z0: -6, z1: 0, y0: D2, h: 3.0 },
-  shower: { name: 'AIR SHOWER', x0: -2, x1: 2, z0: -9, z1: -6, y0: D2, h: 2.8 },
-  corr_n: { name: 'CLEAN CORRIDOR — NORTH', x0: -15, x1: 15, z0: -12, z1: -9, y0: D2, h: 3.0 },
-  corr_w: { name: 'CLEAN CORRIDOR — WEST', x0: -15, x1: -12, z0: -34, z1: -12, y0: D2, h: 3.0 },
-  corr_e: { name: 'CLEAN CORRIDOR — EAST', x0: 12, x1: 15, z0: -34, z1: -12, y0: D2, h: 3.0 },
-  corr_s: { name: 'CLEAN CORRIDOR — SOUTH', x0: -15, x1: 15, z0: -37, z1: -34, y0: D2, h: 3.0 },
-  wetlab: { name: 'WET LAB 1', x0: -12, x1: 4, z0: -24, z1: -12, y0: D2, h: 3.4 },
-  pi_office: { name: 'DR. A. SUNDE — PRINCIPAL INVESTIGATOR', x0: 4, x1: 12, z0: -20, z1: -12, y0: D2, h: 3.0 },
-  node2: { name: 'NODE 2 — BIO-SYS', x0: 4, x1: 12, z0: -24, z1: -20, y0: D2, h: 3.0 },
-  cold: { name: 'COLD STORE 2', x0: -12, x1: 0, z0: -34, z1: -24, y0: D2, h: 3.0 },
-  records: { name: 'RECORDS & CONSENT', x0: 0, x1: 12, z0: -34, z1: -24, y0: D2, h: 3.0 },
-  vivarium: { name: 'VIVARIUM — LAB 2', x0: -27, x1: -15, z0: -30, z1: -14, y0: D2, h: 3.4 },
-  bay: { name: 'UNIT BAY', x0: 15, x1: 21, z0: -22, z1: -16, y0: D2, h: 3.0 },
-  scrub: { name: 'SCRUB ROOM', x0: -4, x1: 4, z0: -43, z1: -37, y0: D2, h: 3.0 },
-  store4: { name: 'STERILE STORE', x0: 4, x1: 8, z0: -43, z1: -39, y0: D2, h: 3.0 },
-  gallery: { name: 'THEATRE 1 — GALLERY', x0: -10, x1: 10, z0: -47, z1: -43, y0: D2, h: 3.0 },
-  theatre: { name: 'THEATRE 1', x0: -8, x1: 8, z0: -59, z1: -47, y0: 0, h: 9.4 },
-  stair4: { name: 'SERVICE STAIR B', x0: 10, x1: 14, z0: -59, z1: -43, y0: 0, h: 8.0, floors: [{ y: D2, box: [10, 14, -47, -43] }] },
-  lcorr: { name: 'BIO-SYS SERVICE LEVEL', x0: 4, x1: 24, z0: -63, z1: -59, y0: 0, h: 3.2 },
-  chk: { name: 'NAVAL CHECKPOINT 2', x0: 24, x1: 40, z0: -67, z1: -55, y0: 0, h: 4.0 },
-  guard: { name: 'GUARD ROOM', x0: 40, x1: 46, z0: -62, z1: -56, y0: 0, h: 3.0 },
-  plant4: { name: 'TUBE PLANT', x0: 46, x1: 56, z0: -64, z1: -54, y0: 0, h: 4.5 },
-  tube: { name: 'TRANSFER TUBE', x0: 30, x1: 34, z0: -107, z1: -67, y0: 0, h: 3.6 },
-  gatel: { name: 'POST 4 — GATE LOCK', x0: 29, x1: 35, z0: -113, z1: -107, y0: 0, h: 3.6 },
+  lock4: { name: '생물 시스템 — 외부 록', x0: -2, x1: 2, z0: 0, z1: 4, y0: D2, h: 3.0 },
+  gown: { name: '가운 착용실', x0: -4, x1: 4, z0: -6, z1: 0, y0: D2, h: 3.0 },
+  shower: { name: '에어샤워', x0: -2, x1: 2, z0: -9, z1: -6, y0: D2, h: 2.8 },
+  corr_n: { name: '청정 복도 — 북측', x0: -15, x1: 15, z0: -12, z1: -9, y0: D2, h: 3.0 },
+  corr_w: { name: '청정 복도 — 서측', x0: -15, x1: -12, z0: -34, z1: -12, y0: D2, h: 3.0 },
+  corr_e: { name: '청정 복도 — 동측', x0: 12, x1: 15, z0: -34, z1: -12, y0: D2, h: 3.0 },
+  corr_s: { name: '청정 복도 — 남측', x0: -15, x1: 15, z0: -37, z1: -34, y0: D2, h: 3.0 },
+  wetlab: { name: '습식 실험실 1', x0: -12, x1: 4, z0: -24, z1: -12, y0: D2, h: 3.4 },
+  pi_office: { name: 'A. 순데 박사 — 책임 연구원', x0: 4, x1: 12, z0: -20, z1: -12, y0: D2, h: 3.0 },
+  node2: { name: '노드 2 — 바이오시스', x0: 4, x1: 12, z0: -24, z1: -20, y0: D2, h: 3.0 },
+  cold: { name: '냉장고 2', x0: -12, x1: 0, z0: -34, z1: -24, y0: D2, h: 3.0 },
+  records: { name: '기록 및 동의', x0: 0, x1: 12, z0: -34, z1: -24, y0: D2, h: 3.0 },
+  vivarium: { name: '생물사육실 — 실험실 2', x0: -27, x1: -15, z0: -30, z1: -14, y0: D2, h: 3.4 },
+  bay: { name: '유닛 베이', x0: 15, x1: 21, z0: -22, z1: -16, y0: D2, h: 3.0 },
+  scrub: { name: '손소독실', x0: -4, x1: 4, z0: -43, z1: -37, y0: D2, h: 3.0 },
+  store4: { name: '무균 저장실', x0: 4, x1: 8, z0: -43, z1: -39, y0: D2, h: 3.0 },
+  gallery: { name: '수술실 1 — 갤러리', x0: -10, x1: 10, z0: -47, z1: -43, y0: D2, h: 3.0 },
+  theatre: { name: '수술실 1', x0: -8, x1: 8, z0: -59, z1: -47, y0: 0, h: 9.4 },
+  stair4: { name: '서비스 계단 B', x0: 10, x1: 14, z0: -59, z1: -43, y0: 0, h: 8.0, floors: [{ y: D2, box: [10, 14, -47, -43] }] },
+  lcorr: { name: '바이오시스 서비스층', x0: 4, x1: 24, z0: -63, z1: -59, y0: 0, h: 3.2 },
+  chk: { name: '해군 검문소 2', x0: 24, x1: 40, z0: -67, z1: -55, y0: 0, h: 4.0 },
+  guard: { name: '경비실', x0: 40, x1: 46, z0: -62, z1: -56, y0: 0, h: 3.0 },
+  plant4: { name: '튜브 플랜트', x0: 46, x1: 56, z0: -64, z1: -54, y0: 0, h: 4.5 },
+  tube: { name: '이송 튜브', x0: 30, x1: 34, z0: -107, z1: -67, y0: 0, h: 3.6 },
+  gatel: { name: '초소 4 — 게이트 록', x0: 29, x1: 35, z0: -113, z1: -107, y0: 0, h: 3.6 },
 };
 export const ROOM_IDS4 = Object.keys(ROOMS4) as RoomId4[];
 
@@ -113,16 +113,16 @@ export const PANES4: { id: 'theatre' | 'tube_w' | 'tube_e' | 'node2' | 'wet' | '
 
 /** `mk4_bodies.userData.list` (§8.10, §2.6): the ten dead (feet / body centre). W9a / the dressing place the bodies. */
 export const BODIES4: { name: string; p: [number, number, number] }[] = [
-  { name: 'Dahl', p: [1.5, D2, -7.6] },
-  { name: 'Berg', p: [-23.5, D2, -27.5] },
-  { name: 'Holm', p: [-10.25, D2, -29.0] },
-  { name: 'Ness', p: [3.0, D2, -28.0] },
-  { name: 'Moe', p: [8.5, D2, -32.8] },
-  { name: 'Foss', p: [-3.2, D2, -40.5] },
-  { name: 'Strand', p: [0, 0, -53.5] },
-  { name: 'Haugen', p: [5.5, 0, -50.2] },
-  { name: 'Lie', p: [5.5, 0, -56.0] },
-  { name: 'Eng', p: [36.2, 0, -62.32] },
+  { name: '달', p: [1.5, D2, -7.6] },
+  { name: '베리', p: [-23.5, D2, -27.5] },
+  { name: '홀름', p: [-10.25, D2, -29.0] },
+  { name: '네스', p: [3.0, D2, -28.0] },
+  { name: '모에', p: [8.5, D2, -32.8] },
+  { name: '포스', p: [-3.2, D2, -40.5] },
+  { name: '스트란드', p: [0, 0, -53.5] },
+  { name: '하우겐', p: [5.5, 0, -50.2] },
+  { name: '리에', p: [5.5, 0, -56.0] },
+  { name: '엥', p: [36.2, 0, -62.32] },
 ];
 
 // ───────────────────────────────────────────────────────────── lights (§2.7) — placeholder tables
@@ -320,11 +320,11 @@ export const SHELLS4: Record<RoomId4, Shell> = {
     // d4_outer: the habitat side, sealed (D19) — seen from inside the lock only
     sealedOpening(G, 'd4_outer', 0, D2, 4, 'z', 1.6, 2.4, ['lock4']);
     sealedDoor(L, b, {
-      id: 'd4_outer', x: 0, y: D2, z: 4, wall: 'z', kind: 'std', sides: 'back', leafMat: 'painted_white', labelBack: 'HABITAT RING',
-      panel: { text: 'SEALED — HABITAT SIDE — SECTOR ALARM', side: 'back' },
+      id: 'd4_outer', x: 0, y: D2, z: 4, wall: 'z', kind: 'std', sides: 'back', leafMat: 'painted_white', labelBack: '주거 링',
+      panel: { text: '밀봉됨 — 주거구 측 — 구역 경보', side: 'back' },
     });
-    roomLabel(b, 'OUTER LOCK', -1.8, D2 + 2.3, 2.0, '+x', 2.4);
-    L.screen('decon_panel', 'terminal_idle', 0.5, 0.3, 1.79, 6.1, 1.0, '-x', { text: 'DECON 08' });
+    roomLabel(b, '외부 록', -1.8, D2 + 2.3, 2.0, '+x', 2.4);
+    L.screen('decon_panel', 'terminal_idle', 0.5, 0.3, 1.79, 6.1, 1.0, '-x', { text: '제염 08' });
     L.marker('mk4_decon_panel', 1.79, 6.1, 1.0, -PI / 2);
     L.marker('mk4_start', 0, D2, 2.6, 0);
   },
@@ -335,15 +335,15 @@ export const SHELLS4: Record<RoomId4, Shell> = {
     stand(b, standin, -3.8, D2, -3.2, 2.6, D2 + 0.45, -2.8);
     // (nav: the grid rows fall either side of the bench; hand nodes through its 1.2 m east gap)
     for (const z of [-4.3, -3.0, -1.7]) L.navNode(3.2, z, 'gown');
-    roomLabel(b, 'GOWNING', 3.8, D2 + 2.4, -1.6, '-x', 2.0);
-    L.screen('shower_in_panel', 'terminal_idle', 0.5, 0.3, 1.7, D2 + 1.5, -5.795, '+z', { text: 'AIR SHOWER — ENTER, DOOR CLOSES BEHIND YOU' });
-    L.interact('note4_signout', 'log', 'Read sheet', -3.7, 6.0, -2.0);
-    L.interact('note4_gown', 'log', 'Read poster', 3.79, 6.2, -4.5);
+    roomLabel(b, '가운 착용실', 3.8, D2 + 2.4, -1.6, '-x', 2.0);
+    L.screen('shower_in_panel', 'terminal_idle', 0.5, 0.3, 1.7, D2 + 1.5, -5.795, '+z', { text: '에어 샤워 — 들어가면 뒤의 문이 닫힙니다' });
+    L.interact('note4_signout', 'log', '용지 읽기', -3.7, 6.0, -2.0);
+    L.interact('note4_gown', 'log', '포스터 읽기', 3.79, 6.2, -4.5);
   },
 
   shower: ({ L, G }) => {
     air(G, 'shower');
-    L.screen('shower_out_panel', 'terminal_idle', 0.42, 0.26, 1.42, D2 + 1.5, -8.795, '+z', { text: 'AIR SHOWER — CYCLE' });
+    L.screen('shower_out_panel', 'terminal_idle', 0.42, 0.26, 1.42, D2 + 1.5, -8.795, '+z', { text: '에어 샤워 — 사이클' });
   },
 
   corr_n: ({ L, G, b, glass }) => {
@@ -354,9 +354,9 @@ export const SHELLS4: Record<RoomId4, Shell> = {
     // wet-lab windows in the south wall: z −12, x −11 … 3, y 5.7 … 7.0
     air2(G, 'glz:wet', [-11, 5.7, -12.2, 3, 7.0, -11.8], ['corr_n', 'wetlab'], 'corr_n');
     pane(b, glass, -11, 5.7, -12.015, 3, 7.0, -11.985);
-    roomLabel(b, 'CLEAN CORRIDOR', -8, D2 + 2.55, -9.2, '-z', 2.8);
+    roomLabel(b, '청정 복도', -8, D2 + 2.55, -9.2, '-z', 2.8);
     // fumigation status on the south-wall pier x 3.1 … 3.9, y 5.6 … 6.8, facing +z
-    L.screen('fumig_status', 'terminal_alert', 0.8, 1.2, 3.5, 6.2, -11.795, '+z', { text: 'CLEAN SIDE — FUMIGATION COMPLETE' });
+    L.screen('fumig_status', 'terminal_alert', 0.8, 1.2, 3.5, 6.2, -11.795, '+z', { text: '청정 구역 — 훈증 완료' });
     L.marker('mk4_wet_win', -4, 6.35, -12, 0);
   },
 
@@ -372,7 +372,7 @@ export const SHELLS4: Record<RoomId4, Shell> = {
     // the Node 2 window: x 12, z −23.4 … −20.6, y 5.5 … 7.3
     air2(G, 'glz:node2', [11.8, 5.5, -23.4, 12.2, 7.3, -20.6], ['corr_e', 'node2'], 'corr_e');
     pane(b, glass, 11.985, 5.5, -23.4, 12.015, 7.3, -20.6);
-    roomLabel(b, 'RECORDS · UNIT BAY →', 14.8, D2 + 2.4, -25.5, '-x', 3.0);
+    roomLabel(b, '기록실 · 유닛 베이 →', 14.8, D2 + 2.4, -25.5, '-x', 3.0);
     L.marker('mk4_node2_win', 12, 6.4, -22, -PI / 2);
   },
 
@@ -383,8 +383,8 @@ export const SHELLS4: Record<RoomId4, Shell> = {
     G.air('corr_s', VOIDS4.vent_s_b, { rooms: ['corr_s'], look: 'corr_s' as RoomId3 });
     grillePanel(L, 'vent_s_a_grille', -6.5, -36.0, -5.5, -35.0, 7.8, standin);
     grillePanel(L, 'vent_s_b_grille', 5.5, -36.0, 6.5, -35.0, 7.8, standin);
-    roomLabel(b, 'SURGICAL SUITE ↓', -6, D2 + 2.5, -34.2, '-z', 2.8);
-    L.screen('surg_hold', 'containment', 0.8, 0.5, -2.2, 6.2, -36.78, '+z', { text: 'CONTAINMENT HOLD' });
+    roomLabel(b, '수술 구역 ↓', -6, D2 + 2.5, -34.2, '-z', 2.8);
+    L.screen('surg_hold', 'containment', 0.8, 0.5, -2.2, 6.2, -36.78, '+z', { text: '격리 유지' });
     L.marker('mk4_vent_s_a', -6, 7.8, -35.5, 0);
     L.marker('mk4_vent_s_b', 6, 7.8, -35.5, 0);
   },
@@ -395,32 +395,32 @@ export const SHELLS4: Record<RoomId4, Shell> = {
     stand(b, standin, -10, D2, -20, -6, D2 + 0.9, -16);
     stand(b, standin, -3, D2, -20, 1, D2 + 0.9, -16);
     stand(b, standin, -10, D2, -23.8, -2, D2 + 0.9, -23.1);
-    roomLabel(b, 'WET LAB 1', -11.8, D2 + 2.6, -14.2, '+x', 2.4);
-    L.interact('note4_wet', 'log', 'Read protocol', -2.0, 5.75, -19.0);
+    roomLabel(b, '습식 실험실 1', -11.8, D2 + 2.6, -14.2, '+x', 2.4);
+    L.interact('note4_wet', 'log', '규정 읽기', -2.0, 5.75, -19.0);
   },
 
   pi_office: ({ L, G, b, standin }) => {
     air(G, 'pi_office');
     // desk on the north wall (the video log monitor and the terminal stand on it)
     stand(b, standin, 5.4, D2, -13.0, 9.0, D2 + 0.75, -12.2);
-    roomLabel(b, 'DR. A. SUNDE', 11.8, D2 + 2.3, -18.6, '-x', 2.4);
-    L.screen('pi_video', 'video_log', 0.6, 0.38, 8.0, 5.95, -12.45, '-z', { text: 'SUNDE — LOG 41 — SUN 23:10 — ▶' });
-    L.interact('term4_pi', 'terminal', 'Read terminal', 6.2, 5.9, -12.6);
-    L.interact('log4_video', 'video', 'Play log', 8.0, 5.95, -12.6);
+    roomLabel(b, 'A. 순데 박사', 11.8, D2 + 2.3, -18.6, '-x', 2.4);
+    L.screen('pi_video', 'video_log', 0.6, 0.38, 8.0, 5.95, -12.45, '-z', { text: '순데 — 기록 41 — 일 23:10 — ▶' });
+    L.interact('term4_pi', 'terminal', '단말기 읽기', 6.2, 5.9, -12.6);
+    L.interact('log4_video', 'video', '기록 재생', 8.0, 5.95, -12.6);
     L.marker('mk4_video', 8.0, 5.95, -12.45, PI);
   },
 
   node2: ({ L, G }) => {
     air(G, 'node2');
     // sealed (no door): seen only through its window; the CHOIR waveform on the west wall, square to the window
-    L.screen('node2_screen', 'choir', 1.6, 0.9, 4.22, 6.4, -22.0, '+x', { text: 'NODE 2 — BIO-SYS' });
+    L.screen('node2_screen', 'choir', 1.6, 0.9, 4.22, 6.4, -22.0, '+x', { text: '노드 2 — 바이오시스' });
   },
 
   cold: ({ L, G, b }) => {
     air(G, 'cold');
-    roomLabel(b, 'COLD STORE 2', -11.8, D2 + 2.5, -25.6, '+x', 2.4);
-    L.screen('cold_panel', 'containment', 0.7, 0.5, -0.205, 6.3, -29, '-x', { text: 'CONTAINMENT HOLD' });
-    L.interact('cold_ack', 'button', 'Acknowledge hold', -0.22, 6.2, -29, true, 2.0);
+    roomLabel(b, '냉장고 2', -11.8, D2 + 2.5, -25.6, '+x', 2.4);
+    L.screen('cold_panel', 'containment', 0.7, 0.5, -0.205, 6.3, -29, '-x', { text: '격리 유지' });
+    L.interact('cold_ack', 'button', '홀드 확인', -0.22, 6.2, -29, true, 2.0);
     L.marker('mk4_cold_panel', -0.22, 6.2, -29, -PI / 2);
     L.marker('mk4_cold_rack', -5.5, 6.0, -24.25, 0);
   },
@@ -429,9 +429,9 @@ export const SHELLS4: Record<RoomId4, Shell> = {
     air(G, 'records');
     // reading table (2.0 … 4.4, z −27.6 … −26.4)
     stand(b, standin, 2.0, D2, -27.6, 4.4, D2 + 0.75, -26.4);
-    roomLabel(b, 'RECORDS & CONSENT', 11.8, D2 + 2.4, -32.0, '-x', 3.0);
-    L.interact('note4_consent', 'log', 'Read forms', 3.0, 5.6, -27.0);
-    L.interact('note4_tveit', 'log', 'Read form', 10.8, 5.9, -24.4);
+    roomLabel(b, '기록 및 동의', 11.8, D2 + 2.4, -32.0, '-x', 3.0);
+    L.interact('note4_consent', 'log', '서류 읽기', 3.0, 5.6, -27.0);
+    L.interact('note4_tveit', 'log', '서식 읽기', 10.8, 5.9, -24.4);
   },
 
   vivarium: ({ L, G, b, standin }) => {
@@ -443,22 +443,22 @@ export const SHELLS4: Record<RoomId4, Shell> = {
     stand(b, standin, -26.8, D2, -29.6, -24.4, D2 + 1.2, -17.6);
     stand(b, standin, -21.4, D2, -27.6, -19.0, D2 + 1.2, -17.6);
     stand(b, standin, -18.3, D2, -27.6, -16.7, D2 + 0.85, -26.4);
-    roomLabel(b, 'VIVARIUM — LAB 2', -15.2, D2 + 2.8, -26.5, '-x', 3.0);
-    L.interact('note4_cards', 'log', 'Read cage cards', -21.0, 6.0, -15.5);
-    L.interact('log4_viv', 'log', 'Read tablet', -25.5, 5.75, -16.0);
+    roomLabel(b, '생물사육실 — 실험실 2', -15.2, D2 + 2.8, -26.5, '-x', 3.0);
+    L.interact('note4_cards', 'log', '케이지 카드 읽기', -21.0, 6.0, -15.5);
+    L.interact('log4_viv', 'log', '태블릿 읽기', -25.5, 5.75, -16.0);
     L.marker('mk4_vent_viv', -22.9, 8.2, -22, 0);
   },
 
   bay: ({ L, G, b }) => {
     air(G, 'bay');
-    roomLabel(b, 'UNIT BAY', 20.8, D2 + 2.3, -19, '-x', 2.0);
+    roomLabel(b, '유닛 베이', 20.8, D2 + 2.3, -19, '-x', 2.0);
     L.marker('mk4_bay_door', 15, D2, -19, -PI / 2);
   },
 
   scrub: ({ L, G, b }) => {
     air(G, 'scrub');
-    roomLabel(b, 'SCRUB ROOM', -3.8, D2 + 2.4, -41.5, '+x', 2.2);
-    L.interact('note4_list', 'log', 'Read list', 3.78, 6.2, -38.4);
+    roomLabel(b, '손소독실', -3.8, D2 + 2.4, -41.5, '+x', 2.2);
+    L.interact('note4_list', 'log', '명단 읽기', 3.78, 6.2, -38.4);
     L.marker('mk4_store_door', 4, D2, -41, PI / 2);
   },
 
@@ -477,14 +477,14 @@ export const SHELLS4: Record<RoomId4, Shell> = {
     // (screen 5 cm higher and 5 cm deeper than §2.6's (4.0, 5.95, −46.45): tilted 30° up, its lower edge then rests on
     // the desk top instead of hanging 2 cm below it in front of the desk)
     L.screen('theatre_cam', 'theatre_cam', 0.6, 0.4, 4.0, 6.0, -46.5, '+z', { tilt: -PI / 6 });
-    L.interact('sign4_theatre', 'log', 'Read placard', -6.0, 5.9, -43.22);
+    L.interact('sign4_theatre', 'log', '표창 읽기', -6.0, 5.9, -43.22);
     L.marker('mk4_gallery_spk', 0, 7.55, -45.0, 0);
   },
 
   theatre: ({ L, G, b }) => {
     air(G, 'theatre');
-    roomLabel(b, 'THEATRE 1', -7.8, 3.0, -50.5, '+x', 2.2);
-    L.screen('theatre_screen', 'terminal_alert', 4.0, 1.4, 0, 3.7, -58.78, '+z', { text: 'THEATRE 1 — FITTING 31' });
+    roomLabel(b, '수술실 1', -7.8, 3.0, -50.5, '+x', 2.2);
+    L.screen('theatre_screen', 'terminal_alert', 4.0, 1.4, 0, 3.7, -58.78, '+z', { text: '수술실 1 — 장착 31' });
   },
 
   stair4: ({ L, G, b, standin }) => {
@@ -492,8 +492,8 @@ export const SHELLS4: Record<RoomId4, Shell> = {
     // top landing (Deck 2, z −47 … −43) on solid structure; the flight descends south to the bottom landing (z −59 … −56)
     G.solid([10, -0.6, -47, 14, D2, -43]);
     buildStair(L, b, STAIR4, standin, false);
-    roomLabel(b, 'SERVICE STAIR B', 13.8, D2 + 2.3, -45, '-x', 2.6);
-    roomLabel(b, 'SERVICE STAIR B — NAVAL LEVEL', 13.8, 2.4, -57.5, '-x', 3.4);
+    roomLabel(b, '서비스 계단 B', 13.8, D2 + 2.3, -45, '-x', 2.6);
+    roomLabel(b, '서비스 계단 B — 해군층', 13.8, 2.4, -57.5, '-x', 3.4);
   },
 
   lcorr: ({ L, G, b }) => {
@@ -504,10 +504,10 @@ export const SHELLS4: Record<RoomId4, Shell> = {
     sb.rooms = ['theatre', 'lcorr'];
     sealedDoor(L, sb, {
       id: 'door4_theatre', x: 6, y: 0, z: -59, wall: 'z', kind: 'std', sides: 'both', leafMat: 'painted_white',
-      labelFront: 'BIO-SYS SERVICE LEVEL', labelBack: 'THEATRE 1',
-      panel: { text: 'THEATRE 1 — STERILE FIELD — NO ENTRY', side: 'back' },
+      labelFront: '바이오시스 서비스층', labelBack: '수술실 1',
+      panel: { text: '수술실 1 — 무균 구역 — 출입 금지', side: 'back' },
     });
-    roomLabel(b, 'TRANSFER TUBE — POST 4 →', 16, 2.4, -62.8, '+z', 3.4);
+    roomLabel(b, '이송 튜브 — 초소 4 →', 16, 2.4, -62.8, '+z', 3.4);
   },
 
   chk: ({ L, G, b, standin, glass }) => {
@@ -528,9 +528,9 @@ export const SHELLS4: Record<RoomId4, Shell> = {
     stand(b, standin, 26.0, 2.6, -58.4, 30.0, 2.75, -55.2);         // roof
     stand(b, standin, 26.4, 0, -55.8, 29.6, 0.95, -55.2);           // console along the north side
     for (const [x, z] of [[25.3, -56.9], [26.1, -56.9], [26.9, -56.9], [28.0, -56.9], [29.1, -56.9]] as const) L.navNode(x, z, 'chk'); // (nav through the 1.0 m doorway)
-    L.interact('term4_ctrl', 'terminal', 'Read roster', 27.2, 1.05, -55.55);
-    L.interact('booth_release', 'button', 'Release tube door', 28.8, 1.0, -55.55, true, 1.8);
-    L.screen('booth_panel', 'terminal_idle', 0.5, 0.3, 28.0, 1.5, -55.56, '-z', { text: 'TUBE ACCESS — RELEASE FROM BOOTH' });
+    L.interact('term4_ctrl', 'terminal', '근무표 읽기', 27.2, 1.05, -55.55);
+    L.interact('booth_release', 'button', '튜브 문 해제', 28.8, 1.0, -55.55, true, 1.8);
+    L.screen('booth_panel', 'terminal_idle', 0.5, 0.3, 28.0, 1.5, -55.56, '-z', { text: '튜브 출입 — 부스에서 해제' });
     L.marker('mk4_booth', 28.0, 1.6, -56.8, 0);
     // ── the armoury cage (x 35.0 … 39.8, z −66.8 … −62.6), mesh to the ceiling; door gap x 36.6 … 38.2 on its north face
     // (2.2 m, mesh above it); the leaf bent open is the dressing's ──
@@ -548,17 +548,17 @@ export const SHELLS4: Record<RoomId4, Shell> = {
     b.collide(38.2, 0, -62.62, 39.8, 4.0, -62.58, 'metal', true);
     b.collide(36.6, 2.2, -62.62, 38.2, 4.0, -62.58, 'metal', true);
     for (const z of [-61.6, -62.6, -63.6, -64.6]) L.navNode(37.4, z, 'chk'); // (nav through the cage's 1.6 m door gap)
-    roomLabel(b, 'NAVAL CHECKPOINT 2', 24.2, 3.0, -57.4, '+x', 3.0);
-    L.screen('roster', 'roster', 2.4, 1.2, 33.2, 2.2, -55.22, '-z', { text: 'CLASP LINK ROSTER — POST 4 DETACHMENT' });
-    L.screen('tube_n_panel', 'terminal_idle', 0.5, 0.3, 33.9, 1.6, -66.78, '+z', { text: 'TUBE ACCESS — RELEASE FROM BOOTH' });
+    roomLabel(b, '해군 검문소 2', 24.2, 3.0, -57.4, '+x', 3.0);
+    L.screen('roster', 'roster', 2.4, 1.2, 33.2, 2.2, -55.22, '-z', { text: '클라스프 링크 명단 — 초소 4 파견대' });
+    L.screen('tube_n_panel', 'terminal_idle', 0.5, 0.3, 33.9, 1.6, -66.78, '+z', { text: '튜브 출입 — 부스에서 해제' });
     L.marker('mk4_roster', 33.2, 2.2, -55.22, PI);
   },
 
   guard: ({ L, G, b }) => {
     air(G, 'guard');
-    roomLabel(b, 'GUARD ROOM', 42.5, 2.4, -61.8, '+z', 2.2);
-    L.interact('note4_guard', 'log', 'Read orders', 45.6, 1.5, -58.0);
-    L.interact('note4_bunk', 'log', 'Read letter', 42.0, 0.6, -61.4);
+    roomLabel(b, '경비실', 42.5, 2.4, -61.8, '+z', 2.2);
+    L.interact('note4_guard', 'log', '명령서 읽기', 45.6, 1.5, -58.0);
+    L.interact('note4_bunk', 'log', '편지 읽기', 42.0, 0.6, -61.4);
   },
 
   plant4: ({ L, G, b, standin }) => {
@@ -573,9 +573,9 @@ export const SHELLS4: Record<RoomId4, Shell> = {
     stand(b, standin, 47.0, 0, -58.0, 50.0, 1.6, -55.0);
     stand(b, standin, 52.7, 0, -56.3, 53.3, 4.5, -55.7);
     stand(b, standin, 54.5, 0, -62.4, 55.5, 0.85, -61.3);
-    roomLabel(b, 'TUBE PLANT', 46.2, 3.4, -55.6, '+x', 2.4);
-    L.screen('plant_gauge', 'terminal_idle', 1.2, 0.8, 55.78, 2.4, -59.0, '-x', { text: 'TUBE Δp 3.1 BAR — EQUALISE' });
-    L.interact('valve4', 'lever', 'Open equalising valve', 55.75, 1.2, -59.0, true, 2.0);
+    roomLabel(b, '튜브 플랜트', 46.2, 3.4, -55.6, '+x', 2.4);
+    L.screen('plant_gauge', 'terminal_idle', 1.2, 0.8, 55.78, 2.4, -59.0, '-x', { text: '튜브 Δp 3.1 BAR — 등압 필요' });
+    L.interact('valve4', 'lever', '등압 밸브 열기', 55.75, 1.2, -59.0, true, 2.0);
     L.marker('mk4_gauge', 55.78, 2.4, -59.0, -PI / 2);
     L.marker('mk4_sump', 52.0, 0, -62.0, 0);
     L.marker('mk4_pumps', 48.5, 1.0, -59.0, 0);   // the pump loop between pump sets A / B (§4.5)
@@ -610,11 +610,11 @@ export const SHELLS4: Record<RoomId4, Shell> = {
     air(G, 'gatel');
     // the Post 4 gate: sealed in 3b (wide look, 12 radial dogs — `gate4_dogs`; the dressing owns `gate_dogs`)
     sealedOpening(G, 'gate4', 32, 0, -113, 'z', 3.0, 2.8, ['gatel']);
-    sealedDoor(L, b, { id: 'gate4', x: 32, y: 0, z: -113, wall: 'z', kind: 'wide', sides: 'front', leafMat: 'navy_grey', labelFront: 'POST 4', dogs: 12 });
+    sealedDoor(L, b, { id: 'gate4', x: 32, y: 0, z: -113, wall: 'z', kind: 'wide', sides: 'front', leafMat: 'navy_grey', labelFront: '초소 4', dogs: 12 });
     // gate panel (screen 0.2 m east of the marker: the wide frame's jamb ends at x 33.8)
-    L.screen('gate_panel', 'terminal_idle', 0.4, 0.26, 34.1, 1.6, -112.78, '+z', { text: 'POST 4 — PRESSURE GATE — NAVAL ACCESS ONLY' });
+    L.screen('gate_panel', 'terminal_idle', 0.4, 0.26, 34.1, 1.6, -112.78, '+z', { text: '초소 4 — 압력 게이트 — 해군 전용' });
     L.marker('mk4_gate_panel', 33.9, 1.6, -112.78, 0);
-    roomLabel(b, 'POST 4 — GATE LOCK', 29.2, 2.4, -110, '+x', 2.8);
+    roomLabel(b, '초소 4 — 게이트 록', 29.2, 2.4, -110, '+x', 2.8);
   },
 };
 

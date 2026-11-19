@@ -1,5 +1,5 @@
 /**
- * Level 3 — "THE QUIET SIDE" (stage 3a). The flow: the lift and the pressure lock, the quiet side, C1 → C2 (scenes.ts),
+ * Level 3 — "고요한 쪽" (stage 3a). The flow: the lift and the pressure lock, the quiet side, C1 → C2 (scenes.ts),
  * the office, the escape (admin, canteen, the breach, the sentry), the BIO purge holdout, the inner lock, the end.
  *
  * Rules this file is built on (DESIGN.md R1–R8, plan §9):

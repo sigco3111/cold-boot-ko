@@ -482,11 +482,11 @@ function markMat(L: LevelBuild): THREE.MeshStandardMaterial {
       };
       text('n07', '07', white, 230);
       text('tern', 'TERN', white, 120);
-      text('nostep', 'NO STEP', white, 50);
-      text('thruster', 'DANGER — THRUSTER', yellow, 44);
-      text('sdv', 'SDV-07  TERN  ·  ERIDU DEEP DETACHMENT', white, 40, '700');
-      text('vent', 'VENT ▲ KEEP CLEAR', white, 40, '700');
-      text('shore', 'SHORE POWER 440 V', yellow, 40, '700');
+      text('nostep', '밟지 마세요', white, 50);
+      text('thruster', '위험 — 추진기', yellow, 44);
+      text('sdv', 'SDV-07  턴  ·  에리두 심해 파견대', white, 40, '700');
+      text('vent', '벤트 ▲ 접근 금지', white, 40, '700');
+      text('shore', '육상 전원 440 V', yellow, 40, '700');
       // draught marks: a vertical scale, numbers every 0.5 m
       { const [x, y, w, h] = MARK_RECT.draught; g.fillStyle = white; g.font = `900 40px ${SANS}`; g.textAlign = 'left'; g.textBaseline = 'middle';
         for (let k = 0; k < 4; k++) { const yy = y + h - 30 - k * 62; g.fillRect(x + 6, yy - 3, 30, 6); g.fillText(String(k + 1), x + 46, yy); } }
@@ -1206,7 +1206,7 @@ export interface LockDoorOpts { x?: number; y?: number; z?: number; r?: number; 
  * The launch-lock door `lock5_launch` (§2.2, §8.8.2): a sealed 5.0 m round pressure door in the sub bay's south wall,
  * faces +z (into the bay). Origin = door centre on the wall plane (34, 3.0, −56); the bay-side wall face is z −55.8.
  * Frame ring r 2.5 … 3.05 (proud 0.25, hazard chevron ring on it), leaf r 2.45 (front z −55.45, a raised hub with the
- * stencil `LAUNCH LOCK 1`), 16 engaged radial dogs, a hydraulic hinge arm on the +x side, a 0.5 m rail sill (x 31 …
+ * stencil `발사 록 1`), 16 engaged radial dogs, a hydraulic hinge arm on the +x side, a 0.5 m rail sill (x 31 …
  * 37, hazard-topped, two rail gates where the rails x 33 / 35 end at z −55.6), and the armoured port ⌀ `portR`·2
  * (0.6) at y 2.2: a bore through the leaf with a heavy bolted bezel and (optional) a dark glass disc at z −55.9 —
  * the cheap viewport (`fx5_lock_water`, W6) lives behind it. W4 carves the 0.6 m hole through the wall behind the
@@ -1251,8 +1251,8 @@ export function launchLockDoor(L: LevelBuild, b: Builder, o: LockDoorOpts = {}):
   // hub with stencil + equalising valve boss
   b.cyl(leafMat, X, Y + 0.25, lf + 0.06, 0.5, 0.14, 'z', 32);
   b.cyl(steel, X, Y + 0.25, lf + 0.14, 0.16, 0.05, 'z', 16);
-  b.sign('LAUNCH LOCK 1', 'stencil', X, Y + 0.95, lf + 0.005, 1.6, 0.3, '+z');
-  b.sign('SEA PRESSURE 210 BAR — DO NOT OPEN', 'stencil', X, Y - 1.55, lf + 0.005, 2.0, 0.16, '+z');
+  b.sign('발사 록 1', 'stencil', X, Y + 0.95, lf + 0.005, 1.6, 0.3, '+z');
+  b.sign('해수 압력 210 BAR — 열지 마세요', 'stencil', X, Y - 1.55, lf + 0.005, 2.0, 0.16, '+z');
   // dogs: engaged radial blocks bridging leaf rim and frame + their wedges
   for (let k = 0; k < nd; k++) {
     const a = (k / nd) * TAU;
@@ -1421,7 +1421,7 @@ export function cmdDoor(L: LevelBuild, b: Builder, o: CmdDoorOpts = {}): THREE.O
   lamps.halo(0, new THREE.Vector3(camP.x - 0.2, camP.y + 0.035, camP.z + 0.035), 0.05, 2.6);
   lamps.halo(1, new THREE.Vector3(X - 0.28, 1.66, Z + 1.5), 0.04, 2.0);
   lamps.finish(rooms);
-  L.screen('door5_cmd_panel', 'terminal_idle', 0.42, 0.28, X - 0.205, 1.75, Z - 1.52, '-x', { text: o.panel ?? 'COMMAND MODULE\nSHIELDED\nSEALED FROM INSIDE' });
+  L.screen('door5_cmd_panel', 'terminal_idle', 0.42, 0.28, X - 0.205, 1.75, Z - 1.52, '-x', { text: o.panel ?? '지휘 모듈\n차폐됨\n내부에서 밀봉' });
   // collider across the opening, with the port left open in front of the pane (x X − 0.17 … X − 0.14 is the level's
   // `mk5_glass` `port` pane, a glass collider the level adds): a round fired through the port reaches the glass, a
   // sight ray reaches the pane — the frame no longer covers it (was one box from X − 0.45)
@@ -1546,9 +1546,9 @@ export interface HatchSpec {
   rooms?: string[];
 }
 /** §2.6 / §8.4: the spine's crawlway hatch (2.4 × 2.2, wheel on top, opens from above). */
-export const HATCH5_SPINE: HatchSpec = { name: 'hatch5_spine', x0: 36.2, x1: 38.6, z0: -17.6, z1: -15.4, wheel: 'top', topText: 'BILGE ACCESS\nCRAWLWAY', rooms: ['spine5'] };
+export const HATCH5_SPINE: HatchSpec = { name: 'hatch5_spine', x0: 36.2, x1: 38.6, z0: -17.6, z1: -15.4, wheel: 'top', topText: '빌지 출입\n연결 통로', rooms: ['spine5'] };
 /** §2.6 / §8.4: the magazine hatch in the armoury floor (1.2 × 2.7, dogged from below, a plate + lamp on top). */
-export const HATCH5_MAG: HatchSpec = { name: 'hatch5_mag', x0: 20.4, x1: 21.6, z0: -27.0, z1: -24.3, wheel: 'bottom', topText: 'MAGAZINE\nDOGGED FROM BELOW\nACCESS VIA SPINE CRAWLWAY', lamp: true, rooms: ['arm5'] };
+export const HATCH5_MAG: HatchSpec = { name: 'hatch5_mag', x0: 20.4, x1: 21.6, z0: -27.0, z1: -24.3, wheel: 'bottom', topText: '탄약고\n아래에서 잠김\n스파인 통로로 출입', lamp: true, rooms: ['arm5'] };
 
 /**
  * A floor hatch lid hinged on its SOUTH (−z) edge (§8.4, §8.8.5). Closed: the lid fills the opening, top flush at
@@ -1699,8 +1699,8 @@ export function wheel5(L: LevelBuild, b: Builder, o: WheelOpts = {}): THREE.Obje
     b.torus(steel, sx * 0.34, 0.24, 0.092, 0.08, 0.008, 'z', 18);
     b.rod(steel, sx * 0.34, 0.16, 0.05, sx * 0.18, 0.06, 0.05, 0.012, 6);
   }
-  b.sign(o.label ?? 'HYD ISOLATION\nTRUNK TUNNEL DOOR', 'label', 0, -0.32, -0.015, 0.5, 0.14, '+z');
-  b.sign('OPEN ↺', 'stencil', 0.36, -0.06, -0.017, 0.18, 0.08, '+z');
+  b.sign(o.label ?? '유압 차단\n트렁크 터널 문', 'label', 0, -0.32, -0.015, 0.5, 0.14, '+z');
+  b.sign('열림 ↺', 'stencil', 0.36, -0.06, -0.017, 0.18, 0.08, '+z');
   b.collide(-0.25, -0.2, -0.05, 0.25, 0.2, 0.2, 'metal', false);
   const hub = b.world(0, 0, 0.34);
   b.pop();
@@ -1746,7 +1746,7 @@ export interface ConsoleOpts { x?: number; y?: number; z?: number; face?: '+z' |
  * A pedestal 1.4 wide, a sloped desk (h 0.95 front … 1.1 back), the `launch` screen 0.56 × 0.36 on the slope
  * (`L.screen('launch', 'launch', …)`, text `idle`; the story sets `running|<s>` / `complete`), the palm plate `launch5_palm` (`L.screen(…, 'palm', …)`, text
  * `white|standby|LAUNCH|1.6`) in a raised guard to its right, two guarded toggles, a key switch, a placard
- * `SDV TERN — LAUNCH CONTROL`. Collider: the pedestal (nav). Calls: zone only (`navy_grey`, `painted_dark`,
+ * `SDV 턴 — 발사 관제`. Collider: the pedestal (nav). Calls: zone only (`navy_grey`, `painted_dark`,
  * `steel_raw`, `painted_orange`, sign atlas) + the two screens. `userData`: `palmPoint` (world: the plate's centre,
  * 4 cm out — W4's interact goes here, R8 from the bridge), `screenPoint`, `palmNormal`.
  */
@@ -1785,8 +1785,8 @@ export function launchConsole(L: LevelBuild, b: Builder, o: ConsoleOpts = {}): T
   }
   const kp = onSlope(0.42, 0.12, 0.03);
   b.push(kp.x, kp.y, kp.z, 0, slope); b.cyl(steel, 0, 0, 0, 0.03, 0.03, 'y', 12); b.box(steel, 0, 0.03, 0, 0.012, 0.03, 0.04); b.pop();
-  b.sign('SDV TERN — LAUNCH CONTROL', 'label', 0, hb - 0.06, 0.081, 0.9, 0.09, '+z');
-  b.sign('OFFICER PALM — CO / XO', 'stencil', 0.42, hf - 0.15, D + 0.002, 0.42, 0.07, '+z');
+  b.sign('SDV 턴 — 발사 관제', 'label', 0, hb - 0.06, 0.081, 0.9, 0.09, '+z');
+  b.sign('장교 손바닥 인증 — 함장/부함장', 'stencil', 0.42, hf - 0.15, D + 0.002, 0.42, 0.07, '+z');
   // bracket to the bridge edge
   b.bx(steel, -0.5, 0, -0.06, 0.5, 0.06, 0);
   b.collide(-Wd / 2, 0, 0, Wd / 2, hb, D, 'metal', true);

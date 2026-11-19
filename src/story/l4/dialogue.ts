@@ -18,10 +18,10 @@ export const line4 = (id: string): (VoiceLine & { cut?: number }) | undefined =>
 /** Subtitle label of a level-4 line. */
 export function speaker4(l: VoiceLine | undefined): string {
   if (!l) return '';
-  if (l.speaker === 'sunde') return 'DR. A. SUNDE';
+  if (l.speaker === 'sunde') return 'A. 순데 박사';
   if (l.speaker === 'choir') return 'CHOIR';
-  if (l.fx === 'pa') return 'THEATRE 1';
-  return 'SERVICE UNIT';
+  if (l.fx === 'pa') return '수술실 1';
+  return '정비 유닛';
 }
 
 /** The phases in story order. Script-only variants rank as their base phase. */

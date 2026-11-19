@@ -11,7 +11,7 @@ export function buildAirlock(L: LevelBuild) {
   const b = L.builder('airlock');
   const R = rng(606);
   const H = 3.2, Z0 = -25.8, Z1 = -20.2;
-  L.room('airlock', 'FAB ACCESS LOCK', -2, 2, -26, -20, H);
+  L.room('airlock', '제작 출입 록', -2, 2, -26, -20, H);
 
   floorSlab(b, 'floor_plate', -2.4, -26, 2.4, -20, [[-1.3, -25.1, 1.3, -20.9]], 'metal');
   trench(b, -1.3, -25.1, 1.3, -20.9, 0.55, R, true);
@@ -122,9 +122,9 @@ export function buildAirlock(L: LevelBuild) {
     });
   });
 
-  b.sign('DECONTAMINATION LOCK', 'stencil', -1.94, 2.55, -23, 1.6, 0.22, '+x');
-  b.sign('STAND CLEAR OF NOZZLES DURING CYCLE', 'warning', 1.925, 1.75, -23.4, 0.95, 0.14, '-x', 0, true);
-  b.sign('CYCLE FAULT — MANUAL OVERRIDE ENGAGED', 'danger', 1.925, 2.05, -21.6, 0.7, 0.1, '-x', 0, true);
+  b.sign('제염 록', 'stencil', -1.94, 2.55, -23, 1.6, 0.22, '+x');
+  b.sign('사이클 중 노즐에서 떨어지세요', 'warning', 1.925, 1.75, -23.4, 0.95, 0.14, '-x', 0, true);
+  b.sign('사이클 고장 — 수동 조작 걸림', 'danger', 1.925, 2.05, -21.6, 0.7, 0.1, '-x', 0, true);
   b.decal('water_stain', 0, -1.94, 1.2, -22.2, 0.7, 1.8, '+x');
   b.decal('water_stain', 3, 1.94, 1.1, -24.9, 0.7, 1.8, '-x');
   b.decal('handprint', 1, 0.9, 1.3, Z0 + 0.34, 0.24, 0.24, '+z', 0.2);

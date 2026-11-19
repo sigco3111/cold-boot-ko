@@ -33,8 +33,8 @@ export const WADE = {
   muffle: 0.9,
   /** Where a rescue may put him (the nearest that exists); none → the level's spawn. Level data (§8.11 markers). */
   exits: ['mk6_lw_exit', 'mk6_le_exit', 'mk6_boss_safe'] as readonly string[],
-  toastCrouch: 'Too deep to crouch',
-  toastRescue: 'You pulled yourself out',
+  toastCrouch: '웅크리기에는 너무 깊습니다',
+  toastRescue: '스스로 빠져나왔습니다',
 } as const;
 
 export interface DepthInfo { d: number; vol: WaterVolume | null; deep: boolean }

@@ -124,7 +124,7 @@ function transit(b: Builder, x: number, y: number, z: number, w: number, h: numb
 }
 
 /** The egress signs' texture: two rows (0 = `HEAD-END →`, 1 = `← HEAD-END`), one material for every sign. */
-const EGRESS = ['HEAD-END  →', '←  HEAD-END', 'JOINT BAY 2', 'TRUNK HEAD-END'];
+const EGRESS = ['헤드엔드  →', '←  HEAD-END', '조인트 베이 2', '트렁크 헤드엔드'];
 function egressMat(L: LevelBuild): THREE.MeshStandardMaterial {
   return mat4(L, 'd1_egress', () => {
     const c = document.createElement('canvas');
@@ -406,10 +406,10 @@ function buildLock(L: LevelBuild) {
   // the tray-end shelf under p6_lock_ammo (item (3.4, 1.0, 1.2), 0.2 behind the shelf's west face x 3.2)
   b.at(3.8, 0, 1.2, -PI / 2, () => { wallShelf6(b, L, { w: 0.8, d: 0.6, top: 0.97, seed: 63, collide: false }); b.collide(-0.8 / 2, 0, 0, 0.8 / 2, 0.97, 0.6, 'metal', false); });
   // stencils (the shell's are skipped with `label: false`): the trunk's run, the sealed door's label
-  stencil6(b, 'TRUNK — HEAD-END 200 M', -3.79, 1.5, 3.0, 1.8, 0.2, '+x', { style: 'navy' });
-  stencil6(b, 'TRUNK TUNNEL', 0, 2.555, 5.674, 1.38, 0.13, '-z');
-  stencil6(b, 'HEAD-END TUBE', 0, 2.75, 0.205, 1.4, 0.16, '+z', { style: 'navy' });
-  stencil6(b, 'PRESSURE DOOR — KEEP CLEAR', -2.6, 1.55, 0.205, 1.0, 0.1, '+z', { style: 'navy' });
+  stencil6(b, '트렁크 — 헤드엔드 200 M', -3.79, 1.5, 3.0, 1.8, 0.2, '+x', { style: 'navy' });
+  stencil6(b, '트렁크 터널', 0, 2.555, 5.674, 1.38, 0.13, '-z');
+  stencil6(b, '헤드엔드 튜브', 0, 2.75, 0.205, 1.4, 0.16, '+z', { style: 'navy' });
+  stencil6(b, '압력문 — 접근 금지', -2.6, 1.55, 0.205, 1.0, 0.1, '+z', { style: 'navy' });
   // hazard paint in front of the tube door, a drip tray of oil-dark under the transit
   b.detail(() => b.quad(L.overlay('hazard_stripes'), 0, 0.002, 0.75, 3.4, 0.5, '+y', 0, 'box'));
 }
@@ -475,8 +475,8 @@ function buildTunA(L: LevelBuild) {
   stripRun(b, L, 2.06, -0.5, -79.75, [...ringObs(1.92), [-39.2, -40.8, 1.32], [-69.2, -70.8, 1.32]]);
   // chainage stencils (west wall, every 16 m between the rings) and the section board
   for (let z = -8; z >= -72; z -= 16) stencil6(b, `CH 0+${String(Math.round(-z)).padStart(3, '0')}`, -2.29, 1.45, z, 0.5, 0.14, '+x', { style: 'navy' });
-  stencil6(b, 'CABLE TUNNEL — SECTION 1', -2.29, 2.85 - 1.05, -5.0, 2.2, 0.2, '+x', { style: 'navy' });
-  stencil6(b, 'REPEATER 2  80 M  →', 2.29, 1.7, -4.0, 1.6, 0.16, '-x', { style: 'navy' });
+  stencil6(b, '케이블 터널 — 1구간', -2.29, 2.85 - 1.05, -5.0, 2.2, 0.2, '+x', { style: 'navy' });
+  stencil6(b, '중계기 2  80 M  →', 2.29, 1.7, -4.0, 1.6, 0.16, '-x', { style: 'navy' });
 }
 
 /** Flush drain along the centre line from z0 to z1 (z0 > z1): an overlay grating on the invert, two angle edges. */
@@ -541,9 +541,9 @@ function buildRep(L: LevelBuild) {
   // DS1, DS2 (static drums on roller cradles), LC1, LC2 (crates), over the shell's colliders
   b.at(10.3, 0, -82.3, 0, () => cableDrum(b, L, { mount: 'cradle', collide: false }));
   b.at(-0.7, 0, -89.7, 0, () => cableDrum(b, L, { mount: 'cradle', collide: false }));
-  stencil6(b, 'SPARE TRUNK — 2.1 KM SECTION', 10.3, 0.55, -81.53, 0.9, 0.08, '+z', { style: 'navy' });
-  b.at(5.7, 0, -89.0, 0, () => crate6(b, L, { w: 1.4, d: 1.2, label: 'HALCYON SUBSEA — JOINTING KIT', collide: false }));
-  b.at(7.6, 0, -82.2, PI, () => crate6(b, L, { w: 1.2, d: 1.2, label: 'SPLICE CONSUMABLES', collide: false }));
+  stencil6(b, '예비 트렁크 — 2.1 KM 구간', 10.3, 0.55, -81.53, 0.9, 0.08, '+z', { style: 'navy' });
+  b.at(5.7, 0, -89.0, 0, () => crate6(b, L, { w: 1.4, d: 1.2, label: '할시온 서브시 — 조인팅 키트', collide: false }));
+  b.at(7.6, 0, -82.2, PI, () => crate6(b, L, { w: 1.2, d: 1.2, label: '접속 소모품', collide: false }));
   // a spare coil off the route (≥ 3 m from the line between the two mouths)
   b.at(-3.4, 0, -83.0, 0, () => spareCoil(b, L, {}));
   // the equipment shelf (east wall, z −90 … −88; items at x 15.6, 0.2 behind its face 15.4), the first-aid box
@@ -557,9 +557,9 @@ function buildRep(L: LevelBuild) {
   const gm = L.doubleSided('floor_grate');
   grille?.traverse((o) => { const m = o as THREE.Mesh; if (m.isMesh) m.material = gm; });
   // stencils
-  stencil6(b, 'REPEATER 2 — 1.1 KM', -4.2, 3.2, -80.21, 2.2, 0.24, '-z', { style: 'navy' });
-  stencil6(b, 'HEAD-END  70 M  ↓', 6.0, 3.2, -91.79, 1.8, 0.2, '+z', { style: 'navy' });
-  stencil6(b, 'LINE AMPLIFIERS — DO NOT ISOLATE', -4.59, 2.45, -87.0, 1.6, 0.1, '+x', { style: 'navy' });
+  stencil6(b, '중계기 2 — 1.1 KM', -4.2, 3.2, -80.21, 2.2, 0.24, '-z', { style: 'navy' });
+  stencil6(b, '헤드엔드  70 M  ↓', 6.0, 3.2, -91.79, 1.8, 0.2, '+z', { style: 'navy' });
+  stencil6(b, '라인 증폭기 — 차단 금지', -4.59, 2.45, -87.0, 1.6, 0.1, '+x', { style: 'navy' });
   buildTent(L, b, H[2]);
 }
 
@@ -577,7 +577,7 @@ function buildTent(L: LevelBuild, b: Builder, light: LightHandle) {
     b.bx('steel_raw', 13.58, 1.5, -84.0, 13.62, 1.53, -83.985);
     b.rod('rubber', 13.58, 1.52, -83.99, 13.6, 1.56, -84.03, 0.003, 4);
   });
-  stencil6(b, 'JOB CARD', 13.6, 1.46, -83.987, 0.13, 0.03, '+z', { style: 'navy' });
+  stencil6(b, '작업 카드', 13.6, 1.46, -83.987, 0.13, 0.03, '+z', { style: 'navy' });
   stencil6(b, 'J. RØD  MON 07:30', 13.6, 1.4, -83.987, 0.13, 0.025, '+z', { style: 'navy' });
 
   // the hanging work lamp (a caged inspection lamp on its cord from a hook on the ridge) — moving part
@@ -641,7 +641,7 @@ function buildTunB(L: LevelBuild) {
   transit(b, 14.0, 2.3, -159.8, 0.5, 0.6, '+z');
   for (const z of RINGS_B) for (const s of [-1, 1]) b.cyl('navy_grey', 14.0, ty, z + s * 0.205, 0.16, 0.02, 'z', 16);
   // RH1–RH3 (W8 over the shell's cover colliders), shelves on RH2 / RH3 (the pickups)
-  const rh: [number, number, string, boolean][] = [[9.7, -109, 'REPEATER HSG 2-B1 — HALCYON SUBSEA', false], [14.3, -125, 'REPEATER HSG 2-B2 — HALCYON SUBSEA', true], [9.7, -141, 'REPEATER HSG 2-B3 — HALCYON SUBSEA', true]];
+  const rh: [number, number, string, boolean][] = [[9.7, -109, '중계기 하우징 2-B1 — 할시온 서브시', false], [14.3, -125, '중계기 하우징 2-B2 — 할시온 서브시', true], [9.7, -141, '중계기 하우징 2-B3 — 할시온 서브시', true]];
   const led = ledMat6(L, 0.9);
   for (const [x, z, label, shelf] of rh) {
     const ry = x < 12 ? PI / 2 : -PI / 2;
@@ -657,7 +657,7 @@ function buildTunB(L: LevelBuild) {
   b.bx('navy_grey', 11.5, 3.93, -134.5, 12.5, 3.995, -133.5);
   b.bx('painted_dark', 11.65, 3.92, -134.35, 12.35, 3.93, -133.65);
   b.detail(() => { for (const [x0, z0, x1, z1] of [[11.45, -134.55, 12.55, -134.47], [11.45, -133.53, 12.55, -133.45], [11.45, -134.47, 11.53, -133.53], [12.47, -134.47, 12.55, -133.53]] as const) b.bx('hazard_stripes', x0, 3.935, z0, x1, 3.99, z1); });
-  stencil6(b, 'SENTRY DOCK — KEEP CLEAR', 9.71, 2.35 - 0.5, -134.0, 1.4, 0.12, '+x', { style: 'navy' });
+  stencil6(b, '센트리 도크 — 접근 금지', 9.71, 2.35 - 0.5, -134.0, 1.4, 0.12, '+x', { style: 'navy' });
   // the floor strips (green-amber, hard-wired, continuous), detouring round RH1–3 and the bay door's frame
   stripRun(b, L, 9.82, -92.4, -159.6, [[-108, -110, 11.18], [-140, -142, 11.18]]);
   stripRun(b, L, 14.18, -92.4, -159.6, [[-100.2, -103.8, 13.98], [-124, -126, 12.82]]);
@@ -673,8 +673,8 @@ function buildTunB(L: LevelBuild) {
   drainRun(b, L, 12.0, -92.4, -159.6);
   for (const [z0, z1] of [[-92.4, -107.9], [-110.1, -139.9], [-142.1, -159.7]] as const) b.at(9.7, 0, (z0 + z1) / 2, PI / 2, () => dewaterPipe(b, L, { len: z0 - z1, mat: 'painted_dark', collide: true }));
   for (const z of [-100, -116, -132, -148]) stencil6(b, `CH 0+${String(Math.round(4 - z)).padStart(3, '0')}`, 9.71, 1.15, z + 4, 0.5, 0.14, '+x', { style: 'navy' });
-  stencil6(b, 'CABLE TUNNEL — SECTION 2', 9.71, 2.85 - 1.05, -94.5, 2.2, 0.2, '+x', { style: 'navy' });
-  stencil6(b, 'EMERGENCY LIGHTING ONLY', 14.29, 2.85 - 1.05, -94.5, 1.8, 0.14, '-x', { style: 'navy' });
+  stencil6(b, '케이블 터널 — 2구간', 9.71, 2.85 - 1.05, -94.5, 2.2, 0.2, '+x', { style: 'navy' });
+  stencil6(b, '비상 조명만', 14.29, 2.85 - 1.05, -94.5, 1.8, 0.14, '-x', { style: 'navy' });
 }
 
 // ───────────────────────────────────────────────────────────── bay6
@@ -700,9 +700,9 @@ function buildBay(L: LevelBuild) {
   // trays (north and south walls, y 2.0 / 2.6), the trunk's spare tail from the joint into the wall transit
   b.at(17.5, 0, -98.2, PI, () => cableTrays(b, L, { len: 5.4, tiers: [2.0, 2.6], fill: [3, 2], seed: 91 }));
   b.at(17.5, 0, -105.8, 0, () => cableTrays(b, L, { len: 5.4, tiers: [2.0], fill: [3], seed: 92 }));
-  stencil6(b, 'JOINT BAY 2', 20.29, 2.3, -100.2, 1.6, 0.24, '-x', { style: 'navy' });
-  stencil6(b, 'HALCYON SUBSEA — SPARES', 20.29, 1.6, -100.2, 1.2, 0.1, '-x', { style: 'navy' });
-  stencil6(b, 'NO NAKED FLAMES — CABLE JOINTING', 17.5, 1.35, -98.21, 2.0, 0.12, '-z', { style: 'navy' });
+  stencil6(b, '조인트 베이 2', 20.29, 2.3, -100.2, 1.6, 0.24, '-x', { style: 'navy' });
+  stencil6(b, '할시온 서브시 — 예비품', 20.29, 1.6, -100.2, 1.2, 0.1, '-x', { style: 'navy' });
+  stencil6(b, '노화 금지 — 케이블 조인팅', 17.5, 1.35, -98.21, 2.0, 0.12, '-z', { style: 'navy' });
 }
 
 // ───────────────────────────────────────────────────────────── vignettes

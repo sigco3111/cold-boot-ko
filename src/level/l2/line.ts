@@ -160,7 +160,7 @@ function beltAndFrame(L: LevelBuild, b: Builder, R: Rng) {
   // the north end: an infeed stop, the line's name
   b.at((x0 + x1) / 2, 0, zN + 0.8, 0, () => {
     b.box('painted_yellow', 0, 0.55, 0, 2.6, 1.1, 0.25);
-    b.detail(() => { b.box('hazard_stripes', 0, 0.55, 0.128, 2.6, 0.9, 0.004); b.sign('LINE 2 — INFEED', 'label', 0, 1.25, 0.13, 1.4, 0.16, '+z', 0, true); b.sign('UNITS ARE LOWERED HERE', 'warning', 0, 0.5, 0.13, 1.4, 0.18, '+z', 0, true); });
+    b.detail(() => { b.box('hazard_stripes', 0, 0.55, 0.128, 2.6, 0.9, 0.004); b.sign('라인 2 — 투입', 'label', 0, 1.25, 0.13, 1.4, 0.16, '+z', 0, true); b.sign('유닛은 여기서 내립니다', 'warning', 0, 0.5, 0.13, 1.4, 0.18, '+z', 0, true); });
     b.collide(-1.3, 0, -0.13, 1.3, 1.1, 0.13);
   });
   // collider: the belt top (walkable) along its whole length
@@ -227,7 +227,7 @@ function loadingStation(L: LevelBuild, b: Builder, R: Rng) {
   b.collide(x0, y, zN - 0.1, x0 + 0.1, y + 1.05, -43.45); b.collide(x0, y, zS, x0 + 0.1, y + 1.05, -45.55);
   b.collide(x0, y, zS, x1, y + 1.05, zS + 0.1); b.collide(x0, y, zN - 0.1, x1, y + 1.05, zN);
   b.detail(() => { hazardStrip(b, x1 - 0.12, zS + 0.1, x1, zN - 0.1, y); });
-  b.sign('LOADING — UNITS ONLY', 'stencil', (x0 + x1) / 2, y + 0.004, -44.5, 1.5, 0.25, '+y', -PI / 2);
+  b.sign('적재 — 유닛 전용', 'stencil', (x0 + x1) / 2, y + 0.004, -44.5, 1.5, 0.25, '+y', -PI / 2);
   // operator pedestal on the deck: e-stop, a screen, the cycle buttons
   b.at(x0 + 0.45, y, -46.3, PI / 2 + 0.4, () => {
     b.box('painted_dark', 0, 0.5, 0, 0.42, 1.0, 0.32);
@@ -236,7 +236,7 @@ function loadingStation(L: LevelBuild, b: Builder, R: Rng) {
       b.cyl('emissive_red', -0.12, 1.12, 0.05, 0.045, 0.05, 'y', 12);
       b.cyl('painted_yellow', -0.12, 1.09, 0.05, 0.07, 0.02, 'y', 12);
       for (let i = 0; i < 3; i++) b.inst(i ? 'led_amber' : 'led_green', 0.05 + i * 0.05, 1.1, 0.02 + i * 0.02, -0.45 - PI / 2);
-      b.sign('CYCLE', 'label', 0.1, 1.11, 0.12, 0.14, 0.04, '+y');
+      b.sign('사이클', 'label', 0.1, 1.11, 0.12, 0.14, 0.04, '+y');
     });
     b.collide(-0.21, 0, -0.16, 0.21, 1.1, 0.16);
   });
@@ -254,8 +254,8 @@ function loadingStation(L: LevelBuild, b: Builder, R: Rng) {
     b.box('painted_yellow', 0, 3.15, 0, 3.0, 0.32, 0.4);
     b.detail(() => {
       b.box('painted_dark', 0, 2.97, 0, 2.5, 0.06, 0.25);
-      b.sign('LOAD STATION 2', 'label', 0, 3.15, 0.205, 1.2, 0.16, '+z');
-      b.sign('LOAD STATION 2', 'label', 0, 3.15, -0.205, 1.2, 0.16, '-z');
+      b.sign('적재 스테이션 2', 'label', 0, 3.15, 0.205, 1.2, 0.16, '+z');
+      b.sign('적재 스테이션 2', 'label', 0, 3.15, -0.205, 1.2, 0.16, '-z');
       cableBundle(b, [1.3, 3.3, 0], [2.4, 3.5, 0.3], 3, 0.15, 0.015, 0.04, R);
     });
   });
@@ -328,8 +328,8 @@ function buildTunnel(L: LevelBuild, b: Builder, R: Rng) {
       b.box('hazard_stripes', xf + sx * 0.005, 0.25, zc, 0.01, 0.3, len);
       for (let i = 0; i < 3; i++) pipe(b, i === 1 ? 'copper' : 'steel_raw', [[xf + sx * 0.14, 2.6 + i * 0.22, zN + 0.2], [xf + sx * 0.14, 2.6 + i * 0.22, zS - 0.2]], 0.045 - i * 0.008, { every: 3 });
       valve(b, xf + sx * 0.14, 2.6, -56, 'z', 0.045, 'x', sx);
-      b.sign('FITTING TUNNEL 2 — DANGER — MOVING MACHINERY', 'danger', xf + sx * 0.04, 1.5, -53.5, 2.4, 0.28, f, 0, true);
-      b.sign('NO PERSONNEL ON BELT', 'warning', xf + sx * 0.04, 1.5, -59, 1.6, 0.22, f, 0, true);
+      b.sign('장착 터널 2 — 위험 — 가동 기계', 'danger', xf + sx * 0.04, 1.5, -53.5, 2.4, 0.28, f, 0, true);
+      b.sign('벨트 위 사람 금지', 'warning', xf + sx * 0.04, 1.5, -59, 1.6, 0.22, f, 0, true);
     });
   }
   b.bx(W, x0, roof, zS, x1, roof + 0.25, zN);
@@ -348,7 +348,7 @@ function buildTunnel(L: LevelBuild, b: Builder, R: Rng) {
   });
   // ── mouth (north) and exit (south): hollow face plates (the shutter leaves run in the slot inside them),
   //    colliders over the whole face except the belt aperture, chevrons, lamps ──
-  for (const [z, s, label] of [[zN, 1, 'FITTING 2 — IN'], [zS, -1, 'FITTING 2 — OUT']] as const) {
+  for (const [z, s, label] of [[zN, 1, '피팅 2 — 입'], [zS, -1, '피팅 2 — 출']] as const) {
     b.at((x0 + x1) / 2, 0, z, s > 0 ? 0 : PI, () => {
       const ow = SHUTTER.w, oh = SHUTTER.h, F = SHUTTER.face, hw = (x1 - x0) / 2, top = y + oh;
       // two skins (local z 0…0.03 and F-0.03…F) with the leaf slot between them
@@ -734,7 +734,7 @@ function apron(L: LevelBuild, b: Builder) {
   handrail(b, 'painted_yellow', [[x1 - 0.05, y, zN], [x1 - 0.05, y, zS + 0.05], [x0 + 0.05, y, zS + 0.05]], 1.0, 1.3, true);
   handrail(b, 'painted_yellow', [[x0 + 0.05, y, zN], [x0 + 0.05, y, -64.0]], 1.0, 1.3, true);
   b.collide(x1 - 0.1, y, zS, x1, y + 1.05, zN); b.collide(x0, y, zS, x1, y + 1.05, zS + 0.1); b.collide(x0, y, -64.0, x0 + 0.1, y + 1.05, zN);
-  b.sign('EXIT APRON — UNITS PROCEED TO STAGING', 'stencil', 5, y + 0.004, -65.0, 2.6, 0.3, '+y', PI);
+  b.sign('출구 에이프런 — 유닛은 스테이징으로 이동', 'stencil', 5, y + 0.004, -65.0, 2.6, 0.3, '+y', PI);
   b.detail(() => { hazardStrip(b, x0, zN - 0.15, x1, zN, y); });
   workLight(b, L, 'line', 1.5, -67.6, Math.atan2(-(5 - 1.5), -(-64 + 67.6)), { intensity: 110, distance: 9, angle: 0.7, cast: true, pitch: 0.35 });
 }
@@ -819,10 +819,10 @@ function partition(L: LevelBuild, b: Builder) {
     b.bx('hazard_stripes', gx0, SH, z + 0.14, gx1, SH + 0.22, z + 0.146);
     b.bx('hazard_stripes', gx0, SH, z - 0.146, gx1, SH + 0.22, z - 0.14);
     // (on the solid sheet, clear of the gate pocket)
-    b.sign('SECTION C — LINE RUNNING: NO ACCESS SOUTH OF THIS GATE', 'danger', -7.7, 1.6, z + 0.08, 2.4, 0.3, '+z', 0, true);
-    b.sign('SECTION C — STAGING', 'label', -7.7, 1.6, z - 0.08, 1.6, 0.22, '-z', 0, true);
-    b.sign('WALKWAY GATE 2', 'label', GATE.x, SH + 0.11, z + 0.148, 1.0, 0.13, '+z');
-    b.sign('WALKWAY GATE 2', 'label', GATE.x, SH + 0.11, z - 0.148, 1.0, 0.13, '-z');
+    b.sign('구역 C — 라인 가동 중: 이 게이트 남쪽 출입 금지', 'danger', -7.7, 1.6, z + 0.08, 2.4, 0.3, '+z', 0, true);
+    b.sign('구역 C — 스테이징', 'label', -7.7, 1.6, z - 0.08, 1.6, 0.22, '-z', 0, true);
+    b.sign('통로 게이트 2', 'label', GATE.x, SH + 0.11, z + 0.148, 1.0, 0.13, '+z');
+    b.sign('통로 게이트 2', 'label', GATE.x, SH + 0.11, z - 0.148, 1.0, 0.13, '-z');
   });
   // ── mesh above everything (and over the gate and the tunnel roof) ──
   mesh(-9.8, TUN.x0, SH);

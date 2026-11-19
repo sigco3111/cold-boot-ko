@@ -1,5 +1,5 @@
 /**
- * Level 2 — "LINE TWO" (docs/DESIGN.md → REVISION 4, reworked to REVISION 5 / 5.1).
+ * Level 2 — "2번 라인" (docs/DESIGN.md → REVISION 4, reworked to REVISION 5 / 5.1).
  *
  * This file is the top layer of the script (see base.ts for the layering): acts 1–2 (the tidy place, someone
  * is alive), acts 4–5 (Unit 32, the supervisor, the core), checkpoints, Tomas's barks and every reaction to
@@ -1131,7 +1131,7 @@ export class ScriptL2 extends Taking {
       await this.choir(['l2_choir_rewrite_2']);
       await this.wait(1.2);
       // From the hall, through the open door: awake. Okafor's voice only if Unit 14 still stands (dialogue.ts).
-      this.talk.overlap('l2_unit14_wait', { name: this.unit14() ? 'UNIT 14' : 'SERVICE UNIT', at: V(0, 1.5, -69) });
+      this.talk.overlap('l2_unit14_wait', { name: this.unit14() ? '유닛 14' : '정비 유닛', at: V(0, 1.5, -69) });
       await this.hold(2.4);
       await this.choir(['l2_choir_rewrite_3']);
     }

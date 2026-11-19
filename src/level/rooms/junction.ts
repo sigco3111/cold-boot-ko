@@ -13,7 +13,7 @@ export function buildJunction(L: LevelBuild) {
   const b = L.builder('junction');
   const R = rng(303);
   const H = 3.2;
-  L.room('junction', 'JUNCTION 3', -3, 3, -20, -14, H);
+  L.room('junction', '정션 3', -3, 3, -20, -14, H);
 
   floorSlab(b, 'floor_plate', -3, -20, 3, -14, [[-0.5, -17.5, 0.5, -16.5]], 'metal');
   trench(b, -0.5, -17.5, 0.5, -16.5, 0.4, R, true);
@@ -89,13 +89,13 @@ export function buildJunction(L: LevelBuild) {
   b.detail(() => {
     b.box('trim_steel', 0, hy + 0.23, -17, 1.56, 0.03, 1.56).box('trim_steel', 0, hy - 0.23, -17, 1.56, 0.03, 1.56);
     // seen arriving from the corridor (facing +Z)
-    b.sign('FABRICATION HALL 3 ^', 'directional', 0, hy + 0.1, -16.25, 1.4, 0.18, '+z');
-    b.sign('← SECURITY 3      STORAGE →', 'directional', 0, hy - 0.11, -16.25, 1.4, 0.16, '+z');
+    b.sign('제작 홀 3 ^', 'directional', 0, hy + 0.1, -16.25, 1.4, 0.18, '+z');
+    b.sign('← 보안실 3      창고 →', 'directional', 0, hy - 0.11, -16.25, 1.4, 0.16, '+z');
     // seen coming back from the fab lock
-    b.sign('MEDICAL 3-A ^', 'directional', 0, hy + 0.1, -17.75, 1.4, 0.18, '-z');
-    b.sign('← STORAGE      SECURITY 3 →', 'directional', 0, hy - 0.11, -17.75, 1.4, 0.16, '-z');
-    b.sign('← FAB HALL 3    MEDICAL →', 'directional', 0.75, hy, -17, 1.4, 0.18, '+x');
-    b.sign('← MEDICAL    FAB HALL 3 →', 'directional', -0.75, hy, -17, 1.4, 0.18, '-x');
+    b.sign('의무실 3-A ^', 'directional', 0, hy + 0.1, -17.75, 1.4, 0.18, '-z');
+    b.sign('← 창고      보안실 3 →', 'directional', 0, hy - 0.11, -17.75, 1.4, 0.16, '-z');
+    b.sign('← 제작 홀 3    의무실 →', 'directional', 0.75, hy, -17, 1.4, 0.18, '+x');
+    b.sign('← 의무실    제작 홀 3 →', 'directional', -0.75, hy, -17, 1.4, 0.18, '-x');
     b.box('emissive_cyan', 0, hy - 0.25, -17, 1.3, 0.012, 0.03).box('emissive_cyan', 0, hy - 0.25, -17, 0.03, 0.012, 1.3);
   });
 
@@ -106,7 +106,7 @@ export function buildJunction(L: LevelBuild) {
 
   // ── props: bench + crates on the west side; east wall north bay stays clear for the android ──
   b.at(-2.4, 0, -15.1, PI / 2, () => bench(b, 1.3));
-  b.at(-2.35, 0, -19.2, 0.15, () => crate(b, 0.7, 0.6, 0.6, 'painted_dark', 'HALCYON'));
+  b.at(-2.35, 0, -19.2, 0.15, () => crate(b, 0.7, 0.6, 0.6, 'painted_dark', '할시온'));
   b.at(-2.4, 0.6, -19.25, -0.3, () => crate(b, 0.5, 0.35, 0.45, 'wall_panel', undefined, false));
   b.at(2.8, 0.55, -19.1, -PI / 2, () => fireExtinguisher(b));
   // android spot: oil underneath + scrape marks leading from the storage door
@@ -116,11 +116,11 @@ export function buildJunction(L: LevelBuild) {
   b.decal('scratches', 2, 2.764, 0.9, -15.0, 0.6, 0.6, '-x');
 
   // ── wall signs ──
-  b.sign('JUNCTION 3', 'stencil', -2.764, 2.3, -15.4, 1.1, 0.24, '+x');
-  b.sign('SECURITY 3', 'directional', -2.764, 1.75, -15.8, 0.55, 0.14, '+x', 0, true);
-  b.sign('EQUIPMENT STORAGE', 'directional', 2.764, 1.75, -18.3, 0.75, 0.14, '-x', 0, true);
-  b.sign('AUTHORISED PERSONNEL — FAB ACCESS LOCK', 'warning', 2.15, 1.75, -19.764, 0.9, 0.14, '+z', 0, true);
-  b.sign('ARM-FREE ZONE BEYOND THIS POINT', 'danger', -2.15, 1.75, -19.764, 0.9, 0.14, '+z', 0, true);
+  b.sign('정션 3', 'stencil', -2.764, 2.3, -15.4, 1.1, 0.24, '+x');
+  b.sign('보안실 3', 'directional', -2.764, 1.75, -15.8, 0.55, 0.14, '+x', 0, true);
+  b.sign('장비 창고', 'directional', 2.764, 1.75, -18.3, 0.75, 0.14, '-x', 0, true);
+  b.sign('인가된 인원 — 제작 출입 록', 'warning', 2.15, 1.75, -19.764, 0.9, 0.14, '+z', 0, true);
+  b.sign('이 지점 너머 비무장 구역', 'danger', -2.15, 1.75, -19.764, 0.9, 0.14, '+z', 0, true);
   b.sign('3', 'stencil', 0, 0.003, -15.4, 0.9, 1.2, '+y');
   b.decal('grime', 0, -1.6, 0.002, -18.2, 2.0, 2.0, '+y', 1.0);
   b.decal('blood_smear', 2, 0.6, 0.002, -14.6, 0.5, 1.2, '+y', -0.5);

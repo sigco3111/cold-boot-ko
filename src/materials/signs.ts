@@ -289,7 +289,7 @@ function pictogram(g: Ctx, p: Pictogram, cx: number, cy: number, s: number, ink:
 
 /**
  * Habitat wayfinding plaque: warm-white satin enamel, a coloured band with a white pictogram, dark humanist lettering
- * IN THE CASE GIVEN ("Biological Systems →"), optional arrow (same parsing as `directional`: `→ ← > < ↑ ↓` at the start
+ * IN THE CASE GIVEN ("생물 시스템 →"), optional arrow (same parsing as `directional`: `→ ← > < ↑ ↓` at the start
  * or end), extra lines smaller. Wide quads (aspect ≥ 1.6) put the band on the left; square / tall ones (totems) on top.
  * Returns the base roughness (0..255) for the roughness canvas.
  */
@@ -468,7 +468,7 @@ function drawClinical(g: Ctx, rg: Ctx, W: number, H: number, raw: string, rand: 
     g.fillStyle = '#e6c23a'; g.fill();
     g.lineWidth = H * 0.035; g.strokeStyle = '#1d1c18'; g.beginPath(); g.roundRect(m * 2.2, m * 2.2, W - 4.4 * m, H - 4.4 * m, rr * 0.7); g.stroke();
     g.fillStyle = '#1d1c18'; g.textAlign = 'center'; g.textBaseline = 'middle';
-    const main = lines[0].toUpperCase(), sub = lines.slice(1).join(' ').toUpperCase() || 'DO NOT REMOVE';
+    const main = lines[0].toUpperCase(), sub = lines.slice(1).join(' ').toUpperCase() || '제거 금지';
     fitText(g, main, W - m * 8, H * 0.32, '800', CLIN); g.fillText(main, W / 2, H * 0.42);
     fitText(g, sub, W - m * 8, H * 0.14, '600', CLIN); g.fillText(sub, W / 2, H * 0.7);
     // slightly lifted, scuffed corner

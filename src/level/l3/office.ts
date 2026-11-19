@@ -80,7 +80,7 @@ const office: RoomDress = {
     b.detail(() => { for (let i = -3; i <= 3; i++) b.box('chrome', -30.5 + i * 0.03, Y + 2.9 - 0.015, -22.6, 0.006, 0.002, 0.2 * Math.sqrt(1 - (i / 3.6) ** 2)); });
 
     // ── door: wood casing (admin side carries the nameplate on the door's own lintel label)
-    doorCasing(b, L, { x: -30, y: Y, z: -20, wall: 'z', back: 'Facilities Offices', sides: [-1] });
+    doorCasing(b, L, { x: -30, y: Y, z: -20, wall: 'z', back: '시설팀 사무실', sides: [-1] });
 
     // ── the desks
     // his: walnut, 2.84 × 0.9, knee hole centred on his chair, front (his side) at x −32.28
@@ -167,7 +167,7 @@ const office: RoomDress = {
       g.fillStyle = '#f7f6f1'; g.fillRect(0, 0, W, H);
       g.fillStyle = '#1d3f73'; g.font = '700 34px "Marker Felt", "Comic Sans MS", sans-serif'; g.fillText('시설팀 — 46주차', 24, 46);
       g.strokeStyle = '#3a3a3a'; g.lineWidth = 2;
-      const days = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
+      const days = ['월', '화', '수', '목', '금', '토', '일'];
       for (let i = 0; i < 7; i++) { const y = 74 + i * 44; g.beginPath(); g.moveTo(16, y); g.lineTo(W - 16, y); g.stroke(); g.fillStyle = '#333'; g.font = '600 20px Arial'; g.fillText(days[i], 24, y + 30); }
       g.beginPath(); g.moveTo(96, 74); g.lineTo(96, 74 + 7 * 44); g.stroke();
       const r = (s: number) => { const x = Math.sin(s * 91.7) * 4371.3; return x - Math.floor(x); };

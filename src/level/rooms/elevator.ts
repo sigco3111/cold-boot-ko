@@ -38,8 +38,8 @@ export interface CabOpts {
 
 export function buildElevator(L: LevelBuild) {
   buildCab(L, {
-    room: { id: 'elevator', name: 'FREIGHT ELEVATOR', x0: -2.5, x1: 2.5, z0: -63, z1: -58 }, group: 'elevator', doorId: 'd_elev',
-    screen: 'elev_panel', machine: 'elevator', mode: 'descend', lit: false, extras: true, place: null, panelText: 'NO POWER',
+    room: { id: 'elevator', name: '화물 엘리베이터', x0: -2.5, x1: 2.5, z0: -63, z1: -58 }, group: 'elevator', doorId: 'd_elev',
+    screen: 'elev_panel', machine: 'elevator', mode: 'descend', lit: false, extras: true, place: null, panelText: '전원 없음',
   });
 }
 
@@ -122,7 +122,7 @@ export function buildCab(L: LevelBuild, o: CabOpts) {
   st.collide(1.55, 0, -62.65, 2.15, 1.2, -62.05);
   if (o.extras) {
     const bp = W(1.91, 1.2, -62.12);
-    L.interact('elev_button', 'button', 'Call elevator: SURFACE', bp.x, bp.y, bp.z, false, 2.2);
+    L.interact('elev_button', 'button', '엘리베이터 호출: 지상', bp.x, bp.y, bp.z, false, 2.2);
     L.ctx.events.on('interact', (e) => { if (e.id === 'elev_button') btn.position.y = 1.19; });
   }
   void bw;

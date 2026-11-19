@@ -132,7 +132,7 @@ export abstract class Scenes3 extends Base3 {
       const h = r.feed({
         name: which, rooms: which === 'cam01' ? ['gallery_n', 'lock', 'lobby'] : ['feed_l2'],
         position: c.pos.clone(), target: c.look.clone(), fov: c.fov, active, hz: 12,
-        label: which === 'cam01' ? 'CAM 01  GALLERY N' : 'CAM 04  LINE TWO',
+        label: which === 'cam01' ? 'CAM 01  GALLERY N' : 'CAM 04  2번 라인',
         clock: () => wallClock(this.t, true),
         // CAM 04's set has one light, far from the player: pin it explicitly (the default pin search found none)
         ...(which === 'cam04' ? { pinLights: [...this.ctx.render.lights.group('feed_l2')], exposure: 2.0 } : { exposure: 0.7 }),

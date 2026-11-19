@@ -180,7 +180,7 @@ export const ROOMS: Record<string, RoomPreset> = {
   lobby: { ir: 'machine', wet: 0.5, bed: { amb_room: 0.9, amb_fab: 0.25 }, events: { metal_groan: 2, dist_clank: 2, dist_voice: 1, drip: 1, dist_knock: 1 } },
   elevator: { ir: 'shaft', wet: 0.6, bed: { amb_room: 0.6, amb_fab: 0.2 }, events: { metal_groan: 3, dist_clank: 2, dist_voice: 0.8 } },
 
-  // ── level 2 "LINE TWO" (REVISION 4). Tidy, lit, wrong: the quiet rooms keep the dread palette but no
+  // ── level 2 "2번 라인" (REVISION 4). Tidy, lit, wrong: the quiet rooms keep the dread palette but no
   // husk whispers (the units here are working, and the recorded mutters come from the enemies module).
   cab: { ir: 'shaft', wet: 0.5, bed: { amb_room: 0.55, amb_fab: 0.15 }, events: { metal_groan: 2, dist_clank: 1.5, dist_knock: 1 } },
   dock: { ir: 'machine', wet: 0.45, bed: { amb_room: 0.8 }, events: L2_QUIET, quiet: true },
@@ -217,7 +217,7 @@ export const ROOMS_L3: Record<string, RoomPreset> = {
   quarters: { ir: 'office', wet: 0.28, bed: { amb_hab: 0.75 }, events: HAB_WARM, cold: { ...COLD_ROOM, ir: 'office', wet: 0.3, bed: { amb_hab_cold: 1 } } },
   bio_lock: { ir: 'tiled', wet: 0.5, bed: { amb_lock: 1 }, events: {}, cold: { bed: { amb_lock: 0.6, amb_hab_cold: 0.35 }, wet: 0.55 } },
 };
-// ── level 4 "BIOLOGICAL SYSTEMS" (stage 3b, plan §2.1). Room ids are the plan's; only consulted when the engine runs
+// ── level 4 "생물 시스템" (stage 3b, plan §2.1). Room ids are the plan's; only consulted when the engine runs
 // level 4 (presetFor(id, 4)). The `cold` form is the clean side after lights-out (§4.3: story:beat `l4_lights_out`; Deck 2
 // except theatre, node2, lock4): the air handling and the cold store stop, the bed becomes the sealed hum, dread palette.
 const CLEAN_QUIET = { pipe_tick: 1.2, door_far: 0.7, far_steps: 0.6, dist_knock: 0.5, hull_creak: 0.5, metal_groan: 0.3 };
@@ -260,7 +260,7 @@ export const ROOMS_L4: Record<string, RoomPreset> = {
   },
   gatel: { ir: 'lock', wet: 0.5, bed: { amb_navy: 0.6, amb_tube: 0.45 }, events: NAVY },
 };
-// ── level 5 "POST 4" (stage 3c, plan §2.1). Room ids are the plan's, plus two acoustic sub-rooms the engine resolves by
+// ── level 5 "초소 4" (stage 3c, plan §2.1). Room ids are the plan's, plus two acoustic sub-rooms the engine resolves by
 // height (index.ts subRoom): `crawl5` (the crawlway: spine5 / arm5 below their main floor) and `mag5` (the magazine,
 // arm5 below −2 m). The `cold` form is lights_out5 (§4.7 L, story:beat `l5_dark`): only spine5 and sub5 lose their mains
 // (D17), so only they (and the crawl under the spine) have one — the bed becomes amb_dark, the palette the dark one.
@@ -309,7 +309,7 @@ export const ROOMS_L5: Record<string, RoomPreset> = {
     local: [{ id: 'drip', every: [2, 6], vol: [0.2, 0.5], y: [1.5, 2.5] }],
   },
 };
-// ── level 6 "THE TRUNK" (stage 3d, plan §2.1). Room ids are the plan's, plus acoustic sub-rooms the engine resolves by
+// ── level 6 "간선" (stage 3d, plan §2.1). Room ids are the plan's, plus acoustic sub-rooms the engine resolves by
 // height (index.ts subRoom): `trench6` (vault6 / he6 below the floor: the cable trench) and `under6` (pool6's undercroft
 // under the mid deck). `cold` = lights_out6 (boss stage ≥ 2): only the chamber and its rooms change; `after` = the quiet
 // (story:beat `l6_quiet`). As level 5: no far_steps / drag / breath (the enemies here are real).

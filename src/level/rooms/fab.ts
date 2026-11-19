@@ -15,7 +15,7 @@ const PI = Math.PI;
 const H = 8;
 
 export function buildFab(L: LevelBuild) {
-  L.room('fab', 'FABRICATION HALL 3', -12, 12, -50, -26, H, 1.8);
+  L.room('fab', '제작 홀 3', -12, 12, -50, -26, H, 1.8);
   const R = rng(707);
   shell(L, R);
   const conv = line(L, R);
@@ -61,8 +61,8 @@ function shell(L: LevelBuild, R: ReturnType<typeof rng>) {
     b.detail(() => { for (const dz of [-0.75, 0.75]) b.cyl('steel_raw', s * 11.35, 6.72, gz + dz, 0.11, 0.08, 'x', 12); });
   }
   b.detail(() => {
-    b.sign('HALCYON  20 t', 'stencil', -5.5, 7.0, gz + 0.672, 2.6, 0.36, '+z');
-    b.sign('HALCYON  20 t', 'stencil', 5.5, 7.0, gz - 0.672, 2.6, 0.36, '-z');
+    b.sign('할시온  20 t', 'stencil', -5.5, 7.0, gz + 0.672, 2.6, 0.36, '+z');
+    b.sign('할시온  20 t', 'stencil', 5.5, 7.0, gz - 0.672, 2.6, 0.36, '-z');
     b.box('hazard_stripes', 0, 6.7, gz + 0.676, 22.9, 0.08, 0.004);
   });
   // trolley + hoist + hook block carrying a sealed fabricator head
@@ -78,7 +78,7 @@ function shell(L: LevelBuild, R: ReturnType<typeof rng>) {
     for (const sx of [-1, 1]) for (const sz of [-1, 1]) b.rod('steel_raw', tx, 4.4, gz, tx + sx * 0.6, 3.72, gz + sz * 0.45, 0.01, 4);
     cableBundle(b, [tx + 0.9, 7.5, gz], [8, 7.3, gz - 0.2], 3, 0.5, 0.02, 0.08, R);
   });
-  b.at(tx, 2.5, gz, 0.12, () => crate(b, 1.4, 1.2, 1.1, 'wall_panel_dark', 'FAB HEAD 7', false));
+  b.at(tx, 2.5, gz, 0.12, () => crate(b, 1.4, 1.2, 1.1, 'wall_panel_dark', '팹 헤드 7', false));
 
   // ── catwalk along the west wall (y 3.7), decorative + bullet-solid ──
   const cy = 3.7;
@@ -111,7 +111,7 @@ function shell(L: LevelBuild, R: ReturnType<typeof rng>) {
     for (const s of [-1, 1]) { b.box('trim_steel', s * 3.74, 5.3, -49.45, 0.16, 3.56, 0.08); b.box('trim_steel', 0, 5.3 + s * 1.7, -49.45, 7.64, 0.16, 0.08); }
     for (const x of [-3, -1, 1, 3]) b.rbox('trim_steel', x, 7.3, -49.6, 0.08, 0.9, 0.08, 0.2, 0, 0);
     for (const x of [-3.4, 3.4]) cableBundle(b, [x, 3.55, -49.6], [x * 1.05, 3.3, -49.55], 3, 0.05, 0.02, 0.03, R);
-    b.sign('LINE 3 — PRODUCTION STATUS', 'label', 0, 3.42, -49.76, 2.6, 0.14, '+z');
+    b.sign('라인 3 — 생산 현황', 'label', 0, 3.42, -49.76, 2.6, 0.14, '+z');
   });
   const screen = L.screen('fab_bigscreen', 'terminal_idle', 7.1, 3.1, 0, 5.3, -49.46, '+z');
   L.objects.set('fab_bigscreen', screen);
@@ -172,14 +172,14 @@ function shell(L: LevelBuild, R: ReturnType<typeof rng>) {
   b.at(11.8, 2.9, -38, -PI / 2, () => beacon(b, L, 'fab_emergency', 0, 0, 0.2, 1, 0xff2a12, 70, 12, 'emissive_red', false, 'alarm', bm));
 
   // ── wall signage ──
-  b.sign('FABRICATION HALL 3', 'stencil', 5.5, 5.2, -26.236, 5.2, 0.7, '-z');
-  b.sign('HALCYON DYNAMICS', 'stencil', -11.964, 6.3, -38, 6.5, 0.8, '+x');
-  b.sign('ERIDU', 'stencil', 11.764, 6.0, -42.5, 3.2, 0.9, '-x');
-  b.sign('POWER DISTRIBUTION 3 →', 'directional', 11.764, 2.2, -35.9, 1.4, 0.22, '-x', 0, true);
-  b.sign('← FREIGHT LOBBY', 'directional', 3.2, 2.2, -49.764, 1.3, 0.22, '+z', 0, true);
-  b.sign('FAB ACCESS LOCK →', 'directional', -3.3, 2.2, -26.236, 1.3, 0.22, '-z', 0, true);
-  b.sign('DANGER — AUTOMATED CELL — NO ENTRY WHILE LINE IS LIVE', 'danger', -5.5, 3.0, -26.236, 2.4, 0.3, '-z', 0, true);
-  b.sign('0 DAYS SINCE LAST INCIDENT', 'warning', 6.6, 2.3, -49.764, 1.6, 0.2, '+z', 0, true);
+  b.sign('제작 홀 3', 'stencil', 5.5, 5.2, -26.236, 5.2, 0.7, '-z');
+  b.sign('할시온 다이내믹스', 'stencil', -11.964, 6.3, -38, 6.5, 0.8, '+x');
+  b.sign('에리두', 'stencil', 11.764, 6.0, -42.5, 3.2, 0.9, '-x');
+  b.sign('배전실 3 →', 'directional', 11.764, 2.2, -35.9, 1.4, 0.22, '-x', 0, true);
+  b.sign('← 화물 로비', 'directional', 3.2, 2.2, -49.764, 1.3, 0.22, '+z', 0, true);
+  b.sign('제작 출입 록 →', 'directional', -3.3, 2.2, -26.236, 1.3, 0.22, '-z', 0, true);
+  b.sign('위험 — 자동화 셀 — 라인 가동 중 진입 금지', 'danger', -5.5, 3.0, -26.236, 2.4, 0.3, '-z', 0, true);
+  b.sign('마지막 사고 이후 0일', 'warning', 6.6, 2.3, -49.764, 1.6, 0.2, '+z', 0, true);
 }
 
 // ───────────────────────────────────────────────────────────── assembly line, arms, conveyor
@@ -304,8 +304,8 @@ function line(L: LevelBuild, R: ReturnType<typeof rng>): Conveyor {
   }
   for (const s of [-1, 1]) { hazardStrip(b, s * 4.35 - 0.06, -45.6, s * 4.35 + 0.06, -30.4); }
   hazardStrip(b, -4.41, -30.52, 4.41, -30.4); hazardStrip(b, -4.41, -45.6, 4.41, -45.48);
-  b.sign('ROBOT CELL — KEEP OUT', 'stencil', 0, 0.004, -29.9, 3.2, 0.36, '+y');
-  b.sign('ROBOT CELL — KEEP OUT', 'stencil', 0, 0.004, -46.1, 3.2, 0.36, '+y', PI);
+  b.sign('로봇 셀 — 출입 금지', 'stencil', 0, 0.004, -29.9, 3.2, 0.36, '+y');
+  b.sign('로봇 셀 — 출입 금지', 'stencil', 0, 0.004, -46.1, 3.2, 0.36, '+y', PI);
 
   // ── overhead conveyor ──
   const path = new LoopPath(4.5, -33, -43);
@@ -411,10 +411,10 @@ function dressing(L: LevelBuild, R: ReturnType<typeof rng>, conv: Conveyor) {
   s.decal('oil_drip', 1, -8.2, 0.5, -34.243, 0.4, 0.7, '+z');
 
   // ── the pump room door in the west wall: signposted, with its own small lamp ──
-  n.sign('COOLANT PUMP ROOM 3', 'stencil', -11.964, 3.12, -38, 2.3, 0.26, '+x');
-  n.sign('← COOLANT PUMPS', 'directional', -11.964, 2.2, -40.0, 1.0, 0.2, '+x', 0, true);
-  n.sign('COOLANT ←', 'stencil', -9.6, 0.004, -38.0, 1.9, 0.4, '+y', -PI / 2);
-  n.sign('LOCK-OUT POINT — SEE CHIEF ENGINEER', 'warning', -11.964, 1.75, -36.2, 0.8, 0.14, '+x', 0, true);
+  n.sign('냉각수 펌프실 3', 'stencil', -11.964, 3.12, -38, 2.3, 0.26, '+x');
+  n.sign('← 냉각수 펌프', 'directional', -11.964, 2.2, -40.0, 1.0, 0.2, '+x', 0, true);
+  n.sign('냉각수 ←', 'stencil', -9.6, 0.004, -38.0, 1.9, 0.4, '+y', -PI / 2);
+  n.sign('잠금 지점 — 기관장에게 문의', 'warning', -11.964, 1.75, -36.2, 0.8, 0.14, '+x', 0, true);
   hazardStrip(n, -11.2, -39.0, -11.05, -37.0);
   n.at(-12, 0, -36.55, PI / 2, () => bulkhead(n, L, 'fab', 0, 2.5, 0.04, 0x9fd8ff, 5, 4.5, 'emissive_cyan', { flicker: 'fluorescent' }));
   // "31": painted on the wall north of that door, over a field of tally marks
@@ -426,7 +426,7 @@ function dressing(L: LevelBuild, R: ReturnType<typeof rng>, conv: Conveyor) {
   s.decal('blood_pool', 0, 1.9, 0.003, -41.5, 1.5, 1.2, '+y', 1.2);
   s.decal('blood_smear', 1, 2.6, 0.003, -40.3, 0.7, 1.8, '+y', 0.7);
   s.at(2.45, 0, -41.0, 0.8, () => tablet(s, 'emissive_cyan'));
-  L.interact('log_fab', 'log', 'Read PDA', 2.45, 0.1, -41.0, true, 2.4);
+  L.interact('log_fab', 'log', 'PDA 읽기', 2.45, 0.1, -41.0, true, 2.4);
   L.point('fab_screen', 2.45, 0.25, -41.0, 0x40d8ff, 0.8, 1.6);
   L.pickup('p_fab_shells', 'ammo_shotgun', 1.5, 0, -43.9, 6, 0.6);
 
@@ -434,22 +434,22 @@ function dressing(L: LevelBuild, R: ReturnType<typeof rng>, conv: Conveyor) {
   const stack = (b: Builder, x: number, z: number, ry: number, label?: string) => {
     b.at(x, 0, z, ry, () => { pallet(b, 1.3, 1.1); b.at(0, 0.145, 0, 0, () => crate(b, 1.2, 0.8, 1.0, R.pick(['painted_dark', 'wall_panel', 'wall_panel_dark'] as const), label, false)); b.collide(-0.65, 0, -0.55, 0.65, 0.95, 0.55); });
   };
-  stack(n, 7.6, -29.4, 0.1, 'HALCYON');
+  stack(n, 7.6, -29.4, 0.1, '할시온');
   n.at(7.5, 0.945, -29.4, 0.5, () => crate(n, 0.7, 0.5, 0.6, 'painted_yellow', undefined, false));
   L.pickup('p_fab_ammo', 'ammo_pistol', 8.05, 0.945, -29.2, 12, 0.2);
-  stack(n, 9.2, -29.8, -0.2, 'SHELL 4-B');
+  stack(n, 9.2, -29.8, -0.2, '셸 4-B');
   n.at(9.6, 0, -31.6, 0, () => drum(n)); n.at(9.0, 0, -31.9, 0, () => drum(n, 'painted_yellow')); n.at(9.7, 0, -32.3, 0, () => drum(n));
-  n.at(-7.4, 0, -30.2, 0.2, () => crate(n, 1.8, 1.4, 1.3, 'wall_panel_dark', 'ACTUATOR SET'));
-  n.at(-8.9, 0, -29.4, -0.3, () => crate(n, 0.9, 0.7, 0.8, 'painted_dark', 'ERIDU'));
+  n.at(-7.4, 0, -30.2, 0.2, () => crate(n, 1.8, 1.4, 1.3, 'wall_panel_dark', '액추에이터 세트'));
+  n.at(-8.9, 0, -29.4, -0.3, () => crate(n, 0.9, 0.7, 0.8, 'painted_dark', '에리두'));
   stack(n, -8.2, -33.6, 1.5, 'LOT 3-118');
   n.at(-9.6, 0, -35.4, 0.4, () => toolCart(n, R));
   n.at(-9.2, 0, -36.2, 0, () => tools(n, 5, 0.6, R));
-  stack(s, 9.3, -41.6, 0.05, 'JOINTS R2');
+  stack(s, 9.3, -41.6, 0.05, '조인트 R2');
   s.at(9.3, 0.945, -41.6, -0.3, () => crate(s, 0.8, 0.6, 0.7, 'painted_dark', undefined, false));
-  stack(s, 8.0, -45.2, 1.4, 'HALCYON');
-  s.at(-7.2, 0, -45.6, -0.15, () => crate(s, 1.6, 1.2, 1.2, 'wall_panel', 'COOLANT'));
+  stack(s, 8.0, -45.2, 1.4, '할시온');
+  s.at(-7.2, 0, -45.6, -0.15, () => crate(s, 1.6, 1.2, 1.2, 'wall_panel', '냉각수'));
   s.at(-8.8, 0, -44.2, 0, () => drum(s)); s.at(-9.4, 0, -44.7, 0, () => drum(s, 'painted_yellow'));
-  s.at(5.6, 0, -47.6, 0.3, () => crate(s, 1.0, 0.9, 0.9, 'painted_dark', 'FRAGILE'));
+  s.at(5.6, 0, -47.6, 0.3, () => crate(s, 1.0, 0.9, 0.9, 'painted_dark', '파손 주의'));
   s.at(-4.6, 0, -47.9, -0.4, () => { cableCoil(s, 0.4, 5); });
   // lockers + gas bottles under the catwalk
   n.at(-11.7, 0, -31, PI / 2, () => lockerRow(n, 4, R, 'wall_panel_dark'));
@@ -457,7 +457,7 @@ function dressing(L: LevelBuild, R: ReturnType<typeof rng>, conv: Conveyor) {
   s.collide(-11.75, 0, -43.5, -11.35, 1.4, -42.2);
   // parts bins with unfinished shells near the line start
   n.at(4.9, 0, -30.9, 0.1, () => {
-    crate(n, 1.4, 0.7, 1.0, 'painted_yellow', 'SHELLS');
+    crate(n, 1.4, 0.7, 1.0, 'painted_yellow', '셸');
     n.detail(() => { for (let i = 0; i < 5; i++) { n.push(R.range(-0.4, 0.4), 0.72, R.range(-0.25, 0.25), R.range(0, 6), R.range(-0.4, 0.4), 0); n.sphere('robot_shell', 0, 0, 0, 0.12, 8, 1.2, 1, 1.1); n.pop(); } });
   });
   n.at(-5.0, 0, -31.2, -0.1, () => {
@@ -477,8 +477,8 @@ function dressing(L: LevelBuild, R: ReturnType<typeof rng>, conv: Conveyor) {
   n.decal('scorch', 0, 2.5, 0.003, -33.2, 1.2, 1.2, '+y', 0.3);
   s.decal('scorch', 1, -2.6, 0.003, -43.2, 1.4, 1.4, '+y', 1.3);
   n.sign('3', 'stencil', -8.5, 0.004, -27.8, 1.2, 1.6, '+y');
-  s.sign('POWER →', 'stencil', 8.2, 0.004, -38.0, 2.2, 0.4, '+y');
-  s.sign('LOBBY ^', 'stencil', 0, 0.004, -47.8, 1.8, 0.4, '+y');
+  s.sign('전력 →', 'stencil', 8.2, 0.004, -38.0, 2.2, 0.4, '+y');
+  s.sign('로비 ^', 'stencil', 0, 0.004, -47.8, 1.8, 0.4, '+y');
   // drag marks: from the line to the lobby door
   s.decal('blood_smear', 2, 1.5, 0.003, -45.6, 0.7, 1.8, '+y', 0.3);
   s.decal('blood_smear', 0, 0.8, 0.003, -47.4, 0.7, 1.8, '+y', 0.2);

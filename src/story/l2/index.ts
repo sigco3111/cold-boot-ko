@@ -1,5 +1,5 @@
 /**
- * STORY, level 2 — "LINE TWO" (REVISION 4). Owns the flow of this page load: menu / one-click gate →
+ * STORY, level 2 — "2번 라인" (REVISION 4). Owns the flow of this page load: menu / one-click gate →
  * title card → the lift arrives → the script (./script.ts) → one of two endings. The page-level flow, the
  * checkpoint writer and resume are the shared scaffolding (../stage/page.ts); this file adds the arrival, the
  * ending and the hand-over to level 3.

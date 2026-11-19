@@ -1,5 +1,5 @@
 /**
- * COLD BOOT — level 3 "THE QUIET SIDE" (stage 3a, docs/plans/stage-3a.md §2–§3, §5, §7; task K5 greybox).
+ * COLD BOOT — level 3 "고요한 쪽" (stage 3a, docs/plans/stage-3a.md §2–§3, §5, §7; task K5 greybox).
  *
  * Final coordinates, no dressing. Files:
  *   grey.ts    rooms (§2.1), the shell kernel (GreyGrid), one shell function per room, placeholder light tables
@@ -54,28 +54,28 @@ export function doors3(L: LevelBuild): DoorSpec[] {
   const cab = (id: string, x: number, z: number, name: string, north: boolean): DoorSpec => ({
     id, x, z, wall: 'z', kind: 'std', locked: true, leafMat: wood, rooms: ['quarters', 'quarters'],
     // north row: the quarters side is −z (labelBack); south row: +z (labelFront)
-    labelFront: north ? 'RING A' : name, labelBack: north ? name : 'RING A',
+    labelFront: north ? '링 A' : name, labelBack: north ? name : '링 A',
   });
   return [
-    { id: 'd3_lift', x: 0, y: D2, z: 0, wall: 'z', kind: 'std', locked: true, leafMat: 'painted_white', labelFront: 'PRESSURE LOCK', labelBack: 'SERVICE LIFT', rooms: ['lift3', 'lock'] },
-    { id: 'd3_pressure', x: 0, y: D2, z: -7, wall: 'z', kind: 'wide', locked: true, leafMat: 'painted_yellow', duration: 2.6, auto: false, labelFront: 'HABITAT RING', labelBack: 'PRESSURE LOCK', rooms: ['lock', 'gallery_n'] },
-    { id: 'd3_lobby', x: -12, y: D2, z: -9.5, wall: 'x', kind: 'std', locked: true, leafMat: glassLeaf, labelFront: 'HABITAT LOBBY', labelBack: 'NORTH GALLERY', rooms: ['gallery_n', 'lobby'] },
-    { id: 'd3_lobby_inner', x: -20, y: D2, z: -9, wall: 'x', kind: 'std', locked: true, leafMat: wood, labelFront: 'FACILITIES — STAFF', labelBack: 'HABITAT LOBBY', rooms: ['lobby', 'admin'] },
-    { id: 'd3_office', x: -30, y: D2, z: -20, wall: 'z', kind: 'std', locked: true, leafMat: wood, labelFront: 'P. HALVORSEN — FACILITIES', labelBack: 'FACILITIES OFFICES', rooms: ['admin', 'office'] },
-    { id: 'd3_stair_w', x: -20, y: D2, z: -18.5, wall: 'x', kind: 'std', locked: true, labelFront: 'FACILITIES — STAFF', labelBack: 'WEST STAIR', rooms: ['stair_w', 'admin'] },
-    { id: 'd3_canteen', x: -17.5, z: -34, wall: 'z', kind: 'std', locked: false, labelFront: 'CANTEEN', labelBack: 'WEST STAIR', rooms: ['stair_w', 'canteen'] },
-    { id: 'd3_canteen_atr', x: -12, z: -39, wall: 'x', kind: 'std', w: 2.4, locked: false, leafMat: glassLeaf, labelFront: 'CANTEEN', labelBack: 'GARDEN ATRIUM', rooms: ['atrium', 'canteen'] },
-    { id: 'd3_kitchen', x: -21, z: -46, wall: 'z', kind: 'std', locked: true, leafMat: 'painted_white', labelFront: 'KITCHEN — STAFF ONLY', labelBack: 'CANTEEN', rooms: ['canteen', 'kitchen'] },
+    { id: 'd3_lift', x: 0, y: D2, z: 0, wall: 'z', kind: 'std', locked: true, leafMat: 'painted_white', labelFront: '압력 록', labelBack: '서비스 리프트', rooms: ['lift3', 'lock'] },
+    { id: 'd3_pressure', x: 0, y: D2, z: -7, wall: 'z', kind: 'wide', locked: true, leafMat: 'painted_yellow', duration: 2.6, auto: false, labelFront: '주거 링', labelBack: '압력 록', rooms: ['lock', 'gallery_n'] },
+    { id: 'd3_lobby', x: -12, y: D2, z: -9.5, wall: 'x', kind: 'std', locked: true, leafMat: glassLeaf, labelFront: '주거 로비', labelBack: '북쪽 갤러리', rooms: ['gallery_n', 'lobby'] },
+    { id: 'd3_lobby_inner', x: -20, y: D2, z: -9, wall: 'x', kind: 'std', locked: true, leafMat: wood, labelFront: '시설팀 — 직원', labelBack: '주거 로비', rooms: ['lobby', 'admin'] },
+    { id: 'd3_office', x: -30, y: D2, z: -20, wall: 'z', kind: 'std', locked: true, leafMat: wood, labelFront: 'P. 할보센 — 시설팀', labelBack: '시설팀 사무실', rooms: ['admin', 'office'] },
+    { id: 'd3_stair_w', x: -20, y: D2, z: -18.5, wall: 'x', kind: 'std', locked: true, labelFront: '시설팀 — 직원', labelBack: '서쪽 계단', rooms: ['stair_w', 'admin'] },
+    { id: 'd3_canteen', x: -17.5, z: -34, wall: 'z', kind: 'std', locked: false, labelFront: '식당', labelBack: '서쪽 계단', rooms: ['stair_w', 'canteen'] },
+    { id: 'd3_canteen_atr', x: -12, z: -39, wall: 'x', kind: 'std', w: 2.4, locked: false, leafMat: glassLeaf, labelFront: '식당', labelBack: '정원 아트리움', rooms: ['atrium', 'canteen'] },
+    { id: 'd3_kitchen', x: -21, z: -46, wall: 'z', kind: 'std', locked: true, leafMat: 'painted_white', labelFront: '주방 — 직원 전용', labelBack: '식당', rooms: ['canteen', 'kitchen'] },
     {
       id: 'd3_shutter_ne', x: 10.5, y: D2, z: -12, wall: 'z', kind: 'std', w: 2.6, h: 2.8, duration: 1.8, frame: false, leafStyle: 'sheet', auto: false,
       panel: [0, 2.95, 0.215], locked: true, leafMat: 'painted_dark', labelFront: '', labelBack: '', rooms: ['gallery_n', 'atrium'],
     },
-    { id: 'd3_clinic', x: 12, z: -19, wall: 'x', kind: 'std', locked: false, leafMat: 'glass_thick', labelFront: 'GARDEN ATRIUM', labelBack: 'CLINIC', rooms: ['clinic', 'atrium'] },
-    { id: 'd3_quarters', x: 12, z: -31, wall: 'x', kind: 'std', locked: false, leafMat: glassLeaf, labelFront: 'GARDEN ATRIUM', labelBack: 'RING A', rooms: ['quarters', 'atrium'] },
-    cab('d3_q1', 15, -28, 'L. MOEN', true), cab('d3_q2', 19, -28, 'A. & J. KARLSEN', true), cab('d3_q3', 23, -28, 'S. VIK', true),
-    cab('d3_q4', 15, -34, 'D. OYELARAN', false), cab('d3_q5', 19, -34, 'R. BRANDT', false), cab('d3_q6', 23, -34, 'T. HALVORSEN', false),
-    { id: 'd3_ring_e', x: 28, z: -31, wall: 'x', kind: 'std', locked: true, leafMat: 'painted_dark', labelFront: 'RING A', labelBack: 'RING A — EAST', rooms: ['ring_e', 'quarters'] },
-    { id: 'd3_bio', x: 12, y: D2, z: -38, wall: 'x', kind: 'std', locked: true, auto: false, leafMat: 'painted_white', labelFront: 'HABITAT RING', labelBack: 'BIOLOGICAL SYSTEMS', rooms: ['bio_lock', 'atrium'] },
+    { id: 'd3_clinic', x: 12, z: -19, wall: 'x', kind: 'std', locked: false, leafMat: 'glass_thick', labelFront: '정원 아트리움', labelBack: '진료실', rooms: ['clinic', 'atrium'] },
+    { id: 'd3_quarters', x: 12, z: -31, wall: 'x', kind: 'std', locked: false, leafMat: glassLeaf, labelFront: '정원 아트리움', labelBack: '링 A', rooms: ['quarters', 'atrium'] },
+    cab('d3_q1', 15, -28, 'L. 모엔', true), cab('d3_q2', 19, -28, 'A. & J. 칼센', true), cab('d3_q3', 23, -28, 'S. 비크', true),
+    cab('d3_q4', 15, -34, 'D. 오예라란', false), cab('d3_q5', 19, -34, 'R. 브란트', false), cab('d3_q6', 23, -34, 'T. 할보센', false),
+    { id: 'd3_ring_e', x: 28, z: -31, wall: 'x', kind: 'std', locked: true, leafMat: 'painted_dark', labelFront: '링 A', labelBack: '링 A — 동측', rooms: ['ring_e', 'quarters'] },
+    { id: 'd3_bio', x: 12, y: D2, z: -38, wall: 'x', kind: 'std', locked: true, auto: false, leafMat: 'painted_white', labelFront: '주거 링', labelBack: '생물 시스템', rooms: ['bio_lock', 'atrium'] },
     // (stage 3b D4 / D19: the BIO lock's inner door never opens in 3a — `d3_bio_inner` is a static sealed prop now,
     // see `bioInner` below; 3b starts in its own copy of this lock)
   ];
@@ -83,7 +83,7 @@ export function doors3(L: LevelBuild): DoorSpec[] {
 
 /**
  * Stage 3b §8.8.4 (D19): the BIO lock's inner door (16, 4.8, −38) — a static `sealedDoor` (no Door, no phase state),
- * seen only from inside the lock; unpowered panels ("DECON — AWAITING" is the lock's own `bio_panel`).
+ * seen only from inside the lock; unpowered panels ("제염 — 대기 중" is the lock's own `bio_panel`).
  */
 function bioInner(L: LevelBuild, G: GreyGrid) {
   G.air('door:d3_bio_inner', [16 - HW, D2, -38.8, 16 + HW, D2 + 2.4, -37.2], { rooms: ['bio_lock'], look: 'reveal' });
@@ -91,7 +91,7 @@ function bioInner(L: LevelBuild, G: GreyGrid) {
   b.rooms = ['bio_lock'];
   sealedDoor(L, b, {
     id: 'd3_bio_inner', x: 16, y: D2, z: -38, wall: 'x', kind: 'std', sides: 'back', status: 'dark', leafMat: 'painted_white',
-    labelBack: 'BIOLOGICAL SYSTEMS',
+    labelBack: '생물 시스템',
   });
 }
 

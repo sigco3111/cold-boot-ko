@@ -43,7 +43,7 @@ export interface PlayerExtras {
   readonly view: { readonly position: THREE.Vector3; readonly quaternion: THREE.Quaternion; readonly fov: number };
   /** §8.2: true while `cinematic(true)` holds. */
   readonly inCinematic: boolean;
-  /** Stage 3d §8.3: the HUD key strip's name of a key id (`key6_a` → `KEY A — HEAD-END`; data in player/keys.ts). */
+  /** Stage 3d §8.3: the HUD key strip's name of a key id (`key6_a` → `키 A — 헤드엔드`; data in player/keys.ts). */
   keyName(id: string): string;
   debug: Record<string, (...a: any[]) => any>;
 }
@@ -258,7 +258,7 @@ export async function createPlayer(ctx: GameContext): Promise<Player & PlayerExt
   let strap: { t: number; take: () => void } | null = null;
   let strapStow = false;
   function startStrap(take: () => void): boolean {
-    if (armor >= maxArmor) { ctx.events.emit('story:toast', { text: 'Armour full' }); return false; }
+    if (armor >= maxArmor) { ctx.events.emit('story:toast', { text: '방탄복이 가득 찼습니다' }); return false; }
     if (strap || palm || cine || !alive || !controlsEnabled || ctx.state !== 'playing') return false;
     strap = { t: 0, take };
     strapStow = true;

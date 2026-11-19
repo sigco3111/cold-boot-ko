@@ -1,5 +1,5 @@
 /**
- * Level 6 — "THE TRUNK", the route (stage 3d §4.1–§4.7; ST-a): the tube (A → T → U), tunnel A and F1 with the crossing,
+ * Level 6 — "간선", the route (stage 3d §4.1–§4.7; ST-a): the tube (A → T → U), tunnel A and F1 with the crossing,
  * Repeater 2 and F2 (B), tunnel B in the dark and F3's walk-out, the head-end (the lines, the queue, the handset, the
  * crank → Key A, F4), the vault (Key A → the enclosure, the pull → Key B, the ring, F5, the thud), the stair door (Key B →
  * K, the loader spawned — D31), the shaft (the lamps, F6). The moon pool, the boss and the ending are `boss.ts` /

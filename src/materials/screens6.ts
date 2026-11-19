@@ -9,24 +9,24 @@
  * texture upload — the wall boards are 2048 px wide).
  *
  * `text` formats (what the level / story writes with `setScreen`; the screen's clock `t` restarts at every write):
- *   mimic       `auto` | `manual` | `pulled` | `cut` (or the §6.4 phrases: `MODE: AUTO`, `MANUAL — PROTECTION OFF`,
- *               `LOS` / `ACTIVE` → pulled, `ALL LOS` → cut). The trunk HEAD-END — VAULT (BEACH JOINT) — SURFACE
+ *   mimic       `auto` | `manual` | `pulled` | `cut` (or the §6.4 phrases: `모드: 자동`, `MANUAL — PROTECTION OFF`,
+ *               `신호 손실` / `ACTIVE` → pulled, `ALL LOS` → cut). The trunk HEAD-END — VAULT (BEACH JOINT) — SURFACE
  *               2.1 KM and the branch MOON POOL — TETHER — ACOUSTIC BUOY; traffic dots run along every live line.
  *               Empty = `auto`.
  *   manifest    `\n`-separated lines. Directive lines (anywhere, not shown): `@title <T>` (header band; default
- *               `HEAD-END — OUTBOUND QUEUE`), `@rate <s>` (a NEW line types in per <s> seconds from the write: the E1
+ *               `헤드엔드 — 발신 대기열`), `@rate <s>` (a NEW line types in per <s> seconds from the write: the E1
  *               scroll, 0.35), `@hl <substring>` (lines containing it are highlighted), `@cursor <substring>` (a
  *               blinking block cursor after the line containing it; default: after the last line while typing),
  *               `@scroll <n>` (first shown line; default: follow the newest line), `@rows <n>` (body rows; default
  *               the line count within 7 … 13). A rewrite keeps every line that is unchanged at the same index (only new lines type in), so the
  *               story can add `@hl` / `@cursor` without the list re-typing. Empty = the §6.3 queue (`note6_queue`).
- *   interlock   `<TITLE>\n<STATE>`: STATE `locked` | `open` | `los` or a display string (`KEY A IN — OPEN`,
- *               `FIBRE — LOS`; the state is read from its words). `locked` shows `INSERT KEY <X>` (X from the title's
+ *   interlock   `<TITLE>\n<STATE>`: STATE `locked` | `open` | `los` or a display string (`키 A 삽입 — 열림`,
+ *               `광케이블 — 신호 손실`; the state is read from its words). `locked` shows `INSERT KEY <X>` (X from the title's
  *               `KEY X`). A Castell barrel pictogram: empty (amber), key in and turned (green), red on LOS.
  *   dock_board  `\n`-separated: line 1 the title, then `<LABEL>: <VALUE>` rows (split at the first `: `). Changed
  *               rows flip in over 0.45 s; HAZARD / FAULT rows blink. Empty = the arrival state of §6.4.
- *   gauge       `pin` (`PIN IN`) | `<k>` 0 … 1 of 210 bar (`0 BAR — PUMP`, `n BAR`, `210 BAR — READY` at 1) |
- *               `fired` (needle dumps to 0; `TRUNK: LOS · BUOY: LOS` from +0.6 s) | `low|<k>` (`PRESSURE LOW` for
+ *   gauge       `pin` (`핀 삽입됨`) | `<k>` 0 … 1 of 210 bar (`0 BAR — 펌프`, `n BAR`, `210 BAR — READY` at 1) |
+ *               `fired` (needle dumps to 0; `트렁크: 신호 손실 · 부이: 신호 손실` from +0.6 s) | `low|<k>` (`압력 낮음` for
  *               1.2 s, then the reading of k). The needle eases (≈ 0.15 s) to every new value.
  *   feed (OSD)  on the trunk level, a `feed` WITH a texture draws its `text` over the live picture: `\n`-separated
  *               lines top-left, a line starting `_` bottom-left. New lines type in at 34 characters / s, one after
@@ -87,9 +87,9 @@ function flip(txt: string, t: number, rand: () => number): string {
 type MimicState = 'auto' | 'manual' | 'pulled' | 'cut';
 export function mimicState(text: string | undefined): MimicState {
   const u = (text ?? '').trim().toUpperCase();
-  if (!u || u === 'AUTO' || /MODE:\s*AUTO/.test(u)) return 'auto';
-  if (u === 'CUT' || /ALL\s+LOS/.test(u)) return 'cut';
-  if (u === 'PULLED' || /\bLOS\b|ACTIVE/.test(u)) return 'pulled';
+  if (!u || u === '자동' || /모드:\s*자동/.test(u)) return 'auto';
+  if (u === '절단' || /모두\s*신호 손실/.test(u)) return 'cut';
+  if (u === '당겨짐' || /신호 손실|활성/.test(u)) return 'pulled';
   return 'manual';
 }
 
@@ -107,8 +107,8 @@ export function mimic(s: S5): boolean {
   const hb = H * 0.17;
   g.fillStyle = '#16324a'; g.fillRect(0, 0, W, hb);
   g.textBaseline = 'middle'; g.textAlign = 'left'; g.fillStyle = K.text;
-  fit(g, 'HEAD-END — TRUNK SINGLE LINE', 800, hb * 0.62, W * 0.45); g.fillText('HEAD-END — TRUNK SINGLE LINE', p, hb / 2);
-  const mode = st === 'auto' ? 'MODE: AUTO' : 'MODE: MANUAL — PROTECTION OFF';
+  fit(g, '헤드엔드 — 트렁크 단선', 800, hb * 0.62, W * 0.45); g.fillText('헤드엔드 — 트렁크 단선', p, hb / 2);
+  const mode = st === 'auto' ? '모드: 자동' : '모드: 수동 — 보호 꺼짐';
   const mcol = st === 'auto' ? K.green : K.amber;
   g.textAlign = 'right';
   glow(g, mcol, hb * 0.2, () => { g.fillStyle = st !== 'auto' && !blinkOf(t, 0.5) ? '#a8701e' : mcol; fit(g, mode, 900, hb * 0.62, W * 0.45); g.fillText(mode, W - p, hb / 2); });
@@ -155,7 +155,7 @@ export function mimic(s: S5): boolean {
   const hh = H * 0.2;
   g.fillRect(xHE0, yT - hh / 2, xHE1 - xHE0, hh); g.strokeRect(xHE0, yT - hh / 2, xHE1 - xHE0, hh);
   g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillStyle = K.text;
-  fit(g, 'HEAD-END', 800, hh * 0.42, (xHE1 - xHE0) * 0.86); g.fillText('HEAD-END', (xHE0 + xHE1) / 2, yT);
+  fit(g, '헤드엔드', 800, hh * 0.42, (xHE1 - xHE0) * 0.86); g.fillText('헤드엔드', (xHE0 + xHE1) / 2, yT);
   // the changeover switch at the junction: AUTO = blade on the trunk with the failover arrow; MANUAL = blade lifted
   const sw = H * 0.09;
   g.save(); g.strokeStyle = st === 'auto' ? GRN : K.amber; g.lineWidth = lw * 0.8; g.lineCap = 'round';
@@ -164,7 +164,7 @@ export function mimic(s: S5): boolean {
   g.beginPath(); g.moveTo(xJ, yT); g.lineTo(xJ + Math.cos(ang) * sw * 1.4, yT + Math.sin(ang) * sw * 1.4); g.stroke();
   g.restore();
   g.textAlign = 'center'; g.fillStyle = st === 'auto' ? GRN : K.amber;
-  fit(g, st === 'auto' ? 'AUTO' : 'MAN', 800, H * 0.06, W * 0.06); g.fillText(st === 'auto' ? 'AUTO' : 'MAN', xJ + sw * 0.8, yT - sw * 1.45);
+  fit(g, st === 'auto' ? '자동' : '수동', 800, H * 0.06, W * 0.06); g.fillText(st === 'auto' ? '자동' : '수동', xJ + sw * 0.8, yT - sw * 1.45);
   // nodes
   const node = (x: number, y: number, col: string, broken: boolean) => {
     const r = lw * 2.1;
@@ -189,31 +189,31 @@ export function mimic(s: S5): boolean {
     g.textAlign = align; g.textBaseline = 'middle'; g.fillStyle = col; fit(g, txt, 800, size, maxW); g.fillText(txt, x, y);
   };
   const blink = blinkOf(t, 1);
-  lab('VAULT — BEACH JOINT', xBJ, yT - H * 0.1, K.label, 'center');
-  lab('SURFACE 2.1 KM', xS, yT - H * 0.1, K.label, 'right', H * 0.075, W * 0.2);
-  if (!trunkLive) glow(g, RED, H * 0.03, () => lab(blink ? 'FIBRE — LOS' : '', xBJ, yT + H * 0.1, RED, 'center', H * 0.085));
-  else lab('FIBRE — IN SERVICE', (xBJ + xS) / 2, yT + H * 0.08, 'rgba(125,255,176,0.75)', 'center', H * 0.06);
-  lab('MOON POOL', xMP, yB + H * 0.1, K.label, 'center', H * 0.08, W * 0.14);
-  lab('TETHER', (xMP + xBU) / 2, yB - H * 0.09, K.label, 'center', H * 0.08, W * 0.14);
-  const bv = st === 'cut' ? 'ACOUSTIC BUOY: LOS' : buoyLive ? 'ACOUSTIC BUOY: ACTIVE' : 'ACOUSTIC BUOY: STANDBY';
-  glow(g, buoyCol, buoyLive || st === 'cut' ? H * 0.03 : 0, () => lab(st === 'cut' && !blink ? 'ACOUSTIC BUOY:' : bv, xBU + lw * 6, yB, buoyCol, 'left', H * 0.075, W - xBU - lw * 6 - p));
+  lab('볼트 — 비치 조인트', xBJ, yT - H * 0.1, K.label, 'center');
+  lab('수면 2.1 KM', xS, yT - H * 0.1, K.label, 'right', H * 0.075, W * 0.2);
+  if (!trunkLive) glow(g, RED, H * 0.03, () => lab(blink ? '광케이블 — 신호 손실' : '', xBJ, yT + H * 0.1, RED, 'center', H * 0.085));
+  else lab('광케이블 — 사용 중', (xBJ + xS) / 2, yT + H * 0.08, 'rgba(125,255,176,0.75)', 'center', H * 0.06);
+  lab('문풀', xMP, yB + H * 0.1, K.label, 'center', H * 0.08, W * 0.14);
+  lab('테더', (xMP + xBU) / 2, yB - H * 0.09, K.label, 'center', H * 0.08, W * 0.14);
+  const bv = st === 'cut' ? '음향 부이: 신호 손실' : buoyLive ? '음향 부이: 활성' : '음향 부이: 대기';
+  glow(g, buoyCol, buoyLive || st === 'cut' ? H * 0.03 : 0, () => lab(st === 'cut' && !blink ? '음향 부이:' : bv, xBU + lw * 6, yB, buoyCol, 'left', H * 0.075, W - xBU - lw * 6 - p));
   return true;
 }
 
 // ───────────────────────────── manifest (queue6, console6)
 
 const QUEUE_DEFAULT = [
-  '@title HEAD-END — OUTBOUND QUEUE',
-  'QUEUED: MANIFEST 0031-H / B-14',
-  'CLASP ASSY (CERVICAL) × 240',
-  'DISPATCH: MOON POOL → SUBSEA SHUTTLE',
-  'SENT: B-01 … B-13',
-  'CONSIGNEE: —',
+  '@title 헤드엔드 — 발신 대기열',
+  '대기 중: 적하목록 0031-H / B-14',
+  '클라스프 조립체(경추용) × 240',
+  '발송: 문풀 → 해저 셔틀',
+  '발송: B-01 … B-13',
+  '수령인: —',
 ].join('\n');
 
 interface ManifestDoc { title: string; rate: number; hl: string; cursor: string; scroll: number; rows: number; lines: string[] }
 export function parseManifest(text: string | undefined): ManifestDoc {
-  const d: ManifestDoc = { title: 'HEAD-END — OUTBOUND QUEUE', rate: 0, hl: '', cursor: '', scroll: -1, rows: 0, lines: [] };
+  const d: ManifestDoc = { title: '헤드엔드 — 발신 대기열', rate: 0, hl: '', cursor: '', scroll: -1, rows: 0, lines: [] };
   const src = text && text.trim() ? text : QUEUE_DEFAULT;
   for (const raw of src.split('\n')) {
     const ln = raw.replace(/\s+$/, '');
@@ -268,7 +268,7 @@ export function manifest(s: S5): boolean {
   g.textBaseline = 'middle'; g.textAlign = 'left'; g.fillStyle = K.text;
   fit(g, doc.title, 800, hb * 0.6, W * 0.7); g.fillText(doc.title, p, hb / 2);
   g.textAlign = 'right'; g.fillStyle = K.label;
-  const tag = typing ? 'RECEIVING' : `${n} LINES`;
+  const tag = typing ? '수신 중' : `${n} LINES`;
   fit(g, tag, 700, hb * 0.45, W * 0.25); g.fillText(tag, W - p, hb / 2);
   // which lines are in view: follow the newest (or @scroll)
   const visible = typing ? full + 1 : full;
@@ -310,12 +310,12 @@ export function manifest(s: S5): boolean {
 type LockState = 'locked' | 'open' | 'los';
 export function interlockState(text: string | undefined): { title: string; st: LockState; label: string; key: string } {
   const lines = (text ?? '').split('\n').map((l) => l.trim()).filter(Boolean);
-  const title = lines[0] ?? 'INTERLOCK';
+  const title = lines[0] ?? '인터록';
   const key = /KEY\s+([A-Z])\b/.exec(title.toUpperCase())?.[1] ?? 'A';
   const raw = lines[1] ?? 'locked';
   const u = raw.toUpperCase();
-  const st: LockState = u === 'OPEN' || (/OPEN/.test(u) && !/\bLOS\b/.test(u)) ? 'open' : u === 'LOS' || /\bLOS\b|FAULT/.test(u) ? 'los' : 'locked';
-  const label = u === 'LOCKED' ? `INSERT KEY ${key}` : u === 'OPEN' ? `KEY ${key} IN — OPEN` : u === 'LOS' ? 'FIBRE — LOS' : raw.toUpperCase();
+  const st: LockState = u === '열림' || (/OPEN/.test(u) && !/\bLOS\b/.test(u)) ? 'open' : u === '신호 손실' || /\bLOS\b|FAULT/.test(u) ? 'los' : 'locked';
+  const label = u === '잠김' ? `INSERT KEY ${key}` : u === '열림' ? `KEY ${key} IN — OPEN` : u === '신호 손실' ? '광케이블 — 신호 손실' : raw.toUpperCase();
   return { title, st, label, key };
 }
 
@@ -370,7 +370,7 @@ export function interlock(s: S5): boolean {
   // footer: the rule plate's text
   g.fillStyle = K.line; g.fillRect(p, H - (H - hb) * 0.16, W - p * 2, Math.max(1, H * 0.006));
   g.fillStyle = K.label; g.textAlign = 'center';
-  const foot = st === 'locked' ? 'TRAPPED-KEY INTERLOCK — KEY RELEASED UPSTREAM' : 'KEY TRAPPED WHILE OPEN';
+  const foot = st === 'locked' ? '트랩드키 인터록 — 상류에서 키 해제됨' : '열린 동안 키 고정됨';
   fit(g, foot, 700, (H - hb) * 0.08, W - p * 2); g.fillText(foot, W / 2, H - (H - hb) * 0.08);
   return true;
 }
@@ -378,12 +378,12 @@ export function interlock(s: S5): boolean {
 // ───────────────────────────── dock_board (the chamber's 12 × 3 m board)
 
 const BOARD_DEFAULT = [
-  'MOON POOL — DOCK — 2,140 M',
-  'TRANSFER B-14: LOWERING',
-  'CARGO LOCK: INNER DOOR CLOSED',
-  'DEWATERING: 34 % — STOPPED',
-  'TETHER: TAUT — BUOY: STANDBY',
-  'LOADER DL-2: WORKING',
+  '문풀 — 도크 — 2,140 M',
+  '이송 B-14: 하강 중',
+  '화물 록: 내부 문 닫힘',
+  '배수: 34 % — 정지됨',
+  '테더: 팽팽함 — 부이: 대기',
+  '로더 DL-2: 작동 중',
 ].join('\n');
 
 function splitRow(ln: string): [string, string] {
@@ -446,11 +446,11 @@ const GAUGE_MAX = 250;
 type GaugeState = { st: 'pin' | 'read' | 'fired' | 'low'; k: number };
 export function gaugeState(text: string | undefined): GaugeState {
   const u = (text ?? '').trim().toUpperCase();
-  if (!u || u === 'PIN' || u === 'PIN IN') return { st: 'pin', k: 0 };
-  if (u === 'FIRED') return { st: 'fired', k: 0 };
+  if (!u || u === '핀' || u === '핀 삽입됨') return { st: 'pin', k: 0 };
+  if (u === '발사됨') return { st: 'fired', k: 0 };
   const [a, b] = u.split('|');
   const num = (v: string | undefined) => { const n = Number((v ?? '').replace(/[^0-9.]/g, '')); return Number.isFinite(n) ? n : 0; };
-  if (a === 'LOW' || a === 'PRESSURE LOW') return { st: 'low', k: Math.max(0, Math.min(1, num(b))) };
+  if (a === '낮음' || a === '압력 낮음') return { st: 'low', k: Math.max(0, Math.min(1, num(b))) };
   // a display string `n BAR …` reads as bar; a plain number as the fraction
   const k = /BAR/.test(a) ? num(a) / GAUGE_FULL_BAR : num(a);
   return { st: 'read', k: Math.max(0, Math.min(1, k)) };
@@ -478,7 +478,7 @@ export function gauge(s: S5): boolean {
   const S = Math.min(W, H);
   const cx = W / 2, cy = H * 0.5, R = S * 0.36;
   g.textBaseline = 'middle'; g.textAlign = 'center';
-  g.fillStyle = K.label; fit(g, 'SHEAR — HYDRAULIC', 800, S * 0.06, W * 0.9); g.fillText('SHEAR — HYDRAULIC', cx, H * 0.06);
+  g.fillStyle = K.label; fit(g, '전단 — 유압', 800, S * 0.06, W * 0.9); g.fillText('전단 — 유압', cx, H * 0.06);
   // dial face
   g.fillStyle = '#0b1a28'; g.beginPath(); g.arc(cx, cy, R * 1.08, 0, Math.PI * 2); g.fill();
   const a0 = Math.PI * 0.75, a1 = Math.PI * 2.25;
@@ -525,15 +525,15 @@ export function gauge(s: S5): boolean {
   const bar = Math.round(nd * GAUGE_FULL_BAR);
   g.fillStyle = K.text; fit(g, `${bar}`, 800, R * 0.2, R * 0.8, MONO); g.fillText(`${bar}`, cx, cy + R * 0.6);
   let msg: string, col: string;
-  if (gs.st === 'pin') { msg = 'PIN IN'; col = K.amber; }
-  else if (gs.st === 'fired') { msg = 'FIRED'; col = K.red; }
-  else if (lowMsg) { msg = 'PRESSURE LOW'; col = K.red; }
+  if (gs.st === 'pin') { msg = '핀 삽입됨'; col = K.amber; }
+  else if (gs.st === 'fired') { msg = '발사됨'; col = K.red; }
+  else if (lowMsg) { msg = '압력 낮음'; col = K.red; }
   else if (ready) { msg = `${GAUGE_FULL_BAR} BAR — READY`; col = K.green; }
-  else if (bar <= 0) { msg = '0 BAR — PUMP'; col = K.amber; }
+  else if (bar <= 0) { msg = '0 BAR — 펌프'; col = K.amber; }
   else { msg = `${bar} BAR`; col = K.text; }
   const dim = (gs.st === 'pin' || lowMsg || ready) && !blink;
   glow(g, col, S * 0.03, () => { g.fillStyle = dim ? 'rgba(156,186,208,0.45)' : col; fit(g, msg, 900, S * 0.085, W * 0.92); g.fillText(msg, cx, H * 0.9); });
-  if (losShown) { g.fillStyle = K.red; fit(g, 'TRUNK: LOS · BUOY: LOS', 800, S * 0.05, W * 0.9); g.fillText('TRUNK: LOS · BUOY: LOS', cx, H * 0.97); }
+  if (losShown) { g.fillStyle = K.red; fit(g, '트렁크: 신호 손실 · 부이: 신호 손실', 800, S * 0.05, W * 0.9); g.fillText('트렁크: 신호 손실 · 부이: 신호 손실', cx, H * 0.97); }
   return true;
 }
 

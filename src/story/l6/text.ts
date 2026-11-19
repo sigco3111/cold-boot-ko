@@ -1,5 +1,5 @@
 /**
- * Level 6 "THE TRUNK" — every piece of written text (stage 3d §6.3–§6.4) and the ONE clock (`CLOCK6`).
+ * Level 6 "간선" — every piece of written text (stage 3d §6.3–§6.4) and the ONE clock (`CLOCK6`).
  * Spoken lines live in `voice/lines.l6.json` (read-only here). Readables ≤ 30 words, each stands alone (R3).
  */
 import type { Fragment } from '../text';
@@ -108,7 +108,7 @@ export const FRAGMENTS6: Record<string, Fragment> = {
     body: '월. 광케이블이 살아 있어서 정전 창이 없다. 해군 말로는 광케이블이 끊겨도 부이가 다 받아낸단다. 느리지만 전해진다며. 내가 말했지: 그럼 테더도 끊어야 한다고.',
   },
   note6_transfer: {
-    header: 'TRANSFER LOG — DOCK LOADER DL-2', style: 'terminal', step: 3,
+    header: '이송 기록 — 도크 로더 DL-2', style: 'terminal', step: 3,
     body: transferBody('--:--'),
   },
 };

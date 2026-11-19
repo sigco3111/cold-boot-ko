@@ -189,8 +189,8 @@ function shell(L: LevelBuild, b: Builder, R: Rng) {
   }
   for (const x of [-7.0, -2.8]) { b.cyl('brass', x, 0.06, -13.4, 0.07, 0.12, 'y', 10); b.cyl(shade(L, 'atr_uplight', 2.0), x, 0.121, -13.4, 0.05, 0.004, 'y', 10); }
   fixture(L, shade(L, 'atr_uplight', 2.0), new THREE.Vector3(-5, 0.2, -13.4));
-  wayfind(b, 'Garden Atrium', 3.0, 3.1, -12.205, 1.7, 0.42, '-z');
-  wayfind(b, 'Canteen ←   Clinic · Quarters →', 3.0, 2.55, -12.205, 2.1, 0.32, '-z');
+  wayfind(b, '정원 아트리움', 3.0, 3.1, -12.205, 1.7, 0.42, '-z');
+  wayfind(b, '식당 ←   진료실 · 숙소 →', 3.0, 2.55, -12.205, 2.1, 0.32, '-z');
   // bicycle rack + two bicycles against the north wall
   b.bx('painted_dark', 5.6, 0, -12.75, 8.4, 0.05, -12.65);
   for (let x = 5.8; x <= 8.2; x += 0.6) b.rod('painted_dark', x, 0.05, -12.7, x, 0.75, -12.7, 0.018, 6);
@@ -198,7 +198,7 @@ function shell(L: LevelBuild, b: Builder, R: Rng) {
   b.collide(5.6, 0, -12.9, 8.4, 0.8, -12.5, 'metal', true);
   for (const [x, c] of [[6.3, 0x8a3b2e], [7.5, 0x3f5a78]] as const) bicycle(b, L, x, -12.95, c);
   // a totem by the foot of the feature stair
-  totem(b, 4.95, 0, -20.4, 0, 'Balcony\nBiological Systems\n↑', null, 0.55, 0.9);
+  totem(b, 4.95, 0, -20.4, 0, '발코니\n생물 시스템\n↑', null, 0.55, 0.9);
 }
 
 function bicycle(b: Builder, L: LevelBuild, x: number, z: number, color: number) {
@@ -302,7 +302,7 @@ function viewportWall(L: LevelBuild, b: Builder, R: Rng) {
   b.collide(-0.56, 0, z, 0.56, 0.82, z + 0.48, 'concrete', true);
   b.push(0, 0.8, z + 0.24, 0, -1.0);
   b.bx('brass', -0.42, -0.02, -0.17, 0.42, 0.0, 0.17);
-  b.detail(() => b.sign('What you are looking at\n2,140 m of water · the trunk', 'wayfinding', 0, 0.002, 0, 0.74, 0.28, '+y', 0));
+  b.detail(() => b.sign('지금 보고 있는 것\n2,140 m의 바닷물 · 트렁크', 'wayfinding', 0, 0.002, 0, 0.74, 0.28, '+y', 0));
   b.pop();
   // viewport pane marker (hook) and promenade benches facing the glass
   L.marker('viewport_pane', 0, 5.1, -44.0);
@@ -330,8 +330,8 @@ function colonnade(L: LevelBuild, b: Builder, R: Rng) {
   // a bench and a fig against the colonnade's east wall
   // (no planters in the colonnade: it is the husks' way from the quarters to the stair)
   // doors from the garden: wood casings on the atrium side
-  doorCasing(b, L, { x: -12, z: -39, wall: 'x', w: 2.4, front: 'Canteen', sides: [1] });
-  doorCasing(b, L, { x: 12, z: -19, wall: 'x', back: 'Clinic', sides: [-1] });
+  doorCasing(b, L, { x: -12, z: -39, wall: 'x', w: 2.4, front: '식당', sides: [1] });
+  doorCasing(b, L, { x: 12, z: -19, wall: 'x', back: '진료실', sides: [-1] });
   doorCasing(b, L, { x: 12, z: -31, wall: 'x', back: 'Quarters — Ring A', sides: [-1] });
 
   // café kiosk (shutter down, chalkboard CLOSED — BACK 07:00); p3_garden_shells lies on its counter
@@ -352,7 +352,7 @@ function colonnade(L: LevelBuild, b: Builder, R: Rng) {
     b.push(0, 0, 0.12, 0, 0.18); b.bx('wood_dark', -0.27, 0, -0.02, 0.27, 0.85, 0.0); b.quad(menu, 0, 0.47, 0.008, 0.46, 0.66, '+z'); b.pop();
     b.push(0, 0, -0.12, 0, -0.18); b.bx('wood_dark', -0.27, 0, 0.0, 0.27, 0.85, 0.02); b.pop();
   });
-  b.sign('Café', 'wayfinding', 10.895, 2.72, -15.0, 0.7, 0.2, '-x');
+  b.sign('카페', 'wayfinding', 10.895, 2.72, -15.0, 0.7, 0.2, '-x');
   b.at(10.55, 1.03, -14.2, 0, () => { b.cyl('chrome', 0, 0.18, 0, 0.09, 0.36, 'y', 12); b.cyl('painted_dark', 0, 0.38, 0, 0.05, 0.04, 'y', 10); });
 }
 
@@ -366,8 +366,8 @@ function balcony(L: LevelBuild, b: Builder, R: Rng) {
     for (const dz of [-0.4, 0.05, 0.45]) fern(b, 11.58, Y + 0.5, z + dz, R.range(0.55, 0.75), R, 8);
   }
   b.at(11.5, Y, -34.0, -PI / 2, () => bench3(b, 1.8, 'wood_dark', 'wood_veneer', true, true));
-  wayfind(b, 'Biological Systems →', 11.795, Y + 2.15, -30.5, 1.6, 0.36, '-x');
-  wayfind(b, 'North Gallery ←', 11.795, Y + 2.15, -17.5, 1.3, 0.3, '-x');
+  wayfind(b, '생물 시스템 →', 11.795, Y + 2.15, -30.5, 1.6, 0.36, '-x');
+  wayfind(b, '북쪽 갤러리 ←', 11.795, Y + 2.15, -17.5, 1.3, 0.3, '-x');
   // pictures along the balcony wall (the habitat's own photo club, by the look of them)
   alongWall(b, '-x', 11.8, Y, () => {
     pictureFrame(b, artMat(L, 'fjord', 11), -23.7, 1.7, 1.4, 1.0);
@@ -378,9 +378,9 @@ function balcony(L: LevelBuild, b: Builder, R: Rng) {
   // sign3_bio: BIOLOGICAL SYSTEMS plate; NAVAL SECURITY AREA painted over; tape notice
   const sx = 11.8;
   b.bx('painted_white', sx - 0.012, Y + 1.15, -36.95, sx, Y + 1.85, -35.85);
-  b.sign('BIOLOGICAL SYSTEMS', 'label', sx - 0.013, Y + 1.72, -36.4, 1.0, 0.16, '-x');
+  b.sign('생물 시스템', 'label', sx - 0.013, Y + 1.72, -36.4, 1.0, 0.16, '-x');
   b.bx(paint(L, 0x8d8a7e, 0.8), sx - 0.024, Y + 1.38, -36.86, sx - 0.012, Y + 1.6, -35.94);
-  b.sign('NAVAL SECURITY AREA', 'stencil', sx - 0.025, Y + 1.49, -36.4, 0.85, 0.16, '-x');
+  b.sign('해군 경계 구역', 'stencil', sx - 0.025, Y + 1.49, -36.4, 0.85, 0.16, '-x');
   b.detail(() => {
     b.rbox(paper(L, 0xf1e6a0), sx - 0.032, Y + 1.3, -36.25, 0.003, 0.2, 0.32, 0, 0, 0.06);
     b.rbox(paper(L, 0xe8dcb5), sx - 0.034, Y + 1.27, -36.6, 0.003, 0.12, 0.08, 0, 0, -0.3);
@@ -388,7 +388,7 @@ function balcony(L: LevelBuild, b: Builder, R: Rng) {
   // alcove cabinet under the reader (p3_bio_med / p3_bio_ammo sit on it)
   b.bx('painted_white', 11.25, Y, -39.9, 11.65, Y + 0.68, -39.15);
   b.bx('stone_pale', 11.23, Y + 0.68, -39.92, 11.67, Y + 0.7, -39.13);
-  b.detail(() => b.sign('FIRST AID', 'label', 11.24, Y + 0.5, -39.52, 0.4, 0.1, '-x'));
+  b.detail(() => b.sign('응급처치', 'label', 11.24, Y + 0.5, -39.52, 0.4, 0.1, '-x'));
   b.collide(11.23, Y, -39.92, 11.8, Y + 0.7, -39.13, 'metal', true);
   // reader bezel
   b.bx('plastic_dark', 11.77, Y + 0.98, -39.64, 11.8, Y + 1.32, -39.36);
@@ -426,7 +426,7 @@ function westWall(L: LevelBuild, b: Builder, g: Builder, R: Rng) {
     }
     b.collide(-11.8, 0, z0 - 0.02, -11.3, 2.1, z1 + 0.02, 'metal', true);
   }
-  b.detail(() => b.sign('Kitchen garden — please ask before picking', 'wayfinding', -11.795, 2.4, -19.2, 1.9, 0.26, '+x'));
+  b.detail(() => b.sign('텃밭 — 따기 전에 문의해 주세요', 'wayfinding', -11.795, 2.4, -19.2, 1.9, 0.26, '+x'));
   // Ring B's cabin windows high on the west wall: blinds lit warm (or dark), one on its own material (`atr_blind`)
   const blind = (key: string, lit: number, seed: number) => canvasMat(L, `atr_blind_${key}`, 128, 160, (c, W, Hh) => {
     const r = (k: number) => { const x = Math.sin((k + seed) * 78.233) * 43758.5; return x - Math.floor(x); };

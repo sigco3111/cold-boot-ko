@@ -1,5 +1,5 @@
 /**
- * COLD BOOT — level 5 "POST 4" (stage 3c, docs/plans/stage-3c.md §2–§3, §5, §8.3–§8.7, §8.10; task W4 greybox).
+ * COLD BOOT — level 5 "초소 4" (stage 3c, docs/plans/stage-3c.md §2–§3, §5, §8.3–§8.7, §8.10; task W4 greybox).
  *
  * Final coordinates, no dressing. Files:
  *   grey.ts    rooms (§2.1), one shell per room (structure, crawl + magazine, stairs, hatch lids, stand-ins, screens,
@@ -67,24 +67,24 @@ export function doors5(): DoorSpec[] {
   return [
     // the pressure gate: `wide` (3.0 × 2.8 as built — the plan's 2.4 × 2.6 is not a size kind `wide` has), rises in
     // 2.4 s; the gate owns both of its sounds (S1o)
-    z('d5_gate', 0, 0, 'POST 4 — GATEHOUSE', 'POST 4 — GATE LOCK', ['lock5', 'gate5'], {
+    z('d5_gate', 0, 0, '초소 4 — 게이트하우스', '초소 4 — 게이트 록', ['lock5', 'gate5'], {
       kind: 'wide', frameStyle: 'industrial', leafMat: 'navy_grey', auto: false, duration: 2.4,
       sounds: { open: 'gate_open_heavy', close: 'gate_close_heavy' },
     }),
-    z('d5_duty', 0, -10, 'DUTY ROOM', 'GATEHOUSE', ['gate5', 'duty5'], { auto: false }),
-    z('d5_ready', -4, -22, 'READY ROOM', 'DUTY ROOM', ['duty5', 'ready5']),
-    x('d5_key', 8, -16, 'DUTY ROOM', 'SPINE — AUTHORISED', ['duty5', 'spine5']),
-    z('d5_berth', 18, -14, 'THE SPINE', 'BERTHING 1', ['spine5', 'berths5']),
-    z('d5_mess', 31, -14, 'THE SPINE', 'MESS', ['spine5', 'mess5']),
-    x('d5_berth_mess', 24, -8, 'BERTHING 1', 'MESS', ['berths5', 'mess5']),
-    z('d5_heads', 16, -2, 'BERTHING 1', 'WASHROOM', ['berths5', 'heads5']),
-    z('d5_galley', 33, -2, 'MESS', 'GALLEY', ['mess5', 'galley5']),
-    z('d5_arm', 17, -18, 'ARMOURY', 'THE SPINE', ['spine5', 'arm5']),
-    x('d5_arm_bay', 22, -23, 'ARMOURY', 'SUB BAY', ['arm5', 'sub5']),
-    z('d5_bay', 34, -18, 'SUB BAY', 'THE SPINE', ['spine5', 'sub5']),
-    x('d5_dive', 46, -34, 'SUB BAY', 'DIVE LOCKER', ['sub5', 'dive5'], { auto: false }),
-    z('d5_lockside', 42, -56, 'LAUNCH LOCK — ACCESS', 'SUB BAY', ['sub5', 'lockacc5'], { auto: false }),
-    x('d5_tunnel', 22, -53, 'TRUNK TUNNEL', 'SUB BAY', ['sub5', 'tunnel5'], { frameStyle: 'industrial', cyclingPrompt: 'Hydraulics isolated — gallery wheel' }),
+    z('d5_duty', 0, -10, '당직실', '게이트하우스', ['gate5', 'duty5'], { auto: false }),
+    z('d5_ready', -4, -22, '대기실', '당직실', ['duty5', 'ready5']),
+    x('d5_key', 8, -16, '당직실', '스파인 — 인가된 인원', ['duty5', 'spine5']),
+    z('d5_berth', 18, -14, '스파인', '침실구역 1', ['spine5', 'berths5']),
+    z('d5_mess', 31, -14, '스파인', '식당', ['spine5', 'mess5']),
+    x('d5_berth_mess', 24, -8, '침실구역 1', '식당', ['berths5', 'mess5']),
+    z('d5_heads', 16, -2, '침실구역 1', 'WASHROOM', ['berths5', 'heads5']),
+    z('d5_galley', 33, -2, '식당', '갤리', ['mess5', 'galley5']),
+    z('d5_arm', 17, -18, '무기고', '스파인', ['spine5', 'arm5']),
+    x('d5_arm_bay', 22, -23, '무기고', '서브베이', ['arm5', 'sub5']),
+    z('d5_bay', 34, -18, '서브베이', '스파인', ['spine5', 'sub5']),
+    x('d5_dive', 46, -34, '서브베이', '잠수 장비함', ['sub5', 'dive5'], { auto: false }),
+    z('d5_lockside', 42, -56, '발사 록 — 출입', '서브베이', ['sub5', 'lockacc5'], { auto: false }),
+    x('d5_tunnel', 22, -53, '트렁크 터널', '서브베이', ['sub5', 'tunnel5'], { frameStyle: 'industrial', cyclingPrompt: '유압 차단됨 — 갤러리 휠' }),
   ];
 }
 

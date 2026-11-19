@@ -1,5 +1,5 @@
 /**
- * COLD BOOT — level 2 "LINE TWO" (REVISION 4 in docs/DESIGN.md: room ids/bounds, doors, triggers, ids).
+ * COLD BOOT — level 2 "2번 라인" (REVISION 4 in docs/DESIGN.md: room ids/bounds, doors, triggers, ids).
  * Built with the same kits as level 1; only the data and the rooms differ.
  */
 import * as THREE from 'three';
@@ -26,19 +26,19 @@ import { BOOTH_HALL_Z } from './hall';
 const PI = Math.PI;
 
 export const DOORS2: DoorSpec[] = [
-  { id: 'd2_cab', x: 0, z: 0, wall: 'z', kind: 'cage', locked: true, labelFront: 'FREIGHT DOCK 5', labelBack: 'FREIGHT ELEVATOR', rooms: ['cab', 'dock'] },
-  { id: 'd2_intake', x: 0, z: -8, wall: 'z', kind: 'wide', locked: false, labelFront: 'INTAKE', labelBack: 'FREIGHT DOCK 5', leafMat: 'painted_white', rooms: ['dock', 'intake'] },
-  { id: 'd2_line', x: 0, z: -22, wall: 'z', kind: 'wide', locked: false, labelFront: 'LINE TWO', labelBack: 'INTAKE', leafMat: 'painted_white', windows: true, rooms: ['intake', 'line'] },
+  { id: 'd2_cab', x: 0, z: 0, wall: 'z', kind: 'cage', locked: true, labelFront: '화물 도크 5', labelBack: '화물 엘리베이터', rooms: ['cab', 'dock'] },
+  { id: 'd2_intake', x: 0, z: -8, wall: 'z', kind: 'wide', locked: false, labelFront: '흡입구', labelBack: '화물 도크 5', leafMat: 'painted_white', rooms: ['dock', 'intake'] },
+  { id: 'd2_line', x: 0, z: -22, wall: 'z', kind: 'wide', locked: false, labelFront: '2번 라인', labelBack: '흡입구', leafMat: 'painted_white', windows: true, rooms: ['intake', 'line'] },
   // REVISION 5.1: locked and dark at load; Tomas unlocks it in the first talk (its blue lamp is its status light)
-  { id: 'd2_fitting', x: 10, z: -34, wall: 'x', kind: 'std', locked: true, status: 'dark', labelFront: 'LINE TWO', labelBack: 'FITTING BAYS', rooms: ['line', 'fitting'] },
-  { id: 'd2_relay', x: 10, z: -61, wall: 'x', kind: 'std', locked: true, labelFront: 'LINE TWO', labelBack: 'SECTION C RELAY', leafMat: 'painted_yellow', rooms: ['line', 'relay'] },
-  { id: 'd2_spine', x: -10, z: -66, wall: 'x', kind: 'std', locked: true, labelFront: 'SERVICE SPINE', labelBack: 'LINE TWO', rooms: ['line', 'spine'] },
-  { id: 'd2_bulkhead_s', x: -19, z: -56, wall: 'z', kind: 'std', locked: true, labelFront: 'SPINE — SOUTH', labelBack: 'SPINE — LINE CONTROL', leafMat: 'painted_yellow', rooms: ['spine', 'spine'] },
-  { id: 'd2_bulkhead_n', x: -19, z: -36, wall: 'z', kind: 'std', locked: true, labelFront: 'SPINE — LINE CONTROL', labelBack: 'SECTION B', leafMat: 'painted_yellow', rooms: ['spine', 'spine'] },
-  { id: 'd2_booth', x: -17, z: -46, wall: 'x', kind: 'std', locked: true, labelFront: 'SERVICE SPINE', labelBack: 'LINE CONTROL', rooms: ['booth', 'spine'] },
-  { id: 'd2_booth_hall', x: -10, z: BOOTH_HALL_Z, wall: 'x', kind: 'std', locked: true, labelFront: 'LINE CONTROL', labelBack: 'LINE TWO', rooms: ['line', 'booth'] },
-  { id: 'd2_core', x: 0, z: -70, wall: 'z', kind: 'wide', locked: true, labelFront: 'NODE 5', labelBack: 'LINE TWO', leafMat: 'painted_white', rooms: ['line', 'core'] },
-  { id: 'd2_lift', x: 0, z: -88, wall: 'z', kind: 'std', locked: true, labelFront: 'SERVICE LIFT', labelBack: 'NODE 5', leafMat: 'painted_white', rooms: ['core', 'lift'] },
+  { id: 'd2_fitting', x: 10, z: -34, wall: 'x', kind: 'std', locked: true, status: 'dark', labelFront: '2번 라인', labelBack: '장착 베이', rooms: ['line', 'fitting'] },
+  { id: 'd2_relay', x: 10, z: -61, wall: 'x', kind: 'std', locked: true, labelFront: '2번 라인', labelBack: '구역 C 중계', leafMat: 'painted_yellow', rooms: ['line', 'relay'] },
+  { id: 'd2_spine', x: -10, z: -66, wall: 'x', kind: 'std', locked: true, labelFront: '서비스 스파인', labelBack: '2번 라인', rooms: ['line', 'spine'] },
+  { id: 'd2_bulkhead_s', x: -19, z: -56, wall: 'z', kind: 'std', locked: true, labelFront: '스파인 — 남측', labelBack: '스파인 — 라인 관제', leafMat: 'painted_yellow', rooms: ['spine', 'spine'] },
+  { id: 'd2_bulkhead_n', x: -19, z: -36, wall: 'z', kind: 'std', locked: true, labelFront: '스파인 — 라인 관제', labelBack: '구역 B', leafMat: 'painted_yellow', rooms: ['spine', 'spine'] },
+  { id: 'd2_booth', x: -17, z: -46, wall: 'x', kind: 'std', locked: true, labelFront: '서비스 스파인', labelBack: '라인 관제', rooms: ['booth', 'spine'] },
+  { id: 'd2_booth_hall', x: -10, z: BOOTH_HALL_Z, wall: 'x', kind: 'std', locked: true, labelFront: '라인 관제', labelBack: '2번 라인', rooms: ['line', 'booth'] },
+  { id: 'd2_core', x: 0, z: -70, wall: 'z', kind: 'wide', locked: true, labelFront: '노드 5', labelBack: '2번 라인', leafMat: 'painted_white', rooms: ['line', 'core'] },
+  { id: 'd2_lift', x: 0, z: -88, wall: 'z', kind: 'std', locked: true, labelFront: '서비스 리프트', labelBack: '노드 5', leafMat: 'painted_white', rooms: ['core', 'lift'] },
   // ── REVISION 5.1: the hall partition's barriers are real doors (non-auto; scripts / phases.ts drive them) ──
   { id: 'd2_gate', x: GATE.x, z: PARTITION_Z, wall: 'z', kind: 'std', w: GATE.w, h: GATE.h, duration: 2.4, frame: false, leafStyle: 'sheet', auto: false,
     panel: [GATE.w / 2 + 0.55, 1.45, 0.15], locked: false, labelFront: '', labelBack: '', leafMat: 'painted_yellow', rooms: ['line', 'line'] },
@@ -112,8 +112,8 @@ export async function createLevel2(ctx: GameContext): Promise<Level> {
   const lap = (name: string) => { const n = performance.now(); timings.push(`${name} ${(n - tl).toFixed(0)}`); tl = n; };
   buildRooms(L, [
     ['cab', (l) => buildCab(l, {
-      room: { id: 'cab', name: 'FREIGHT ELEVATOR', x0: -2.5, x1: 2.5, z0: 0, z1: 5 }, group: 'cab', doorId: 'd2_cab', screen: 'cab_panel',
-      machine: 'l2_elevator', mode: 'arrive', lit: true, extras: false, place: { gateZ: 0, ry: PI }, panelText: 'SUBLEVEL 5\nLINE TWO',
+      room: { id: 'cab', name: '화물 엘리베이터', x0: -2.5, x1: 2.5, z0: 0, z1: 5 }, group: 'cab', doorId: 'd2_cab', screen: 'cab_panel',
+      machine: 'l2_elevator', mode: 'arrive', lit: true, extras: false, place: { gateZ: 0, ry: PI }, panelText: '하부 5층\n2번 라인',
     })],
     ['dock', buildDock], ['intake', buildIntake], ['line', buildHall], ['booth', buildBooth], ['fitting', buildFitting],
     ['relay', buildRelay], ['spine', buildSpine], ['core', buildCore],

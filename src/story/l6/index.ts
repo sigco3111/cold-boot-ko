@@ -1,10 +1,10 @@
 /**
- * STORY, level 6 — "THE TRUNK" (stage 3d §4–§7, §8.10). The page flow (menu / gate → title card → lock6), the checkpoint
+ * STORY, level 6 — "간선" (stage 3d §4–§7, §8.10). The page flow (menu / gate → title card → lock6), the checkpoint
  * writer and resume are the shared scaffolding (../stage/page.ts); the script is ./script.ts (the route, ST-a) on
  * ./scenes.ts + ./boss.ts (the moon pool and the ending, ST-b) and ./base.ts; the lines' rules ./dialogue.ts; every
  * written text and the clock ./text.ts. This file adds the chapter end (§7.2, D3: carry `from: 6` with facts + `kills6`,
  * `manifest`, `aas`, `launchHour`, `trunkCut`, `loaderDead`, `testHour`; weapons; armour; the level-6 checkpoint cleared;
- * card `THE TRUNK` / `` / `TO BE CONTINUED` 14 s skippable (`ending`), then `END OF CHAPTER 3` 4 s (`title`), then the
+ * card `간선` / `` / `TO BE CONTINUED` 14 s skippable (`ending`), then `END OF CHAPTER 3` 4 s (`title`), then the
  * menu; stored level 6 while `LEVELS[6].next === null`) and the test hooks of the §10.0 contract.
  *
  * ═════════════════════════════════════════ TEST HOOKS on `window.__game.story` (§10.0; scripts/playthrough-l6.mjs H1–H19)

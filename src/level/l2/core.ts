@@ -44,7 +44,7 @@ interface Station {
 export function buildCore(L: LevelBuild) {
   const b = L.builder('core');
   const R = rng(2901);
-  L.room('core', 'CHOIR — NODE 5', -8, 8, -88, -72, H);
+  L.room('core', 'CHOIR — 노드 5', -8, 8, -88, -72, H);
   floorSlab(b, 'wall_medical', -8, -88, 8, -72, [], 'metal');
   ceilingSlab(b, -8.2, -88, 8.2, -72, H, 'painted_white');
   const st = { h: H, t: 0.2, style: 'medical' as const, trayY: 0, features: 0, bay: 2.0 };
@@ -133,7 +133,7 @@ export function buildCore(L: LevelBuild) {
       b.detail(() => {
         b.rbox('painted_dark', 0, 0.47, 0.775, 0.4, 0.15, 0.03, -0.38, 0, 0);
         b.push(0, 0.47, 0.775, 0, -0.38);
-        b.sign('CELL ' + (i + 1), 'label', 0, 0, 0.015, 0.34, 0.085, '+z');
+        b.sign('셀 ' + (i + 1), 'label', 0, 0, 0.015, 0.34, 0.085, '+z');
         b.pop();
       });
       b.pop();
@@ -158,9 +158,9 @@ export function buildCore(L: LevelBuild) {
   // ── side terminal: PATTERN LIBRARY — north wall, west of the door (off the west option card: REVISION 6.1) ──
   b.at(-4.9, 0, -72.2, PI, () => wallTerminal(b, 1.35));
   L.screen(null, 'terminal_idle', 0.44, 0.3, -4.9, 1.43, -72.2 - 0.126, '-z', { tilt: -0.18, text: 'PATTERN LIBRARY\n00  REYES, S.  (REF)' });
-  L.interact('term2_core', 'terminal', 'Read terminal', -4.9, 1.4, -72.6, true, 2.2);
-  b.sign('PATTERN LIBRARY', 'label', -4.9, 2.25, -72.23, 0.9, 0.12, '-z');
-  b.sign('NODE 5', 'stencil', 0, 5.4, -72.21, 2.0, 0.42, '-z');
+  L.interact('term2_core', 'terminal', '단말기 읽기', -4.9, 1.4, -72.6, true, 2.2);
+  b.sign('패턴 라이브러리', 'label', -4.9, 2.25, -72.23, 0.9, 0.12, '-z');
+  b.sign('노드 5', 'stencil', 0, 5.4, -72.21, 2.0, 0.42, '-z');
 
   // ── the two palm-scanner stations (REVISION 6 / 6.1): symmetric, 10.4 m apart, each facing the room's centre ──
   const TILT = 0.5; // the plate leans toward whoever stands in front of it
@@ -213,13 +213,13 @@ export function buildCore(L: LevelBuild) {
     mk.quaternion.copy(mesh.quaternion);
     // the use point floats above the plate, outside the console's collider: in the cone whether the player looks at
     // the plate or straight at the card behind it. Radius ≈ the scan's start distance (1.0 m on the floor).
-    L.interact(side === 'stop' ? 'core_shutdown' : 'core_rewrite', 'palm', `Hold palm — ${label}`, wx, 1.3, wz, true, 1.05);
+    L.interact(side === 'stop' ? 'core_shutdown' : 'core_rewrite', 'palm', `손바닥을 대세요 — ${label}`, wx, 1.3, wz, true, 1.05);
     const light = L.point('core', x + dir * 0.35, 1.7, -80, colour === 'amber' ? 0xff9a26 : 0xffffff, 5, 3.2, { priority: 1 });
     void light;
     stations.push({ side, label, colour, ring, trim, plate: L.screens.get(`core_plate_${side}`)!, card, state: 'standby', failT: 0, x });
   };
-  station('stop', -5.2, PI / 2, '+x', 'amber', 'STOP', 'core_wall_4');
-  station('command', 5.2, -PI / 2, '-x', 'white', 'COMMAND', 'core_wall_2');
+  station('stop', -5.2, PI / 2, '+x', 'amber', '정지', 'core_wall_4');
+  station('command', 5.2, -PI / 2, '-x', 'white', '명령', 'core_wall_2');
 
   // ── machine l2_core + vignettes ──
   let state: MachineState = 'off', bow = false, out = 0, cards = false, live = false, chosen: Side | null = null, scanning: Side | null = null;
@@ -351,7 +351,7 @@ export function buildLift(L: LevelBuild, o: { y0?: number } = {}) {
   const y0 = o.y0 ?? 0;
   const b = L.builder('lift');
   const Hh = 3.0;
-  L.room('lift', 'SERVICE LIFT', -2, 2, -93, -88, Hh, { y0 });
+  L.room('lift', '서비스 리프트', -2, 2, -93, -88, Hh, { y0 });
   b.push(0, y0, 0, 0);
   floorSlab(b, 'floor_plate', -2, -93, 2, -88, [], 'metal', 0.3);
   ceilingSlab(b, -2.2, -93.2, 2.2, -88, Hh, 'trim_steel');
@@ -379,8 +379,8 @@ export function buildLift(L: LevelBuild, o: { y0?: number } = {}) {
   L.ctx.physics.addMover?.(cab); // REVISION 5.2: decals on the cab panels rattle with it
   // (in FRONT of its housing — it used to sit inside the box — and large enough to read from the cab's middle:
   // after the choice it carries the node line, REVISION 6)
-  L.screen('lift_panel', 'terminal_idle', 0.6, 0.36, 1.84 - 0.008, y0 + 1.55, -89.4, '-x', { text: 'SERVICE LIFT\nUP' });
-  L.interact('lift_button', 'button', 'Call lift', 1.75, y0 + 1.15, -89.4, true, 1.8);
+  L.screen('lift_panel', 'terminal_idle', 0.6, 0.36, 1.84 - 0.008, y0 + 1.55, -89.4, '-x', { text: '서비스 리프트\n상행' });
+  L.interact('lift_button', 'button', '리프트 호출', 1.75, y0 + 1.15, -89.4, true, 1.8);
   const lamp = L.spot('lift', 0, y0 + Hh - 0.15, -90.5, 0, y0, -90.5, 0xeef4ff, 26, 5, 1.2, { cast: true });
   const lm = L.glow(lamp, 'emissive_white');
   b.detail(() => b.box(lm, 0, Hh - 0.03, -90.5, 1.4, 0.03, 1.4));

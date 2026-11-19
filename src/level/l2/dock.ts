@@ -16,7 +16,7 @@ export function buildDock(L: LevelBuild) {
   const b = L.builder('dock');
   const R = rng(2101);
   const H = 3.6;
-  L.room('dock', 'FREIGHT DOCK 5', -4, 4, -8, 0, H);
+  L.room('dock', '화물 도크 5', -4, 4, -8, 0, H);
 
   floorSlab(b, 'floor_concrete', -4, -8, 4, 0, [], 'concrete');
   ceilingSlab(b, -4.2, -8, 4.2, 0, H, 'painted_white');
@@ -35,7 +35,7 @@ export function buildDock(L: LevelBuild) {
       for (let y = 0.06; y < h; y += 0.12) b.box('steel_raw', 0, y, 0.12 + (Math.round(y / 0.12) % 2) * 0.006, w - 0.02, 0.1, 0.03); // in front of the wall's pilasters and kick blocks
       b.box('painted_dark', 0, 0.04, 0.07, w, 0.08, 0.06);
       b.box('steel_raw', 0.6, 0.45, 0.08, 0.16, 0.05, 0.05);
-      b.sign('DOCK 5 — SEALED BY CHOIR', 'warning', 0, 1.65, 0.08, 1.4, 0.22, '+z', 0, true);
+      b.sign('도크 5 — CHOIR가 봉인', 'warning', 0, 1.65, 0.08, 1.4, 0.22, '+z', 0, true);
       b.sign('5', 'stencil', 0, 2.4, 0.075, 0.6, 0.7, '+z');
       // leveller plate stowed in front of the shutter
       b.box('floor_plate', 0, 0.06, 0.55, w - 0.2, 0.12, 0.8);
@@ -48,11 +48,11 @@ export function buildDock(L: LevelBuild) {
   // ── pallets of finished shells, in a dead-straight row along the east wall ──
   const pal = [-1.4, -2.75, -4.1, -5.45];
   pal.forEach((z, i) => b.at(3.2, 0, z, PI / 2, () => shellPallet(b, L, 3, 2, i === 2 ? 4 : 5, i === 1)));
-  b.at(3.25, 0, -6.85, PI / 2, () => crate(b, 1.1, 0.8, 0.9, 'painted_white', 'SHELL SET 4-B'));
+  b.at(3.25, 0, -6.85, PI / 2, () => crate(b, 1.1, 0.8, 0.9, 'painted_white', '셸 세트 4-B'));
   b.at(3.25, 0.8, -6.85, PI / 2 + 0.02, () => crate(b, 0.9, 0.5, 0.7, 'painted_white', 'FASTENERS', false));
   // the delivery slate, squared up on top of the last pallet
   b.at(3.0, 0.142 + 5 * 0.15 + 0.03, -1.4, PI / 2, () => tablet(b, 'emissive_cyan', 0.26, 0.18));
-  L.interact('note2_dock', 'log', 'Read slate', 3.0, 0.95, -1.4, true, 2.4);
+  L.interact('note2_dock', 'log', '슬레이트 읽기', 3.0, 0.95, -1.4, true, 2.4);
   L.point('dock', 3.0, 1.1, -1.4, 0x40d8ff, 0.5, 1.2);
   // floor markings: bays and a walking lane
   b.detail(() => {
@@ -61,20 +61,20 @@ export function buildDock(L: LevelBuild) {
     for (const x of [-1.6, 1.6]) b.box(b.L.overlay('painted_white'), x, 0.002, -4, 0.08, 0.004, 7.4);
     for (let z = -1; z > -7.5; z -= 1.3) b.sign('▲', 'stencil', 0, 0.004, z, 0.5, 0.5, '+y', PI);
   });
-  b.sign('KEEP CLEAR', 'stencil', -2.9, 0.004, -4, 2.6, 0.45, '+y', -PI / 2);
+  b.sign('앞을 비워 두세요', 'stencil', -2.9, 0.004, -4, 2.6, 0.45, '+y', -PI / 2);
 
   // ── wall furniture: dock board, extinguisher, bumpers, PPE station ──
   b.at(-4, 0, -6.6, PI / 2, () => {
     b.box('painted_dark', 0, 1.65, 0.04, 1.36, 0.86, 0.08);
     bolts4(b, -0.68, 1.22, 0.68, 2.08, 0.08);
   });
-  L.screen('dock_board', 'terminal_idle', 1.24, 0.74, -3.9, 1.65, -6.6, '+x', { text: 'DOCK 5 — OUTBOUND\nLINE TWO: 31 UNITS DISPATCHED\nINBOUND: NONE EXPECTED\nFAB SUBLEVELS — SEALED:\nPRESSURE TEST 72 H — REPORTED BY CHOIR' });
-  b.sign('DISPATCH BOARD', 'label', -3.95, 2.2, -6.6, 0.8, 0.12, '+x');
+  L.screen('dock_board', 'terminal_idle', 1.24, 0.74, -3.9, 1.65, -6.6, '+x', { text: '도크 5 — 발신\n2번 라인: 유닛 31대 발송 완료\n수신: 예정 없음\n제작 하부층 — 봉쇄됨:\n압력 시험 72시간 — CHOIR가 보고' });
+  b.sign('발송 게시판', 'label', -3.95, 2.2, -6.6, 0.8, 0.12, '+x');
   b.at(-4, 0, -1.2, PI / 2, () => {
     fireExtinguisher(b);
     b.box('painted_orange', 0, 1.2, 0.02, 0.3, 0.5, 0.04);
   });
-  b.sign('PPE REQUIRED BEYOND THIS POINT', 'warning', -3.96, 1.75, -1.2, 0.9, 0.2, '+x', 0, true);
+  b.sign('이 지점 너머 보호구 착용', 'warning', -3.96, 1.75, -1.2, 0.9, 0.2, '+x', 0, true);
   b.at(-4, 0, -2.2, PI / 2, () => {
     // hooks with hi-vis vests, all present and hung the same way
     b.box('trim_steel', 0, 1.7, 0.03, 0.9, 0.05, 0.06);
@@ -100,9 +100,9 @@ export function buildDock(L: LevelBuild) {
     cableBundle(b, [-1.5, H - 0.25, -2.1], [-1.5, H - 0.25, -3.9], 3, 0.06, 0.014, 0.04, R);
     cableBundle(b, [1.5, H - 0.25, -4.1], [1.5, H - 0.25, -5.9], 3, 0.06, 0.014, 0.04, R);
   });
-  b.sign('FREIGHT DOCK 5', 'stencil', 0, 3.25, -7.596, 3.0, 0.42, '+z');
-  b.sign('INTAKE ↓', 'directional', 2.3, 2.4, -7.586, 0.9, 0.2, '+z', 0, true);
-  b.sign('412 DAYS WITHOUT A LOST-TIME INCIDENT', 'label', -2.3, 2.45, -7.594, 1.3, 0.16, '+z', 0, true);
+  b.sign('화물 도크 5', 'stencil', 0, 3.25, -7.596, 3.0, 0.42, '+z');
+  b.sign('흡입구 ↓', 'directional', 2.3, 2.4, -7.586, 0.9, 0.2, '+z', 0, true);
+  b.sign('무재해 412일', 'label', -2.3, 2.45, -7.594, 1.3, 0.16, '+z', 0, true);
 
   // ── lights: even, cold, everything working ──
   let gm: THREE.Material | undefined;
@@ -128,7 +128,7 @@ export function buildDock(L: LevelBuild) {
   L.objects.get('dock_polisher')!.position.set(ux + 1, 0, uz);
 
   // pickups
-  b.at(-3.3, 0, -7.25, 0.1, () => crate(b, 0.7, 0.5, 0.5, 'painted_dark', 'RETURNS —\nHALCYON BIO-SYSTEMS DIV.', false));
+  b.at(-3.3, 0, -7.25, 0.1, () => crate(b, 0.7, 0.5, 0.5, 'painted_dark', '반납 —\n할시온 바이오 시스템즈 사업부', false));
   b.collide(-3.65, 0, -7.5, -2.95, 0.5, -7.0);
   L.pickup('p2_dock_ammo', 'ammo_pistol', -3.35, 0.5, -7.25, 12, 0.3);
 

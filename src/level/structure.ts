@@ -192,7 +192,7 @@ export function wallFace(b: Builder, s: WallSpec) {
             panel(b, st.trim, hx - 0.3, 1.3, hx + 0.3, 2.05, pd0, 0.02, 0.015);
             bolts4(b, hx - 0.3, 1.3, hx + 0.3, 2.05, pd0 + 0.02, 0.035);
             b.box('steel_raw', hx + 0.22, 1.67, pd0 + 0.04, 0.025, 0.16, 0.03);
-            b.sign(R.pick(['HIGH VOLTAGE', 'ACCESS 3-' + R.int(10, 99), 'COOLANT', 'DATA TRUNK']), 'warning', hx - 0.04, 1.86, pd0 + 0.02, 0.3, 0.1, '+z');
+            b.sign(R.pick(['고압', '출입 3-' + R.int(10, 99), '냉각수', '데이터 트렁크']), 'warning', hx - 0.04, 1.86, pd0 + 0.02, 0.3, 0.1, '+z');
           } else if (feat === 'pipes') {
             const px = x0 + 0.14, topY = trayY > 0 ? trayY - 0.05 : top;
             pipe(b, 'copper', [[px, 0.05, 0.1], [px, topY, 0.1]], 0.035, { every: 1.4 });

@@ -1,5 +1,5 @@
 /**
- * Stage 3b "BIOLOGICAL SYSTEMS" (technical level 4; plan docs/plans/stage-3b.md §4, §8.2, §8.3, §8.5, §11 W2b): the
+ * Stage 3b "생물 시스템" (technical level 4; plan docs/plans/stage-3b.md §4, §8.2, §8.3, §8.5, §11 W2b): the
  * carbine, armour, and the clean side / navy level / tube: decon, air shower, the containment hold, lights-out, the unit
  * bay, ceiling vents, the theatre's Clasp and gel bath, the tube plant (pumps, valve, sump, beacon), the Post 4 gate, the
  * tube under sea pressure, shots into the dead.

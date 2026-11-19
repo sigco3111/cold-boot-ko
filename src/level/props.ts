@@ -203,7 +203,7 @@ export function shelfRack(b: Builder, L: LevelBuild, w: number, d: number, h: nu
       if (k < 0.3) {
         const cw = R.range(0.4, 0.7), ch = Math.min(clearH - 0.02, R.range(0.25, 0.5));
         if (x + cw > w / 2 - 0.05) break;
-        b.at(x + cw / 2, ys, R.range(-0.04, 0.04), R.range(-0.08, 0.08), () => crate(b, cw, ch, d - 0.14, R.pick(['painted_dark', 'wall_panel', 'painted_yellow', 'wall_panel_dark'] as Mat[]), R.chance(0.5) ? R.pick(['HALCYON', 'ERIDU', 'SPARES', 'FRAGILE', 'LOT ' + R.int(100, 999)]) : undefined, false));
+        b.at(x + cw / 2, ys, R.range(-0.04, 0.04), R.range(-0.08, 0.08), () => crate(b, cw, ch, d - 0.14, R.pick(['painted_dark', 'wall_panel', 'painted_yellow', 'wall_panel_dark'] as Mat[]), R.chance(0.5) ? R.pick(['할시온', '에리두', '예비품', '파손 주의', 'LOT ' + R.int(100, 999)]) : undefined, false));
         x += cw + R.range(0.04, 0.2);
       } else if (k < 0.55) {
         const n = R.int(1, 3);
@@ -632,7 +632,7 @@ export function switchgear(b: Builder, R: Rng, w = 0.8, h = 2.2, d = 0.7, live =
       const k = R();
       b.inst(k < 0.5 ? 'led_green' : k < 0.8 ? 'led_amber' : 'led_red', -0.25 + c * 0.1, 1.2 + r * 0.05, z + 0.022);
     }
-    b.sign(R.pick(['11 kV', 'BUS A', 'BUS B', 'FEEDER ' + R.int(1, 9), 'AUX', 'TIE']), 'label', 0, h - 0.15, z + 0.02, 0.3, 0.08, '+z');
+    b.sign(R.pick(['11 kV', 'BUS A', 'BUS B', 'FEEDER ' + R.int(1, 9), '보조', 'TIE']), 'label', 0, h - 0.15, z + 0.02, 0.3, 0.08, '+z');
     bolts4(b, -w / 2 + 0.04, 1.05, w / 2 - 0.04, h - 0.1, z + 0.02, 0.03);
   });
 }

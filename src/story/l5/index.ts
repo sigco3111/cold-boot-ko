@@ -1,10 +1,10 @@
 /**
- * STORY, level 5 — "POST 4" (stage 3c §4–§7, §8.10). The page flow (menu / gate → title card → the gate lock), the
+ * STORY, level 5 — "초소 4" (stage 3c §4–§7, §8.10). The page flow (menu / gate → title card → the gate lock), the
  * checkpoint writer and resume are the shared scaffolding (../stage/page.ts); the script is ./script.ts (on
  * ./scenes.ts, ./base.ts), the lines' rules ./dialogue.ts, every written text and the clock ./text.ts. This file adds
  * the stage end (§7: carry `from: 5` with facts + `kills5`, `radio`, `kessler`, `l5_door`, `l5_boat`, `testHour`;
- * weapons incl. the carbine; armour; the level-5 checkpoint cleared; end card `POST 4` / `TO BE CONTINUED` 12 s
- * skippable; the menu; stored level 5 while `LEVELS[5].next === null` — with a next, `POST 4` alone 6 s and the
+ * weapons incl. the carbine; armour; the level-5 checkpoint cleared; end card `초소 4` / `TO BE CONTINUED` 12 s
+ * skippable; the menu; stored level 5 while `LEVELS[5].next === null` — with a next, `초소 4` alone 6 s and the
  * hand-over) and the test hooks of the §10.0 contract.
  *
  * ═════════════════════════════════════════ TEST HOOKS on `window.__game.story` (§10.0; scripts/playthrough-l5.mjs H1–H14)

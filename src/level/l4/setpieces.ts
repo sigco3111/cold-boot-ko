@@ -987,7 +987,7 @@ export function gelBath(b: Builder, L: LevelBuild) {
     b.rbox(M.stainless, 0, y1 + 0.2, -d / 2 - 0.045, w, 0.4, 0.012, -0.22, 0, 0);
     b.box('plastic_white', w / 2 + 0.09, 0.45, 0, 0.16, 0.3, 0.3);
     b.box('emissive_green', w / 2 + 0.171, 0.55, 0.08, 0.003, 0.012, 0.012);
-    b.sign('CLASP GEL — BATCH 41 — −20 °C', 'label', 0, 0.86, d / 2 + 0.001, 0.36, 0.05, '+z');
+    b.sign('클라스프 젤 — 배치 41 — −20 °C', 'label', 0, 0.86, d / 2 + 0.001, 0.36, 0.05, '+z');
   });
 }
 
@@ -1006,8 +1006,8 @@ export function claspBin(b: Builder, L: LevelBuild, n = 30) {
     // liner folded over the rim
     b.box('plastic_white', 0, h - 0.02, d / 2 + 0.003, w + 0.01, 0.06, 0.006).box('plastic_white', 0, h - 0.02, -d / 2 - 0.003, w + 0.01, 0.06, 0.006);
     b.box('plastic_white', w / 2 + 0.003, h - 0.02, 0, 0.006, 0.06, d).box('plastic_white', -w / 2 - 0.003, h - 0.02, 0, 0.006, 0.06, d);
-    b.sign('FAILED', 'danger', 0, 0.42, d / 2 + 0.001, 0.3, 0.1, '+z');
-    b.sign('NO PULSE — DO NOT RE-USE', 'label', 0, 0.3, d / 2 + 0.001, 0.36, 0.04, '+z');
+    b.sign('실패', 'danger', 0, 0.42, d / 2 + 0.001, 0.3, 0.1, '+z');
+    b.sign('맥박 없음 — 재사용 금지', 'label', 0, 0.3, d / 2 + 0.001, 0.36, 0.04, '+z');
     // the heap: Clasps tumbled in, the top layer over the rim line
     const R = rng(0xc1a5b);
     const hw = (w - 0.1) / 2, hd = (d - 0.1) / 2;

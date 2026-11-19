@@ -52,7 +52,7 @@ const lift3: RoomDress = {
     // the lift panel's bezel
     b.bx('plastic_dark', 1.765, Y + 1.32, 1.1, 1.8, Y + 1.34, 1.7).bx('plastic_dark', 1.765, Y + 1.66, 1.1, 1.8, Y + 1.68, 1.7);
     b.bx('plastic_dark', 1.765, Y + 1.34, 1.1, 1.8, Y + 1.66, 1.13).bx('plastic_dark', 1.765, Y + 1.34, 1.67, 1.8, Y + 1.66, 1.7);
-    wayfind(b, 'Service lift — Sublevels', 1.795, Y + 2.15, 3.4, 1.2, 0.3, '-x');
+    wayfind(b, '서비스 리프트 — 하부층', 1.795, Y + 2.15, 3.4, 1.2, 0.3, '-x');
   },
 };
 
@@ -89,8 +89,8 @@ const lock: RoomDress = {
     b.cyl('chrome', -2.3, Y + 1.6, -6.78, 0.14, 0.04, 'z', 20);
     b.cyl('plastic_white', -2.3, Y + 1.6, -6.755, 0.12, 0.004, 'z', 20);
     b.detail(() => b.rbox('painted_dark', -2.3, Y + 1.6 + 0.04, -6.75, 0.008, 0.09, 0.004, 0, 0, 0.7));
-    wayfind(b, 'Habitat Ring\nPlease wait for equalisation', -2.795, Y + 2.25, -3.4, 1.9, 0.5, '+x');
-    wayfind(b, 'Pressure lock', 2.795, Y + 2.25, -3.4, 1.2, 0.3, '-x');
+    wayfind(b, '주거 링\n등압이 끝날 때까지 기다려 주세요', -2.795, Y + 2.25, -3.4, 1.9, 0.5, '+x');
+    wayfind(b, '압력 록', 2.795, Y + 2.25, -3.4, 1.2, 0.3, '-x');
   },
 };
 
@@ -145,12 +145,12 @@ const gallery_n: RoomDress = {
     alongWall(b, '-x', 11.8, Y, () => pictureFrame(b, artMat(L, 'seabed', 2), -9.5, 1.6, 1.6, 1.1, 'wood_dark'));
     // placard on the solid section (x 6 … 9.2) beside the shutter, the totem by the shutter
     b.bx('brass', 6.85, Y + 1.38, -11.8, 8.35, Y + 1.82, -11.788);
-    b.sign('Habitat Atrium — opened 2031', 'wayfinding', 7.6, Y + 1.6, -11.788, 1.4, 0.36, '+z');
-    totem(b, 8.0, Y, -10.95, -PI / 2, 'Garden Atrium\nBiological Systems\n→', 'Habitat Lobby\nReception\n↑', 0.55, 0.9);
+    b.sign('주거 아트리움 — 2031년 개장', 'wayfinding', 7.6, Y + 1.6, -11.788, 1.4, 0.36, '+z');
+    totem(b, 8.0, Y, -10.95, -PI / 2, '정원 아트리움\n생물 시스템\n→', '주거 로비\n접수\n↑', 0.55, 0.9);
     nightSign(L, Y);
-    wayfind(b, 'Habitat Lobby ←', -9.5, Y + 2.35, -7.205, 1.3, 0.3, '-z');
+    wayfind(b, '주거 로비 ←', -9.5, Y + 2.35, -7.205, 1.3, 0.3, '-z');
     // the lobby's glass door: wood casing on the gallery side
-    doorCasing(b, L, { x: -12, y: Y, z: -9.5, wall: 'x', front: 'Habitat Lobby', sides: [1] });
+    doorCasing(b, L, { x: -12, y: Y, z: -9.5, wall: 'x', front: '주거 로비', sides: [1] });
     pottedPlant(b, -11.3, Y, -7.75, 'palm', 0.9, R, 'stone_pale');
     pottedPlant(b, 11.25, Y, -7.75, 'fig', 1.0, R, paint(L, 0xb85c3c, 0.6));
   },
@@ -190,7 +190,7 @@ const lobby: RoomDress = {
     for (const z of [-10.4, -8.8, -7.2]) pendant(b, L, pend, -16.0, H - 0.1, z, 0.75, 0.32, TINT.cream);
     for (const [x, z] of [[-19.0, -5.0], [-18.7, -9.0], [-19.0, -13.0], [-13.0, -13.0], [-13.0, -5.0]] as const) downlight(b, pend, x, H, z, 0.06);
     // doors: casings on the lobby side
-    doorCasing(b, L, { x: -12, y: Y, z: -9.5, wall: 'x', back: 'North Gallery', sides: [-1] });
+    doorCasing(b, L, { x: -12, y: Y, z: -9.5, wall: 'x', back: '북쪽 갤러리', sides: [-1] });
     doorCasing(b, L, { x: -20, y: Y, z: -9, wall: 'x', front: 'Facilities — Staff', sides: [1] });
 
     // reception desk (front faces north, visitors' ledge 1.05, staff work surface 0.75 behind)
@@ -220,7 +220,7 @@ const lobby: RoomDress = {
     });
     b.at(-16.0, Y, -13.1, 0, () => officeChair(b, L, TINT.slate));
     b.at(-15.3, Y, -13.45, 0, () => filingCabinet(b, 2, 'wood_veneer'));
-    wayfind(b, 'Reception', -15.95, Y + 2.35, -13.795, 1.1, 0.3, '+z');
+    wayfind(b, '접수', -15.95, Y + 2.35, -13.795, 1.1, 0.3, '+z');
     // the notice board (note3_board) and a framed residents' map
     alongWall(b, '+z', -13.8, Y, () => { noticeBoard(b, L, -18.0, 1.55, 1.2, 0.9, R, 8); pictureFrame(b, artMat(L, 'map', 5), -13.3, 1.65, 0.8, 0.6); });
 
@@ -228,14 +228,14 @@ const lobby: RoomDress = {
     b.bx('wood_dark', -18.27, Y + 1.36, -4.24, -16.53, Y + 1.4, -4.2).bx('wood_dark', -18.27, Y + 2.3, -4.24, -16.53, Y + 2.34, -4.2);
     b.bx('wood_dark', -18.27, Y + 1.4, -4.24, -18.23, Y + 2.3, -4.2).bx('wood_dark', -16.57, Y + 1.4, -4.24, -16.53, Y + 2.3, -4.2);
     b.bx('brass', -19.74, Y + 1.5, -4.212, -18.4, Y + 1.86, -4.2);
-    b.sign('CHOIR REPORTS EVERY SIX HOURS.\nCONCERNS: ASK CHOIR.', 'label', -19.07, Y + 1.68, -4.213, 1.26, 0.3, '-z');
+    b.sign('CHOIR가 6시간마다 보고합니다.\n문의: CHOIR에게 말씀하세요.', 'label', -19.07, Y + 1.68, -4.213, 1.26, 0.3, '-z');
     b.at(-14.6, Y, -4.5, PI, () => {
       b.bx('wood_dark', -0.3, 0, -0.2, 0.3, 0.06, 0.22);
       b.bx('wood_veneer', -0.22, 0.06, -0.12, 0.22, 0.95, 0.16);
       b.rbox('plastic_dark', 0, 1.05, 0.06, 0.48, 0.36, 0.06, -0.55, 0, 0);
       b.collide(-0.3, 0, -0.2, 0.3, 1.2, 0.3, 'concrete', true);
     });
-    L.screen('lobby_kiosk', 'terminal_idle', 0.4, 0.28, -14.6, Y + 1.06, -4.6, '-z', { text: 'FAB SUBLEVELS — STATUS', tilt: -0.55 });
+    L.screen('lobby_kiosk', 'terminal_idle', 0.4, 0.28, -14.6, Y + 1.06, -4.6, '-z', { text: '제작 하부층 — 현황', tilt: -0.55 });
 
     // seating: sofa under the status screen, two armchairs, a coffee table on a rug; a sofa by the east wall
     b.at(-17.3, Y, -4.67, PI, () => sofa(b, L, 2.0, TINT.rust));
@@ -287,7 +287,7 @@ const admin: RoomDress = {
     alongWall(b, '-x', -20.2, Y, () => wainscot(b, -19.8, -2.2, 0.9, [[-19.35, -17.65], [-10.15, -7.85], [-16.9, -13.3]]));
     alongWall(b, '+z', -19.8, Y, () => wainscot(b, -33.8, -20.2, 0.9, [[-31.15, -28.85]]));
     // door casings on the admin side
-    doorCasing(b, L, { x: -20, y: Y, z: -9, wall: 'x', back: 'Habitat Lobby', sides: [-1] });
+    doorCasing(b, L, { x: -20, y: Y, z: -9, wall: 'x', back: '주거 로비', sides: [-1] });
     doorCasing(b, L, { x: -30, y: Y, z: -20, wall: 'z', front: 'P. Halvorsen — Facilities', sides: [1] });
     doorCasing(b, L, { x: -20, y: Y, z: -18.5, wall: 'x', back: 'West Stair — Canteen', sides: [-1] });
 
@@ -371,7 +371,7 @@ const admin: RoomDress = {
     // the radio (radio_admin) on a low cabinet by the inner door
     b.at(-22.0, Y, -7.0, PI, () => sideboard(b, 1.2, 0.9, 'wood_veneer'));
     b.detail(() => b.at(-22.0, Y + 0.9, -7.05, PI + 0.15, () => radio(b, L)));
-    wayfind(b, 'Facilities Offices', -20.205, Y + 2.3, -11.8, 1.4, 0.3, '-x');
+    wayfind(b, '시설팀 사무실', -20.205, Y + 2.3, -11.8, 1.4, 0.3, '-x');
 
     // stores cage (NAVAL DETACHMENT — RETURNED STORES), door open; the pickups sit on its rack
     const mesh = L.ctx.materials.get('floor_grate');
@@ -388,7 +388,7 @@ const admin: RoomDress = {
     b.collide(-24.0, cy, -16.82, -20.2, cy + ch, -16.78, 'metal', true);
     b.collide(-24.02, cy, -16.8, -23.98, cy + ch, -15.7, 'metal', true);
     b.collide(-24.02, cy, -14.5, -23.98, cy + ch, -13.4, 'metal', true);
-    b.sign('NAVAL DETACHMENT — RETURNED STORES', 'label', -22.1, cy + 2.0, -13.37, 2.2, 0.2, '+z', 0, true);
+    b.sign('해군 파견대 — 반납 물자', 'label', -22.1, cy + 2.0, -13.37, 2.2, 0.2, '+z', 0, true);
     // the rack (shelf tops 0.53 / 0.93 / 1.33)
     b.at(-22.6, cy, -15.0, PI / 2, () => {
       for (const sx of [-0.7, 0.7]) for (const sz of [-0.24, 0.24]) b.box('painted_dark', sx, 0.85, sz, 0.04, 1.7, 0.04);

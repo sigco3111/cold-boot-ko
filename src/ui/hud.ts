@@ -20,10 +20,10 @@ const CELL_LOW = 0.2;
 const ARMOUR_EMPTY_HOLD = 3;
 const WEAPON_NAMES: Record<WeaponId, string> = { pistol: 'HD-9 권총', shotgun: 'HD-12 브리처', carbine: '카빈' };
 const PICKUP_TEXT: Record<PickupKind, [string, string]> = {
-  pistol: ['HD-9 SIDEARM', 'weapon'],
-  shotgun: ['HD-12 BREACHER', 'weapon'],
-  ammo_pistol: ['9MM ROUNDS', ''],
-  ammo_shotgun: ['12G SHELLS', ''],
+  pistol: ['HD-9 사이드암', 'weapon'],
+  shotgun: ['HD-12 브리처', 'weapon'],
+  ammo_pistol: ['9MM 탄약', ''],
+  ammo_shotgun: ['12G 산탄', ''],
   medkit: ['트라우마 젤', 'health'],
   carbine: ['카빈', 'weapon'],
   ammo_carbine: ['카빈 탄약', ''],
@@ -133,7 +133,7 @@ export class Hud {
     this.weapon = h('div', 'weapon off', root);
     const wh = h('div', 'head', this.weapon);
     this.wName = h('span', 'lbl', wh, '');
-    this.wMode = h('span', 'mode hidden', wh, 'AUTO');
+    this.wMode = h('span', 'mode hidden', wh, '자동');
     this.wIcon = h('span', '', wh);
     const ammo = h('div', 'ammo', this.weapon);
     this.clip = h('div', 'clip glow', ammo, '0');

@@ -29,16 +29,16 @@ import { TRIGGERS } from './triggers';
 import { installPhases1 } from './phases';
 
 const DOORS: DoorSpec[] = [
-  { id: 'd_med', x: 0, z: 0, wall: 'z', kind: 'std', locked: false, labelFront: 'SERVICE CORRIDOR A', labelBack: 'MEDICAL 3-A', rooms: ['med', 'corr_a'] },
-  { id: 'd_sec', x: -3, z: -17, wall: 'x', kind: 'std', locked: false, labelFront: 'SECURITY 3', labelBack: 'JUNCTION 3', rooms: ['junction', 'sec'] },
-  { id: 'd_quarters', x: -1.7, z: -6.5, wall: 'x', kind: 'std', locked: false, labelFront: 'CREW QUARTERS 3', labelBack: 'SERVICE CORRIDOR A', rooms: ['corr_a', 'quarters'], ajar: 0.3 },
-  { id: 'd_storage', x: 3, z: -17, wall: 'x', kind: 'std', locked: false, labelFront: 'JUNCTION 3', labelBack: 'EQUIPMENT STORAGE', rooms: ['junction', 'storage'] },
-  { id: 'd_fab_outer', x: 0, z: -20, wall: 'z', kind: 'wide', locked: true, labelFront: 'FAB ACCESS LOCK', labelBack: 'JUNCTION 3', leafMat: 'painted_yellow', rooms: ['junction', 'airlock'] },
-  { id: 'd_fab_inner', x: 0, z: -26, wall: 'z', kind: 'wide', locked: false, labelFront: 'FABRICATION HALL 3', labelBack: 'FAB ACCESS LOCK', leafMat: 'painted_yellow', windows: true, rooms: ['airlock', 'fab'] },
-  { id: 'd_gen', x: 12, z: -38, wall: 'x', kind: 'std', locked: false, labelFront: 'FABRICATION HALL 3', labelBack: 'POWER DISTRIBUTION 3', rooms: ['fab', 'gen'] },
-  { id: 'd_pump', x: -12.2, z: -38, wall: 'x', kind: 'std', locked: true, labelFront: 'COOLANT PUMP ROOM 3', labelBack: 'FABRICATION HALL 3', rooms: ['fab', 'pump'] },
-  { id: 'd_lobby', x: 0, z: -50, wall: 'z', kind: 'wide', locked: true, labelFront: 'FREIGHT LOBBY', labelBack: 'FABRICATION HALL 3', leafMat: 'wall_panel_dark', rooms: ['fab', 'lobby'] },
-  { id: 'd_elev', x: 0, z: -58, wall: 'z', kind: 'cage', locked: true, labelFront: 'FREIGHT ELEVATOR', labelBack: 'FREIGHT LOBBY', rooms: ['lobby', 'elevator'] },
+  { id: 'd_med', x: 0, z: 0, wall: 'z', kind: 'std', locked: false, labelFront: '서비스 통로 A', labelBack: '의무실 3-A', rooms: ['med', 'corr_a'] },
+  { id: 'd_sec', x: -3, z: -17, wall: 'x', kind: 'std', locked: false, labelFront: '보안실 3', labelBack: '정션 3', rooms: ['junction', 'sec'] },
+  { id: 'd_quarters', x: -1.7, z: -6.5, wall: 'x', kind: 'std', locked: false, labelFront: '승조원 숙소 3', labelBack: '서비스 통로 A', rooms: ['corr_a', 'quarters'], ajar: 0.3 },
+  { id: 'd_storage', x: 3, z: -17, wall: 'x', kind: 'std', locked: false, labelFront: '정션 3', labelBack: '장비 창고', rooms: ['junction', 'storage'] },
+  { id: 'd_fab_outer', x: 0, z: -20, wall: 'z', kind: 'wide', locked: true, labelFront: '제작 출입 록', labelBack: '정션 3', leafMat: 'painted_yellow', rooms: ['junction', 'airlock'] },
+  { id: 'd_fab_inner', x: 0, z: -26, wall: 'z', kind: 'wide', locked: false, labelFront: '제작 홀 3', labelBack: '제작 출입 록', leafMat: 'painted_yellow', windows: true, rooms: ['airlock', 'fab'] },
+  { id: 'd_gen', x: 12, z: -38, wall: 'x', kind: 'std', locked: false, labelFront: '제작 홀 3', labelBack: '배전실 3', rooms: ['fab', 'gen'] },
+  { id: 'd_pump', x: -12.2, z: -38, wall: 'x', kind: 'std', locked: true, labelFront: '냉각수 펌프실 3', labelBack: '제작 홀 3', rooms: ['fab', 'pump'] },
+  { id: 'd_lobby', x: 0, z: -50, wall: 'z', kind: 'wide', locked: true, labelFront: '화물 로비', labelBack: '제작 홀 3', leafMat: 'wall_panel_dark', rooms: ['fab', 'lobby'] },
+  { id: 'd_elev', x: 0, z: -58, wall: 'z', kind: 'cage', locked: true, labelFront: '화물 엘리베이터', labelBack: '화물 로비', rooms: ['lobby', 'elevator'] },
 ];
 
 const ROOM_OF: Record<string, string> = { med: 'med', corr: 'corr_a', quarters: 'quarters', pump: 'pump', junction: 'junction', sec: 'sec', storage: 'storage', airlock: 'airlock', fab: 'fab', gen: 'gen', lobby: 'lobby', elevator: 'elevator' };

@@ -315,7 +315,7 @@ export function fumeHood(b: Builder, L: LevelBuild, o: { w?: number; sash?: numb
   // airflow monitor on the right post, fascia plate
   b.detail(() => {
     b.bx(S, w / 2 - 0.1, 1.45, d, w / 2 - 0.02, 1.62, d + 0.02);
-    b.sign('FACE VEL\n0.5 m/s OK', 'label', w / 2 - 0.06, 1.535, d + 0.021, 0.07, 0.14, '+z');
+    b.sign('풍속\n0.5 m/s 정상', 'label', w / 2 - 0.06, 1.535, d + 0.021, 0.07, 0.14, '+z');
     if (o.label) b.sign(o.label, 'label', 0, 2.27, d + 0.002, Math.min(0.9, w * 0.5), 0.1, '+z');
   });
   if (o.glow) b.detail(() => b.bx(o.glow!, -w / 2 + 0.2, 2.17, d - 0.36, w / 2 - 0.2, 2.2, d - 0.2));
@@ -395,7 +395,7 @@ export function labSink(b: Builder, L: LevelBuild, o: { w?: number; eyewash?: bo
       b.rod(S, ex, h + 0.12, 0.1, ex, h + 0.12, 0.38, 0.011, 6);
       for (const s of [-1, 1]) { b.cyl(K, ex + s * 0.05, h + 0.14, 0.38, 0.03, 0.04, 'y', 10, 0.04); b.rod(S, ex, h + 0.12, 0.38, ex + s * 0.05, h + 0.12, 0.38, 0.008, 5); }
       b.bx(K, ex - 0.06, h + 0.06, 0.24, ex + 0.06, h + 0.09, 0.3);
-      b.sign('EYEWASH', 'label', ex, h + 0.62, 0.0015, 0.2, 0.08, '+z');
+      b.sign('세안기', 'label', ex, h + 0.62, 0.0015, 0.2, 0.08, '+z');
     }
   });
   if (o.collide !== false) b.collide(-w / 2, 0, 0, w / 2, h, d, 'metal', true);
@@ -1099,7 +1099,7 @@ export function weaponRack(b: Builder, L: LevelBuild, o: { w?: number; collide?:
 
 /**
  * Body-armour hooks (cage). Wall prop (back at z 0): a rail at `y` (1.75) with `n` (3) J-hooks at `pitch` (0.6); the
- * vest pickups (§2.6: centre y 1.4) hang from them. A stencil `BODY ARMOUR` above. Calls: 1 (navy_grey) + stencil atlas.
+ * vest pickups (§2.6: centre y 1.4) hang from them. A stencil `방탄복` above. Calls: 1 (navy_grey) + stencil atlas.
  */
 export function vestHooks(b: Builder, L: LevelBuild, o: { n?: number; pitch?: number; y?: number } = {}) {
   const n = o.n ?? 3, p = o.pitch ?? 0.6, y = o.y ?? 1.75, N: Mat = 'navy_grey', w = (n - 1) * p + 0.3;
@@ -1109,13 +1109,13 @@ export function vestHooks(b: Builder, L: LevelBuild, o: { n?: number; pitch?: nu
       const x = -((n - 1) * p) / 2 + i * p;
       b.rod(N, x, y, 0.02, x, y - 0.02, 0.12, 0.01, 6).rod(N, x, y - 0.02, 0.12, x, y + 0.04, 0.15, 0.01, 6);
     }
-    b.sign('BODY ARMOUR', 'stencil', 0, y + 0.22, 0.002, Math.min(w, 1.0), 0.14, '+z');
+    b.sign('방탄복', 'stencil', 0, y + 0.22, 0.002, Math.min(w, 1.0), 0.14, '+z');
   });
 }
 
 /**
  * Steel ammunition can (dressing, not a pickup): 0.29 × 0.19 × 0.155, lid latch, carry handle, stencilled `label`
- * (default '7.62 × 39 — 420 RDS') on the long side (+z). Floor/shelf prop, origin = bottom centre. `open` = lid
+ * (default '7.62 × 39 — 420발') on the long side (+z). Floor/shelf prop, origin = bottom centre. `open` = lid
  * flipped back, empty. Calls: 2 (painted olive + steel_raw) + stencil atlas. Collider: optional (`collide`, off).
  */
 export function ammoCan(b: Builder, L: LevelBuild, o: { label?: string | null; open?: boolean; collide?: boolean } = {}) {
@@ -1126,7 +1126,7 @@ export function ammoCan(b: Builder, L: LevelBuild, o: { label?: string | null; o
   b.detail(() => {
     if (!o.open) { b.bx(S, w / 2 + 0.004, h - 0.05, -0.03, w / 2 + 0.012, h + 0.02, 0.03); b.rod(S, -0.06, h + 0.025, 0, 0.06, h + 0.025, 0, 0.007, 5); }
     for (const s of [-1, 1]) b.bx(O, -w / 2, 0.03 + (s > 0 ? 0.07 : 0), d / 2, w / 2, 0.04 + (s > 0 ? 0.07 : 0), d / 2 + 0.004);
-    if (o.label !== null) b.sign(o.label ?? '7.62 × 39 — 420 RDS', 'stencil', 0, 0.075, d / 2 + 0.005, 0.24, 0.05, '+z');
+    if (o.label !== null) b.sign(o.label ?? '7.62 × 39 — 420발', 'stencil', 0, 0.075, d / 2 + 0.005, 0.24, 0.05, '+z');
   });
   if (o.collide) b.collide(-w / 2, 0, -d / 2, w / 2, h + 0.02, d / 2, 'metal', true);
 }
@@ -1187,7 +1187,7 @@ export function navyLockers(b: Builder, L: LevelBuild, o: { n?: number; open?: n
   if (o.collide !== false) b.collide(x0, 0, 0, -x0, h, d + 0.05, 'metal', true);
 }
 
-/** Spray-painted stencil (navy markings: frame numbers, `NAVAL CHECKPOINT 2`, `NO WEAPONS BEYOND THIS POINT`). Atlas only. */
+/** Spray-painted stencil (navy markings: frame numbers, `해군 검문소 2`, `NO WEAPONS BEYOND THIS POINT`). Atlas only. */
 export function stencil(b: Builder, text: string, x: number, y: number, z: number, w: number, h: number, face: Face, rot = 0) {
   b.detail(() => b.sign(text, 'stencil', x, y, z, w, h, face, rot));
 }
@@ -1281,7 +1281,7 @@ export function pipeTrunk(b: Builder, L: LevelBuild, o: { h?: number; collide?: 
   }
   b.detail(() => {
     for (const [x, z, r] of pipes) b.cyl(S, x, 1.8, z, r + 0.004, 0.12, 'y', 16); // band
-    b.sign('SEA WATER ↑ TUBE Δp', 'stencil', -0.28, 2.2, -0.05 + 0.205, 0.3, 0.12, '+z', -PI / 2);
+    b.sign('해수 ↑ 튜브 Δp', 'stencil', -0.28, 2.2, -0.05 + 0.205, 0.3, 0.12, '+z', -PI / 2);
   });
   if (o.collide !== false) b.collide(-0.6, 0, -0.45, 0.5, h, 0.39, 'metal', true);
 }
@@ -1312,9 +1312,9 @@ export function valveLever(b: Builder, L: LevelBuild, o: { name?: string; span?:
   b.detail(() => {
     // quadrant plate under the pivot (stops at shut / open), stencils
     b.cyl(S, 0, piv - 0.04, pz, 0.16, 0.012, 'y', 16);
-    b.sign('EQUALISING VALVE\nTUBE ⇄ SEA', 'stencil', 0, 1.75, 0.002, 0.9, 0.3, '+z');
-    b.sign('SHUT', 'stencil', 0.32, 1.32, 0.002, 0.22, 0.08, '+z');
-    b.sign('OPEN', 'stencil', -0.32, 1.32, 0.002, 0.22, 0.08, '+z');
+    b.sign('등압 밸브\n튜브 ⇄ 해수', 'stencil', 0, 1.75, 0.002, 0.9, 0.3, '+z');
+    b.sign('닫힘', 'stencil', 0.32, 1.32, 0.002, 0.22, 0.08, '+z');
+    b.sign('열림', 'stencil', -0.32, 1.32, 0.002, 0.22, 0.08, '+z');
   });
   if (o.collide) b.collide(-span / 2 - 0.1, py - 0.12, 0, span / 2 + 0.1, py + 0.2, pz + 0.18, 'metal', true);
   const part = movingPart(b, L, o.name ?? 'valve4_handle', 0, piv, pz, (p) => {
@@ -1570,7 +1570,7 @@ export function bulkheadRing(b: Builder, L: LevelBuild, o: { depth?: number; w?:
       b.detail(() => {
         b.bx(S, xc - 0.28, 0.33, z0 + 0.3, xc + 0.28, 0.345, z0 + 0.31);
         b.bx(S, xc - 0.05, 0.22, z0 + 0.3, xc + 0.05, 0.28, z0 + 0.32);
-        b.sign('EMERGENCY', 'stencil', xc, 0.14, z0 + 0.302, 0.4, 0.09, '+z');
+        b.sign('비상', 'stencil', xc, 0.14, z0 + 0.302, 0.4, 0.09, '+z');
       });
       if (o.collide !== false) b.collide(xc - 0.3, 0, z0, xc + 0.3, 0.38, z0 + 0.3, 'metal', true);
     }

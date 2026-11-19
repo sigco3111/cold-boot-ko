@@ -1,5 +1,5 @@
 /**
- * COLD BOOT — level 4 "BIOLOGICAL SYSTEMS" (stage 3b, docs/plans/stage-3b.md §2–§3, §5, §8.8; task W4 greybox).
+ * COLD BOOT — level 4 "생물 시스템" (stage 3b, docs/plans/stage-3b.md §2–§3, §5, §8.8; task W4 greybox).
  *
  * Final coordinates, no dressing. Files:
  *   grey.ts    rooms (§2.1), one shell per room (structure, stand-ins, screens, interactables, markers), lights (§2.7),
@@ -60,26 +60,26 @@ export function doors4(): DoorSpec[] {
   const x = (id: string, xx: number, y: number, zz: number, front: string, back: string, rooms: [string, string], o: Partial<DoorSpec> = {}): DoorSpec =>
     ({ id, x: xx, y, z: zz, wall: 'x', kind: 'std', locked: true, labelFront: front, labelBack: back, rooms, ...o });
   return [
-    z('d4_inner', 0, D2, 0, 'GOWNING', 'OUTER LOCK', ['lock4', 'gown'], { leafMat: 'painted_white', auto: false }),
-    z('d4_shower_in', 0, D2, -6, 'AIR SHOWER', 'GOWNING', ['gown', 'shower'], { leafMat: 'stainless', auto: false }),
-    z('d4_shower_out', 0, D2, -9, 'CLEAN CORRIDOR', 'AIR SHOWER', ['shower', 'corr_n'], { leafMat: 'stainless', auto: false }),
-    x('d4_wet_w', -12, D2, -18, 'CLEAN CORRIDOR — WEST', 'WET LAB 1', ['corr_w', 'wetlab'], { leafMat: 'wall_clean' }),
-    x('d4_wet_e', 4, D2, -16, 'WET LAB 1', 'PRINCIPAL INVESTIGATOR', ['wetlab', 'pi_office']),
-    x('d4_pi', 12, D2, -16, 'DR. A. SUNDE', 'CLEAN CORRIDOR — EAST', ['pi_office', 'corr_e']),
-    x('d4_viv', -15, D2, -22, 'VIVARIUM — LAB 2', 'CLEAN CORRIDOR — WEST', ['corr_w', 'vivarium']),
-    x('d4_cold', -12, D2, -29, 'CLEAN CORRIDOR — WEST', 'COLD STORE 2', ['corr_w', 'cold'], { leafMat: 'stainless' }),
-    x('d4_rec', 12, D2, -29, 'RECORDS & CONSENT', 'CLEAN CORRIDOR — EAST', ['records', 'corr_e']),
-    x('d4_bay', 15, D2, -19, 'CLEAN CORRIDOR — EAST', 'UNIT BAY — SERVICE UNITS ONLY', ['corr_e', 'bay'], { leafMat: 'painted_dark', auto: false }),
-    z('d4_surg', 0, D2, -37, 'SURGICAL SUITE', 'CLEAN CORRIDOR — SOUTH', ['corr_s', 'scrub'], { cyclingPrompt: 'Containment hold' }),
-    z('d4_gal', 0, D2, -43, 'THEATRE 1 — GALLERY', 'SCRUB ROOM', ['scrub', 'gallery']),
-    x('d4_store', 4, D2, -41, 'SCRUB ROOM', 'STERILE STORE — STAFF', ['scrub', 'store4'], { auto: false }),
-    x('d4_gal_e', 10, D2, -45, 'THEATRE 1 — GALLERY', 'SERVICE STAIR B', ['gallery', 'stair4']),
-    z('d4_stair_s', 12, 0, -59, 'BIO-SYS SERVICE LEVEL', 'SERVICE STAIR B', ['stair4', 'lcorr'], { leafMat: 'navy_grey' }),
-    x('d4_chk', 24, 0, -61, 'BIO-SYS SERVICE LEVEL', 'NAVAL CHECKPOINT 2', ['lcorr', 'chk']),
-    x('d4_guard', 40, 0, -59, 'NAVAL CHECKPOINT 2', 'GUARD ROOM', ['chk', 'guard'], { leafMat: 'navy_grey' }),
-    x('d4_plant', 46, 0, -59, 'GUARD ROOM', 'TUBE PLANT — AUTHORISED PERSONNEL', ['guard', 'plant4'], { leafMat: 'navy_grey' }),
-    z('d4_tube_n', 32, 0, -67, 'TRANSFER TUBE — POST 4', 'NAVAL CHECKPOINT 2', ['chk', 'tube'], { cyclingPrompt: 'Release from booth' }),
-    z('d4_tube_s', 32, 0, -107, 'POST 4 — GATE LOCK', 'TRANSFER TUBE', ['tube', 'gatel'], { cyclingPrompt: 'Gate lock cycling' }),
+    z('d4_inner', 0, D2, 0, '가운 착용실', '외부 록', ['lock4', 'gown'], { leafMat: 'painted_white', auto: false }),
+    z('d4_shower_in', 0, D2, -6, '에어샤워', '가운 착용실', ['gown', 'shower'], { leafMat: 'stainless', auto: false }),
+    z('d4_shower_out', 0, D2, -9, '청정 복도', '에어샤워', ['shower', 'corr_n'], { leafMat: 'stainless', auto: false }),
+    x('d4_wet_w', -12, D2, -18, '청정 복도 — 서측', '습식 실험실 1', ['corr_w', 'wetlab'], { leafMat: 'wall_clean' }),
+    x('d4_wet_e', 4, D2, -16, '습식 실험실 1', '책임 연구원', ['wetlab', 'pi_office']),
+    x('d4_pi', 12, D2, -16, 'A. 순데 박사', '청정 복도 — 동측', ['pi_office', 'corr_e']),
+    x('d4_viv', -15, D2, -22, '생물사육실 — 실험실 2', '청정 복도 — 서측', ['corr_w', 'vivarium']),
+    x('d4_cold', -12, D2, -29, '청정 복도 — 서측', '냉장고 2', ['corr_w', 'cold'], { leafMat: 'stainless' }),
+    x('d4_rec', 12, D2, -29, '기록 및 동의', '청정 복도 — 동측', ['records', 'corr_e']),
+    x('d4_bay', 15, D2, -19, '청정 복도 — 동측', '유닛 베이 — 정비 유닛 전용', ['corr_e', 'bay'], { leafMat: 'painted_dark', auto: false }),
+    z('d4_surg', 0, D2, -37, '수술 구역', '청정 복도 — 남측', ['corr_s', 'scrub'], { cyclingPrompt: '격리 유지' }),
+    z('d4_gal', 0, D2, -43, '수술실 1 — 갤러리', '손소독실', ['scrub', 'gallery']),
+    x('d4_store', 4, D2, -41, '손소독실', '무균 저장실 — 직원', ['scrub', 'store4'], { auto: false }),
+    x('d4_gal_e', 10, D2, -45, '수술실 1 — 갤러리', '서비스 계단 B', ['gallery', 'stair4']),
+    z('d4_stair_s', 12, 0, -59, '바이오시스 서비스층', '서비스 계단 B', ['stair4', 'lcorr'], { leafMat: 'navy_grey' }),
+    x('d4_chk', 24, 0, -61, '바이오시스 서비스층', '해군 검문소 2', ['lcorr', 'chk']),
+    x('d4_guard', 40, 0, -59, '해군 검문소 2', '경비실', ['chk', 'guard'], { leafMat: 'navy_grey' }),
+    x('d4_plant', 46, 0, -59, '경비실', '튜브 플랜트 — 인가된 인원', ['guard', 'plant4'], { leafMat: 'navy_grey' }),
+    z('d4_tube_n', 32, 0, -67, '이송 튜브 — 초소 4', '해군 검문소 2', ['chk', 'tube'], { cyclingPrompt: '부스에서 해제' }),
+    z('d4_tube_s', 32, 0, -107, '초소 4 — 게이트 록', '이송 튜브', ['tube', 'gatel'], { cyclingPrompt: '게이트 록 순환 중' }),
   ];
 }
 

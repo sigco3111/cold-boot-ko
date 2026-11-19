@@ -238,7 +238,7 @@ function buildSub(L: LevelBuild) {
     // the track bed: painted safety lines either side of the rail corridor, from the lock sill to the buffer stops
     const line = L.overlay('painted_yellow');
     for (const x of [32.15, 35.85]) b.detail(() => b.quad(line, x, 0, -37.4, 0.1, 35.6, '+y', 0, 'box', 0.003));
-    navySign(b, 'SDV TRACK — KEEP CLEAR', 34, 0.004, -21.4, 1.6, 0.22, '+y', { rot: PI });
+    navySign(b, 'SDV 트랙 — 접근 금지', 34, 0.004, -21.4, 1.6, 0.22, '+y', { rot: PI });
   }
 
   // ── galleries y 4.8 (decks, beams, knee braces), rails / parapets exactly over the shell's, red edge strips ──
@@ -271,9 +271,9 @@ function buildSub(L: LevelBuild) {
   bayStrip(b, L, 27.5, -35.86, 42.9, -35.86, GAL + 0.01);
   bayStrip(b, L, 25.1, -34.14, 33.1, -34.14, GAL + 0.01); bayStrip(b, L, 34.9, -34.14, 40.45, -34.14, GAL + 0.01);
   // stencils on the parapets (seen from the floor)
-  navySign(b, 'GALLERY W — SWL 500 KG', 25.085, GAL + 0.55, -45, 1.6, 0.14, '+x');
-  navySign(b, 'GALLERY E — SWL 500 KG', 42.915, GAL + 0.55, -43, 1.6, 0.14, '-x');
-  navySign(b, 'LAUNCH BRIDGE', 30, GAL + 0.55, -33.915, 1.4, 0.16, '+z');
+  navySign(b, '갤러리 W — SWL 500 KG', 25.085, GAL + 0.55, -45, 1.6, 0.14, '+x');
+  navySign(b, '갤러리 E — SWL 500 KG', 42.915, GAL + 0.55, -43, 1.6, 0.14, '-x');
+  navySign(b, '발사 브리지', 30, GAL + 0.55, -33.915, 1.4, 0.16, '+z');
 
   // ── the two long stairs: painted steel treads over the shell's (solid) mass, nosing strips, stringers, rails ──
   // (the shell's stair is solid underneath — under-mass colliders — so it is dressed as a plated stair tower: dark
@@ -291,17 +291,17 @@ function buildSub(L: LevelBuild) {
     }
     stairDressing(b, L, { stair: s, nosing: 'emerg', rails: 'both', stringers: true });
     const zl = s.z0 + s.dir * s.tread * 3;
-    navySign(b, 'STAIR — NO STORAGE UNDER', s.x0 - 0.016, 0.55, zl, 1.1, 0.1, '-x');
+    navySign(b, '계단 — 아래 적재 금지', s.x0 - 0.016, 0.55, zl, 1.1, 0.1, '-x');
   }
 
   // ── floor cover (§5.4) over the shell's colliders ──
-  b.at(27.0, 0, -29.0, 0, () => crateStack(b, L, { w: 2.0, d: 2.0, h: 1.2, seed: 41, label: 'SPARES — SDV', collide: false }));
+  b.at(27.0, 0, -29.0, 0, () => crateStack(b, L, { w: 2.0, d: 2.0, h: 1.2, seed: 41, label: '예비품 — SDV', collide: false }));
   b.at(26.6, 0, -50.0, PI / 2, () => crateStack(b, L, { w: 2.0, d: 1.2, h: 1.2, seed: 42, collide: false }));
   b.at(39.0, 0, -45.0, 0, () => crateStack(b, L, { w: 2.0, d: 2.0, h: 1.2, seed: 43, palette: 'grey', collide: false }));
   b.at(44.3, 0, -23.0, -PI / 2, () => crateStack(b, L, { w: 2.0, d: 1.4, h: 2.0, seed: 44, collide: false }));
   b.at(38.3, 0, -26.8, 0, () => forklift(b, L, { collide: false }));
   b.at(39.4, 0, -52.0, 0, () => gasBottleRack(b, L, { collide: false }));
-  for (const [x, z, ry, lab] of [[31.0, -32.0, PI / 2, 'TERN — SUPPORT 1'], [31.0, -40.0, PI / 2, 'TERN — SUPPORT 2'], [37.0, -32.0, -PI / 2, 'TERN — SHORE POWER'], [37.0, -40.0, -PI / 2, 'TERN — HYD PACK']] as const) {
+  for (const [x, z, ry, lab] of [[31.0, -32.0, PI / 2, '턴 — 지지대 1'], [31.0, -40.0, PI / 2, '턴 — 지지대 2'], [37.0, -32.0, -PI / 2, '턴 — 육상 전원'], [37.0, -40.0, -PI / 2, '턴 — 유압 팩']] as const) {
     b.at(x, 0, z, ry, () => equipmentBox(b, L, { label: lab, collide: false }));
   }
   // locker by d5_arm_bay (p5_bay_med_1 / _ammo_1 on its top at 0.95) and the gallery locker by the wheel (top 5.55)
@@ -313,8 +313,8 @@ function buildSub(L: LevelBuild) {
       else { b.bx(K, x1 - 0.01, y0 + 0.08, z0 + 0.05, x1 + 0.002, y1 - 0.08, z1 - 0.05); navySign(b, text, x1 + 0.004, y1 - 0.2, (z0 + z1) / 2, 0.6, 0.09, '+x'); }
     });
   };
-  cabinet(23.7, 0, -22.3, 24.7, 0.95, -21.7, '-z', 'FIRST AID — AMMO');
-  cabinet(22.2, GAL, -51.3, 22.9, GAL + 0.75, -50.3, '+x', 'READY USE');
+  cabinet(23.7, 0, -22.3, 24.7, 0.95, -21.7, '-z', '응급처치 — 탄약');
+  cabinet(22.2, GAL, -51.3, 22.9, GAL + 0.75, -50.3, '+x', '상시 사용');
   // shelf under p5_bay_med_2 (44.6, 1.0, −50.0) on the east wall
   b.at(45.8, 1.0, -50.0, -PI / 2, () => wallShelf(b, L, { w: 0.6, d: 0.45 }));
   b.at(45.79, 1.55, -50.0, -PI / 2, () => navySign(b, '✚ FIRST AID', 0, 0, 0.002, 0.5, 0.12, '+z'));
@@ -362,7 +362,7 @@ function buildSub(L: LevelBuild) {
   // ── the TERN board's frame (north wall over d5_bay), wall dressing: frames, pipe runs, hull numbers ──
   b.bx(K, 32.6, 6.66, -18.212, 35.4, 7.74, -18.2);
   b.bx(N, 32.55, 6.62, -18.27, 35.45, 6.68, -18.2).bx(N, 32.55, 7.72, -18.27, 35.45, 7.78, -18.2);
-  navySign(b, 'SDV BAY 1 — POST 4', 34, 8.15, -18.2, 2.2, 0.2, '-z');
+  navySign(b, 'SDV 베이 1 — 초소 4', 34, 8.15, -18.2, 2.2, 0.2, '-z');
   const ribZ = (x: number, z: number, sx: 1 | -1) => { b.bx(N, Math.min(x, x + sx * 0.18), 0, z - 0.05, Math.max(x, x + sx * 0.18), 12, z + 0.05); b.bx(N, Math.min(x + sx * 0.16, x + sx * 0.2), 0, z - 0.12, Math.max(x + sx * 0.16, x + sx * 0.2), 12, z + 0.12); };
   const ribX = (x: number, z: number, sz: 1 | -1) => { b.bx(N, x - 0.05, 0, Math.min(z, z + sz * 0.18), x + 0.05, 12, Math.max(z, z + sz * 0.18)); b.bx(N, x - 0.12, 0, Math.min(z + sz * 0.16, z + sz * 0.2), x + 0.12, 12, Math.max(z + sz * 0.16, z + sz * 0.2)); };
   for (const z of [-20, -26, -29, -32, -35, -38, -41, -44, -47, -50]) ribZ(22.2, z, 1);
@@ -383,7 +383,7 @@ function buildSub(L: LevelBuild) {
   hullNumber(b, 'FR 152', 22.21, 8.2, -42.5, '+x', 0.5);
   hullNumber(b, 'FR 140', 45.79, 8.2, -24.5, '-x', 0.5);
   hullNumber(b, 'FR 152', 45.79, 8.2, -42.5, '-x', 0.5);
-  navySign(b, 'LAUNCH LOCK 1 ↓', 34, 7.0, -55.795, 2.4, 0.3, '+z');
+  navySign(b, '발사 록 1 ↓', 34, 7.0, -55.795, 2.4, 0.3, '+z');
   // the overhead crane: runway beams on the long walls, the bridge girder parked over the bow, a hook block
   for (const x of [22.75, 45.25]) { b.bx(N, x - 0.15, 11.0, -55.8, x + 0.15, 11.4, -18.2); b.bx(ST, x - 0.04, 11.4, -55.8, x + 0.04, 11.46, -18.2); }
   b.bx(Y, 22.75, 11.05, -53.9, 45.25, 11.7, -53.2);
@@ -505,7 +505,7 @@ function bayVignettes(L: LevelBuild, boat: THREE.Object3D, ud: Record<string, an
       case 'clamps': case 'clamps_home': at('clamp_cycle', sp.cradle); break;
       case 'complete':
         checking = false;
-        text('tern_board', 'dock_status', 'COMPLETE — AWAITING OFFICER PALM');
+        text('tern_board', 'dock_status', '완료 — 장교 손바닥 인증 대기');
         text('launch', 'launch', 'complete');
         break;
     }
@@ -514,12 +514,12 @@ function bayVignettes(L: LevelBuild, boat: THREE.Object3D, ud: Record<string, an
     checking = false;
     (ud.snap as () => void)();
     for (const e of [...S.mist, ...S.jets]) e.enabled = false;
-    text('tern_board', 'dock_status', 'COMPLETE — AWAITING OFFICER PALM');
+    text('tern_board', 'dock_status', '완료 — 장교 손바닥 인증 대기');
     text('launch', 'launch', 'complete');
   };
   L.vignette('v5_sub_check', () => {
     checking = true;
-    text('tern_board', 'dock_status', 'PRE-LAUNCH CHECK — RUNNING');
+    text('tern_board', 'dock_status', '발사 전 점검 — 진행 중');
     text('launch', 'launch', `running|${(TERN_CHECK_LEN - 0.8).toFixed(1)}`);
     (ud.check as () => void)();
   }, { snap: snapCheck });
@@ -614,7 +614,7 @@ function bayVignettes(L: LevelBuild, boat: THREE.Object3D, ud: Record<string, an
     const s = d.shown === 'cycling' ? 'cycling' : d.shown === 'open' || shown === 'open' ? 'open' : 'locked';
     if (s === shown) return;
     shown = s;
-    text('tunnel_panel', 'terminal_idle', s === 'open' ? 'HYDRAULICS RESTORED — OPEN' : s === 'cycling' ? 'CO RELEASE — HYDRAULICS ISOLATED ↑' : "TRUNK TUNNEL — CO'S AUTHORITY");
+    text('tunnel_panel', 'terminal_idle', s === 'open' ? '유압 복구됨 — 열림' : s === 'cycling' ? '함장 해제 — 유압 차단됨 ↑' : "트렁크 터널 — 함장 권한");
   });
   void boat;
 }
@@ -641,7 +641,7 @@ function buildDive(L: LevelBuild) {
   const w: B6 = [47.4, 0, -29.9, 50.6, 0.02, -28.8];
   fx.wetPatch(box3(w), ['dive5'], { id: 'fx5_wet_dive', seenFrom: ['sub5'] });
   addWet(L, w);
-  navySign(b, 'DIVE LOCKER — SDV TERN', 46.21, 2.3, -30.5, 1.6, 0.16, '+x');
+  navySign(b, '잠수 장비함 — SDV 턴', 46.21, 2.3, -30.5, 1.6, 0.16, '+x');
   // red wall-base strips (the bay's) on the free walls and across the door's approach
   for (const [ax, az, bx, bz] of [[46.5, -39.5, 46.5, -36.0], [46.5, -32.0, 46.5, -29.6], [46.9, -39.5, 48.6, -39.5], [51.5, -35.5, 51.5, -31.2], [46.6, -35.0, 46.6, -33.0]] as const) bayStrip(b, L, ax, az, bx, bz);
   emergStrips5(L);

@@ -76,29 +76,29 @@ export const LANDINGS6 = {
  * exceeds 0.6, D13), mid deck + the cage cantilever, galleries.
  */
 export const ROOMS6: Record<RoomId6, RoomDef6> = {
-  lock6: { name: 'TRUNK TUNNEL — HEAD-END TUBE', x0: -4, x1: 4, z0: 0, z1: 6, y0: 0, h: 3.0 },
-  tun6_a: { name: 'CABLE TUNNEL — SECTION 1', x0: -2.5, x1: 2.5, z0: -80, z1: 0, y0: 0, h: 4.0 },
-  rep6: { name: 'REPEATER 2', x0: -6, x1: 16, z0: -92, z1: -80, y0: 0, h: 5.0 },
-  tun6_b: { name: 'CABLE TUNNEL — SECTION 2', x0: 9.5, x1: 14.5, z0: -160, z1: -92, y0: 0, h: 4.0 },
-  bay6: { name: 'JOINT BAY 2', x0: 14.5, x1: 20.5, z0: -106, z1: -98, y0: 0, h: 3.2 },
+  lock6: { name: '트렁크 터널 — 헤드엔드 튜브', x0: -4, x1: 4, z0: 0, z1: 6, y0: 0, h: 3.0 },
+  tun6_a: { name: '케이블 터널 — 1구간', x0: -2.5, x1: 2.5, z0: -80, z1: 0, y0: 0, h: 4.0 },
+  rep6: { name: '중계기 2', x0: -6, x1: 16, z0: -92, z1: -80, y0: 0, h: 5.0 },
+  tun6_b: { name: '케이블 터널 — 2구간', x0: 9.5, x1: 14.5, z0: -160, z1: -92, y0: 0, h: 4.0 },
+  bay6: { name: '조인트 베이 2', x0: 14.5, x1: 20.5, z0: -106, z1: -98, y0: 0, h: 3.2 },
   he6: {
-    name: 'TRUNK HEAD-END', x0: 2, x1: 22, z0: -180, z1: -160, y0: 0, h: 4.5,
+    name: '트렁크 헤드엔드', x0: 2, x1: 22, z0: -180, z1: -160, y0: 0, h: 4.5,
     floors: [{ y: -1.4, box: [2.0, 3.6, -179.4, -175.4], nav: false, exits: [EXIT_HE] }],
   },
   vault6: {
-    name: 'CABLE VAULT', x0: -22, x1: 2, z0: -180, z1: -148, y0: 0, h: 6.0,
+    name: '케이블 볼트', x0: -22, x1: 2, z0: -180, z1: -148, y0: 0, h: 6.0,
     floors: [
       { y: -1.4, box: [-13.0, -11.8, -179.4, -158.0], nav: false, exits: TRENCH_EXITS },
       { y: -1.4, box: [-13.0, 2.0, -179.4, -178.2], nav: false, exits: TRENCH_EXITS },
     ],
   },
-  hold6: { name: 'CABLE STORE', x0: -22, x1: -8, z0: -148, z1: -140, y0: 0, h: 4.0 },
+  hold6: { name: '케이블 저장고', x0: -22, x1: -8, z0: -148, z1: -140, y0: 0, h: 4.0 },
   shaft6: {
-    name: 'STAIR SHAFT — MOON POOL', x0: -28, x1: -22, z0: -172, z1: -162, y0: -12, h: 15.2,
+    name: '계단실 — 문풀', x0: -28, x1: -22, z0: -172, z1: -162, y0: -12, h: 15.2,
     floors: Object.values(LANDINGS6).map((l) => ({ y: l.y, box: l.box })),
   },
   pool6: {
-    name: 'MOON POOL', x0: -76, x1: -28, z0: -196, z1: -148, y0: DOCK, h: 22.0,
+    name: '문풀', x0: -76, x1: -28, z0: -196, z1: -148, y0: DOCK, h: 22.0,
     floors: [
       { y: WET, box: [-62.4, -41.6, -194.0, -185.5] },
       { y: CHANNEL, box: [-62.4, -41.6, -184.0, -182.4], nav: false },
@@ -107,8 +107,8 @@ export const ROOMS6: Record<RoomId6, RoomDef6> = {
       ...GALLERIES6.map((b) => ({ y: GAL, box: b })),
     ],
   },
-  stores6: { name: 'DOCK STORES', x0: -76, x1: -64, z0: -148, z1: -140, y0: -12, h: 3.6 },
-  feed6: { name: 'POST 4 — SUB BAY (CAM 2)', x0: 100, x1: 124, z0: 0, z1: 24, y0: 0, h: 12.0 },
+  stores6: { name: '도크 저장고', x0: -76, x1: -64, z0: -148, z1: -140, y0: -12, h: 3.6 },
+  feed6: { name: '초소 4 — 서브베이 (CAM 2)', x0: 100, x1: 124, z0: 0, z1: 24, y0: 0, h: 12.0 },
 };
 export const ROOM_IDS6 = Object.keys(ROOMS6) as RoomId6[];
 
@@ -509,20 +509,20 @@ export const SHELLS6: Record<RoomId6, Shell> = {
     // door6_tunnel (0, 0, 6): 3c's tunnel door, this side — sealed (the way back is latched in 3c too)
     sealedOpening(G, 'door6_tunnel', 0, 0, 6, 'z', 1.6, 2.4, ['lock6']);
     sealedDoor(L, b, {
-      id: 'door6_tunnel', x: 0, y: 0, z: 6, wall: 'z', kind: 'std', sides: 'back', leafMat: 'navy_grey', labelBack: 'TRUNK TUNNEL',
-      panel: { text: 'TRUNK TUNNEL — SEALED — CO RELEASE', side: 'back' },
+      id: 'door6_tunnel', x: 0, y: 0, z: 6, wall: 'z', kind: 'std', sides: 'back', leafMat: 'navy_grey', labelBack: '트렁크 터널',
+      panel: { text: '트렁크 터널 — 밀봉됨 — 함장 해제', side: 'back' },
     });
     // the cable transit beside d6_tube (in the south wall) and the trays (start at y 2.0)
     b.bx(dark, -2.7, 2.0, 0.2, -2.0, 2.6, 0.32);
     b.bx(dark, -3.8, 2.0, 0.2, -3.6, 2.06, 5.8);
     b.bx(dark, 3.6, 2.0, 0.2, 3.8, 2.06, 5.8);
-    b.sign('TRUNK — HEAD-END 200 M', 'stencil', -3.79, 1.5, 3.0, 1.8, 0.2, '+x');
+    b.sign('트렁크 — 헤드엔드 200 M', 'stencil', -3.79, 1.5, 3.0, 1.8, 0.2, '+x');
     // `tube_panel6` (§6.4) beside the tube door, lock side — the tube line's source `mk6_tube_panel`
-    L.screen('tube_panel6', 'terminal_idle', 0.5, 0.3, 1.2, 1.4, 0.22, '+z', { text: 'HEAD-END TUBE — CYCLING' });
+    L.screen('tube_panel6', 'terminal_idle', 0.5, 0.3, 1.2, 1.4, 0.22, '+z', { text: '헤드엔드 튜브 — 순환 중' });
     L.marker('mk6_tube_panel', 1.2, 1.4, 0.22, 0);
     shelf(b, standin, 3.4, 1.0, 1.2, 0.4, 0.4);
     L.marker('mk6_start', 0, 0, 3.0, 0);
-    roomLabel(b, 'HEAD-END TUBE', 3.8, 2.4, 3.0, '-x', 2.4);
+    roomLabel(b, '헤드엔드 튜브', 3.8, 2.4, 3.0, '-x', 2.4);
   },
 
   tun6_a: ({ L, G, b, standin, dark }) => {
@@ -550,7 +550,7 @@ export const SHELLS6: Record<RoomId6, Shell> = {
     // trays (y 2.0 / 2.6 west, the trunk on the east tray at 2.2) — the body corridor is the full width up to 2.0
     b.bx(dark, -2.3, 2.0, -79.8, -2.05, 2.05, -0.2).bx(dark, 2.05, 2.0, -79.8, 2.3, 2.05, -0.2);
     b.bx('painted_yellow', 2.08, 2.07, -79.8, 2.28, 2.3, -0.2);
-    roomLabel(b, 'CABLE TUNNEL — SECTION 1', -2.3, 2.6, -6.0, '+x', 3.0);
+    roomLabel(b, '케이블 터널 — 1구간', -2.3, 2.6, -6.0, '+x', 3.0);
   },
 
   rep6: ({ L, G, b, standin, dark, mesh }) => {
@@ -573,7 +573,7 @@ export const SHELLS6: Record<RoomId6, Shell> = {
     stand(tent, standin, 13.0, 0, -86.1, 14.4, 0.85, -85.3); // splicing table
     // the job card on the pole at the open north side (§6.3): use point 0.45 m off it
     b.bx(dark, 13.55, 0, -84.0, 13.65, 2.2, -83.9);
-    L.interact('note6_jobcard', 'log', 'Read card', 13.6, 1.4, -83.45, true, 1.6);
+    L.interact('note6_jobcard', 'log', '카드 읽기', 13.6, 1.4, -83.45, true, 1.6);
     // equipment shelf (east wall), first-aid box (west wall)
     shelf(b, standin, 15.6, 1.0, -89.0, 0.4, 2.0);
     b.bx('painted_white', -5.8, 0.75, -82.3, -5.55, 1.0, -81.7);
@@ -588,9 +588,9 @@ export const SHELLS6: Record<RoomId6, Shell> = {
     L.marker('mk6_cross_1', -3.0, 0, -86.0, PI / 2);
     L.marker('mk6_tun_u1', -1.2, 0, -91.3, PI);
     L.marker('mk6_tun_u2', 0.0, 0, -91.3, PI);
-    b.sign('REPEATER 2 — 1.1 KM', 'stencil', -4.2, 3.2, -80.22, 2.2, 0.24, '-z');
-    b.sign('HEAD-END ↓', 'stencil', 3.4, 3.2, -80.22, 1.4, 0.24, '-z');
-    roomLabel(b, 'REPEATER 2', -5.8, 3.0, -81.0, '+x', 2.4);
+    b.sign('중계기 2 — 1.1 KM', 'stencil', -4.2, 3.2, -80.22, 2.2, 0.24, '-z');
+    b.sign('헤드엔드 ↓', 'stencil', 3.4, 3.2, -80.22, 1.4, 0.24, '-z');
+    roomLabel(b, '중계기 2', -5.8, 3.0, -81.0, '+x', 2.4);
   },
 
   tun6_b: ({ L, G, b, standin, dark }) => {
@@ -609,7 +609,7 @@ export const SHELLS6: Record<RoomId6, Shell> = {
     L.marker('mk6_sentry', 12.0, 3.9, -134.0, 0);
     L.marker('mk6_rep_s', 10.2, 0, -111.6, PI);
     L.marker('mk6_tunb_hold', 12.0, 0, -153.0, PI);
-    roomLabel(b, 'CABLE TUNNEL — SECTION 2', 9.7, 2.6, -96.0, '+x', 3.0);
+    roomLabel(b, '케이블 터널 — 2구간', 9.7, 2.6, -96.0, '+x', 3.0);
   },
 
   bay6: ({ L, G, b, standin }) => {
@@ -621,7 +621,7 @@ export const SHELLS6: Record<RoomId6, Shell> = {
     shelf(b, standin, 20.1, 1.0, -104.0, 0.4, 2.0);
     L.marker('mk6_bay_u1', 16.0, 0, -99.6, PI / 2);
     L.marker('mk6_bay_u2', 18.6, 0, -99.6, PI / 2);
-    roomLabel(b, 'JOINT BAY 2', 20.3, 2.3, -102.0, '-x', 2.2);
+    roomLabel(b, '조인트 베이 2', 20.3, 2.3, -102.0, '-x', 2.2);
   },
 
   he6: ({ L, G, b, standin, dark, grate }) => {
@@ -639,12 +639,12 @@ export const SHELLS6: Record<RoomId6, Shell> = {
     // rails 1.0 m on the pit's east (x 3.6) and south (z −177.6) sides; the west wall is 0.2 m away; exit north
     railZ(L, b, dark, -177.6, -175.4, 3.6, 0, 1.0);
     railX(L, b, dark, 2.2, 3.65, -177.65, 0, 1.0);
-    b.sign('TRENCH — DOGGED FROM BELOW — ACCESS VIA VAULT', 'stencil', 3.0, 0.72, -177.66, 1.1, 0.16, '-z');
+    b.sign('트렌치 — 아래에서 잠김 — 볼트로 출입', 'stencil', 3.0, 0.72, -177.66, 1.1, 0.16, '-z');
     const lidShut = () => !(lidK(L, 'hatch6_he') > 0);
     // underside interact: use point on the lid underside, usable only with the eye below y −0.2 while the lid is shut
-    eyeGate(L.ctx, L.interact('hatch6_he', 'hatch', 'Open hatch', 3.0, -0.08, -177.3, true, 1.6), { axis: 'y', max: -0.2 }, lidShut);
-    const plate = L.interact('hatch6_he_plate', 'hatch', 'Hatch dogged from below', 3.0, 0.05, -176.4, true, 1.6);
-    plate.onUse = () => L.ctx.events.emit('story:toast', { text: 'Hatch dogged from below' });
+    eyeGate(L.ctx, L.interact('hatch6_he', 'hatch', '해치 열기', 3.0, -0.08, -177.3, true, 1.6), { axis: 'y', max: -0.2 }, lidShut);
+    const plate = L.interact('hatch6_he_plate', 'hatch', '해치가 아래에서 잠겨 있다', 3.0, 0.05, -176.4, true, 1.6);
+    plate.onUse = () => L.ctx.events.emit('story:toast', { text: '해치가 아래에서 잠겨 있다' });
     eyeGate(L.ctx, plate, { axis: 'y', min: -0.2 }, lidShut);
     L.marker('mk6_exit_he', ...EXIT_HE, 0);
     // ── racks R1 / R2 (h 2.2), the console (desk h 1.0) and the mimic board above it ──
@@ -652,21 +652,21 @@ export const SHELLS6: Record<RoomId6, Shell> = {
     stand(cv, dark, 5, 0, -164.6, 15, 2.2, -164.0);     // R1
     stand(cv, dark, 5, 0, -169.6, 15, 2.2, -169.0);     // R2
     stand(cv, standin, 8, 0, -179.8, 16, 1.0, -178.8);  // console desk
-    L.screen('mimic6', 'mimic', 10.0, 2.0, 12.0, 2.6, -179.78, '+z', { text: 'HEAD-END — VAULT (BEACH JOINT) — SURFACE 2.1 KM\nMOON POOL — TETHER — ACOUSTIC BUOY: STANDBY\nMODE: AUTO' });
+    L.screen('mimic6', 'mimic', 10.0, 2.0, 12.0, 2.6, -179.78, '+z', { text: '헤드엔드 — 볼트 (비치 조인트) — 수면 2.1 KM\n문풀 — 테더 — 음향 부이: 대기\n모드: 자동' });
     // the outbound queue screen on the console (§6.3) — interactable at its use point
     b.bx(dark, 8.6, 1.0, -179.3, 9.4, 1.05, -179.0);
-    L.screen('queue6', 'manifest', 0.6, 0.4, 9.0, 1.25, -179.0, '+z', { text: 'HEAD-END — OUTBOUND QUEUE' });
+    L.screen('queue6', 'manifest', 0.6, 0.4, 9.0, 1.25, -179.0, '+z', { text: '헤드엔드 — 발신 대기열' });
     L.marker('mk6_queue', 9.0, 1.25, -179.0, 0);
-    L.interact('note6_queue', 'terminal', 'Read queue', 9.0, 1.25, -178.4, true, 1.3);
+    L.interact('note6_queue', 'terminal', '대기열 읽기', 9.0, 1.25, -178.4, true, 1.3);
     // ── the changeover switch SW (east wall x 21.0 … 21.8, z −172 … −170, h 2.0): crank on its west face ──
     switch6(L, b);   // W7's set piece: cabinet (+ its collider), crank, Castell barrel, the `switch6` screen
     L.marker('mk6_switch', 20.95, 1.2, -171.0, -PI / 2);
-    L.interact('he6_switch', 'lever', 'Crank to manual', 20.5, 1.2, -171.0, true, 1.3);
+    L.interact('he6_switch', 'lever', '수동으로 전환', 20.5, 1.2, -171.0, true, 1.3);
     // ── the phone station (east wall), its handset hanging off the hook ──
     phone6(L, b);    // W7's set piece: station, howler, the handset on its cord
     L.marker('mk6_phone', 21.78, 1.4, -164.0, -PI / 2);
     L.marker('mk6_handset', 21.55, 0.85, -164.3, 0);
-    L.interact('he6_phone', 'phone', 'Pick up handset', 21.2, 1.1, -164.0, false, 1.5);
+    L.interact('he6_phone', 'phone', '수화기 들기', 21.2, 1.1, -164.0, false, 1.5);
     // ── the wall locker NW (door open: back, sides, top — the vest hangs in its open front) ──
     stand(b, standin, 2.4, 0, -160.45, 4.0, 2.0, -160.2);
     stand(b, standin, 2.4, 0, -160.8, 2.45, 2.0, -160.45);
@@ -677,7 +677,7 @@ export const SHELLS6: Record<RoomId6, Shell> = {
     b.bx('painted_white', 21.55, 0.75, -176.3, 21.8, 1.0, -175.7);
     // F3's soldier spawns here (2 m clear of R1's north face, S1a)
     L.marker('mk6_he_s', 12.0, 0, -162.0, PI);
-    roomLabel(b, 'TRUNK HEAD-END', 2.2, 3.0, -163.0, '+x', 2.6);
+    roomLabel(b, '트렁크 헤드엔드', 2.2, 3.0, -163.0, '+x', 2.6);
   },
 
   vault6: ({ L, G, b, standin, dark, grate }) => {
@@ -705,8 +705,8 @@ export const SHELLS6: Record<RoomId6, Shell> = {
     railZ(L, b, dark, -160.4, -158.0, -13.05, 0, 1.0);
     railZ(L, b, dark, -160.4, -158.0, -11.8, 0, 1.0);
     railX(L, b, dark, -13.05, -11.75, -160.45, 0, 1.0);
-    b.sign('CABLE TRENCH — TO HEAD-END — CROUCH', 'stencil', -12.4, 0.72, -160.39, 1.1, 0.16, '+z');
-    L.interact('hatch6_vault', 'hatch', 'Open hatch', -12.4, 0.3, -157.5, true, 1.4);
+    b.sign('케이블 트렌치 — 헤드엔드 방향 — 웅크리기', 'stencil', -12.4, 0.72, -160.39, 1.1, 0.16, '+z');
+    L.interact('hatch6_vault', 'hatch', '해치 열기', -12.4, 0.3, -157.5, true, 1.4);
     L.marker('mk6_exit_vault', ...EXIT_VAULT, 0);
     // ── cable drums CD1 … CD3 (Ø 4.0 on stands, h 4.4) ──
     const cv = sub(L, 'vault6_cover', ['vault6']);
@@ -721,8 +721,8 @@ export const SHELLS6: Record<RoomId6, Shell> = {
     beachJoint6(L, b);
     L.marker('mk6_bj', -12.0, 1.2, -178.55, 0);
     L.marker('mk6_loom', -12.0, 1.1, -179.0, 0);
-    L.interact('vault6_lock', 'lock', 'Insert key A', -12.0, 1.2, -178.1, true, 1.3);
-    L.interact('vault6_loom', 'lever', 'Pull the fibre', -12.0, 1.1, -178.75, false, 1.3);
+    L.interact('vault6_lock', 'lock', '키 A 삽입', -12.0, 1.2, -178.1, true, 1.3);
+    L.interact('vault6_loom', 'lever', '광케이블 당기기', -12.0, 1.1, -178.75, false, 1.3);
     // ── the sea cable penetrator (south wall) and its dark port; dehumidifiers, nitrogen rack, shelves ──
     b.cyl(dark, -8.0, 1.0, -179.7, 0.6, 0.2, 'z', 14);
     stand(cv, standin, -6.0, 0, -149.0, -4.0, 2.0, -148.2);   // DH1
@@ -737,20 +737,20 @@ export const SHELLS6: Record<RoomId6, Shell> = {
     // ── the stair door's interlock (vault side only: feet in vault6) ──
     shaftLock6(L, b);   // W7's set piece: panel, barrel, the `shaft6_panel` screen
     L.marker('mk6_shaft_lock', -21.78, 1.3, -167.6, PI / 2);
-    L.interact('shaft6_lock', 'lock', 'Interlock — key B', -21.3, 1.3, -167.6, true, 1.3, { requireRegion: 'vault6' });
+    L.interact('shaft6_lock', 'lock', '인터록 — 키 B', -21.3, 1.3, -167.6, true, 1.3, { requireRegion: 'vault6' });
     // the reward at the T-a / T-b corner: M. Lie's notebook on a cable bracket (§6.3)
     b.bx(dark, -12.99, -1.0, -176.6, -12.9, -0.95, -176.2);
-    L.interact('note6_jointer', 'log', 'Read notebook', -12.4, -0.9, -176.4, true, 1.3);
+    L.interact('note6_jointer', 'log', '노트 읽기', -12.4, -0.9, -176.4, true, 1.3);
     // F4 / F5 spawn markers (hold6, north of d6_hold)
     L.marker('mk6_hold_1', -16.0, 0, -143.0, 0);
     L.marker('mk6_hold_2', -19.0, 0, -144.0, 0);
     L.marker('mk6_hold_3', -13.0, 0, -144.0, 0);
-    roomLabel(b, 'CABLE VAULT — KEEP DRY', 1.8, 3.0, -160.0, '-x', 3.0);
+    roomLabel(b, '케이블 볼트 — 건조 유지', 1.8, 3.0, -160.0, '-x', 3.0);
   },
 
   hold6: ({ G, b }) => {
     air(G, 'hold6');
-    roomLabel(b, 'CABLE STORE', -8.2, 2.6, -144.0, '-x', 2.2);
+    roomLabel(b, '케이블 저장고', -8.2, 2.6, -144.0, '-x', 2.2);
   },
 
   shaft6: ({ L, G, b, standin, mesh, dark }) => {
@@ -789,7 +789,7 @@ export const SHELLS6: Record<RoomId6, Shell> = {
     L.marker('mk6_w3_a', -24.0, -12, -163.4, PI / 2);
     L.marker('mk6_w3_b', -26.6, -12, -163.4, PI / 2);
     L.marker('mk6_w3_u', -26.8, -12, -170.8, PI / 2);
-    roomLabel(b, 'MOON POOL ↓', -22.2, 1.8, -165.5, '-x', 2.2);
+    roomLabel(b, '문풀 ↓', -22.2, 1.8, -165.5, '-x', 2.2);
   },
 
   pool6: ({ L, G, b, standin, glass, dark, yellow, grate, mesh }) => {
@@ -855,9 +855,9 @@ export const SHELLS6: Record<RoomId6, Shell> = {
     frame6(L, b);
     stand(fr, standin, -54.8, MID, -167.2, -54.2, MID + 1.0, -166.2); // the cage box
     const cageOnly = { requireRegion: 't6_cage' };
-    L.interact('frame6_pin', 'pin', 'Pull safety pin', -51.0, -15.0, -168.5, true, 1.2, cageOnly);
-    L.interact('frame6_pump', 'pump', 'Pump', -53.8, -15.0, -167.8, true, 1.2, cageOnly);
-    L.interact('frame6_lever', 'lever', 'Fire the shear', -50.25, -14.8, -167.9, true, 1.2, cageOnly);
+    L.interact('frame6_pin', 'pin', '안전핀 뽑기', -51.0, -15.0, -168.5, true, 1.2, cageOnly);
+    L.interact('frame6_pump', 'pump', '펌프', -53.8, -15.0, -167.8, true, 1.2, cageOnly);
+    L.interact('frame6_lever', 'lever', '전단 장치 발사', -50.25, -14.8, -167.9, true, 1.2, cageOnly);
     L.marker('mk6_cage', -52.0, MID, -168.8, 0);
     L.marker('mk6_pin', -51.38, -15.0, -168.5, -PI / 2);
     L.marker('mk6_pump', -53.8, -15.0, -168.6, 0);
@@ -869,7 +869,7 @@ export const SHELLS6: Record<RoomId6, Shell> = {
     stand(fr, standin, -66.0, MID, -160.0, -64.8, MID + 1.2, -158.8);
     stand(fr, standin, -40.0, MID, -160.0, -38.8, MID + 1.2, -158.8);
     console6(L, b);   // W7's set piece: desk (+ collider), the screen stand, the `console6` screen (bullet-resistant glass)
-    L.interact('console6', 'terminal', 'Use console', -44.0, -15.0, -159.1, false, 1.3, { requireRegion: 't6_console' });
+    L.interact('console6', 'terminal', '콘솔 사용', -44.0, -15.0, -159.1, false, 1.3, { requireRegion: 't6_console' });
     L.marker('mk6_console', -44.0, -15.0, -158.2, PI);
     L.marker('mk6_end_stand', -44.0, MID, -159.6, PI);
     L.marker('mk6_end_cam0', -44.0, -14.35, -159.4, PI);
@@ -897,7 +897,7 @@ export const SHELLS6: Record<RoomId6, Shell> = {
     shelf(b, standin, -63.0, -19.0, -153.8, 1.6, 0.3);
     shelf(b, standin, -41.0, -19.0, -153.8, 1.6, 0.3);
     b.bx(dark, -48.6, -19.0, -148.197, -47.4, -18.0, -148.15);
-    L.interact('note6_transfer', 'log', 'Read log', -48.0, -18.5, -148.7, true, 1.4);
+    L.interact('note6_transfer', 'log', '기록 읽기', -48.0, -18.5, -148.7, true, 1.4);
     // ── window walk fire points (south wall, y −19.0 shelves), the dock ammo lockers on the galleries ──
     shelf(b, standin, -70.0, -19.0, -195.5, 0.5, 0.5);
     shelf(b, standin, -34.0, -19.0, -195.5, 0.5, 0.5);
@@ -906,7 +906,7 @@ export const SHELLS6: Record<RoomId6, Shell> = {
     ] as const) {
       const bx: Box6 = face === '-x' ? [x - 0.2, -12, z - 0.4, x + 0.2, -10.4, z + 0.4] : face === '+x' ? [x - 0.2, -12, z - 0.4, x + 0.2, -10.4, z + 0.4] : [x - 0.4, -12, z - 0.2, x + 0.4, -10.4, z + 0.2];
       b.bx('painted_orange', bx[0], bx[1], bx[2], bx[3], bx[4], bx[5]);
-      L.interact(id, 'locker', 'Take ammo', ux, -11.0, uz, true, 1.3);
+      L.interact(id, 'locker', '탄약 가져가기', ux, -11.0, uz, true, 1.3);
     }
     shelf(b, standin, -28.5, -11.0, -193.6, 0.4, 0.4);
     shelf(b, standin, -75.5, -11.0, -193.6, 0.4, 0.4);
@@ -918,7 +918,7 @@ export const SHELLS6: Record<RoomId6, Shell> = {
     for (const x of [-56, -48]) stand(b, dark, x - 0.15, -19.6, -196.4, x + 0.15, -16.0, -195.8);
     L.marker('mk6_windows', -52.0, -17.8, -195.8, 0);
     // ── the dock board (north wall above the north gallery, readable from everywhere) ──
-    L.screen('dock_board', 'dock_board', 12.0, 3.0, -52.0, -6.5, -148.22, '-z', { text: 'MOON POOL — DOCK — 2,140 M\nTRANSFER B-14: LOWERING\nCARGO LOCK: INNER DOOR CLOSED\nDEWATERING: 34 % — STOPPED\nTETHER: TAUT — BUOY: STANDBY\nLOADER DL-2: WORKING' });
+    L.screen('dock_board', 'dock_board', 12.0, 3.0, -52.0, -6.5, -148.22, '-z', { text: '문풀 — 도크 — 2,140 M\n이송 B-14: 하강 중\n화물 록: 내부 문 닫힘\n배수: 34 % — 정지됨\n테더: 팽팽함 — 부이: 대기\n로더 DL-2: 작동 중' });
     // ── the loader's runway rails on corbels (y −4.0, x −75.4 / −28.6, z −194 … −150) — visual; the loader is rail-bound ──
     b.bx(dark, -75.6, -4.3, -194.0, -75.2, -4.0, -150.0).bx(dark, -28.8, -4.3, -194.0, -28.4, -4.0, -150.0);
     // ── markers: the reveal, the restore points, the waves, the horn (the trolley's start over the well) ──
@@ -926,14 +926,14 @@ export const SHELLS6: Record<RoomId6, Shell> = {
     L.marker('mk6_boss_safe', -30.0, GAL, -166.0, PI / 2);
     L.marker('mk6_boss_safe_w', -74.3, GAL, -170.0, -PI / 2);
     L.marker('mk6_horn', -52.0, -2.0, -176.0, 0);
-    roomLabel(b, 'MOON POOL — 2,140 M', -28.2, -9.8, -180.0, '-x', 3.4);
+    roomLabel(b, '문풀 — 2,140 M', -28.2, -9.8, -180.0, '-x', 3.4);
   },
 
   stores6: ({ L, G, b }) => {
     air(G, 'stores6');
     L.marker('mk6_w1_a', -72.0, GAL, -144.0, 0);
     L.marker('mk6_w1_b', -68.0, GAL, -144.0, 0);
-    roomLabel(b, 'DOCK STORES', -64.2, -9.6, -144.0, '-x', 2.2);
+    roomLabel(b, '도크 저장고', -64.2, -9.6, -144.0, '-x', 2.2);
   },
 
   feed6: ({ L, G }) => {
@@ -1001,9 +1001,9 @@ export function placeholders6(L: LevelBuild, m: { standin: Mat; dark: Mat }): vo
         pb.box.min.x = x0; pb.box.max.x = x0 + 1.2;
       }
     };
-    u.unlock = () => text('bj6', 'interlock', 'KEY A IN — OPEN');
+    u.unlock = () => text('bj6', 'interlock', '키 A 삽입 — 열림');
     u.strain = () => { /* greybox */ };
-    u.rip = () => text('bj6', 'interlock', 'FIBRE — LOS');
+    u.rip = () => text('bj6', 'interlock', '광케이블 — 신호 손실');
   }
   // the well's ladders (W7's set piece; W3c's climbers read `foot` → `top` (the coaming top, feet −19.2) → `exit`, and open
   // the self-closing `gate` in the bar guard as they pass — the greybox has no gate: the climb is kinematic)
@@ -1013,9 +1013,9 @@ export function placeholders6(L: LevelBuild, m: { standin: Mat; dark: Mat }): vo
       gate: { open: () => { /* greybox: no gate */ }, k: 0 },
     });
   }
-  ph('switch6', 20.95, 1.2, -171.0, { setProgress: () => { /* greybox */ }, keyOut: () => text('switch6', 'terminal_idle', 'MANUAL — KEY A OUT') });
-  ph('shaft6', -21.78, 1.3, -167.6, { unlock: () => text('shaft6_panel', 'interlock', 'KEY B IN — OPEN') });
-  ph('frame6', -52.0, -16, -168.5, { pin: () => { /* greybox */ }, pump: () => { /* greybox */ }, fire: () => text('gauge6', 'gauge', 'FIRED') });
+  ph('switch6', 20.95, 1.2, -171.0, { setProgress: () => { /* greybox */ }, keyOut: () => text('switch6', 'terminal_idle', '수동 — 키 A 분리') });
+  ph('shaft6', -21.78, 1.3, -167.6, { unlock: () => text('shaft6_panel', 'interlock', '키 B 삽입 — 열림') });
+  ph('frame6', -52.0, -16, -168.5, { pin: () => { /* greybox */ }, pump: () => { /* greybox */ }, fire: () => text('gauge6', 'gauge', '발사됨') });
   ph('phone6', 21.78, 1.4, -164.0, { lift: () => { /* greybox */ }, drop: () => { /* greybox */ } });
   ph('console6', -44.0, -14.2, -157.9, { page: (id: unknown) => text('console6', 'manifest', String(id)) });
 
@@ -1083,5 +1083,5 @@ export function placeholders6(L: LevelBuild, m: { standin: Mat; dark: Mat }): vo
   // `trench6`: always 'active' — check-reach's one-way edge for `hatch6_he` keys on a running machine (as 3c's `tern`)
   if (!L.machines.has('trench6')) L.machines.set('trench6', () => { /* no world change */ });
   // the feed set's board (W7 places the set; the screen exists for the story / tests)
-  if (!L.screens.has('feed6_board')) L.screen('feed6_board', 'dock_status', 2.4, 0.8, 112.0, 6.0, 0.22, '+z', { text: 'TERN — CRADLE — EMPTY\nLAUNCH LOCK — FLOODED' }).userData.rooms = ['feed6'];
+  if (!L.screens.has('feed6_board')) L.screen('feed6_board', 'dock_status', 2.4, 0.8, 112.0, 6.0, 0.22, '+z', { text: '턴 — 크레이들 — 비어 있음\n발사 록 — 침수' }).userData.rooms = ['feed6'];
 }

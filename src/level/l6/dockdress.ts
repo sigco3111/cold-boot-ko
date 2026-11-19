@@ -12,11 +12,11 @@
  *    grille, the dewatering panel (`note6_transfer`), a stencil;
  *  - the mid deck: crates MC1 / MC2 (`p6_mid_*` on their north edges); the cage's stores box (`p6_cage_*` on its lid);
  *  - the three dock ammo lockers `locker6_e/_w/_n` (kit `ammoLocker`; objects of the same ids for the story:
- *    `userData.{ open(k), swing(), set(full), isFull(), use, shelf }` — swing + set(false) on "Take ammo", set(true) +
+ *    `userData.{ open(k), swing(), set(full), isFull(), use, shelf }` — swing + set(false) on "탄약 가져가기", set(true) +
  *    open(0) at a re-arm); their side shelves carry `p6_ge_med` / `p6_gw_plate`;
  *  - the window-walk fire points (`p6_ww_ammo` / `p6_ww_med` in their niches), life rings, fenders on the wet dock kerbs;
- *  - the dock board's bezel and caption; signs (`MOON POOL — 2,140 M`, `CARGO LOCK — INNER DOOR CLOSED`, `LOADER WORKING
- *    AREA — KEEP CLEAR` on the dock). The coaming's own `NO ENTRY — WET WELL` stencils are the coaming's (kit `coaming`).
+ *  - the dock board's bezel and caption; signs (`문풀 — 2,140 M`, `화물 록 — 내부 문 닫힘`, `LOADER WORKING
+ *    AREA — KEEP CLEAR` on the dock). The coaming's own `출입 금지 — 웨트웰` stencils are the coaming's (kit `coaming`).
  *  - Greybox visuals replaced here (colliders untouched, kit props drawn `collide: false` over them): the six shelves
  *    and the dewatering panel in `pool6_grey`, the locker boxes, `grey6:pool6_frame`'s stand-ins (MC1, MC2, the cage
  *    box), `grey6:pool6_undercroft`'s (P1, P2).
@@ -80,14 +80,14 @@ function containerStencils(L: LevelBuild, label: string): THREE.Object3D {
   const hw = CW / 2 + 0.004, dx = CL / 2 + 0.016;
   for (const sd of [-1, 1]) {
     const z = sd * hw, ry = sd > 0 ? 0 : PI;
-    put('HALCYON BIO-SYSTEMS DIV.', -0.5 * sd, 1.85, z, ry, 0.42);
+    put('할시온 바이오 시스템즈 사업부', -0.5 * sd, 1.85, z, ry, 0.42);
     put(label, 2.05 * sd, 1.05, z, ry, 0.5);
     put('HBSU 140 031 [4]', -0.5 * sd, 1.5, z, ry, 0.16);
   }
   put('HBSU 140 031 [4]', dx, 2.2, -0.55, PI / 2, 0.11);
   put(label, dx, 1.75, 0.6, PI / 2, 0.42);
-  put('MAX GROSS 30,480 KG', dx, 1.2, -0.6, PI / 2, 0.12);
-  put('TARE 2,250 KG', dx, 1.05, -0.6, PI / 2, 0.12);
+  put('최대 총중량 30,480 KG', dx, 1.2, -0.6, PI / 2, 0.12);
+  put('공차중량 2,250 KG', dx, 1.05, -0.6, PI / 2, 0.12);
   const g = p.build();
   g.traverse((o) => { if ((o as THREE.Mesh).isMesh) (o as THREE.Mesh).castShadow = false; });
   return g;
@@ -148,7 +148,7 @@ function buildWreck(L: LevelBuild): THREE.Object3D {
     for (const z of [bz - 1.5, bz + 1.5]) p.cyl(S, x, -3.75, z, 0.25, 0.22, 'x', 16);
     p.cyl(K, x, -3.2, bz - 2.15, 0.14, 0.3, 'z', 12);
   }
-  p.sign('DOCK LOADER DL-2 — SWL 32 T', 'stencil', -52, -3.3, bz - 1.703, 6.0, 0.5, '-z');
+  p.sign('도크 로더 DL-2 — SWL 32 T', 'stencil', -52, -3.3, bz - 1.703, 6.0, 0.5, '-z');
   // trolley on the girders: frame, hoist drum, gearbox, cabinet, the PA horn
   p.bx(Y, tx - 1.8, -2.6, bz - 1.75, tx + 1.8, -2.3, bz + 1.75);
   p.cyl(S, tx, -1.85, bz - 0.7, 0.45, 2.6, 'x', 20);
@@ -209,13 +209,13 @@ function buildPool(L: LevelBuild) {
     b.cyl('steel_raw', px, -18.4, -148.42, 0.18, 0.04, 'y', 16);
   }
   b.at(-57.0, -18.85, -148.2, PI, () => hoseReel(b, L, { collide: true }));
-  stencil6(b, 'WASH-DOWN HOSE 2', -57.0, -18.25, -148.2, 0.7, 0.08, '-z');
+  stencil6(b, '세척 호스 2', -57.0, -18.25, -148.2, 0.7, 0.08, '-z');
   // the drain sump grille (a dark recess plate with a grating over it, both lying on the deck)
   b.detail(() => {
     b.quad(L.overlay('painted_dark'), -52.0, DOCK, -152.6, 1.3, 1.3, '+y', 0, 'box', 0.004);
     b.quad(L.overlay('deck_grate'), -52.0, DOCK, -152.6, 1.1, 1.1, '+y', 0, 'box', 0.009);
   });
-  stencil6(b, 'SUMP 2 — DRAIN', -52.0, DOCK + 0.006, -153.5, 0.8, 0.12, '+y', { style: 'stencil' });
+  stencil6(b, '섬프 2 — 배수', -52.0, DOCK + 0.006, -153.5, 0.8, 0.12, '+y', { style: 'stencil' });
   // the dewatering panel (`note6_transfer`, use point (−48.0, −18.5, −148.7)): a wall cabinet with a dim display
   // (IA-6: the cabinet was built INTO the wall — its face on the wall's plane (z-fight) and the screen hidden behind it;
   //  now on the room side of the wall face z −148.2)
@@ -224,14 +224,14 @@ function buildPool(L: LevelBuild) {
   const lcd = lampLens6(L, 'amber', 0.25);
   b.detail(() => { for (let i = 0; i < 4; i++) b.bx(lcd, -48.4 + i * 0.12, -18.85, -148.295, -48.33 + i * 0.12, -18.8, -148.284); });
   b.rod('steel_raw', -48.0, -17.9, -148.24, -48.0, -16.3, -148.24, 0.03, 8);
-  stencil6(b, 'DEWATERING / TRANSFER LOG — DL-2', -48.0, -17.72, -148.2, 1.4, 0.1, '-z');
-  stencil6(b, 'UNDERCROFT — PUMP ROOM', -66.5, -17.6, -148.2, 2.2, 0.18, '-z');
+  stencil6(b, '배수 / 이송 기록 — DL-2', -48.0, -17.72, -148.2, 1.4, 0.1, '-z');
+  stencil6(b, '언더크로프트 — 펌프실', -66.5, -17.6, -148.2, 2.2, 0.18, '-z');
 
   // ── the mid deck: crates MC1 / MC2, the cage's stores box ──
-  b.at(-65.4, MID, -159.4, 0, () => crate6(b, L, { w: 1.2, d: 1.2, h: 1.2, label: 'DOCK SPARES — MC1', collide: false }));
-  b.at(-39.4, MID, -159.4, 0, () => crate6(b, L, { w: 1.2, d: 1.2, h: 1.2, label: 'DOCK SPARES — MC2', collide: false }));
-  b.at(-54.5, MID, -166.7, PI / 2, () => storeBox(b, L, { w: 1.0, d: 0.6, h: 1.0, label: 'CAGE STORES', collide: false }));
-  stencil6(b, 'KEEP CLEAR OF SHEAR', -53.5, MID + 0.006, -171.3, 1.2, 0.14, '+y', { style: 'warning' });
+  b.at(-65.4, MID, -159.4, 0, () => crate6(b, L, { w: 1.2, d: 1.2, h: 1.2, label: '도크 예비품 — MC1', collide: false }));
+  b.at(-39.4, MID, -159.4, 0, () => crate6(b, L, { w: 1.2, d: 1.2, h: 1.2, label: '도크 예비품 — MC2', collide: false }));
+  b.at(-54.5, MID, -166.7, PI / 2, () => storeBox(b, L, { w: 1.0, d: 0.6, h: 1.0, label: '케이지 저장고', collide: false }));
+  stencil6(b, '전단부 접근 금지', -53.5, MID + 0.006, -171.3, 1.2, 0.14, '+y', { style: 'warning' });
 
   // ── the dock ammo lockers (gallery walls; interactables are the shell's / the story's) ──
   const lockers: [string, number, number, number, number, boolean][] = [
@@ -242,7 +242,7 @@ function buildPool(L: LevelBuild) {
   ];
   for (const [id, x, z, ry, sx, shelf] of lockers) {
     b.at(x, GAL, z, ry, () => {
-      const lk = ammoLocker(b, L, { name: id, shelf, shelfX: sx, label: 'AMMUNITION — 5.56 — FIRE POINT' });
+      const lk = ammoLocker(b, L, { name: id, shelf, shelfX: sx, label: '탄약 — 5.56 — 사격 지점' });
       const o = new THREE.Object3D();
       o.name = id;
       o.position.copy(lk.use);
@@ -253,7 +253,7 @@ function buildPool(L: LevelBuild) {
 
   // ── window walk: fire points (niche 0.3 m off the wall), life rings; fenders on the wet dock's kerbs ──
   // (collider: the closed lower cabinet only — the niche above it holds the pickup and must stay free)
-  for (const x of [-70.0, -34.0]) b.at(x, DOCK, -195.8, 0, () => { firePointCabinet(b, L, { w: 0.8, d: 0.45, h: 1.4, shelf: 1.0, label: 'FIRE POINT — WINDOW WALK', collide: false }); b.collide(-0.4, 0, 0, 0.4, 0.95, 0.45, 'metal', true); });
+  for (const x of [-70.0, -34.0]) b.at(x, DOCK, -195.8, 0, () => { firePointCabinet(b, L, { w: 0.8, d: 0.45, h: 1.4, shelf: 1.0, label: '사격 지점 — 창측 통로', collide: false }); b.collide(-0.4, 0, 0, 0.4, 0.95, 0.45, 'metal', true); });
   for (const x of [-67.0, -37.0]) b.at(x, -18.3, -195.8, 0, () => lifeRing(b, L));
   b.at(-28.2, -10.5, -178.0, -PI / 2, () => lifeRing(b, L));
   b.at(-75.8, -10.5, -178.0, PI / 2, () => lifeRing(b, L));
@@ -269,16 +269,16 @@ function buildPool(L: LevelBuild) {
   b.bx(K, W0 - 0.18, H0, -148.2, W0, H1, -148.28);
   b.bx(K, W1, H0, -148.2, W1 + 0.18, H1, -148.28);
   for (const x of [W0 + 1.0, W1 - 1.0]) b.rod('steel_raw', x, H1 + 0.18, -148.24, x, -2.0, -148.24, 0.025, 6);
-  stencil6(b, 'DOCK STATUS — HEAD-END REPEATER', -52.0, H1 + 0.42, -148.2, 4.0, 0.26, '-z', { plate: true });
+  stencil6(b, '도크 상태 — 헤드엔드 중계기', -52.0, H1 + 0.42, -148.2, 4.0, 0.26, '-z', { plate: true });
 
   // ── signs ──
-  stencil6(b, 'MOON POOL — 2,140 M', -75.8, -8.4, -176.0, 7.0, 0.8, '+x');
-  stencil6(b, 'ERIDU DEEP — DOCK', -75.8, -9.4, -176.0, 3.6, 0.36, '+x');
-  b.sign('CARGO LOCK — INNER DOOR CLOSED', 'danger', -61.5, -14.35, -166.075, 3.0, 0.32, '-z', 0, true);
-  b.sign('CARGO LOCK — INNER DOOR CLOSED', 'danger', -42.5, -14.35, -166.075, 3.0, 0.32, '-z', 0, true);
+  stencil6(b, '문풀 — 2,140 M', -75.8, -8.4, -176.0, 7.0, 0.8, '+x');
+  stencil6(b, '에리두 심해 — 도크', -75.8, -9.4, -176.0, 3.6, 0.36, '+x');
+  b.sign('화물 록 — 내부 문 닫힘', 'danger', -61.5, -14.35, -166.075, 3.0, 0.32, '-z', 0, true);
+  b.sign('화물 록 — 내부 문 닫힘', 'danger', -42.5, -14.35, -166.075, 3.0, 0.32, '-z', 0, true);
   for (const cx of [-61.5, -42.5]) for (const x of [cx - 1.3, cx + 1.3]) b.rod('steel_raw', x, -14.17, -166.08, x, -13.62, -166.02, 0.008, 4);
   for (const [x, z, rot] of [[-62.0, -168.0, 0], [-42.0, -168.0, 0], [-70.8, -188.5, PI / 2], [-33.2, -188.5, -PI / 2]] as const) {
-    stencil6(b, 'LOADER WORKING AREA — KEEP CLEAR', x, DOCK + 0.006, z, 4.2, 0.34, '+y', { style: 'warning', rot });
+    stencil6(b, '로더 작업 구역 — 접근 금지', x, DOCK + 0.006, z, 4.2, 0.34, '+y', { style: 'warning', rot });
   }
 
   // ── the containers (they exist once the dock is built: after the rooms, before the doors) ──
@@ -324,16 +324,16 @@ function buildStores(L: LevelBuild) {
   b.at(-73.4, y, Z1, PI, () => wallShelf6(b, L, { w: 2.4, d: 0.45, seed: 61 }));
   b.at(-66.8, y, Z1, PI, () => wallShelf6(b, L, { w: 2.4, d: 0.45, seed: 62 }));
   b.at(X0, y, -142.6, PI / 2, () => wallShelf6(b, L, { w: 2.0, d: 0.4, seed: 63 }));
-  for (const z of [-144.9, -145.75, -146.6]) b.at(X0, y + 1.6, z, PI / 2, () => lifeRing(b, L, { label: 'ERIDU DEEP — DOCK STORES' }));
-  b.at(-65.0, y, -146.7, 0, () => crate6(b, L, { w: 1.2, d: 1.4, h: 1.2, label: 'LIFTING GEAR — SLINGS / SHACKLES' }));
-  b.at(-65.0, y, -144.8, 0, () => crate6(b, L, { w: 1.2, d: 1.2, h: 0.9, label: 'ROPE — 32 MM WIRE' }));
+  for (const z of [-144.9, -145.75, -146.6]) b.at(X0, y + 1.6, z, PI / 2, () => lifeRing(b, L, { label: '에리두 심해 — 도크 저장고' }));
+  b.at(-65.0, y, -146.7, 0, () => crate6(b, L, { w: 1.2, d: 1.4, h: 1.2, label: '양중 장비 — 슬링 / 섀클' }));
+  b.at(-65.0, y, -144.8, 0, () => crate6(b, L, { w: 1.2, d: 1.2, h: 0.9, label: '로프 — 32 MM 와이어' }));
   b.at(X1, y + 1.3, -142.0, -PI / 2, () => hoseReel(b, L, { collide: true }));
   b.at(-74.9, y, -147.2, 0, () => storeBox(b, L, { w: 1.0, d: 0.8, h: 0.8, label: 'OIL ABSORBENT' }));
   b.at(-74.9, y + 0.8, -147.25, 0, () => storeBox(b, L, { w: 0.8, d: 0.6, h: 0.5, label: 'SHACKLES' }));
   b.at(-66.4, y, -141.5, 0, () => spareCoil(b, L, { r: 0.55 }));
   // ceiling fitting at the room's light (−70, −9.0, −144): batten on drop rods
   b.at(-70.0, y + 3.6, -144.0, 0, () => tunnelFitting(b, L, { len: 1.2, drop: 0.45, color: 'warm' }));
-  stencil6(b, 'DOCK STORES — NO NAKED LIGHTS', -70.0, y + 2.75, Z1, 2.8, 0.22, '-z', { plate: true });
+  stencil6(b, '도크 저장고 — 노화 금지', -70.0, y + 2.75, Z1, 2.8, 0.22, '-z', { plate: true });
 }
 
 export const DOCK_DRESS: Partial<Record<RoomId6, RoomDress>> = {

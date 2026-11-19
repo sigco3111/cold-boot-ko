@@ -69,11 +69,11 @@ export function containment(s: S4) {
   const glow = (col: string, f: () => void, k = 0.05) => { g.save(); g.shadowColor = col; g.shadowBlur = H * k; f(); g.restore(); };
   if (cleared) {
     g.fillStyle = GREEN; g.fillRect(0, 0, W, H * 0.05);
-    glow(GREEN, () => { g.fillStyle = GREEN; fit(g, 'HOLD CLEARED', 900, H * 0.22, W * 0.86); g.fillText('HOLD CLEARED', cx, H * 0.4); });
+    glow(GREEN, () => { g.fillStyle = GREEN; fit(g, '홀드 해제됨', 900, H * 0.22, W * 0.86); g.fillText('홀드 해제됨', cx, H * 0.4); });
     g.strokeStyle = GREEN; g.lineWidth = H * 0.035; g.lineCap = 'round'; g.lineJoin = 'round';
     g.beginPath(); g.moveTo(cx - H * 0.09, H * 0.66); g.lineTo(cx - H * 0.02, H * 0.73); g.lineTo(cx + H * 0.11, H * 0.59); g.stroke();
-    g.fillStyle = 'rgba(200,255,220,0.7)'; fit(g, 'SURGICAL SUITE — CONTAINMENT INTERLOCK RELEASED', 600, H * 0.055, W * 0.9);
-    g.fillText('SURGICAL SUITE — CONTAINMENT INTERLOCK RELEASED', cx, H * 0.88);
+    g.fillStyle = 'rgba(200,255,220,0.7)'; fit(g, '수술실 — 격리 인터록 해제됨', 600, H * 0.055, W * 0.9);
+    g.fillText('수술실 — 격리 인터록 해제됨', cx, H * 0.88);
     return;
   }
   // hazard bar (amber / black chevrons), pulsing slowly — the hold is still live
@@ -87,12 +87,12 @@ export function containment(s: S4) {
   g.restore();
   g.fillStyle = AMBER; g.fillRect(0, H - H * 0.02, W, H * 0.02);
   // title
-  const title = ack ? 'ACKNOWLEDGED — DOOR OBSTRUCTED' : 'CONTAINMENT HOLD';
+  const title = ack ? '확인됨 — 문 장애물' : '격리 유지';
   glow(AMBER, () => { g.fillStyle = WHITE; fit(g, title, 900, H * (ack ? 0.11 : 0.16), W * 0.9); g.fillText(title, cx, H * 0.26); });
   if (panel === 'suite') {
     // COLD STORE 2 — DOOR OPEN {counter}
-    g.fillStyle = AMBER; fit(g, 'COLD STORE 2 — DOOR OPEN', 800, H * 0.08, W * 0.9);
-    g.fillText('COLD STORE 2 — DOOR OPEN', cx, H * 0.4);
+    g.fillStyle = AMBER; fit(g, '냉장고 2 — 문 열림', 800, H * 0.08, W * 0.9);
+    g.fillText('냉장고 2 — 문 열림', cx, H * 0.4);
     glow(AMBER, () => { g.fillStyle = WHITE; fit(g, counter, 600, H * 0.14, W * 0.7, MONO); g.fillText(counter, cx, H * 0.54); }, 0.03);
     // the instruction with its arrow (where to go), two lines so it reads from the corridor
     const bh = H * 0.27, by = H * 0.67;
@@ -103,34 +103,34 @@ export function containment(s: S4) {
     const ax = left ? W * 0.03 + asz * 0.62 : W * 0.97 - asz * 0.62;
     arrowGlyph(g, ax, by + bh / 2, asz, left);
     const tx = left ? cx + asz * 0.55 : cx - asz * 0.55, tw = W * 0.94 - asz * 1.4;
-    const s1 = fit(g, 'LOCAL ACKNOWLEDGE ONLY', 900, bh * 0.4, tw);
-    g.fillText('HARD-WIRED —', tx, by + bh * 0.3);
+    const s1 = fit(g, '현장 확인만 가능', 900, bh * 0.4, tw);
+    g.fillText('유선 직결 —', tx, by + bh * 0.3);
     g.font = `900 ${Math.round(s1)}px ${SANS}`;
-    g.fillText('LOCAL ACKNOWLEDGE ONLY', tx, by + bh * 0.72);
+    g.fillText('현장 확인만 가능', tx, by + bh * 0.72);
     return;
   }
   // store panel (cold_panel): DOOR OPEN / SURGICAL SUITE SEALED / HARD-WIRED … / [ ACKNOWLEDGE ]
-  g.fillStyle = AMBER; fit(g, 'DOOR OPEN', 800, H * 0.075, W * 0.4); g.textAlign = 'right';
-  g.fillText('DOOR OPEN', cx - W * 0.02, H * 0.42);
+  g.fillStyle = AMBER; fit(g, '문 열림', 800, H * 0.075, W * 0.4); g.textAlign = 'right';
+  g.fillText('문 열림', cx - W * 0.02, H * 0.42);
   g.textAlign = 'left';
   glow(AMBER, () => { g.fillStyle = WHITE; fit(g, counter, 600, H * 0.12, W * 0.45, MONO); g.fillText(counter, cx + W * 0.01, H * 0.42); }, 0.03);
   g.textAlign = 'center';
-  g.fillStyle = ack ? AMB_D : WHITE; fit(g, 'SURGICAL SUITE SEALED', 800, H * 0.085, W * 0.9);
-  g.fillText(ack ? 'SURGICAL SUITE — HOLD CLEARED' : 'SURGICAL SUITE SEALED', cx, H * 0.55);
-  g.fillStyle = AMBER; fit(g, 'HARD-WIRED — LOCAL ACKNOWLEDGE ONLY', 700, H * 0.06, W * 0.9);
-  g.fillText('HARD-WIRED — LOCAL ACKNOWLEDGE ONLY', cx, H * 0.665);
+  g.fillStyle = ack ? AMB_D : WHITE; fit(g, '수술실 봉쇄됨', 800, H * 0.085, W * 0.9);
+  g.fillText(ack ? '수술실 — 홀드 해제됨' : '수술실 봉쇄됨', cx, H * 0.55);
+  g.fillStyle = AMBER; fit(g, '유선 직결 — 현장 확인만 가능', 700, H * 0.06, W * 0.9);
+  g.fillText('유선 직결 — 현장 확인만 가능', cx, H * 0.665);
   const bx = W * 0.2, bw = W * 0.6, by = H * 0.74, bh = H * 0.16;
   if (ack) {
     const on = Math.floor(t * 2) % 2 === 0;
     g.strokeStyle = AMB_D; g.lineWidth = H * 0.012; g.strokeRect(bx, by, bw, bh);
-    g.fillStyle = on ? '#ff6a3a' : '#a8401f'; fit(g, 'DOOR OBSTRUCTED', 900, bh * 0.5, bw * 0.9);
-    g.fillText('DOOR OBSTRUCTED', cx, by + bh * 0.53);
+    g.fillStyle = on ? '#ff6a3a' : '#a8401f'; fit(g, '문 장애물', 900, bh * 0.5, bw * 0.9);
+    g.fillText('문 장애물', cx, by + bh * 0.53);
   } else {
     const p = 0.55 + 0.45 * Math.abs(Math.sin(t * 2.6));
     glow(AMBER, () => {
       g.globalAlpha = p; g.strokeStyle = AMBER; g.lineWidth = H * 0.018; g.strokeRect(bx, by, bw, bh);
-      g.globalAlpha = 1; g.fillStyle = WHITE; fit(g, '[ ACKNOWLEDGE ]', 900, bh * 0.55, bw * 0.9);
-      g.fillText('[ ACKNOWLEDGE ]', cx, by + bh * 0.53);
+      g.globalAlpha = 1; g.fillStyle = WHITE; fit(g, '[ 확인 ]', 900, bh * 0.55, bw * 0.9);
+      g.fillText('[ 확인 ]', cx, by + bh * 0.53);
     }, 0.04);
   }
 }
@@ -260,7 +260,7 @@ export function videoLog(s: S4) {
     const fs = Math.round(H * 0.05);
     g.font = `${fs}px ${MONO}`; g.textBaseline = 'top'; g.textAlign = 'left';
     g.fillStyle = 'rgba(220,232,240,0.85)';
-    g.fillText('▶ LOG 41 — SUNDE', W * 0.03, H * 0.03);
+    g.fillText('▶ 기록 41 — 순데', W * 0.03, H * 0.03);
     const sec = 6 + LINE_AT[idx - 1] + Math.min(t, dur + 2);
     g.textAlign = 'right';
     g.fillText(`SUN 23:${String(10 + Math.floor(sec / 60)).padStart(2, '0')}:${String(Math.floor(sec) % 60).padStart(2, '0')}`, W * 0.97, H * 0.03);
@@ -283,7 +283,7 @@ export function videoLog(s: S4) {
   g.beginPath(); g.arc(cx, H * 0.42, r, 0, Math.PI * 2); g.stroke();
   g.fillStyle = `rgba(225,236,244,${pulse})`;
   g.beginPath(); g.moveTo(cx - r * 0.32, H * 0.42 - r * 0.45); g.lineTo(cx + r * 0.5, H * 0.42); g.lineTo(cx - r * 0.32, H * 0.42 + r * 0.45); g.closePath(); g.fill();
-  const title = 'SUNDE — LOG 41 — SUN 23:10 — ▶';
+  const title = '순데 — 기록 41 — 일 23:10 — ▶';
   g.fillStyle = '#eef4f8'; fit(g, title, 700, H * 0.085, W * 0.92);
   g.fillText(title, cx, H * 0.72);
   if (mode === 'paused') {
@@ -301,12 +301,12 @@ export function videoLogBeforeSet(s: S4) {
 
 /** 23 fitted: [rank, name, linked]. The four NO SIGNAL rows are 3c's shielded handful (D10). */
 const CREW: [string, string, boolean][] = [
-  ['PO1', 'BREKKE, H.', true], ['PO2', 'SOLBERG, K.', true], ['AB', 'TVEIT, J.', true], ['AB', 'NILSEN, O.', true],
-  ['AB', 'LUND, M.', true], ['LS', 'RISA, T.', false], ['AB', 'VIK, A.', true], ['AB', 'HOLTE, E.', true],
-  ['AB', 'MYHRE, S.', true], ['PO2', 'BAKKE, R.', true], ['AB', 'ØDEGÅRD, P.', false], ['AB', 'SÆTHER, L.', true],
-  ['LS', 'FJELD, K.', true], ['AB', 'NYGÅRD, I.', true], ['AB', 'RØNNING, B.', true], ['PO1', 'HAGEN, T.', false],
-  ['AB', 'STRØM, V.', true], ['AB', 'AUNE, D.', true], ['AB', 'EIDE, G.', true], ['AB', 'KNUTSEN, F.', false],
-  ['LS', 'SKOG, J.', true], ['AB', 'VOLD, H.', true], ['AB', 'GRAN, E.', true],
+  ['중사', '브레케, H.', true], ['하사', '솔베르그, K.', true], ['수병', '트베이트, J.', true], ['수병', '닐센, O.', true],
+  ['수병', '룬드, M.', true], ['선임수병', '리사, T.', false], ['수병', '비크, A.', true], ['수병', '홀테, E.', true],
+  ['수병', '미레, S.', true], ['하사', '바케, R.', true], ['수병', '외데고르, P.', false], ['수병', '세테르, L.', true],
+  ['선임수병', '피엘드, K.', true], ['수병', '니고르, I.', true], ['수병', 'RØNNING, B.', true], ['중사', '하겐, T.', false],
+  ['수병', '스트룀, V.', true], ['수병', '아우네, D.', true], ['수병', '에이데, G.', true], ['수병', '크누센, F.', false],
+  ['선임수병', '스코그, J.', true], ['수병', '볼드, H.', true], ['수병', '그란, E.', true],
 ];
 
 export function roster(s: S4) {
@@ -318,28 +318,28 @@ export function roster(s: S4) {
   g.fillStyle = 'rgba(230,237,240,0.08)'; g.fillRect(0, 0, W, hh);
   g.fillStyle = 'rgba(230,237,240,0.35)'; g.fillRect(0, hh - 2, W, 2);
   g.textBaseline = 'middle'; g.textAlign = 'left'; g.fillStyle = INK;
-  fit(g, 'CLASP LINK ROSTER — POST 4 DETACHMENT', 700, hh * 0.55, W * 0.7);
-  g.fillText('CLASP LINK ROSTER — POST 4 DETACHMENT', W * 0.02, hh * 0.52);
+  fit(g, '클라스프 링크 명단 — 초소 4 파견대', 700, hh * 0.55, W * 0.7);
+  g.fillText('클라스프 링크 명단 — 초소 4 파견대', W * 0.02, hh * 0.52);
   g.textAlign = 'right'; g.fillStyle = DIM; g.font = `500 ${Math.round(hh * 0.4)}px ${MONO}`;
-  g.fillText('BIO-SYS LINK MONITOR', W * 0.98, hh * 0.52);
+  g.fillText('바이오시스 링크 모니터', W * 0.98, hh * 0.52);
   // the two lines that must read from across the checkpoint
   g.textAlign = 'left';
   const y1 = H * 0.16, y2 = H * 0.27;
-  g.fillStyle = INK; fit(g, 'FITTED 23 — LINK 19 ACTIVE · 4 NO SIGNAL', 800, H * 0.075, W * 0.96);
-  g.fillText('FITTED 23 — LINK 19 ACTIVE · 4 NO SIGNAL', W * 0.02, y1);
-  const lbl = 'CONTROLLER:';
+  g.fillStyle = INK; fit(g, '장착 23 — 링크 19 활성 · 4 신호 없음', 800, H * 0.075, W * 0.96);
+  g.fillText('장착 23 — 링크 19 활성 · 4 신호 없음', W * 0.02, y1);
+  const lbl = '제어:';
   const cs = fit(g, lbl, 800, H * 0.075, W * 0.3);
   g.fillStyle = INK; g.fillText(lbl, W * 0.02, y2);
   let x = W * 0.02 + g.measureText(lbl).width + cs * 0.5;
-  g.fillStyle = GREY; g.fillText('NONE', x, y2);
-  const nw = g.measureText('NONE').width;
+  g.fillStyle = GREY; g.fillText('없음', x, y2);
+  const nw = g.measureText('없음').width;
   g.strokeStyle = GREY; g.lineWidth = Math.max(2, cs * 0.09);
   g.beginPath(); g.moveTo(x - cs * 0.1, y2); g.lineTo(x + nw + cs * 0.1, y2); g.stroke();
   x += nw + cs * 0.6;
-  g.save(); g.shadowColor = CYAN; g.shadowBlur = cs * 0.35; g.fillStyle = CYAN; g.fillText('NODE 2', x, y2); g.restore();
-  x += g.measureText('NODE 2').width + cs * 0.5;
+  g.save(); g.shadowColor = CYAN; g.shadowBlur = cs * 0.35; g.fillStyle = CYAN; g.fillText('노드 2', x, y2); g.restore();
+  x += g.measureText('노드 2').width + cs * 0.5;
   g.fillStyle = DIM; g.font = `500 ${Math.round(cs * 0.5)}px ${MONO}`;
-  g.fillText('ASSIGNED MON 08:40', x, y2 + cs * 0.05);
+  g.fillText('배정 월 08:40', x, y2 + cs * 0.05);
   g.fillStyle = 'rgba(230,237,240,0.18)'; g.fillRect(W * 0.02, H * 0.335, W * 0.96, 2);
   // crew: two columns (12 + 11), a 1 Hz red dot per linked row (staggered), grey for no signal
   const top = H * 0.36, rows = 12, rh = (H * 0.53) / rows;
@@ -366,14 +366,14 @@ export function roster(s: S4) {
     g.fillText(`${String(i + 1).padStart(2, '0')}  ${rank.padEnd(3, ' ')} ${name}`, x0 + dr * 3, yc + 1);
     g.textAlign = 'right'; g.font = `600 ${Math.round(fs * 0.85)}px ${MONO}`;
     g.fillStyle = linked ? 'rgba(255,90,70,0.85)' : GREY;
-    g.fillText(linked ? 'LINK ACTIVE' : 'NO SIGNAL', x0 + colW - W * 0.005, yc + 1);
+    g.fillText(linked ? '링크 활성' : '신호 없음', x0 + colW - W * 0.005, yc + 1);
   });
   // the commanding officer: not fitted, no dot
   const yk = top + 12 * rh + H * 0.055;
   g.fillStyle = 'rgba(230,237,240,0.18)'; g.fillRect(W * 0.02, yk - H * 0.035, W * 0.96, 2);
   g.textAlign = 'left'; g.fillStyle = INK;
-  fit(g, 'CO: CDR M. KESSLER — NOT FITTED', 700, H * 0.05, W * 0.9, MONO);
-  g.fillText('CO: CDR M. KESSLER — NOT FITTED', W * 0.025 + rh * 0.78, yk);
+  fit(g, '함장: 중령 M. 케슬러 — 미장착', 700, H * 0.05, W * 0.9, MONO);
+  g.fillText('함장: 중령 M. 케슬러 — 미장착', W * 0.025 + rh * 0.78, yk);
 }
 
 // ───────────────────────────── theatre_cam (gallery desk monitor, 0.6 × 0.4)
@@ -474,7 +474,7 @@ export function theatreCam(s: S4) {
   if (cue === 'off') {
     g.fillStyle = '#030405'; g.fillRect(0, 0, W, H);
     g.fillStyle = 'rgba(200,215,220,0.6)'; g.textAlign = 'center'; g.textBaseline = 'middle';
-    fit(g, 'THEATRE 1 — NO PROCEDURE', 600, H * 0.07, W * 0.8, MONO); g.fillText('THEATRE 1 — NO PROCEDURE', W / 2, H / 2);
+    fit(g, '수술실 1 — 예정 시술 없음', 600, H * 0.07, W * 0.8, MONO); g.fillText('수술실 1 — 예정 시술 없음', W / 2, H / 2);
     return;
   }
   g.drawImage(napeBase(s), 0, 0);
@@ -561,12 +561,12 @@ export function theatreCam(s: S4) {
   fit(g, `THEATRE 1 — FITTING 31 — ATTEMPT ${attTxt}`, 700, fs, W * 0.94, MONO);
   g.fillText(`THEATRE 1 — FITTING 31 — ATTEMPT ${attTxt}`, W * 0.03, fs * 0.35);
   g.font = `500 ${fs}px ${MONO}`; g.fillStyle = 'rgba(228,240,238,0.85)';
-  g.fillText('HOST: STRAND, E.', W * 0.03, fs * 1.55);
-  g.fillText('PULSE: NONE', W * 0.03, fs * 2.7);
+  g.fillText('호스트: 스트란드, E.', W * 0.03, fs * 1.55);
+  g.fillText('맥박: 없음', W * 0.03, fs * 2.7);
   g.textAlign = 'right'; g.fillStyle = 'rgba(228,240,238,0.6)';
-  g.fillText('CAM 2 · NAPE', W * 0.97, fs * 1.55);
+  g.fillText('CAM 2 · 후두부', W * 0.97, fs * 1.55);
   // LINK state: the line read from the door — large, with a dot that is the LED's colour
-  const link = cue === 'handshake' ? 'HANDSHAKE' : cue === 'fail' ? 'FAILED' : amber ? 'SEATED · NO LINK' : '—';
+  const link = cue === 'handshake' ? '핸드셰이크' : cue === 'fail' ? '실패' : amber ? '착석 · 링크 없음' : '—';
   const lcol = cue === 'handshake' ? '#ff5a3a' : cue === 'fail' ? '#ff3a2a' : amber ? '#ffb23a' : '#c9d6d4';
   const bh = H * 0.17, by = H * 0.74;
   g.fillStyle = cue === 'fail' ? 'rgba(70,6,4,0.8)' : 'rgba(0,0,0,0.55)'; g.fillRect(0, by, W, bh);
@@ -579,6 +579,6 @@ export function theatreCam(s: S4) {
   if (led || amber) { const c = amber ? '#ffaa28' : '#ff3a2a'; g.save(); g.shadowColor = c; g.shadowBlur = dr * 3; g.fillStyle = c; g.beginPath(); g.arc(dx, by + bh / 2, dr, 0, Math.PI * 2); g.fill(); g.restore(); }
   else { g.strokeStyle = 'rgba(200,214,212,0.6)'; g.lineWidth = 2; g.beginPath(); g.arc(dx, by + bh / 2, dr, 0, Math.PI * 2); g.stroke(); }
   g.fillStyle = 'rgba(228,240,238,0.75)'; g.textAlign = 'left';
-  fit(g, 'QUEUE: AUTO — ORDER 0031-H (YIELD)', 500, H * 0.045, W * 0.94, MONO);
-  g.fillText('QUEUE: AUTO — ORDER 0031-H (YIELD)', W * 0.03, H * 0.955);
+  fit(g, '대기열: 자동 — 오더 0031-H (수율)', 500, H * 0.045, W * 0.94, MONO);
+  g.fillText('대기열: 자동 — 오더 0031-H (수율)', W * 0.03, H * 0.955);
 }

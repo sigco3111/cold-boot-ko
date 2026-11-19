@@ -151,8 +151,8 @@ const type = (g: CanvasRenderingContext2D, text: string, x: number, y: number, p
 function ordersMat(L: LevelBuild) {
   return sheet(L, 'orders', 256, 340, (g, W, H) => {
     g.fillStyle = '#ece6d2'; g.fillRect(0, 0, W, H);
-    type(g, 'STANDING ORDERS', 18, 34, 22, 700);
-    type(g, 'BIO CHECKPOINT 2', 18, 58, 16, 700);
+    type(g, '상시 명령', 18, 34, 22, 700);
+    type(g, '바이오 검문소 2', 18, 58, 16, 700);
     g.fillStyle = '#333'; g.fillRect(18, 68, W - 36, 2);
     g.fillStyle = 'rgba(40,40,40,0.75)';
     for (let i = 0; i < 12; i++) g.fillRect(18 + (i % 3 === 0 ? 0 : 14), 88 + i * 17, W - 50 - ((i * 37) % 70), 5);
@@ -174,7 +174,7 @@ function calendarMat(L: LevelBuild) {
     g.fillStyle = '#f4f1ea'; g.fillRect(0, 0, W, H);
     g.fillStyle = '#41526a'; g.fillRect(0, 0, W, 120);
     g.fillStyle = '#9fb3c8'; for (let i = 0; i < 6; i++) g.fillRect(14 + i * 34, 70 - (i % 3) * 14, 24, 40 + (i % 3) * 14); // a ship, abstract
-    type(g, 'MARCH', 70, 148, 24, 700, '#203048');
+    type(g, '3월', 70, 148, 24, 700, '#203048');
     for (let d = 1; d <= 31; d++) {
       const c = (d + 4) % 7, r = Math.floor((d + 4) / 7);
       const x = 12 + c * 29, y = 170 + r * 24;
@@ -186,10 +186,10 @@ function calendarMat(L: LevelBuild) {
 function watchBillMat(L: LevelBuild) {
   return sheet(L, 'watchbill', 256, 340, (g, W, H) => {
     g.fillStyle = '#e9e4d4'; g.fillRect(0, 0, W, H);
-    type(g, 'WATCH BILL', 18, 32, 22, 700);
-    type(g, 'CHECKPOINT 2 — FEB', 18, 54, 15, 700);
+    type(g, '근무 명단', 18, 32, 22, 700);
+    type(g, '검문소 2 — 2월', 18, 54, 15, 700);
     g.fillStyle = '#333'; g.fillRect(18, 62, W - 36, 2);
-    const names = ['BREKKE', 'SOLBERG', 'TVEIT', 'NILSEN', 'LUND', 'RISA', 'VIK', 'HOLTE', 'MYHRE', 'BAKKE', 'FJELD', 'SKOG'];
+    const names = ['브레케', '솔베르그', '트베이트', '닐센', '룬드', '리사', '비크', '홀테', '미레', '바케', '피엘드', '스코그'];
     names.forEach((n, i) => { type(g, `${String(i % 4 * 6).padStart(2, '0')}00`, 18, 86 + i * 20, 13); type(g, n, 80, 86 + i * 20, 13, 700); });
   });
 }
@@ -255,9 +255,9 @@ const lcorr: RoomDress = {
         b.torus(fire, x, 2.62, -62.29, 0.14, 0.012, 'z', 14);
         for (let k = 0; k < 3; k++) { const a = (k / 3) * PI * 2; b.rod(fire, x, 2.62, -62.29, x + Math.cos(a) * 0.14, 2.62 + Math.sin(a) * 0.14, -62.29, 0.008, 4); }
       }
-      b.sign('BIO-SYS PROCESS WATER →', 'label', 7.0, 2.95, -62.525, 0.9, 0.07, '+z');
-      b.sign('SEA WATER — TUBE PLANT →', 'label', 11.0, 2.62, -62.385, 0.95, 0.08, '+z');
-      b.sign('FIRE MAIN', 'label', 16.8, 2.35, -62.595, 0.45, 0.06, '+z');
+      b.sign('바이오시스 공정수 →', 'label', 7.0, 2.95, -62.525, 0.9, 0.07, '+z');
+      b.sign('해수 — 튜브 플랜트 →', 'label', 11.0, 2.62, -62.385, 0.95, 0.08, '+z');
+      b.sign('소화 주관', 'label', 16.8, 2.35, -62.595, 0.45, 0.06, '+z');
     });
     // north wall: cable tray over both doors
     b.bx('steel_raw', 4.2, 2.86, -59.62, 23.8, 2.88, -59.2);
@@ -279,8 +279,8 @@ const lcorr: RoomDress = {
       b.push(20.7, y0 + 0.01, zf, PI - 0.3);
       b.bx(N, -1.0, 0, 0, 0, y1 - y0 - 0.02, 0.02);
       b.pop();
-      b.detail(() => b.sign('EMERGENCY LOCKER', 'stencil', 20.2, y1 - 0.04, zf + 0.002, 0.6, 0.05, '+z'));
-      b.detail(() => b.sign('+  FIRST AID', 'label', 20.2, 1.85, -62.795, 0.5, 0.1, '+z'));
+      b.detail(() => b.sign('비상 보관함', 'stencil', 20.2, y1 - 0.04, zf + 0.002, 0.6, 0.05, '+z'));
+      b.detail(() => b.sign('+  응급처치', 'label', 20.2, 1.85, -62.795, 0.5, 0.1, '+z'));
       b.collide(19.7, y0, zw, 20.7, y1, zf, 'metal', true);
     }
     // the empty fire-axe bracket by the stair (Eng took it): outline, two clips
@@ -288,7 +288,7 @@ const lcorr: RoomDress = {
     b.bx(paint(L, 0xa3221b, 0.5), -0.5, -0.17, 0, 0.5, 0.17, 0.008);
     b.bx(paint(L, 0xd9d4c4, 0.6), -0.46, -0.13, 0.008, 0.46, 0.13, 0.012);
     b.detail(() => {
-      b.sign('FIRE AXE', 'stencil', 0, 0.21, 0.004, 0.4, 0.07, '+z');
+      b.sign('소화 도끼', 'stencil', 0, 0.21, 0.004, 0.4, 0.07, '+z');
       for (const x of [-0.25, 0.2]) b.bx('steel_raw', x - 0.02, -0.03, 0.012, x + 0.02, 0.03, 0.05);
       b.bx(paint(L, 0x8c8a80, 0.6), -0.4, -0.012, 0.012, 0.3, 0.012, 0.017); // the haft's clean outline
       b.bx(paint(L, 0x8c8a80, 0.6), 0.3, -0.1, 0.012, 0.38, 0.1, 0.017);
@@ -296,11 +296,11 @@ const lcorr: RoomDress = {
     b.pop();
     // stencils, wayfinding, the deck warning before the checkpoint
     b.detail(() => {
-      b.sign('BIO-SYS SERVICE LEVEL — DECK 1', 'stencil', 8.5, 2.45, -59.205, 2.4, 0.16, '-z');
-      b.sign('TRANSFER TUBE — POST 4 →', 'directional', 16.2, 1.95, -62.795, 2.4, 0.26, '+z');
+      b.sign('바이오시스 서비스층 — 데크 1', 'stencil', 8.5, 2.45, -59.205, 2.4, 0.16, '-z');
+      b.sign('이송 튜브 — 초소 4 →', 'directional', 16.2, 1.95, -62.795, 2.4, 0.26, '+z');
       b.sign('FR 31', 'stencil', 4.205, 2.6, -62.0, 0.4, 0.14, '+x');
       b.sign('FR 36', 'stencil', 22.0, 2.45, -59.205, 0.4, 0.14, '-z');
-      b.sign('NAVAL AREA — STOP AT CHECKPOINT', 'stencil', 21.6, 0.004, -61.0, 2.6, 0.32, '+y', -PI / 2);
+      b.sign('해군 구역 — 검문소에서 정지', 'stencil', 21.6, 0.004, -61.0, 2.6, 0.32, '+y', -PI / 2);
     });
     deckLine(b, L, 4.4, -62.55, 23.6, -62.55, { w: 0.06 });
     b.detail(() => {
@@ -345,13 +345,13 @@ const chk: RoomDress = {
     b.at(28.0, 0, -55.2, PI, () => boothConsole(b, L, { collide: false }));
     // the controller terminal (term4_ctrl) stands on the desk in front of the riser; the release button proud of it
     b.at(27.2, 0.78, -55.66, PI, () => terminal(b));
-    L.screen(null, 'terminal_idle', 0.46, 0.3, 27.2, 1.08, -55.715, '-z', { text: 'CLASP LINK ROSTER — POST 4 DETACHMENT' });
+    L.screen(null, 'terminal_idle', 0.46, 0.3, 27.2, 1.08, -55.715, '-z', { text: '클라스프 링크 명단 — 초소 4 파견대' });
     b.push(28.8, 0, -55.2, PI);
     b.bx('painted_dark', -0.11, 0.9, 0.38, 0.11, 1.1, 0.44);
     b.cyl(paint(L, 0xb3261c, 0.35), 0, 1.0, 0.465, 0.045, 0.05, 'z', 14);
     b.detail(() => {
       for (const s of [-1, 1]) b.bx('steel_raw', s * 0.1 - 0.012, 0.92, 0.44, s * 0.1 + 0.012, 1.08, 0.5);
-      b.sign('TUBE RELEASE', 'label', 0, 1.15, 0.445, 0.22, 0.04, '+z');
+      b.sign('튜브 해제', 'label', 0, 1.15, 0.445, 0.22, 0.04, '+z');
     });
     b.pop();
     // the medkit shelf over the terminal (`p4_booth_med` at y 1.3)
@@ -368,8 +368,8 @@ const chk: RoomDress = {
     });
     b.pop();
     b.detail(() => {
-      b.sign('ALL PERSONNEL SHOW PASS', 'warning', 25.985, 1.6, -55.85, 0.7, 0.32, '-x', 0, true);
-      b.sign('STOP — SHOW PASS', 'stencil', 28.0, 0.62, -58.365, 1.4, 0.16, '-z');
+      b.sign('전원 출입증 제시', 'warning', 25.985, 1.6, -55.85, 0.7, 0.32, '-x', 0, true);
+      b.sign('정지 — 출입증 제시', 'stencil', 28.0, 0.62, -58.365, 1.4, 0.16, '-z');
     });
     sentryDock(b, 28.0, 4.0, -56.8);
 
@@ -391,7 +391,7 @@ const chk: RoomDress = {
     cb.bx('navy_grey', 36.6, 3.915, -62.625, 38.2, 3.995, -62.575);
     restyle(L, 'chk_cage', (m) => m === L.ctx.materials.get('floor_grate'), wm);
     b.detail(() => {
-      b.sign('ARMOURY — ISSUE ON AUTHORITY ONLY', 'warning', 37.4, 2.75, -62.54, 1.4, 0.22, '+z', 0, true);
+      b.sign('무기고 — 권한 있을 때만 지급', 'warning', 37.4, 2.75, -62.54, 1.4, 0.22, '+z', 0, true);
       b.decal('scratches', 1, 38.21, 1.15, -62.535, 0.07, 0.4, '+z');
       b.decal('scratches', 2, 36.59, 1.0, -62.535, 0.06, 0.3, '+z');
     });
@@ -404,17 +404,17 @@ const chk: RoomDress = {
     b.bx(board, 39.79, 0.45, -66.1, 39.8, 2.15, -62.9);
     b.detail(() => {
       for (const z of [-63.95, -65.05]) b.bx('painted_dark', 39.786, 0.95, z - 0.012, 39.79, 2.0, z + 0.012);
-      b.sign('ISSUE BOARD — SIGN FOR EVERY ITEM', 'stencil', 39.786, 2.05, -64.5, 1.6, 0.08, '-x');
+      b.sign('지급 게시판 — 모든 물품 서명', 'stencil', 39.786, 2.05, -64.5, 1.6, 0.08, '-x');
     });
     b.at(39.8, 0, -64.5, -PI / 2, () => weaponRack(b, L));
     for (const z of [-63.4, -65.6]) {
       b.push(39.8, 1.45, z, -PI / 2);
       b.bx('navy_grey', -0.18, -0.04, 0, 0.18, 0.04, 0.02);
       b.rod('steel_raw', 0, 0, 0.02, 0, -0.02, 0.13, 0.012, 6).rod('steel_raw', 0, -0.02, 0.13, 0, 0.05, 0.17, 0.012, 6);
-      b.detail(() => b.sign('BODY ARMOUR', 'stencil', 0, 0.3, 0.003, 0.5, 0.09, '+z'));
+      b.detail(() => b.sign('방탄복', 'stencil', 0, 0.3, 0.003, 0.5, 0.09, '+z'));
       b.pop();
     }
-    b.detail(() => b.sign('SMALL ARMS', 'stencil', 39.795, 2.3, -64.5, 0.8, 0.13, '-x'));
+    b.detail(() => b.sign('소화기', 'stencil', 39.795, 2.3, -64.5, 0.8, 0.13, '-x'));
     // shelving on the south wall (x 36.6 … 39.4): `p4_cage_ammo` on the 0.9 shelf; the rest emptied in March
     {
       const N = 'navy_grey', z0 = -66.8, z1 = -66.35;
@@ -425,7 +425,7 @@ const chk: RoomDress = {
         b.at(39.0, 1.405, -66.58, -0.15, () => ammoCan(b, L, { open: true, label: null }));
         b.at(36.95, 1.405, -66.58, 0.05, () => ammoCan(b, L, { open: true, label: null }));
         b.at(38.6, 1.915, -66.58, 0.2, () => ammoCan(b, L, { open: true, label: null }));
-        b.sign('7.62 — ISSUE', 'stencil', 38.0, 1.1, -66.343, 0.5, 0.08, '+z');
+        b.sign('7.62 — 지급', 'stencil', 38.0, 1.1, -66.343, 0.5, 0.08, '+z');
       });
       b.collide(36.6, 0, z0, 39.4, 1.95, z1, 'metal', true);
     }
@@ -435,27 +435,27 @@ const chk: RoomDress = {
       b.bx(O, 35.55, 0, -66.78, 36.45, 0.37, -66.0);
       b.bx('steel_raw', 35.53, 0.37, -66.8, 36.47, 0.39, -65.98);
       b.rbox(O, 36.0, 0.62, -66.74, 0.9, 0.5, 0.025, 0.12, 0, 0); // lid up against the wall
-      b.detail(() => b.sign('ARMOUR PLATES', 'stencil', 36.0, 0.2, -65.995, 0.6, 0.08, '+z'));
+      b.detail(() => b.sign('방탄판', 'stencil', 36.0, 0.2, -65.995, 0.6, 0.08, '+z'));
       b.collide(35.53, 0, -66.8, 36.47, 0.39, -65.98, 'metal', true);
     }
     // Eng at the cage door (§2.6): on his side, suit peeled to the waist, the fire axe beside him
     // (pelvis (36.2, −62.32), not the plan's (37.4, −61.9): his 0.15 m walk box (x 35.35 … 37.26, z −62.47 … −61.54,
     // arms splayed toward the room) must not cover a nav node — the 1 m grid rows z −61.5 / −62.5 and W4's hand nodes
     // through the cage door at x 37.4 — so he lies along the mesh west of the gap, feet in the doorway)
-    const eng = body(L, b, 'lying_side', 'Eng', { x: 36.2, y: 0, z: -62.32, ry: PI / 2, suitHalfOff: true });
+    const eng = body(L, b, 'lying_side', '엥', { x: 36.2, y: 0, z: -62.32, ry: PI / 2, suitHalfOff: true });
     if (L.ctx.debug.verbose || eng.box.max.x > 37.3 || eng.box.max.z > -61.52 || eng.box.min.z < -62.48) console.warn('[l4 navy] Eng footprint', eng.box.min.x.toFixed(2), eng.box.max.x.toFixed(2), eng.box.min.z.toFixed(2), eng.box.max.z.toFixed(2));
     b.at(38.35, 0, -61.05, -0.55, () => fireAxe(b, L));
     b.detail(() => b.decal('scratches', 3, 37.4, 0.006, -62.3, 1.4, 0.5, '+y'));
 
     // ── stencils, deck lines, a bench ──
     b.detail(() => {
-      b.sign('NAVAL CHECKPOINT 2', 'stencil', 24.205, 3.25, -61.0, 3.2, 0.36, '+x');
-      b.sign('TRANSFER TUBE — POST 4', 'stencil', 32.0, 3.25, -66.795, 3.0, 0.3, '+z');
-      b.sign('NAVAL SECURITY AREA', 'stencil', 37.4, 3.3, -55.205, 2.6, 0.3, '-z');
-      b.sign('AUTHORISED PERSONNEL ONLY', 'warning', 39.795, 1.9, -61.6, 1.2, 0.32, '-x', 0, true);
+      b.sign('해군 검문소 2', 'stencil', 24.205, 3.25, -61.0, 3.2, 0.36, '+x');
+      b.sign('이송 튜브 — 초소 4', 'stencil', 32.0, 3.25, -66.795, 3.0, 0.3, '+z');
+      b.sign('해군 경계 구역', 'stencil', 37.4, 3.3, -55.205, 2.6, 0.3, '-z');
+      b.sign('인가된 인원만', 'warning', 39.795, 1.9, -61.6, 1.2, 0.32, '-x', 0, true);
       b.sign('FR 38', 'stencil', 24.205, 2.6, -65.8, 0.4, 0.14, '+x');
       b.sign('FR 44', 'stencil', 39.795, 3.1, -57.2, 0.4, 0.14, '-x');
-      b.sign('WAIT HERE', 'stencil', 28.0, 0.004, -59.3, 1.4, 0.22, '+y');
+      b.sign('여기서 대기', 'stencil', 28.0, 0.004, -59.3, 1.4, 0.22, '+y');
     });
     deckLine(b, L, 25.2, -59.0, 30.8, -59.0, { w: 0.1 });
     deckLine(b, L, 29.7, -64.6, 34.3, -64.6, { w: 0.12, color: 'red' });
@@ -497,7 +497,7 @@ const guard: RoomDress = {
     }
     b.detail(() => {
       // Tveit's bunk: name tape, photos taped to the wall, the unsent letter on the blanket's foot (`note4_bunk`)
-      b.sign('AB TVEIT J.', 'label', 40.395, 0.95, -61.35, 0.32, 0.06, '-x');
+      b.sign('수병 트베이트 J.', 'label', 40.395, 0.95, -61.35, 0.32, 0.06, '-x');
       b.quad(artMat(L, 'photo', 3), 40.9, 0.95, -61.795, 0.13, 0.1, '+z', 0.05);
       b.quad(artMat(L, 'photo', 7), 41.15, 0.93, -61.795, 0.1, 0.13, '+z', -0.08);
       b.quad(paper(L, 0xe9e2c8), 40.9, 1.005, -61.794, 0.04, 0.012, '+z', 0.05);
@@ -518,7 +518,7 @@ const guard: RoomDress = {
       b.detail(() => {
         b.bx(N, 43.62, 0.06, -56.71, 44.18, 0.84, -56.7).bx(N, 44.22, 0.06, -56.71, 44.78, 0.84, -56.7);
         for (const x of [44.12, 44.28]) b.bx('steel_raw', x - 0.015, 0.6, -56.73, x + 0.015, 0.72, -56.71);
-        b.sign('READY USE', 'stencil', 44.2, 0.25, -56.715, 0.5, 0.09, '-z');
+        b.sign('상시 사용', 'stencil', 44.2, 0.25, -56.715, 0.5, 0.09, '-z');
       });
       b.collide(43.58, 0, -56.72, 44.82, 0.895, -56.2, 'metal', true);
     }
@@ -536,7 +536,7 @@ const guard: RoomDress = {
     b.detail(() => {
       b.quad(calendarMat(L), 42.7, 1.6, -56.203, 0.32, 0.44, '-z');
       b.quad(watchBillMat(L), 45.795, 1.45, -60.5, 0.32, 0.42, '-x');
-      b.sign('GUARD ROOM — CHECKPOINT 2', 'stencil', 40.205, 2.3, -60.9, 1.4, 0.16, '+x');
+      b.sign('경비실 — 검문소 2', 'stencil', 40.205, 2.3, -60.9, 1.4, 0.16, '+x');
       b.sign('SECURITY IS EVERYONE\'S WATCH', 'warning', 42.7, 2.35, -56.205, 1.1, 0.3, '-z', 0, true);
     });
   },
@@ -571,7 +571,7 @@ const plant4: RoomDress = {
     for (const [x, z, ry] of [[47.23, -60.11, 0], [49.77, -57.89, PI]] as const) {
       b.push(x, 1.36, z, ry);
       b.cyl(run, 0, 0, 0.012, 0.025, 0.024, 'z', 10);
-      b.detail(() => { b.cyl(paint(L, 0x5a1610, 0.4), 0.0, -0.08, 0.008, 0.02, 0.016, 'z', 10); b.sign('RUN', 'label', 0, 0.05, 0.002, 0.07, 0.025, '+z'); });
+      b.detail(() => { b.cyl(paint(L, 0x5a1610, 0.4), 0.0, -0.08, 0.008, 0.02, 0.016, 'z', 10); b.sign('가동', 'label', 0, 0.05, 0.002, 0.07, 0.025, '+z'); });
       b.pop();
     }
     // spinning couplings (moving parts): orange collar with a dark stripe + bolts on each pump train's shaft
@@ -612,8 +612,8 @@ const plant4: RoomDress = {
     if (grey) grey.parent?.remove(grey);
     L.objects.set('valve4_lever', valve.mount);
     b.detail(() => {
-      b.sign('EQUALISE BEFORE EVERY TRANSFER', 'warning', 55.795, 1.55, -60.6, 0.9, 0.28, '-x', 0, true);
-      b.sign('TUBE Δp — SEA', 'stencil', 55.795, 3.3, -60.6, 0.9, 0.12, '-x');
+      b.sign('매 이송 전 등압 필수', 'warning', 55.795, 1.55, -60.6, 0.9, 0.28, '-x', 0, true);
+      b.sign('튜브 Δp — 해수', 'stencil', 55.795, 3.3, -60.6, 0.9, 0.12, '-x');
     });
 
     // ── the sump (52, −62): W9b hatch on the greybox walk box, the grey panel hidden ──
@@ -622,7 +622,7 @@ const plant4: RoomDress = {
     // (detached, not hidden: the room visibility pass would show it again; its walk box stays in L.objects' userData)
     const gg = L.objects.get('plant_sump_grille');
     gg?.parent?.remove(gg);
-    b.detail(() => b.sign('SUMP — KEEP CLEAR', 'stencil', 52.0, 0.004, -60.95, 1.2, 0.16, '+y'));
+    b.detail(() => b.sign('섬프 — 접근 금지', 'stencil', 52.0, 0.004, -60.95, 1.2, 0.16, '+y'));
 
     // ── the supply chest by the valve (top 0.895): `p4_plant_plate`, `p4_plant_ammo`, `p4_plant_med` ──
     {
@@ -630,7 +630,7 @@ const plant4: RoomDress = {
       b.bx(O, 54.5, 0, -62.4, 55.5, 0.875, -61.3);
       b.bx('steel_raw', 54.48, 0.875, -62.42, 55.52, 0.895, -61.28);
       b.rbox(O, 55.68, 1.25, -61.85, 0.025, 0.72, 1.1, 0, 0, 0.12); // lid open against the wall
-      b.detail(() => { b.sign('DAMAGE CONTROL — READY USE', 'stencil', 54.495, 0.5, -61.85, 0.9, 0.09, '-x'); b.sign('+', 'danger', 55.795, 2.0, -62.3, 0.22, 0.22, '-x'); });
+      b.detail(() => { b.sign('손상 통제 — 상시 사용', 'stencil', 54.495, 0.5, -61.85, 0.9, 0.09, '-x'); b.sign('+', 'danger', 55.795, 2.0, -62.3, 0.22, 0.22, '-x'); });
     }
     // ── a spare motor on its pallet (NE corner, h 1.0): crouch cover with the door and the sump in sight ──
     {
@@ -639,7 +639,7 @@ const plant4: RoomDress = {
       b.cyl(P, 51.05, 0.5, -55.4, 0.3, 0.14, 'x', 16, 0.32);
       b.bx(P, 51.25, 0.14, -55.7, 51.95, 0.24, -55.1);
       b.bx(P, 51.45, 0.84, -55.55, 51.75, 1.0, -55.25);
-      b.detail(() => { b.rod('steel_raw', 51.0, 0.14, -54.85, 52.2, 1.0, -54.85, 0.008, 4); b.sign('SPARE — PUMP MOTOR', 'stencil', 51.6, 0.07, -56.005, 0.9, 0.08, '-z'); });
+      b.detail(() => { b.rod('steel_raw', 51.0, 0.14, -54.85, 52.2, 1.0, -54.85, 0.008, 4); b.sign('예비 — 펌프 모터', 'stencil', 51.6, 0.07, -56.005, 0.9, 0.08, '-z'); });
       b.collide(51.0, 0, -56.0, 52.2, 1.0, -54.8, 'metal', true);
     }
 
@@ -652,11 +652,11 @@ const plant4: RoomDress = {
       b.sign('SWL 2 T', 'stencil', 50.8, 4.38, -60.04, 0.3, 0.07, '+z');
     });
     b.detail(() => {
-      b.sign('TUBE PLANT', 'stencil', 51.6, 2.6, -54.205, 2.6, 0.36, '-z');
-      b.sign('PUMP SET A', 'stencil', 46.205, 2.2, -61.5, 1.0, 0.13, '+x');
-      b.sign('PUMP SET B', 'stencil', 46.205, 2.2, -56.5, 1.0, 0.13, '+x');
-      b.sign('HEARING PROTECTION MUST BE WORN', 'warning', 46.205, 3.0, -59.0, 1.4, 0.3, '+x', 0, true);
-      b.sign('DANGER — SEA PRESSURE', 'danger', 54.0, 2.3, -54.205, 1.0, 0.3, '-z', 0, true);
+      b.sign('튜브 플랜트', 'stencil', 51.6, 2.6, -54.205, 2.6, 0.36, '-z');
+      b.sign('펌프 세트 A', 'stencil', 46.205, 2.2, -61.5, 1.0, 0.13, '+x');
+      b.sign('펌프 세트 B', 'stencil', 46.205, 2.2, -56.5, 1.0, 0.13, '+x');
+      b.sign('청력 보호구 착용 필수', 'warning', 46.205, 3.0, -59.0, 1.4, 0.3, '+x', 0, true);
+      b.sign('위험 — 해수 압력', 'danger', 54.0, 2.3, -54.205, 1.0, 0.3, '-z', 0, true);
       b.sign('FR 52', 'stencil', 55.795, 3.9, -63.0, 0.4, 0.14, '-x');
     });
     const wet = L.puddleMat();

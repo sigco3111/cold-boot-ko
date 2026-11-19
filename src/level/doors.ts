@@ -46,7 +46,7 @@ export interface DoorSpec {
   status?: 'cycling' | 'dark' | null;
   /**
    * Stage 3b §2.2 (D12): the prompt shown while the door's status is `cycling` (amber CYCLING panel) — the reason for
-   * the hold ("Containment hold", "Release from booth"). Default "Cycling".
+   * the hold ("격리 유지", "부스에서 해제"). Default "Cycling".
    */
   cyclingPrompt?: string;
   /**

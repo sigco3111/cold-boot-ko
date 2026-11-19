@@ -446,7 +446,7 @@ export function bracketShelf(b: Builder, L: LevelBuild, o: { w?: number; d?: num
  * at floor level, `len` (1.6) along x, `d` (0.9) out (+z = the corridor face). A haze-grey floor-standing steel
  * enclosure on a dark plinth: two doors (1 cm proud, hinged on the outer edges) either side of a fixed centre mullion,
  * three-point T-handles and a padlock hasp, a drip canopy at 1.8, louvres on the ends, three conduits rising from its top
- * to the tray at 2.0, an earth bar, a rating plate and a `DANGER — 400 V` sign. `shelf` hangs a bracket shelf on the
+ * to the tray at 2.0, an earth bar, a rating plate and a `위험 — 400 V` sign. `shelf` hangs a bracket shelf on the
  * mullion with its plate top at 1.0 (the §5.2 pickups: item 0.15 m out of the face). Calls: 2 (navy_grey +
  * painted_dark) + atlas. Collider: exactly `len` × `d` × 1.8 (+ the shelf's thin box).
  */
@@ -476,7 +476,7 @@ export function junctionBox(b: Builder, L: LevelBuild, o: { len?: number; d?: nu
     for (const x of [-0.45, 0.0, 0.45]) { b.cyl(K, x, h + 0.02, 0.18, 0.04, 0.04, 'y', 10); b.cyl(K, x, h + 0.13, 0.12, 0.028, 0.22, 'y', 8); b.rod(K, x, h + 0.24, 0.12, x, h + 0.3, 0.04, 0.028, 8); }
   });
   stencil6(b, o.label ?? 'JB 24', -len / 4, h - 0.2, d - 0.007, 0.3, 0.09, '+z');
-  stencil6(b, 'DANGER — 400 V', len / 4, h - 0.22, d - 0.007, 0.36, 0.1, '+z', { style: 'danger' });
+  stencil6(b, '위험 — 400 V', len / 4, h - 0.22, d - 0.007, 0.36, 0.1, '+z', { style: 'danger' });
   let shelf: THREE.Vector3 | null = null;
   if (o.shelf) b.at(0, 0, d - 0.004, 0, () => { shelf = bracketShelf(b, L, { w: 0.42, d: 0.3, top: 1.0, collide: o.collide }); });
   if (o.collide !== false) b.collide(-len / 2, 0, 0, len / 2, h, d, 'metal', true);
@@ -762,7 +762,7 @@ export function cableDrum(b: Builder, L: LevelBuild, o: { mount?: 'cradle' | 'st
   b.bx(N, px - 0.06, 0, pz - 0.1, px + 0.1, 0.1, pz + 0.12);
   b.bx(N, px - 0.04, 0.1, pz - 0.04, px + 0.04, cy + 0.4, pz + 0.04);
   b.bx(N, px - 0.18, cy + 0.06, pz - 0.04, px + 0.04, cy + 0.14, pz + 0.04); // pawl bracket arm
-  b.detail(() => stencil6(b, 'BRAKE ON WHEN STANDING', px + 0.041, 1.55, pz, 0.36, 0.06, '+x'));
+  b.detail(() => stencil6(b, '정지 시 브레이크 체결', px + 0.041, 1.55, pz, 0.36, 0.06, '+x'));
   const S: Mat = 'steel_raw';
   pawl = part6(b, L, `${nm}_pawl`, R + 0.06, cy + 0.1, fz + 0.035, (p) => {
     p.cyl(S, 0, 0, 0, 0.03, 0.05, 'z', 10);
@@ -955,7 +955,7 @@ export function crate6(b: Builder, L: LevelBuild, o: { w?: number; d?: number; h
     for (const sz of [-1, 1]) for (const x of [-w / 4, w / 4]) { b.bx(K, x - 0.05, h - 0.2, sz * (d / 2 + 0.012) - (sz > 0 ? 0 : 0.02), x + 0.05, h - 0.12, sz * (d / 2 + 0.012) + (sz > 0 ? 0.02 : 0)); }
     for (const sx of [-1, 1]) { b.rod(K, sx * (w / 2 + 0.03), h * 0.6, -0.15, sx * (w / 2 + 0.03), h * 0.6, 0.15, 0.014, 6); for (const z of [-0.15, 0.15]) b.rod(K, sx * (w / 2 + 0.012), h * 0.6, z, sx * (w / 2 + 0.03), h * 0.6, z, 0.012, 5); }
   });
-  stencil6(b, o.label ?? 'HALCYON SUBSEA — JOINTING KIT', 0, h * 0.5, d / 2 + 0.013, Math.min(0.9, w * 0.7), 0.08, '+z', { style: 'stencil' });
+  stencil6(b, o.label ?? '할시온 서브시 — 조인팅 키트', 0, h * 0.5, d / 2 + 0.013, Math.min(0.9, w * 0.7), 0.08, '+z', { style: 'stencil' });
   if (o.collide !== false) b.collide(-w / 2, 0, -d / 2, w / 2, h, d / 2, 'metal', true);
 }
 
@@ -1003,7 +1003,7 @@ export function firstAidBox6(b: Builder, L: LevelBuild, o: { collide?: boolean }
   b.detail(() => { b.bx(Wt, w / 2 - 0.12, h / 2 - 0.035, 0.0, w / 2 + 0.12, h / 2 + 0.035, 0.004); b.bx(Wt, w / 2 - 0.035, h / 2 - 0.12, 0.0, w / 2 + 0.035, h / 2 + 0.12, 0.004); });
   b.pop();
   b.detail(() => { b.bx(Wt, -0.22, y0 + 0.315, 0.04, -0.06, y0 + 0.42, 0.2); b.cyl(Wt, 0.12, y0 + 0.37, 0.15, 0.04, 0.11, 'y', 10); });
-  stencil6(b, 'FIRST AID', 0, y0 + h + 0.08, 0.001, 0.36, 0.08, '+z');
+  stencil6(b, '응급처치', 0, y0 + h + 0.08, 0.001, 0.36, 0.08, '+z');
   if (o.collide !== false) b.collide(-w / 2, y0, 0, w / 2, y0 + h, d, 'metal', false);
   return b.world(0, 1.0, 0.25);
 }
@@ -1028,7 +1028,7 @@ export function jointBox(b: Builder, L: LevelBuild, o: { w?: number; d?: number;
     b.cyl(N, s * 0.98, by + 0.2, 0, 0.11, 0.16, 'x', 14);
     hose(b, A, [[s * 1.06, by + 0.2, 0], [s * 1.25, by + 0.05, 0.1], [s * 1.0, 0.07, 0.6], [s * 0.4, 0.07, 0.85], [-s * 0.3, 0.07, 0.75]], 0.062, 10, 6);
   }
-  stencil6(b, 'JOINT 2-B — DO NOT OPEN WET', 0, by + 0.2, 0.301, 0.8, 0.07, '+z');
+  stencil6(b, '조인트 2-B — 젖은 상태 개봉 금지', 0, by + 0.2, 0.301, 0.8, 0.07, '+z');
   if (o.collide !== false) b.collide(-w / 2 + 0.05, 0, -0.4, w / 2 - 0.05, h, 0.4, 'metal', true);
 }
 
@@ -1110,7 +1110,7 @@ export function mimicFrame(b: Builder, L: LevelBuild, o: { w?: number; h?: numbe
     b.bx(N, -1.4, h / 2 + f, 0, 1.4, h / 2 + f + 0.24, 0.05);
     b.cyl(K, w / 2 - 0.3, h / 2 + 0.8, 0.05, 0.025, 1.4, 'y', 8);
   });
-  stencil6(b, o.title ?? 'HEAD-END — TRUNK 1 — MIMIC', 0, h / 2 + f + 0.12, 0.051, 2.4, 0.16, '+z');
+  stencil6(b, o.title ?? '헤드엔드 — 트렁크 1 — 미믹', 0, h / 2 + f + 0.12, 0.051, 2.4, 0.16, '+z');
   return { screen: b.world(0, 0, 0.03), w, h };
 }
 
@@ -1146,7 +1146,7 @@ export function consoleDesk(b: Builder, L: LevelBuild, o: { len?: number; d?: nu
     for (let x = -len / 2 + 1.0; x < len / 2 - 0.5; x += 1.6) { b.bx(K, x - 0.22, h, up + 0.12, x + 0.22, h + 0.025, up + 0.28); }
     b.bx(K, len / 2 - 0.5, h, up + 0.02, len / 2 - 0.25, h + 0.09, up + 0.14);
   });
-  stencil6(b, 'HEAD-END CONTROL — TRUNK 1', 0, upH - 0.025 + 0.0, up + 0.013, 1.3, 0.035, '+z');
+  stencil6(b, '헤드엔드 제어 — 트렁크 1', 0, upH - 0.025 + 0.0, up + 0.013, 1.3, 0.035, '+z');
   if (o.collide !== false) { b.collide(-len / 2, 0, 0, len / 2, h, d, 'metal', true); b.collide(-len / 2, h, 0, len / 2, upH, up, 'metal', false); }
   return { screens, top: h };
 }
@@ -1217,7 +1217,7 @@ export function dehumidifier(b: Builder, L: LevelBuild, o: { w?: number; d?: num
     b.cyl(S, x, dy, d * 0.45 / 2, 0.17, d * 0.45, 'z', 18);
     b.detail(() => { for (let y = h + 0.3; y < dy - 0.1; y += 0.4) b.torus(S, x, y, d * 0.45, 0.172, 0.008, 'y', 18); });
   }
-  stencil6(b, o.label ?? 'DH 1 — DESICCANT — KEEP DOORS SHUT', 0, h - 0.14, d - 0.001, 1.1, 0.07, '+z');
+  stencil6(b, o.label ?? 'DH 1 — 건조제 — 문 닫아 둘 것', 0, h - 0.14, d - 0.001, 1.1, 0.07, '+z');
   if (o.collide !== false) b.collide(-w / 2, 0, 0, w / 2, h, d, 'metal', true);
 }
 
@@ -1248,7 +1248,7 @@ export function nitrogenRack(b: Builder, L: LevelBuild, o: { len?: number; d?: n
     b.bx(G, len / 2 - 0.35, 1.5, -0.08, len / 2 - 0.15, 1.75, 0.08);
     for (const s of [-1, 1]) b.cyl(N, len / 2 - 0.25 + s * 0.06, 1.62, 0.09, 0.04, 0.02, 'z', 12);
   });
-  stencil6(b, 'NITROGEN — DRY PURGE — VAULT', 0, 1.4, d / 2 + 0.001, 1.0, 0.07, '+z');
+  stencil6(b, '질소 — 건식 퍼지 — 볼트', 0, 1.4, d / 2 + 0.001, 1.0, 0.07, '+z');
   let shelf: THREE.Vector3 | null = null;
   if (o.shelf !== false) b.at(0, 0, d / 2, 0, () => { shelf = bracketShelf(b, L, { w: 0.5, d: 0.3, top: 1.0, collide: o.collide }); });
   if (o.collide !== false) b.collide(-len / 2, 0, -d / 2, len / 2, h, d / 2, 'metal', true);
@@ -1740,7 +1740,7 @@ export function barGuard(b: Builder, L: LevelBuild, o: { pts: [number, number][]
  * visual exit rungs down the outer face at each gate; sluice ports in the south face below the wet dock's water).
  * Builder-frame coordinates: the OUTER plan box x0 … x1, z0 … z1, dock floor `y`; `inner` (−20.4 abs → `depth` below the
  * floor, 0.6) = how far the inner lining runs down (into the water). Steel plate walls painted yellow with a worn
- * hazard band on the outer faces, a capping bar, stiffener ribs inside, `NO ENTRY — WET WELL` stencils; the guard
+ * hazard band on the outer faces, a capping bar, stiffener ribs inside, `출입 금지 — 웨트웰` stencils; the guard
  * (painted yellow, merged) with `gates` [face, centre] gaps (the gates are W7's); the sluice ports as dark recessed
  * frames. Calls: 2 (painted_yellow + hazard_stripes) + atlas; `band: false` = 1 (the chamber budget's "coaming + rail 1"). Colliders (`collide`): the coaming solid (rounds stop),
  * the guard move-only.
@@ -1761,7 +1761,7 @@ export function coaming(b: Builder, L: LevelBuild, o: { x0: number; x1: number; 
     for (let x = x0 + 1.0; x < x1 - 0.5; x += 1.5) { b.bx(Y, x - 0.01, y - dep, z0 + t, x + 0.01, top - 0.05, z0 + t + 0.12); b.bx(Y, x - 0.01, y - dep, z1 - t - 0.12, x + 0.01, top - 0.05, z1 - t); }
     for (const x of o.sluices ?? []) { b.bx(o.band !== false ? H : Y, x - 0.45, y - 0.55, z0 - 0.012, x + 0.45, y - 0.1, z0 + 0.002); }
   });
-  for (const [f, cx, cz] of [['-z', (x0 + x1) / 2, z0], ['+z', (x0 + x1) / 2, z1], ['-x', x0, (z0 + z1) / 2], ['+x', x1, (z0 + z1) / 2]] as [Face, number, number][]) stencil6(b, 'NO ENTRY — WET WELL', cx, y + 0.65, cz, 1.6, 0.14, f, { style: 'danger' });
+  for (const [f, cx, cz] of [['-z', (x0 + x1) / 2, z0], ['+z', (x0 + x1) / 2, z1], ['-x', x0, (z0 + z1) / 2], ['+x', x1, (z0 + z1) / 2]] as [Face, number, number][]) stencil6(b, '출입 금지 — 웨트웰', cx, y + 0.65, cz, 1.6, 0.14, f, { style: 'danger' });
   if (o.collide !== false) {
     b.collide(x0, y - dep, z0, x1, top, z0 + t, 'metal', true).collide(x0, y - dep, z1 - t, x1, top, z1, 'metal', true);
     b.collide(x0, y - dep, z0 + t, x0 + t, top, z1 - t, 'metal', true).collide(x1 - t, y - dep, z0 + t, x1, top, z1 - t, 'metal', true);
@@ -1832,8 +1832,8 @@ function containerGeo(L: LevelBuild, color: ContainerColor): { geo: THREE.Buffer
   if (!geo) { const p = L.part('container_geo'); containerBody(p, mat); geo = p.bake(); c.set(color, geo); }
   return { geo, mat };
 }
-/** Container label atlas: `B-01` … `B-14`, `HALCYON BIO-SYSTEMS DIV.`, the owner code line. White stencil, alpha-tested. */
-const LABELS = ['HALCYON BIO-SYSTEMS DIV.', 'HBSU 640 112 3  22G1', ...Array.from({ length: 14 }, (_, i) => `B-${String(i + 1).padStart(2, '0')}`)];
+/** Container label atlas: `B-01` … `B-14`, `할시온 바이오 시스템즈 사업부`, the owner code line. White stencil, alpha-tested. */
+const LABELS = ['할시온 바이오 시스템즈 사업부', 'HBSU 640 112 3  22G1', ...Array.from({ length: 14 }, (_, i) => `B-${String(i + 1).padStart(2, '0')}`)];
 function labelCell(i: number): [number, number, number, number] {
   // rows: 0 = wide text (1024 × 96), 1 = code (1024 × 64), then 14 numbers in a 4 × 4 grid of 256 × 160
   if (i === 0) return [0, 0, 1024, 96];
@@ -2033,7 +2033,7 @@ export function pumpHousing(b: Builder, L: LevelBuild, o: { w?: number; d?: numb
 /** Door + contents of `ammoLocker`. */
 export interface AmmoLocker { door: MovingPart6; open(k: number): void; swing(): { dur: number }; set(full: boolean): void; readonly full: boolean; shelf: THREE.Vector3; use: THREE.Vector3 }
 /**
- * Dock ammo locker (§2.6.9 `locker6_e/_w/_n`: fire-point lockers on the gallery walls, "Take ammo", re-armed at every
+ * Dock ammo locker (§2.6.9 `locker6_e/_w/_n`: fire-point lockers on the gallery walls, "탄약 가져가기", re-armed at every
  * boss restore; beside each a medkit / plate on the locker's shelf at 1.0, 0.3 m from the face). Wall prop, origin on
  * the wall face at floor level: an olive steel wall cabinet (0.8 × 0.75 × 0.32, floor at 0.7) with a yellow-banded door
  * hinged on −x (a moving part: `open(k)`, `swing()` 0.5 s), stacked ammo cans inside (`set(full)` shows / hides them —
@@ -2048,7 +2048,7 @@ export function ammoLocker(b: Builder, L: LevelBuild, o: { label?: string; shelf
   for (const s of [-1, 1]) b.bx(O, s * w / 2 - (s > 0 ? 0.02 : 0), y0, 0, s * w / 2 + (s < 0 ? 0.02 : 0), y0 + h, d);
   b.bx(K, -w / 2 + 0.02, y0 + 0.02, 0, w / 2 - 0.02, y0 + h - 0.02, 0.01);
   b.bx(O, -w / 2 + 0.02, y0 + 0.36, 0.01, w / 2 - 0.02, y0 + 0.38, d - 0.02);
-  stencil6(b, o.label ?? 'AMMUNITION — 5.56 — FIRE POINT', 0, y0 + h + 0.09, 0.001, 0.8, 0.08, '+z', { style: 'warning' });
+  stencil6(b, o.label ?? '탄약 — 5.56 — 사격 지점', 0, y0 + h + 0.09, 0.001, 0.8, 0.08, '+z', { style: 'warning' });
   const sx = o.shelfX ?? 1.0;
   let shelf = b.world(sx, 1.0, 0.3);
   if (o.shelf !== false) {

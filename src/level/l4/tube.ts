@@ -132,17 +132,17 @@ function tubeBuild(L: LevelBuild) {
   // (opening 1 cm inside the shell's 2.6 × 3.0 on the jambs and the header: their faces were coplanar)
   b.at(TX, 0, RING_Z, 0, () => bulkheadRing(b, L, { depth: 0.52, opening: [2.58, 2.99], collide: false }));
   for (const sx of [-1, 1]) b.collide(TX + sx * 1.4 - 0.3, 0, RING_Z + 0.28, TX + sx * 1.4 + 0.3, 0.38, RING_Z + 0.58, 'metal', true);
-  stencil(b, 'FRAME 05 — BULKHEAD', TX, 3.23, RING_Z + 0.3, 1.0, 0.1, '+z');
-  stencil(b, 'DEPTH 2 104 M', TX, 3.23, RING_Z - 0.3, 0.8, 0.1, '-z');
+  stencil(b, '프레임 05 — 격벽', TX, 3.23, RING_Z + 0.3, 1.0, 0.1, '+z');
+  stencil(b, '수심 2 104 M', TX, 3.23, RING_Z - 0.3, 0.8, 0.1, '-z');
 
   // cover: three wall cabinets (1.05 m), staggered between frames
-  cabinet(b, L, -1, -81.0, 'EMERGENCY AIR', 'eba');
-  cabinet(b, L, 1, -93.0, 'FIRE HOSE', 'hose');
-  cabinet(b, L, -1, -99.0, 'CABLE TRANSIT — DO NOT OPEN', 'mct');
+  cabinet(b, L, -1, -81.0, '비상 공기', 'eba');
+  cabinet(b, L, 1, -93.0, '소화 호스', 'hose');
+  cabinet(b, L, -1, -99.0, '케이블 관통구 — 열지 마세요', 'mct');
 
   // end-wall stencils
-  stencil(b, 'TRANSFER TUBE T-4 — 40 M — POST 4 →', TX + 1.0, 3.1, Z_N - 0.005, 1.4, 0.09, '-z');
-  stencil(b, '← NAVAL CHECKPOINT 2', TX - 1.1, 3.1, Z_S + 0.005, 1.0, 0.09, '+z');
+  stencil(b, '이송 튜브 T-4 — 40 M — 초소 4 →', TX + 1.0, 3.1, Z_N - 0.005, 1.4, 0.09, '-z');
+  stencil(b, '← 해군 검문소 2', TX - 1.1, 3.1, Z_S + 0.005, 1.0, 0.09, '+z');
 
   // the tube's steel a shade darker than the checkpoint's haze grey: 1–2 m from the spine lamps the kit's navy_grey went
   // pale and the frames read as lit showroom columns against the water
@@ -235,7 +235,7 @@ function gatelBuild(L: LevelBuild) {
   b.bx(N, xw, 1.35, -112.45, xw + 0.03, 1.95, -111.35);
   const dial = dialFaceMat(L);
   b.detail(() => {
-    for (const [z, t] of [[-112.15, 'TUBE'], [-111.65, 'POST 4']] as const) {
+    for (const [z, t] of [[-112.15, '튜브'], [-111.65, '초소 4']] as const) {
       b.cyl('steel_raw', xw + 0.05, 1.7, z, 0.12, 0.04, 'x', 16);
       b.quad(dial, xw + 0.072, 1.7, z, 0.2, 0.2, '+x', 0, 'unit', 0.001);
       b.sign(t, 'stencil', xw + 0.034, 1.47, z, 0.3, 0.07, '+x');
@@ -251,12 +251,12 @@ function gatelBuild(L: LevelBuild) {
   b.bx('painted_dark', 33.97, 1.0, zf, 34.23, 1.3, zf + 0.025);
   b.detail(() => {
     b.quad(palmMat(L), 34.1, 1.15, zf + 0.027, 0.2, 0.24, '+z', 0, 'unit', 0.001);
-    b.sign('PALM', 'label', 34.1, 1.035, zf + 0.026, 0.12, 0.035, '+z');
+    b.sign('손바닥', 'label', 34.1, 1.035, zf + 0.026, 0.12, 0.035, '+z');
   });
   // (label: false also drops the shell builder's signs — the sealed gate's lintel label is put back here, as kit.ts lays it)
-  b.detail(() => b.sign('POST 4', 'label', TX, 2.8 + 0.155, -113 + 0.32, 0.84, 0.13, '+z'));
-  stencil(b, 'POST 4 — PRESSURE GATE — NAVAL ACCESS ONLY', TX, 3.35, zf + 0.005, 2.6, 0.12, '+z');
-  stencil(b, 'POST 4 — GATE LOCK', TX + 2.79, 2.3, -109.6, 0.95, 0.1, '-x');
+  b.detail(() => b.sign('초소 4', 'label', TX, 2.8 + 0.155, -113 + 0.32, 0.84, 0.13, '+z'));
+  stencil(b, '초소 4 — 압력 게이트 — 해군 전용', TX, 3.35, zf + 0.005, 2.6, 0.12, '+z');
+  stencil(b, '초소 4 — 게이트 록', TX + 2.79, 2.3, -109.6, 0.95, 0.1, '-x');
 
   // the lock is a pressure vessel: frames on the side walls (channel posts + a header), a rub rail
   for (const s of [-1, 1]) {
@@ -271,7 +271,7 @@ function gatelBuild(L: LevelBuild) {
 
   // hold-back line and keep-clear stencil in front of the gate
   deckLine(b, L, TX - 1.9, -112.1, TX + 1.9, -112.1, { w: 0.1 });
-  stencil(b, 'KEEP CLEAR', TX, 0.003, -111.75, 1.0, 0.16, '+y');
+  stencil(b, '앞을 비워 두세요', TX, 0.003, -111.75, 1.0, 0.16, '+y');
 
   // cable tray along the ceiling (north–south) and the gate's hydraulic lines across the south wall top
   b.detail(() => {

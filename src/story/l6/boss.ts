@@ -768,11 +768,11 @@ export abstract class Boss6 extends Base6 {
     const lowered = this.now - this.revealAt >= 6.0 || f.hostile || this.restoredFrom !== null;
     const rams = (f.ramE ? 1 : 0) + (f.ramW ? 1 : 0);
     const rows = [
-      'MOON POOL — DOCK — 2,140 M',
+      '문풀 — 도크 — 2,140 M',
       `TRANSFER B-14: ${lowered ? 'IN WELL — AWAITING LOCK CYCLE' : 'LOWERING'}`,
-      'CARGO LOCK: INNER DOOR CLOSED',
-      'DEWATERING: 34 % — STOPPED',
-      f.trunkCut ? 'TRUNK: LOS · BUOY: LOS' : `TETHER: TAUT — BUOY: ${f.pulled ? 'LINK ACTIVE' : 'STANDBY'}`,
+      '화물 록: 내부 문 닫힘',
+      '배수: 34 % — 정지됨',
+      f.trunkCut ? '트렁크: 신호 손실 · 부이: 신호 손실' : `TETHER: TAUT — BUOY: ${f.pulled ? '링크 활성' : '대기'}`,
       `LOADER DL-2: ${f.loaderDead ? 'OFFLINE' : rams >= 2 ? 'CONTROL FAULT' : f.hostile ? 'HAZARD — PERSONNEL ON DOCK' : 'WORKING'}`,
     ];
     const t = rows.join('\n');
@@ -780,14 +780,14 @@ export abstract class Boss6 extends Base6 {
     this.boardText = t;
     this.screen('dock_board', 'dock_board', t);
   }
-  /** `gauge6` (§6.4 texts): `PIN IN` → `0 BAR — PUMP` → `n BAR` → `210 BAR — READY` → `FIRED` / `PRESSURE LOW` (1.2 s). */
+  /** `gauge6` (§6.4 texts): `핀 삽입됨` → `0 BAR — 펌프` → `n BAR` → `210 BAR — READY` → `발사됨` / `압력 낮음` (1.2 s). */
   protected gauge(): void {
     const f = this.f;
     const k = f.pressure >= 1 ? 1 : this.pumpK;
-    // §6.4's display strings (W5's `gaugeState` reads `n BAR …` as bar, `PRESSURE LOW|k`, `PIN IN`, `FIRED`)
+    // §6.4's display strings (W5's `gaugeState` reads `n BAR …` as bar, `압력 낮음|k`, `핀 삽입됨`, `발사됨`)
     const bar = Math.round(k * 210);
-    const t = f.trunkCut ? 'FIRED' : !f.pin ? 'PIN IN' : this.now < this.lowUntil ? `PRESSURE LOW|${k.toFixed(3)}`
-      : k >= 1 ? '210 BAR — READY' : bar <= 0 ? '0 BAR — PUMP' : `${bar} BAR`;
+    const t = f.trunkCut ? '발사됨' : !f.pin ? '핀 삽입됨' : this.now < this.lowUntil ? `압력 낮음|${k.toFixed(3)}`
+      : k >= 1 ? '210 BAR — READY' : bar <= 0 ? '0 BAR — 펌프' : `${bar} BAR`;
     if (t === this.gaugeText) return;
     this.gaugeText = t;
     this.screen('gauge6', 'gauge', t);

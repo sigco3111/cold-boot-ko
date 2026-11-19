@@ -1,5 +1,5 @@
 /**
- * Level 2 — "LINE TWO": every piece of written text (REVISION 4). Spoken lines live in
+ * Level 2 — "2번 라인": every piece of written text (REVISION 4). Spoken lines live in
  * `voice/lines.l2.json`. Rules as in level 1: readable fragments ≤ 30 words, one idea each, concrete.
  */
 import type { Fragment } from '../text';

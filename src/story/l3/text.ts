@@ -1,5 +1,5 @@
 /**
- * Level 3 "THE QUIET SIDE" — every piece of written text (stage 3a §6.3–§6.5) and the ONE clock (§6.4).
+ * Level 3 "고요한 쪽" — every piece of written text (stage 3a §6.3–§6.5) and the ONE clock (§6.4).
  * Spoken lines live in `voice/lines.l3.json`. Readables ≤ 30 words, each stands alone (R3).
  */
 import type { Fragment } from '../text';

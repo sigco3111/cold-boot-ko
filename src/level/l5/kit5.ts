@@ -364,7 +364,7 @@ export function guardBooth(b: Builder, L: LevelBuild, o: { w?: number; d?: numbe
     // rain/condensation gutter strip along the header, stencilled booth number
     b.bx(N, x0, gt - 0.03, z1, x1, gt, z1 + 0.04);
   });
-  navySign(b, 'GATE 4 — SENTRY', 0, 2.5, z1 + 0.001, 1.4, 0.16, '+z');
+  navySign(b, '게이트 4 — 보초', 0, 2.5, z1 + 0.001, 1.4, 0.16, '+z');
   if (o.collide !== false) {
     b.collide(x0, 0, z1 - t, x1, cap, z1 + 0.2, 'metal', true);
     b.collide(x0, cap, z1 - t, x1, gt, z1, 'glass', true);
@@ -463,7 +463,7 @@ export function boardFrame(b: Builder, L: LevelBuild, o: { w: number; h: number 
  */
 export function noticeBoard(b: Builder, L: LevelBuild, o: { w?: number; h?: number; notices?: string[] } = {}) {
   const w = o.w ?? 1.2, h = o.h ?? 0.9, N: Mat = 'navy_grey';
-  const notes = o.notices ?? ['WATCH BILL — POST 4\nMON  0800–1200  MODULE', 'SECURITY STATE\nBRAVO', 'NO PERSONAL DEVICES\nBEYOND THIS POINT'];
+  const notes = o.notices ?? ['WATCH BILL — POST 4\nMON  0800–1200  MODULE', '경계 상태\n브라보', '개인 기기\n이 지점 너머 반입 금지'];
   b.bx(N, -w / 2, -h / 2, 0, w / 2, h / 2, 0.015);
   for (const s of [-1, 1]) { b.bx(N, -w / 2 - 0.02, s > 0 ? h / 2 : -h / 2 - 0.02, 0, w / 2 + 0.02, s > 0 ? h / 2 + 0.02 : -h / 2, 0.03); b.bx(N, s > 0 ? w / 2 : -w / 2 - 0.02, -h / 2, 0, s > 0 ? w / 2 + 0.02 : -w / 2, h / 2, 0.03); }
   const cols = notes.length > 2 ? 2 : notes.length, rows = Math.ceil(notes.length / cols), cw = (w - 0.1) / cols, rh = (h - 0.1) / rows;
@@ -512,7 +512,7 @@ export function clearingBarrel(b: Builder, L: LevelBuild, o: { collide?: boolean
   b.cyl(K, 0, 0.12, 0, 0.075, 0.3, 'y', 12);
   b.cyl(K, 0, 0.27, 0, 0.09, 0.03, 'y', 12);
   b.pop();
-  navySign(b, 'CLEAR WEAPONS HERE', 0, 0.43, r + 0.012, 0.42, 0.09, '+z');
+  navySign(b, '여기서 총기 안전 처리', 0, 0.43, r + 0.012, 0.42, 0.09, '+z');
   if (o.collide !== false) b.collide(-r, 0, -r, r, h + 0.04, r, 'metal', true);
 }
 
@@ -882,7 +882,7 @@ function transportCase(b: Builder, O: Mat, S: Mat, x0: number, y0: number, z0: n
 export function crateStack(b: Builder, L: LevelBuild, o: { w: number; d: number; h: number; layers?: number; cols?: number; rows?: number; seed?: number; label?: string; palette?: 'olive' | 'grey'; collide?: boolean }) {
   const { w, d, h } = o, R = srand(o.seed ?? 7), O: Mat = o.palette === 'grey' ? 'navy_grey' : olive(L), S: Mat = 'steel_raw';
   const layers = o.layers ?? Math.max(1, Math.round(h / 0.6)), cols = o.cols ?? Math.max(1, Math.round(w / 1.0)), rows = o.rows ?? Math.max(1, Math.round(d / 0.9));
-  const labels = [o.label ?? 'POST 4 — STORES', 'MK 3 — 2 OFF', 'SPARES — SDV', 'HANDLE WITH CARE', 'NAVAL STORES 1167'];
+  const labels = [o.label ?? 'POST 4 — STORES', 'MK 3 — 2개', '예비품 — SDV', '취급 주의', '해군 보급품 1167'];
   const lh = h / layers;
   for (let k = 0; k < layers; k++) {
     const top = k === layers - 1;
@@ -903,7 +903,7 @@ export function crateStack(b: Builder, L: LevelBuild, o: { w: number; d: number;
  * Collider: footprint to `h`.
  */
 export function gearCrate(b: Builder, L: LevelBuild, o: { w?: number; d?: number; h?: number; label?: string; seed?: number; collide?: boolean } = {}) {
-  crateStack(b, L, { w: o.w ?? 1.2, d: o.d ?? 0.8, h: o.h ?? 1.2, layers: 2, cols: 1, rows: 1, label: o.label ?? 'READY USE — RACK 2', seed: o.seed ?? 3, collide: o.collide });
+  crateStack(b, L, { w: o.w ?? 1.2, d: o.d ?? 0.8, h: o.h ?? 1.2, layers: 2, cols: 1, rows: 1, label: o.label ?? '상시 사용 — 랙 2', seed: o.seed ?? 3, collide: o.collide });
 }
 
 /**
@@ -1002,7 +1002,7 @@ export function pipeRiser(b: Builder, L: LevelBuild, o: { w?: number; d?: number
     for (let k = 0; k < 4; k++) { const a = (k / 4) * PI; b.rod(S, vx + Math.cos(a) * 0.11, 1.2 + Math.sin(a) * 0.11, vz + vr + 0.17, vx - Math.cos(a) * 0.11, 1.2 - Math.sin(a) * 0.11, vz + vr + 0.17, 0.007, 4); }
     b.bx(S, -0.1, 1.62, 0.43 * sz + 0.05, 0.08, 1.72, 0.43 * sz + 0.056);
   });
-  navySign(b, o.tag ?? 'FIRE MAIN ↑', -0.01, 1.67, 0.43 * sz + 0.056, 0.17, 0.08, '+z');
+  navySign(b, o.tag ?? '소화 주관 ↑', -0.01, 1.67, 0.43 * sz + 0.056, 0.17, 0.08, '+z');
   if (o.collide !== false) b.collide(-w / 2, 0, 0, w / 2, h, d, 'metal', true);
 }
 
@@ -1079,7 +1079,7 @@ export function rail(b: Builder, L: LevelBuild, o: { pts: [number, number][]; y?
 
 /**
  * Fire-hose box (spine). Wall prop, origin = the box's centre on the wall face: a red steel box 0.7 × 0.8 × 0.25 with a
- * door, a wired-glass window (dark) showing the coiled hose, a pull handle, `FIRE HOSE 4` stencil. Calls: 2 (fire red +
+ * door, a wired-glass window (dark) showing the coiled hose, a pull handle, `소화 호스 4` stencil. Calls: 2 (fire red +
  * painted_dark) + atlas. Collider: the box (`collide`).
  */
 export function fireHoseBox(b: Builder, L: LevelBuild, o: { label?: string; collide?: boolean } = {}) {
@@ -1091,7 +1091,7 @@ export function fireHoseBox(b: Builder, L: LevelBuild, o: { label?: string; coll
     b.torus(F, 0, 0.12, d + 0.002, 0.13, 0.03, 'z', 16); // hose coil seen through
     b.bx(K, w / 2 - 0.08, -0.2, d, w / 2 - 0.05, 0.0, d + 0.03);
   });
-  navySign(b, o.label ?? 'FIRE HOSE 4', 0, -0.25, d + 0.001, 0.4, 0.1, '+z');
+  navySign(b, o.label ?? '소화 호스 4', 0, -0.25, d + 0.001, 0.4, 0.1, '+z');
   if (o.collide !== false) b.collide(-w / 2, -h / 2, 0, w / 2, h / 2, d + 0.03, 'metal', true);
 }
 
@@ -1291,7 +1291,7 @@ export function bulkheadLamp(b: Builder, L: LevelBuild, o: { color?: LampColor; 
 
 /**
  * Fire-party board (magazine). Wall prop, origin = board centre on the wall face, 1.2 × 0.9: a steel board with a red
- * border, a fire axe, a hook spanner, an extinguisher on its bracket below, a breathing-set bag, `FIRE PARTY — MAGAZINE`.
+ * border, a fire axe, a hook spanner, an extinguisher on its bracket below, a breathing-set bag, `화재반 — 탄약고`.
  * Calls: 2 (fire red + steel_raw) + atlas.
  */
 export function fireBoard(b: Builder, L: LevelBuild, o: { label?: string } = {}) {
@@ -1307,7 +1307,7 @@ export function fireBoard(b: Builder, L: LevelBuild, o: { label?: string } = {})
   // extinguisher below on a bracket
   b.cyl(F, 0.35, -0.8, 0.1, 0.075, 0.5, 'y', 14); b.sphere(F, 0.35, -0.55, 0.1, 0.075, 12, 0.6);
   b.cyl(S, 0.35, -0.48, 0.1, 0.02, 0.06, 'y', 8); b.bx(S, 0.3, -0.75, 0, 0.4, -0.7, 0.04);
-  navySign(b, o.label ?? 'FIRE PARTY — MAGAZINE', 0, h / 2 - 0.08, 0.013, 0.8, 0.09, '+z');
+  navySign(b, o.label ?? '화재반 — 탄약고', 0, h / 2 - 0.08, 0.013, 0.8, 0.09, '+z');
 }
 
 // ═════════════════════════════════════════════════════════════ ARMOURY
@@ -1366,7 +1366,7 @@ export function cageRack(b: Builder, L: LevelBuild, o: { slots?: number; pitch?:
     });
     b.pop();
   }
-  navySign(b, 'SMALL ARMS — CARBINE 5.56 — 23', 0, h - 0.08, d + 0.001, 1.6, 0.1, '+z');
+  navySign(b, '소화기 — 카빈 5.56 — 23', 0, h - 0.08, d + 0.001, 1.6, 0.1, '+z');
   if (o.collide !== false) {
     b.collide(-len / 2, 0, 0, len / 2, h, 0.06, 'metal', true);
     for (const s of [-1, 1]) b.collide(s < 0 ? -len / 2 : len / 2 - 0.06, 0, 0, s < 0 ? -len / 2 + 0.06 : len / 2, h, d, 'metal', true);
@@ -1394,7 +1394,7 @@ export function issueDesk(b: Builder, L: LevelBuild, o: { len?: number; d?: numb
     b.bx(K, 0.35, top, -0.2, 0.75, top + 0.06, 0.1);
     for (const y of [0.1, 0.5]) for (let k = 0; k < 3; k++) b.bx(K, -0.7 + k * 0.5, y, -d / 2 + 0.05, -0.4 + k * 0.5, y + 0.18, -d / 2 + 0.3);
   });
-  navySign(b, 'ISSUE / RETURN — SIGN FOR ALL ITEMS', 0, 0.75, d / 2 + 0.001, 1.2, 0.1, '+z');
+  navySign(b, '지급 / 반납 — 모든 물품 서명', 0, 0.75, d / 2 + 0.001, 1.2, 0.1, '+z');
   if (o.collide !== false) b.collide(-len / 2, 0, -d / 2, len / 2, top, d / 2 + 0.04, 'metal', true);
   return { top: b.world(0, top, 0) };
 }
@@ -2168,8 +2168,8 @@ export function equipmentBox(b: Builder, L: LevelBuild, o: { len?: number; d?: n
   // yellow corner guards (1.2 cm proud) and side lifting eyes
   for (const sx of [-1, 1]) for (const sz of [-1, 1]) b.bx(Y, Math.min(sx * len / 2 - sx * 0.08, sx * len / 2 + sx * 0.012), 0.16, Math.min(sz * d / 2 - sz * 0.08, sz * d / 2 + sz * 0.012), Math.max(sx * len / 2 - sx * 0.08, sx * len / 2 + sx * 0.012), h - 0.03, Math.max(sz * d / 2 - sz * 0.08, sz * d / 2 + sz * 0.012));
   b.detail(() => { for (const sx of [-1, 1]) for (const sz of [-0.3, 0.3]) b.torus(Y, sx * (len / 2 + 0.02), h - 0.12, sz * d, 0.04, 0.01, 'x', 10); });
-  navySign(b, o.label ?? 'TERN — SUPPORT 1', 0, h - 0.06, d / 2 + 0.001, 0.9, 0.07, '+z');
-  navySign(b, 'NO STEP', -len / 2 + 0.3, h + 0.001, 0, 0.36, 0.08, '+y');
+  navySign(b, o.label ?? '턴 — 지지대 1', 0, h - 0.06, d / 2 + 0.001, 0.9, 0.07, '+z');
+  navySign(b, '밟지 마세요', -len / 2 + 0.3, h + 0.001, 0, 0.36, 0.08, '+y');
   if (o.collide !== false) b.collide(-len / 2, 0, -d / 2, len / 2, h, d / 2, 'metal', true);
 }
 
@@ -2216,7 +2216,7 @@ export function forklift(b: Builder, L: LevelBuild, o: { load?: boolean; collide
     b.bx(K, -0.56, 0.3, 0.44, 0.56, 0.42, 1.18); // pallet
     b.bx(K, -0.52, 0.42, 0.46, 0.52, 1.75, 1.16); // case
     b.detail(() => { for (const y of [0.8, 1.4]) b.bx(K, -0.53, y - 0.02, 0.45, 0.53, y + 0.02, 1.17); });
-    navySign(b, 'SDV SPARES — 1 OF 3', 0, 1.1, 1.161, 0.7, 0.1, '+z');
+    navySign(b, 'SDV 예비품 — 1/3', 0, 1.1, 1.161, 0.7, 0.1, '+z');
   }
   navySign(b, 'FLT 04', W + 0.005, 1.6, -0.95, 0.3, 0.12, '+x');
   if (o.collide !== false) {
@@ -2250,7 +2250,7 @@ export function gasBottleRack(b: Builder, L: LevelBuild, o: { len?: number; d?: 
     b.cyl(Y, x, 0.05 + hh - 0.08, z, 0.117, 0.1, 'y', 14);
     b.cyl(Y, x, 0.05 + hh + 0.09, z, 0.05, 0.1, 'y', 10);
   }
-  navySign(b, 'HP GAS — SECURE BY 2 CHAINS', 0, 1.65, d / 2 + 0.012, 1.0, 0.08, '+z');
+  navySign(b, '고압 가스 — 체인 2개로 고정', 0, 1.65, d / 2 + 0.012, 1.0, 0.08, '+z');
   if (o.collide !== false) b.collide(-len / 2, 0, -d / 2, len / 2, h, d / 2, 'metal', true);
 }
 
@@ -2329,7 +2329,7 @@ export function decompressionChamber(b: Builder, L: LevelBuild, o: { len?: numbe
   b.detail(() => { for (let k = 0; k < 4; k++) { b.push(-0.3 + k * 0.2, 1.15, 0.09, 0, -0.35, 0); b.cyl(W, 0, 0, 0, 0.06, 0.012, 'z', 14); b.pop(); } });
   b.pop();
   b.detail(() => { for (const z of [-0.3, 0.1]) b.rod(K, px * (r + 0.25), 1.0, z, px * (r * 0.75), cy + 0.5, z, 0.02, 6); });
-  navySign(b, 'DDC 1 — MAX 50 MSW', 0, cy + 0.55, ez - 0.3, 0.8, 0.1, '+z');
+  navySign(b, 'DDC 1 — 최대 50 MSW', 0, cy + 0.55, ez - 0.3, 0.8, 0.1, '+z');
   if (o.collide !== false) { b.collide(-r, 0, -len / 2, r, cy + r, len / 2, 'metal', true); b.collide(Math.min(px * r, px * (r + 0.5)), 0, -0.3, Math.max(px * r, px * (r + 0.5)), 1.45, 0.7, 'metal', true); }
 }
 

@@ -16,7 +16,7 @@
  * (`cycle.cue`, `cycle.led`, `cycle.attempt` — polled every frame, so `setTime` on a restore re-syncs too), the
  * wisp (`fx4_wisp`, two puffs per fit), and the theatre sounds (servo loop pitched down, `clasp_click`, `gel_dip`).
  *
- * Stair: steel treads, BIO-SYS white above mid-flight, NAVAL grey below (`BIO-SYS ┃ NAVAL` at the line, z −51.5);
+ * Stair: steel treads, BIO-SYS white above mid-flight, NAVAL grey below (`바이오시스 ┃ 해군` at the line, z −51.5);
  * Eng's trail = a broken smear down the treads by the east rail, a dragged handprint at the foot, his respirator on
  * the bottom landing (11.0, 0, −57.5) (§13 S6).
  */
@@ -82,16 +82,16 @@ function buildScrub(L: LevelBuild) {
     scrubSink(b, L, { stations: 3 });
     b.bx(S, -1.26, 0.875, 0.03, 1.26, 0.9, 0.32); // back ledge (rim height)
   });
-  clinicalSign(b, L, 'SURGICAL SCRUB — 3 MIN — ELBOWS UP', -3.79, y + 1.95, -38.55, 1.4, 0.18, '+x');
+  clinicalSign(b, L, '수술 손소독 — 3분 — 팔꿈치 들기', -3.79, y + 1.95, -38.55, 1.4, 0.18, '+x');
   // Foss (§2.6 (−3.2, 4.8, −40.5)): sat down against the hamper, facing the room
-  const foss = body(L, b, 'slumped_wall', 'Foss', { x: -3.2, y, z: -40.5, ry: PI / 2, collider: 'none' });
+  const foss = body(L, b, 'slumped_wall', '포스', { x: -3.2, y, z: -40.5, ry: PI / 2, collider: 'none' });
   // his walkable 0.15 m box, stopped 0.1 m short of the nav grid node at x −2.5 (a node may not stand under a floor)
   b.collide(foss.box.min.x, y, foss.box.min.z, Math.min(foss.box.max.x, -2.6), y + 0.15, foss.box.max.z, 'flesh', true);
   const back = Math.max(-3.75, Math.min(-3.4, foss.box.min.x + 0.02));
   b.bx(labWhite(L), -3.8, y, -41.0, back, y + 0.72, -40.0); // soiled-gown hamper
   b.bx(S, -3.8, y + 0.72, -41.02, back + 0.02, y + 0.75, -39.98);
   b.collide(-3.8, y, -41.0, back, y + 0.75, -40.0, 'metal', true);
-  b.sign('SOILED GOWNS', 'label', back + 0.001, y + 0.55, -40.5, 0.34, 0.06, '+x');
+  b.sign('사용한 가운', 'label', back + 0.001, y + 0.55, -40.5, 0.34, 0.06, '+x');
   // gown hooks along the west wall south of him, two gowns left on them
   b.bx(S, -3.8, y + 1.62, -42.6, -3.77, y + 1.68, -41.2);
   for (let i = 0; i < 4; i++) {
@@ -109,24 +109,24 @@ function buildScrub(L: LevelBuild) {
     b.bx('plastic_white', x - 0.13, y + 1.25, -42.8, x + 0.13, y + 1.39, -42.71);
     b.bx(i === 1 ? 'plastic_dark' : M.nitrile, x - 0.08, y + 1.27, -42.709, x + 0.08, y + 1.29, -42.705);
   }
-  b.sign('GLOVES  S · M · L', 'label', -2.98, y + 1.47, -42.795, 0.6, 0.06, '+z');
+  b.sign('장갑  S · M · L', 'label', -2.98, y + 1.47, -42.795, 0.6, 0.06, '+z');
   // theatre "in use" light box over the gallery door's west side
   const inUse = lumMat(L, 'inuse', 0.3, 0xff5a3a);
   b.bx('plastic_dark', -2.6, y + 2.5, -42.8, -1.85, y + 2.72, -42.74);
   b.bx(inUse, -2.56, y + 2.53, -42.739, -1.89, y + 2.69, -42.735);
-  b.sign('THEATRE 1 — IN USE', 'label', -2.225, y + 2.61, -42.733, 0.62, 0.11, '+z');
+  b.sign('수술실 1 — 사용 중', 'label', -2.225, y + 2.61, -42.733, 0.62, 0.11, '+z');
   // north wall (face z −37.2, −z): wall clock, east of the suite door
   b.at(2.75, y + 2.25, -37.2, PI, () => wallClock(b, 8, 41));
   // east wall (face x 3.8, −x): the theatre list board (note4_list at (3.78, 6.2, −38.4))
   b.bx(S, 3.765, y + 1.05, -38.95, 3.8, y + 1.75, -37.85);
   b.bx('plastic_white', 3.755, y + 1.08, -38.92, 3.765, y + 1.72, -37.88);
-  b.sign('THEATRE 1 — LIST', 'label', 3.753, y + 1.66, -38.4, 0.7, 0.07, '-x');
+  b.sign('수술실 1 — 일정', 'label', 3.753, y + 1.66, -38.4, 0.7, 0.07, '-x');
   const red = mat4(L, 'd2_marker_red', () => L.ctx.materials.clone('plastic_white', { color: 0xb3261e, map: null, normalMap: null }));
   for (let i = 0; i < 10; i++) {
     const w = 0.42 + ((i * 37) % 23) / 100;
     b.bx(i === 2 ? red : 'plastic_dark', 3.752, y + 1.58 - i * 0.05, -38.83, 3.754, y + 1.592 - i * 0.05, -38.83 + w);
   }
-  clinicalSign(b, L, 'SCRUB ROOM', 3.79, y + 2.2, -38.4, 0.9, 0.18, '-x');
+  clinicalSign(b, L, '손소독실', 3.79, y + 2.2, -38.4, 0.9, 0.18, '-x');
   // ceiling: two flush luminaires on the room light, one HEPA terminal
   const lum = lumMat(L, 'scrub', 0.32);
   for (const z of [-38.9, -41.3]) b.at(0, y + 3.0, z, 0, () => luminaire(b, L, { glow: lum }));
@@ -164,7 +164,7 @@ function buildStore(L: LevelBuild) {
   };
   b.at(7.8, y, -41.0, -PI / 2, () => shelving(3.4));     // east wall
   b.at(5.5, y, -39.2, PI, () => shelving(2.2));          // north wall (husk at (5.4, −40.2) stands 0.6 clear)
-  clinicalSign(b, L, 'STERILE SUPPLIES — FIRST IN, FIRST OUT', 6.0, y + 2.45, -42.79, 1.8, 0.16, '+z');
+  clinicalSign(b, L, '무균 물품 — 선입선출', 6.0, y + 2.45, -42.79, 1.8, 0.16, '+z');
   // a dark luminaire (the store has no light of its own: the husks come out of the dark)
   b.at(6.0, y + 3.0, -41.0, PI / 2, () => luminaire(b, L, { glow: lumMat(L, 'store_off', 0.02) }));
   sticker(b, 4.21, y + 1.55, -39.6, '+x');
@@ -222,7 +222,7 @@ function buildGallery(L: LevelBuild) {
     b.bx('plastic_dark', 3.24, y + 1.0, -46.62, 3.72, y + 1.018, -46.46); // keyboard
     b.bx('plastic_dark', 4.5, y + 1.0, -46.7, 4.85, y + 1.06, -46.5); // camera control unit
     b.box('emissive_green', 4.8, y + 1.035, -46.499, 0.012, 0.01, 0.002);
-    b.sign('THEATRE CAM 1 — FIELD', 'label', 4.0, y + 0.8, -46.419, 0.6, 0.07, '+z');
+    b.sign('수술실 카메라 1 — 필드', 'label', 4.0, y + 0.8, -46.419, 0.6, 0.07, '+z');
   });
   b.push(4.0, 6.0, -46.5, 0, -PI / 6, 0);
   b.box('plastic_dark', 0, 0, -0.03, 0.68, 0.48, 0.05);
@@ -243,12 +243,12 @@ function buildGallery(L: LevelBuild) {
   // ── placard (sign4_theatre (−6.0, 5.9, −43.22), north wall, facing −z)
   b.bx(S, -6.32, y + 0.96, -43.2, -5.68, y + 1.24, -43.212);
   b.detail(() => {
-    b.sign('THEATRE 1 — OBSERVATION GALLERY', 'clinical', -6.0, y + 1.17, -43.214, 0.6, 0.08, '-z');
-    b.sign('Procedures are relayed on the gallery speaker.', 'label', -6.0, y + 1.07, -43.214, 0.56, 0.04, '-z');
-    b.sign('Please do not tap the glass.', 'label', -6.0, y + 1.02, -43.214, 0.36, 0.035, '-z');
+    b.sign('수술실 1 — 관람 갤러리', 'clinical', -6.0, y + 1.17, -43.214, 0.6, 0.08, '-z');
+    b.sign('시술 내용은 갤러리 스피커로 안내됩니다.', 'label', -6.0, y + 1.07, -43.214, 0.56, 0.04, '-z');
+    b.sign('유리를 두드리지 마세요.', 'label', -6.0, y + 1.02, -43.214, 0.36, 0.035, '-z');
   });
-  clinicalSign(b, L, 'SERVICE STAIR B →', 8.9, y + 2.05, -43.21, 1.1, 0.16, '-z');
-  clinicalSign(b, L, 'THEATRE 1 — OBSERVATION', -5.2, y + 2.2, -43.21, 1.4, 0.18, '-z');
+  clinicalSign(b, L, '서비스 계단 B →', 8.9, y + 2.05, -43.21, 1.1, 0.16, '-z');
+  clinicalSign(b, L, '수술실 1 — 관람', -5.2, y + 2.2, -43.21, 1.4, 0.18, '-z');
   // ── ceiling: speaker (mk4_gallery_spk (0, 7.55, −45.0)), luminaires on the gallery light, one HEPA terminal
   b.at(0, y + 3.0, -45.0, 0, () => ceilingSpeaker(b));
   const lum = lumMat(L, 'gallery', 0.22);
@@ -361,11 +361,11 @@ function buildTheatre(L: LevelBuild) {
   const M = setpieceMats(L);
   // ── the set (§2.6): table, Strand, gel bath, the FAILED bin, Haugen and Lie under sheets
   b.at(0, 0, -53.5, 0, () => orTable(b, L));
-  body(L, b, 'prone_table', 'Strand', { x: 0, y: 0, z: -53.5, nape: NAPE });
+  body(L, b, 'prone_table', '스트란드', { x: 0, y: 0, z: -53.5, nape: NAPE });
   b.at(-2.5, 0, -56.8, 0, () => gelBath(b, L));
   b.at(2.2, 0, -51.5, 0, () => claspBin(b, L, 30));
-  body(L, b, 'covered_gurney', 'Haugen', { x: 5.5, y: 0, z: -50.2, ry: 0.06 });
-  body(L, b, 'covered_gurney', 'Lie', { x: 5.5, y: 0, z: -56.0, ry: -0.04 });
+  body(L, b, 'covered_gurney', '하우겐', { x: 5.5, y: 0, z: -50.2, ry: 0.06 });
+  body(L, b, 'covered_gurney', '리에', { x: 5.5, y: 0, z: -56.0, ry: -0.04 });
   // ── the arm (W9a): replaces the greybox placeholder; its rail goes into this zone
   const arm = theatreArm(L, V(-1.7, 9.2, -54.5), { builder: b });
   // ── surgical lamp (the theatre's one cast light) + its field camera
@@ -419,11 +419,11 @@ function buildTheatre(L: LevelBuild) {
   b.detail(() => {
     const cols = ['painted_white', 'painted_dark', 'painted_yellow', 'plastic_white'] as Mat[];
     cols.forEach((c, i) => b.cyl(c, -7.7, 1.6, -53.85 + i * 0.25, 0.04, 0.04, 'x', 10));
-    b.sign('O₂ · AIR · VAC · N₂O', 'label', -7.718, 1.78, -53.5, 0.8, 0.07, '+x');
+    b.sign('O₂ · 공기 · 진공 · N₂O', 'label', -7.718, 1.78, -53.5, 0.8, 0.07, '+x');
   });
   b.bx('plastic_dark', -2.1, 2.92, -58.8, 2.1, 4.48, -58.785); // theatre_screen bezel (screen at z −58.78)
   b.at(-3.6, 3.7, -58.8, 0, () => wallClock(b, 8, 41, 0.22));
-  clinicalSign(b, L, 'THEATRE 1', 3.6, 4.0, -58.79, 1.4, 0.24, '+z');
+  clinicalSign(b, L, '수술실 1', 3.6, 4.0, -58.79, 1.4, 0.24, '+z');
   // ── ceiling luminaires: OFF for the procedure (the field lamp is the light); one HEPA grid each side
   const offLum = lumMat(L, 'theatre_off', 0.04);
   for (const [x, z] of [[-5, -50], [-5, -57], [5, -50], [5, -57]] as const) b.at(x, 9.4, z, 0, () => luminaire(b, L, { glow: offLum }));
@@ -451,7 +451,7 @@ function driveArm(L: LevelBuild, arm: THREE.Object3D) {
     const m = L.screens.get(name);
     if (m) L.ctx.materials.setScreen(m, kind, { text });
   };
-  const linkOf = (c: ArmCue) => (c === 'handshake' ? 'HANDSHAKE' : c === 'fail' || c === 'remove' || c === 'regel' || c === 'return' || c === 'idle' ? 'FAILED' : '—');
+  const linkOf = (c: ArmCue) => (c === 'handshake' ? '핸드셰이크' : c === 'fail' || c === 'remove' || c === 'regel' || c === 'return' || c === 'idle' ? '실패' : '—');
   const wall = (c: ArmCue) => {
     if (parked) { setScr('theatre_screen', 'terminal_idle', '[plain]THEATRE 1 — NO PROCEDURE\nARM PARKED'); return; }
     if (c === 'fail') { setScr('theatre_screen', 'terminal_alert', `[plain]LINK FAILED\nNO PULSE — ATTEMPT ${fmt(cyc.attempt)}`); return; }
@@ -554,10 +554,10 @@ function buildStair(L: LevelBuild) {
   for (const [x, face] of [[10.211, '+x'], [13.789, '-x']] as const) {
     b.bx('painted_dark', face === '+x' ? 10.21 : 13.786, 0, LINE_Z - 0.05, face === '+x' ? 10.214 : 13.79, 7.99, LINE_Z + 0.05);
     const sy = 0.15 + (rise / tread) * (LINE_Z - z0) + 1.5;
-    b.sign('BIO-SYS ┃ NAVAL', 'stencil', x + (face === '+x' ? 0.004 : -0.004), sy, LINE_Z, 1.3, 0.2, face);
+    b.sign('바이오시스 ┃ 해군', 'stencil', x + (face === '+x' ? 0.004 : -0.004), sy, LINE_Z, 1.3, 0.2, face);
   }
-  stencil(b, 'BIO-SYS SERVICE LEVEL — NAVAL CHECKPOINT 2 →', 12, 3.95, -58.784, 2.4, 0.2, '+z');
-  clinicalSign(b, L, 'SERVICE STAIR B — DOWN TO SERVICE LEVEL', 12.0, D2 + 2.35, -43.21, 2.0, 0.18, '-z');
+  stencil(b, '바이오시스 서비스층 — 해군 검문소 2 →', 12, 3.95, -58.784, 2.4, 0.2, '+z');
+  clinicalSign(b, L, '서비스 계단 B — 서비스층으로 하행', 12.0, D2 + 2.35, -43.21, 2.0, 0.18, '-z');
   // ── handrails on both walls, 0.9 above the pitch line, 0.3 m level run-outs at both ends
   const k = rise / tread, pitch = (z: number) => rise / 2 + k * (z - z0);
   for (const xr of [10.27, 13.73]) {

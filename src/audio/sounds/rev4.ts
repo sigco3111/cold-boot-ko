@@ -1,5 +1,5 @@
 /**
- * Revision 4 (level 2 "LINE TWO") one-shots and loops, plus the foreman's own sounds.
+ * Revision 4 (level 2 "2번 라인") one-shots and loops, plus the foreman's own sounds.
  * Nothing here is in the awaited load set: one-shots render 'late' (background), loops 'lazy'.
  * Ids that a caller might reasonably either play() or loop() (intercom_static) are one-shots — the
  * engine loops a one-shot's buffer when asked to.

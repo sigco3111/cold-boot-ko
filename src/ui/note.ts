@@ -32,7 +32,7 @@ export class NoteCard {
     const top = h('div', 'ntop', this.card);
     const wave = h('span', 'nwave', top);
     for (let i = 0; i < 5; i++) this.bars.push(h('i', '', wave));
-    this.kind = h('span', 'nkind', top, 'NOTE');
+    this.kind = h('span', 'nkind', top, '노트');
     this.header = h('span', 'nhead', top, '');
     const close = h('span', 'nclose', top);
     h('span', 'key', close, 'E');
@@ -48,7 +48,7 @@ export class NoteCard {
     if (this.resolve) this.close();
     this.style = style;
     this.root.className = `note n-${style}`;
-    this.kind.textContent = STYLE_LABEL[style] ?? 'NOTE';
+    this.kind.textContent = STYLE_LABEL[style] ?? '노트';
     this.header.textContent = header;
     // About a second to type any fragment in, whatever its length.
     this.tw.start(body, Math.max(150, body.length / 1.0));

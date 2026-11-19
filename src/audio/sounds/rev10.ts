@@ -1,5 +1,5 @@
 /**
- * Stage 3c "POST 4" (technical level 5; plan docs/plans/stage-3c.md §5.5, §8.11, §11 W2b): the navy post, its scares,
+ * Stage 3c "초소 4" (technical level 5; plan docs/plans/stage-3c.md §5.5, §8.11, §11 W2b): the navy post, its scares,
  * the taken soldiers' weapons, the sub bay, the keypad, the radio, the flashlight cell running flat (all levels).
  *
  * Owners (§8.11, D25 — the owner is who PLAYS it; audio only renders):

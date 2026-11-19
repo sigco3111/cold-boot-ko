@@ -21,7 +21,7 @@ const NO_CAST = { foreman: false, human: false, tomasHead: false, soldier: false
 /** The entry of a level id that has no implementation yet (none since stage 3d's K: 1 … 6 are all built). */
 export const unbuilt = (id: LevelId): LevelInfo => ({
   id, tag: `l${id}`, built: false, title: `LEVEL ${id}`, place: `Level ${id}`, bootStatus: `level ${id}`,
-  screenHeader: 'HALCYON DYNAMICS // ERIDU DEEP', camLabel: `L${id}`, idleText: true, powerOnAtLoad: true,
+  screenHeader: '할시온 다이내믹스 // 에리두 심해', camLabel: `L${id}`, idleText: true, powerOnAtLoad: true,
   keycardName: null, endEyebrow: null, menuLine: null, subtitles: 'stacked', cast: NO_CAST,
   direct: { facts: {}, loadout: DIRECT }, healthFloor: 50, next: null,
 });
@@ -29,20 +29,20 @@ export const unbuilt = (id: LevelId): LevelInfo => ({
 export const LEVELS: Readonly<Record<LevelId, LevelInfo>> = {
   1: {
     id: 1, tag: 'l1', built: true, title: 'COLD BOOT', place: '하부 3층', bootStatus: '하부 3층',
-    screenHeader: 'HALCYON DYNAMICS // ERIDU DEEP FAB  —  SUBLEVEL 3', camLabel: 'SUBLVL-3', idleText: false, powerOnAtLoad: false,
+    screenHeader: '할시온 다이내믹스 // 에리두 심해 제작  —  하부 3층', camLabel: '하부-3', idleText: false, powerOnAtLoad: false,
     keycardName: null, endEyebrow: null, menuLine: null, subtitles: 'single', cast: NO_CAST,
     direct: { facts: {}, loadout: null }, healthFloor: 0, next: 2,
   },
   2: {
-    id: 2, tag: 'l2', built: true, title: 'LINE TWO', place: '2번 라인', bootStatus: '2번 라인',
-    screenHeader: 'HALCYON DYNAMICS // ERIDU DEEP FAB  —  LINE TWO / SECTION C', camLabel: 'LINE-2', idleText: true, powerOnAtLoad: true,
+    id: 2, tag: 'l2', built: true, title: '2번 라인', place: '2번 라인', bootStatus: '2번 라인',
+    screenHeader: '할시온 다이내믹스 // 에리두 심해 제작  —  2번 라인 / 구역 C', camLabel: '라인-2', idleText: true, powerOnAtLoad: true,
     keycardName: '구역 출입증', endEyebrow: '2번 라인 끝', menuLine: '레벨 2  —  2번 라인', subtitles: 'stacked',
     cast: { foreman: true, human: true, tomasHead: true, soldier: false },
     direct: { facts: {}, loadout: DIRECT }, healthFloor: 40, next: 3,
   },
   3: {
-    id: 3, tag: 'l3', built: true, title: 'THE QUIET SIDE', place: '주거 링 A', bootStatus: '주거 링',
-    screenHeader: 'HALCYON DYNAMICS // ERIDU DEEP — HABITAT RING A', camLabel: 'CAM', idleText: true, powerOnAtLoad: true,
+    id: 3, tag: 'l3', built: true, title: '고요한 쪽', place: '주거 링 A', bootStatus: '주거 링',
+    screenHeader: '할시온 다이내믹스 // 에리두 심해 — 주거 링 A', camLabel: 'CAM', idleText: true, powerOnAtLoad: true,
     keycardName: '시설팀 배지', endEyebrow: '고요한 쪽 끝', menuLine: '3장  —  고요한 쪽', subtitles: 'stacked',
     cast: { foreman: false, human: true, tomasHead: false, soldier: false },
     direct: { facts: { choice: 'stop', unitsLeft: 28 }, loadout: { ...DIRECT, flashlight: true } }, healthFloor: 50,
@@ -50,8 +50,8 @@ export const LEVELS: Readonly<Record<LevelId, LevelInfo>> = {
     next: 4,
   },
   4: {
-    id: 4, tag: 'l4', built: true, title: 'BIOLOGICAL SYSTEMS', place: '생물 시스템', bootStatus: '생물 시스템',
-    screenHeader: 'HALCYON BIO-SYSTEMS DIV. // ERIDU DEEP — BIOLOGICAL', camLabel: 'BIO', idleText: true, powerOnAtLoad: true,
+    id: 4, tag: 'l4', built: true, title: '생물 시스템', place: '생물 시스템', bootStatus: '생물 시스템',
+    screenHeader: '할시온 바이오 시스템즈 사업부 // 에리두 심해 — 생물', camLabel: 'BIO', idleText: true, powerOnAtLoad: true,
     keycardName: '시설팀 배지', endEyebrow: '생물 시스템 끝', menuLine: '3장  —  생물 시스템', subtitles: 'stacked',
     cast: NO_CAST,
     direct: { facts: { choice: 'stop', unitsLeft: 28, badge: true, halvorsenAlive: true }, loadout: { ...DIRECT, flashlight: true, armor: 0 } },
@@ -59,8 +59,8 @@ export const LEVELS: Readonly<Record<LevelId, LevelInfo>> = {
     healthFloor: 50, next: 5,
   },
   5: {
-    id: 5, tag: 'l5', built: true, title: 'POST 4', place: '4번 초소', bootStatus: '4번 초소',
-    screenHeader: 'NAVAL DETACHMENT // ERIDU DEEP — POST 4', camLabel: 'POST4', idleText: true, powerOnAtLoad: true,
+    id: 5, tag: 'l5', built: true, title: '초소 4', place: '4번 초소', bootStatus: '4번 초소',
+    screenHeader: '해군 파견대 // 에리두 심해 — 초소 4', camLabel: '초소4', idleText: true, powerOnAtLoad: true,
     keycardName: '시설팀 배지', endEyebrow: '4번 초소 끝', menuLine: '3장  —  4번 초소', subtitles: 'stacked',
     // the cutscene soldier is an actor: his template is pre-warmed (§8.2.6)
     cast: { ...NO_CAST, soldier: true },
@@ -72,8 +72,8 @@ export const LEVELS: Readonly<Record<LevelId, LevelInfo>> = {
     healthFloor: 50, next: 6,
   },
   6: {
-    id: 6, tag: 'l6', built: true, title: 'THE TRUNK', place: '간선', bootStatus: '간선',
-    screenHeader: 'NAVAL DETACHMENT // ERIDU DEEP — TRUNK HEAD-END', camLabel: 'DOCK', idleText: true, powerOnAtLoad: true,
+    id: 6, tag: 'l6', built: true, title: '간선', place: '간선', bootStatus: '간선',
+    screenHeader: '해군 파견대 // 에리두 심해 — 트렁크 헤드엔드', camLabel: 'DOCK', idleText: true, powerOnAtLoad: true,
     keycardName: '인터록 키', endEyebrow: '3장 끝', menuLine: '3장  —  간선', subtitles: 'stacked',
     // S8b: no soldier actor (the taken soldiers are spawns; the template is pre-warmed from `enemySpawns`)
     cast: NO_CAST,

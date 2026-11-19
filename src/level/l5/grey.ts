@@ -55,31 +55,31 @@ const EXITS: XYZ[] = [EXIT_SPINE, EXIT_MAG];
  * true) for a player on those steps.
  */
 export const ROOMS5: Record<RoomId5, RoomDef5> = {
-  lock5: { name: 'POST 4 — GATE LOCK', x0: -3, x1: 3, z0: 0, z1: 6, y0: 0, h: 3.6 },
-  gate5: { name: 'POST 4 — GATEHOUSE', x0: -6, x1: 6, z0: -10, z1: 0, y0: 0, h: 3.4 },
-  duty5: { name: 'DUTY ROOM', x0: -8, x1: 8, z0: -22, z1: -10, y0: 0, h: 3.4 },
-  ready5: { name: 'READY ROOM', x0: -12, x1: 4, z0: -38, z1: -22, y0: 0, h: 3.4 },
+  lock5: { name: '초소 4 — 게이트 록', x0: -3, x1: 3, z0: 0, z1: 6, y0: 0, h: 3.6 },
+  gate5: { name: '초소 4 — 게이트하우스', x0: -6, x1: 6, z0: -10, z1: 0, y0: 0, h: 3.4 },
+  duty5: { name: '당직실', x0: -8, x1: 8, z0: -22, z1: -10, y0: 0, h: 3.4 },
+  ready5: { name: '대기실', x0: -12, x1: 4, z0: -38, z1: -22, y0: 0, h: 3.4 },
   spine5: {
-    name: 'THE SPINE', x0: 8, x1: 44, z0: -18, z1: -14, y0: 0, h: 3.2,
+    name: '스파인', x0: 8, x1: 44, z0: -18, z1: -14, y0: 0, h: 3.2,
     floors: [
       { y: -1.4, box: [16.4, 36.2, -16.6, -15.4], nav: false, exits: EXITS },
       { y: -1.4, box: [36.2, 38.6, -17.6, -15.4], nav: false, exits: EXITS },
       { y: -1.4, box: [16.4, 17.6, -18.0, -16.6], nav: false, exits: EXITS },
     ],
   },
-  berths5: { name: 'BERTHING — 1', x0: 12, x1: 24, z0: -14, z1: -2, y0: 0, h: 3.0 },
+  berths5: { name: '침실구역 — 1', x0: 12, x1: 24, z0: -14, z1: -2, y0: 0, h: 3.0 },
   heads5: { name: 'WASHROOM', x0: 12, x1: 20, z0: -2, z1: 4, y0: 0, h: 2.8 },
-  mess5: { name: 'MESS', x0: 24, x1: 38, z0: -14, z1: -2, y0: 0, h: 3.2 },
-  galley5: { name: 'GALLEY', x0: 28, x1: 38, z0: -2, z1: 4, y0: 0, h: 3.0 },
+  mess5: { name: '식당', x0: 24, x1: 38, z0: -14, z1: -2, y0: 0, h: 3.2 },
+  galley5: { name: '갤리', x0: 28, x1: 38, z0: -2, z1: 4, y0: 0, h: 3.0 },
   arm5: {
-    name: 'ARMOURY', x0: 14, x1: 22, z0: -28, z1: -18, y0: 0, h: 3.2,
+    name: '무기고', x0: 14, x1: 22, z0: -28, z1: -18, y0: 0, h: 3.2,
     floors: [
       { y: -1.4, box: [16.4, 17.6, -21.4, -18.0], nav: false, exits: EXITS },
       { y: -2.6, box: [14.2, 21.8, -27.8, -21.4], nav: false, exits: EXITS },
     ],
   },
   sub5: {
-    name: 'SUB BAY', x0: 22, x1: 46, z0: -56, z1: -18, y0: 0, h: 12.0,
+    name: '서브베이', x0: 22, x1: 46, z0: -56, z1: -18, y0: 0, h: 12.0,
     floors: [
       { y: GAL, box: [22.2, 25.0, -55.8, -18.2] },
       { y: GAL, box: [43.0, 45.8, -55.8, -18.2] },
@@ -87,9 +87,9 @@ export const ROOMS5: Record<RoomId5, RoomDef5> = {
       { y: GAL, box: [25.0, 43.0, -36.0, -34.0] },
     ],
   },
-  dive5: { name: 'DIVE LOCKER', x0: 46, x1: 52, z0: -40, z1: -28, y0: 0, h: 3.2 },
-  lockacc5: { name: 'LAUNCH LOCK — ACCESS', x0: 38, x1: 46, z0: -62, z1: -56, y0: 0, h: 3.2 },
-  tunnel5: { name: 'TRUNK TUNNEL — ENTRANCE', x0: 14, x1: 22, z0: -56, z1: -50, y0: 0, h: 3.0 },
+  dive5: { name: '잠수 장비함', x0: 46, x1: 52, z0: -40, z1: -28, y0: 0, h: 3.2 },
+  lockacc5: { name: '발사 록 — 출입', x0: 38, x1: 46, z0: -62, z1: -56, y0: 0, h: 3.2 },
+  tunnel5: { name: '트렁크 터널 — 입구', x0: 14, x1: 22, z0: -56, z1: -50, y0: 0, h: 3.0 },
 };
 export const ROOM_IDS5 = Object.keys(ROOMS5) as RoomId5[];
 
@@ -415,13 +415,13 @@ export const SHELLS5: Record<RoomId5, Shell> = {
     // door5_tube (0, 0, 6): sealed, seen from the lock (D2: 3b's tube is behind it)
     sealedOpening(G, 'door5_tube', 0, 0, 6, 'z', 1.6, 2.4, ['lock5']);
     sealedDoor(L, b, {
-      id: 'door5_tube', x: 0, y: 0, z: 6, wall: 'z', kind: 'std', sides: 'back', leafMat: 'navy_grey', labelBack: 'TRANSFER TUBE',
-      panel: { text: 'TRANSFER TUBE — CYCLING', side: 'back' },
+      id: 'door5_tube', x: 0, y: 0, z: 6, wall: 'z', kind: 'std', sides: 'back', leafMat: 'navy_grey', labelBack: '이송 튜브',
+      panel: { text: '이송 튜브 — 순환 중', side: 'back' },
     });
-    roomLabel(b, 'POST 4 — GATE LOCK', -2.8, 2.5, 3.2, '+x', 3.0);
+    roomLabel(b, '초소 4 — 게이트 록', -2.8, 2.5, 3.2, '+x', 3.0);
     // gate_panel5 (§6.4): one screen, two faces — the lock side (seen at arrival) and the gatehouse side (after the
     // latch, `mk5_gate_panel`, where `l5_unit_gate` is spoken)
-    L.screen('gate_panel5', 'terminal_idle', 0.5, 0.3, -2.3, 1.6, 0.22, '+z', { text: 'AUTHORISED: AAS, L. (LT.) — PALM — LIVE' });
+    L.screen('gate_panel5', 'terminal_idle', 0.5, 0.3, -2.3, 1.6, 0.22, '+z', { text: '인가됨: 아스, L. (중위) — 손바닥 — 생존' });
     L.marker('mk5_start', 0, 0, 3.0, 0);
   },
 
@@ -445,10 +445,10 @@ export const SHELLS5: Record<RoomId5, Shell> = {
     stand(b, standin, 2.4, 0, -4.0, 5.8, 2.6, -3.8);                 // south face
     stand(b, standin, 2.4, 2.6, -4.0, 5.8, 3.4, -0.2);               // roof (to the ceiling)
     stand(b, standin, 4.4, 0, -3.6, 5.6, 0.95, -0.4);                // inner counter (the palm plate, the monitor, the mug)
-    L.screen('aas_palm', 'palm', 0.22, 0.28, 4.6, 1.1, -2.0, '-x', { text: 'white|done|AAS, L. (LT.) — PALM — LIVE' });
+    L.screen('aas_palm', 'palm', 0.22, 0.28, 4.6, 1.1, -2.0, '-x', { text: 'white|done|아스, L. (중위) — 손바닥 — 생존' });
     L.marker('mk5_aas_palm', 4.6, 1.1, -2.0, -PI / 2);
-    L.screen('gate_log', 'terminal_idle', 0.56, 0.36, 4.38, 1.35, -1.1, '-x', { text: 'GATE 4 — LAST AUTHORISED: AAS, L. (LT.) — PALM — LIVE' });
-    L.interact('note5_visitors', 'log', 'Read log', 2.3, 1.05, -2.0);
+    L.screen('gate_log', 'terminal_idle', 0.56, 0.36, 4.38, 1.35, -1.1, '-x', { text: '게이트 4 — 최종 인가: 아스, L. (중위) — 손바닥 — 생존' });
+    L.interact('note5_visitors', 'log', '기록 읽기', 2.3, 1.05, -2.0);
     // ── turnstile line z −5.0: two tripods, the open equipment gate x −1.0 … 1.2 (the route), fences h 1.2 ──
     stand(b, standin, -3.0, 0, -5.15, -2.1, 1.0, -4.85);
     stand(b, standin, -2.0, 0, -5.15, -1.1, 1.0, -4.85);
@@ -458,23 +458,23 @@ export const SHELLS5: Record<RoomId5, Shell> = {
     L.marker('mk5_onpost', -4.0, 2.6, -0.22, PI);
     stand(b, dark, -5.5, 0, -8.9, -4.9, 0.9, -8.3);                  // weapon-clearing barrel
     shelf(b, standin, 5.4, 1.0, -6.0, 0.35, 0.5);                    // first-aid cabinet (east wall)
-    roomLabel(b, 'POST 4 — GATEHOUSE', -5.8, 2.5, -7.0, '+x', 3.0);
+    roomLabel(b, '초소 4 — 게이트하우스', -5.8, 2.5, -7.0, '+x', 3.0);
   },
 
   duty5: ({ L, G, b, standin }) => {
     air(G, 'duty5');
     stand(b, standin, -3.0, 0, -16.0, 0.0, 1.0, -15.0);              // watch desk (h 1.0)
     stand(b, standin, 4.4, 0, -21.8, 5.6, 1.3, -21.2);               // filing cabinets (h 1.3, low cover)
-    L.interact('note5_watch', 'log', 'Read watch log', -1.2, 1.02, -15.5);
-    L.screen('dock_status', 'dock_status', 3.0, 1.2, -7.78, 1.7, -18.0, '+x', { text: 'SDV TERN — CRADLE — LAUNCH READY\nTRUNK — NOMINAL\nCOMMAND MODULE — SEALED (INSIDE)\nLINK DRILL — IN PROGRESS' });
-    L.interact('note5_roster', 'log', 'Read card', -7.78, 1.4, -14.0);
+    L.interact('note5_watch', 'log', '당직 일지 읽기', -1.2, 1.02, -15.5);
+    L.screen('dock_status', 'dock_status', 3.0, 1.2, -7.78, 1.7, -18.0, '+x', { text: 'SDV 턴 — 크레이들 — 발사 준비\n트렁크 — 정상\n지휘 모듈 — 밀봉됨 (내부)\n링크 훈련 — 진행 중' });
+    L.interact('note5_roster', 'log', '카드 읽기', -7.78, 1.4, -14.0);
     // the keypad (§8.5): panel `key5_panel` on the duty side of d5_key, north of its pocket; interactable 0.3 m out,
     // radius 1.2, usable only with the eye at x < 7.8 (R8: never from the spine side / the doorway)
-    L.screen('key5_panel', 'keypad', 0.22, 0.3, 7.78, 1.35, -13.9, '-x', { text: 'NO AUTHORITY' });
+    L.screen('key5_panel', 'keypad', 0.22, 0.3, 7.78, 1.35, -13.9, '-x', { text: '권한 없음' });
     L.marker('mk5_keypad', 7.78, 1.35, -13.9, -PI / 2);
-    eyeGate(L.ctx, L.interact('key5_duty', 'keypad', 'Keypad — no power', 7.48, 1.35, -13.9, true, 1.2), { axis: 'x', max: 7.8 });
+    eyeGate(L.ctx, L.interact('key5_duty', 'keypad', '키패드 — 전원 없음', 7.48, 1.35, -13.9, true, 1.2), { axis: 'x', max: 7.8 });
     shelf(b, standin, 7.5, 1.2, -11.0, 0.45, 0.4);
-    roomLabel(b, 'DUTY ROOM', 7.8, 2.6, -19.5, '-x', 2.4);
+    roomLabel(b, '당직실', 7.8, 2.6, -19.5, '-x', 2.4);
     // the cutscene markers (§4.2)
     L.marker('mk5_c1_cam0', 0, 1.65, -8.6, 0);
     L.marker('mk5_c1_cam1', 0.4, 1.65, -13.8, 0);
@@ -491,7 +491,7 @@ export const SHELLS5: Record<RoomId5, Shell> = {
     stand(b, standin, -4.6, 0, -34.4, -3.4, 1.2, -33.6);             // crate C2
     stand(b, standin, 1.4, 0, -35.6, 2.6, 1.2, -34.8);               // crate C3
     stand(b, standin, -11.8, 0, -37.8, 3.8, 2.2, -37.2);             // kit rack (south wall)
-    L.interact('note5_locker', 'log', 'Read note', -7.38, 1.5, -29.0);
+    L.interact('note5_locker', 'log', '쪽지 읽기', -7.38, 1.5, -29.0);
     L.marker('mk5_locker_slam', -0.4, 0, -31.5, -PI / 2);
     L.marker('mk5_helmet_rest', -2.9, 0, -31.5, 0);
     L.marker('mk5_c1_out', -4.0, 0, -23.2, 0);
@@ -501,8 +501,8 @@ export const SHELLS5: Record<RoomId5, Shell> = {
     shelf(b, standin, 3.4, 1.0, -23.0, 0.45, 0.4);
     shelf(b, standin, -11.4, 1.0, -30.0, 0.4, 0.45);
     // the radio (§4.3): created disabled at the soldier's mark; the story moves it to `corpsePoint` and enables it
-    L.interact('radio5', 'radio', 'Take radio', -4.0, 0.3, -36.6, false, 1.6);
-    roomLabel(b, 'READY ROOM', -11.8, 2.6, -24.5, '+x', 2.4);
+    L.interact('radio5', 'radio', '무전기 가져가기', -4.0, 0.3, -36.6, false, 1.6);
+    roomLabel(b, '대기실', -11.8, 2.6, -24.5, '+x', 2.4);
   },
 
   spine5: ({ L, G, b, standin, glass, dark, yellow, grate }) => {
@@ -527,10 +527,10 @@ export const SHELLS5: Record<RoomId5, Shell> = {
     rail(b, dark, 36.15, -17.6, 36.2, -15.4, 0, 1.0);
     rail(b, dark, 38.6, -17.6, 38.65, -15.4, 0, 1.0);
     rail(b, dark, 36.2, -15.4, 37.4, -15.35, 0, 1.0);
-    b.sign('BILGE ACCESS — CRAWLWAY TO MAGAZINE — CROUCH', 'stencil', 36.8, 0.72, -15.345, 1.1, 0.16, '+z');
+    b.sign('빌지 출입 — 탄약고 연결 통로 — 웅크리기', 'stencil', 36.8, 0.72, -15.345, 1.1, 0.16, '+z');
     // (IA-5: radius 1.4 → 1.8 — the use point lies 0.3 m up by the walkway, so at 1.4 a standing eye (1.35 m above it)
     // had to be within ≈ 0.3 m of it horizontally: from the walkway or the lid's edge the hatch could not be opened)
-    L.interact('hatch5_spine', 'hatch', 'Open hatch', 37.0, 0.3, -14.9, true, 1.8);
+    L.interact('hatch5_spine', 'hatch', '해치 열기', 37.0, 0.3, -14.9, true, 1.8);
     // (nav: the 4 m spine samples rows at z −16.5 / −15.5 only; hand nodes down the 1.2 m walkway beside the pit)
     for (const x of [35.9, 36.8, 37.7, 38.6, 39.4]) L.navNode(x, -14.8, 'spine5', 0);
     // ── pipe risers (0.6 × 0.5, full height: the spine's high cover), clear of every door pocket ──
@@ -552,8 +552,8 @@ export const SHELLS5: Record<RoomId5, Shell> = {
     L.marker('mk5_body_b', 14.2, 0, -16.9, 0);
     L.marker('mk5_boots_stop', 26.0, 0, -16.0, 0);
     L.marker('mk5_patrol_end', 40.5, 0, -14.9, PI / 2);
-    roomLabel(b, 'THE SPINE', 10.6, 2.5, -14.2, '-z', 2.4);
-    roomLabel(b, 'COMMAND MODULE →', 42.0, 2.75, -14.2, '-z', 2.6);
+    roomLabel(b, '스파인', 10.6, 2.5, -14.2, '-z', 2.4);
+    roomLabel(b, '지휘 모듈 →', 42.0, 2.75, -14.2, '-z', 2.6);
   },
 
   berths5: ({ L, G, b, standin }) => {
@@ -564,7 +564,7 @@ export const SHELLS5: Record<RoomId5, Shell> = {
     L.marker('mk5_body_a', 19.6, 0, -12.4, 0);
     shelf(b, standin, 23.4, 0.7, -3.0, 0.4, 0.35);
     shelf(b, standin, 13.8, 0.7, -2.9, 0.4, 0.3);
-    roomLabel(b, 'BERTHING — 1', 23.8, 2.4, -12.0, '-x', 2.4);
+    roomLabel(b, '침실구역 — 1', 23.8, 2.4, -12.0, '-x', 2.4);
   },
 
   heads5: ({ L, G, b, standin }) => {
@@ -582,9 +582,9 @@ export const SHELLS5: Record<RoomId5, Shell> = {
     stand(b, standin, 26.0, 0, -2.8, 31.2, 1.0, -2.2);
     stand(b, standin, 34.8, 0, -2.8, 36.0, 1.0, -2.2);
     L.marker('mk5_trays', 30.0, 1.0, -2.5, 0);
-    L.interact('note5_mess', 'log', 'Read board', 24.22, 1.6, -4.0);
+    L.interact('note5_mess', 'log', '게시판 읽기', 24.22, 1.6, -4.0);
     shelf(b, standin, 37.4, 1.0, -13.4, 0.4, 0.4);
-    roomLabel(b, 'MESS', 37.8, 2.5, -9.0, '-x', 2.0);
+    roomLabel(b, '식당', 37.8, 2.5, -9.0, '-x', 2.0);
   },
 
   galley5: ({ L, G, b, standin, glass }) => {
@@ -597,7 +597,7 @@ export const SHELLS5: Record<RoomId5, Shell> = {
     pane(b, glass, PANES5[3].box);
     L.marker('mk5_oilskin', 38.8, 1.4, 1.0, -PI / 2);
     shelf(b, standin, 28.6, 1.0, 3.4, 0.4, 0.35);
-    roomLabel(b, 'GALLEY', 28.2, 2.3, 3.0, '+x', 2.0);
+    roomLabel(b, '갤리', 28.2, 2.3, 3.0, '+x', 2.0);
   },
 
   arm5: ({ L, G, b, standin, dark }) => {
@@ -611,7 +611,7 @@ export const SHELLS5: Record<RoomId5, Shell> = {
     // ammo-tin racks (h 2.0; the dressing gives them per-shelf colliders with open fronts)
     stand(b, standin, 14.4, -2.6, -27.4, 15.4, -0.6, -22.4);
     stand(b, standin, 18.6, -2.6, -26.2, 19.6, -0.6, -22.4);
-    L.interact('note5_mag', 'log', 'Read tally', 19.0, -1.4, -22.0);
+    L.interact('note5_mag', 'log', '계수표 읽기', 19.0, -1.4, -22.0);
     for (const [x, y, z] of [[17.0, -2.2, -27.4], [17.6, -2.2, -27.4]] as const) shelf(b, standin, x, y, z, 0.35, 0.3);
     // ── the magazine hatch (x 20.4 … 21.6, z −27.0 … −24.3) in the armoury's south-east corner: lid hinged on its south
     // edge, dogged from below; rail 1.0 m on its west (x 20.2) and south (z −27.2) sides, the wall x 21.8 its east ──
@@ -619,19 +619,19 @@ export const SHELLS5: Record<RoomId5, Shell> = {
     rail(b, dark, 20.15, -27.25, 21.8, -27.2, 0, 1.0);
     const lidShut = () => !(lidK(L, 'hatch5_mag') > 0);
     // underside interact: use point on the lid underside, usable only with the eye below y −0.2 while the lid is shut
-    eyeGate(L.ctx, L.interact('hatch5_mag', 'hatch', 'Open hatch', 21.0, -0.08, -26.4, true, 1.6), { axis: 'y', max: -0.2 }, lidShut);
+    eyeGate(L.ctx, L.interact('hatch5_mag', 'hatch', '해치 열기', 21.0, -0.08, -26.4, true, 1.6), { axis: 'y', max: -0.2 }, lidShut);
     // top side: the plate (prompt only; pressing it toasts the same)
-    const plate = L.interact('hatch5_mag_plate', 'hatch', 'Hatch dogged from below', 21.0, 0.05, -25.4, true, 1.6);
-    plate.onUse = () => L.ctx.events.emit('story:toast', { text: 'Hatch dogged from below' });
+    const plate = L.interact('hatch5_mag_plate', 'hatch', '해치가 아래에서 잠겨 있다', 21.0, 0.05, -25.4, true, 1.6);
+    plate.onUse = () => L.ctx.events.emit('story:toast', { text: '해치가 아래에서 잠겨 있다' });
     eyeGate(L.ctx, plate, { axis: 'y', min: -0.2 }, lidShut);
-    b.sign('MAGAZINE — DOGGED FROM BELOW — ACCESS VIA SPINE CRAWLWAY', 'stencil', 21.79, 1.15, -25.65, 1.9, 0.2, '-x', 0, true);
+    b.sign('탄약고 — 아래에서 잠김 — 스파인 통로로 출입', 'stencil', 21.79, 1.15, -25.65, 1.9, 0.2, '-x', 0, true);
     // ── the armoury above: cage racks (west wall), issue desk ──
     stand(b, standin, 14.2, 0, -27.4, 14.45, 2.0, -20.9);
     stand(b, standin, 14.2, 0, -20.2, 16.0, 0.95, -19.0);
-    L.interact('note5_arm', 'log', 'Read issue sheet', 15.0, 1.0, -19.6);
+    L.interact('note5_arm', 'log', '지급 전표 읽기', 15.0, 1.0, -19.6);
     shelf(b, standin, 21.4, 1.4, -19.4, 0.5, 0.4);
     L.marker('mk5_exit_mag', ...EXIT_MAG, 0);
-    roomLabel(b, 'ARMOURY', 21.8, 2.5, -20.5, '-x', 2.0);
+    roomLabel(b, '무기고', 21.8, 2.5, -20.5, '-x', 2.0);
   },
 
   sub5: ({ L, G, b, standin, glass, dark }) => {
@@ -688,12 +688,12 @@ export const SHELLS5: Record<RoomId5, Shell> = {
     // ── launch console on the bridge (h 1.1), the palm plate (R8: from the bridge only), the `launch` screen ──
     stand(b, standin, 33.3, GAL, -34.3, 34.7, GAL + 1.1, -34.0);
     L.marker('mk5_launch', 34.0, GAL, -34.15, PI);
-    L.screen('launch', 'launch', 0.6, 0.36, 33.75, GAL + 1.35, -34.12, '+z', { text: 'SDV TERN — LAUNCH CONTROL' });
-    L.screen('launch5_palm', 'palm', 0.2, 0.26, 34.4, GAL + 1.25, -34.12, '+z', { text: 'white|standby|LAUNCH' });
-    L.interact('launch5_palm', 'palm', 'Hold palm — LAUNCH', 34.4, GAL + 1.2, -34.3, true, 1.6);
+    L.screen('launch', 'launch', 0.6, 0.36, 33.75, GAL + 1.35, -34.12, '+z', { text: 'SDV 턴 — 발사 관제' });
+    L.screen('launch5_palm', 'palm', 0.2, 0.26, 34.4, GAL + 1.25, -34.12, '+z', { text: 'white|standby|발사' });
+    L.interact('launch5_palm', 'palm', '손바닥을 대세요 — 발사', 34.4, GAL + 1.2, -34.3, true, 1.6);
     // ── the wheel (W7, west wall over the tunnel door, on the west gallery) ──
     L.marker('mk5_wheel', 22.25, 5.9, -52.0, PI / 2);
-    L.interact('wheel5', 'wheel', 'Turn wheel', 22.25, 5.9, -52.0, false, 1.2);
+    L.interact('wheel5', 'wheel', '바퀴 돌리기', 22.25, 5.9, -52.0, false, 1.2);
     // ── floor drains (voids under grilles flush with the floor) ──
     for (const [id, bx] of [['drain5_a', VOIDS5.drain5_a], ['drain5_b', VOIDS5.drain5_b]] as const) {
       airIn(G, 'sub5', bx, ['sub5'], 'sub5');
@@ -708,41 +708,41 @@ export const SHELLS5: Record<RoomId5, Shell> = {
     airIn(G, 'sub5', [33.7, 1.9, -56.4, 34.3, 2.5, -55.8], ['sub5'], 'sub5');
     G.void(OUTSIDE5);
     // (the round door, its port glass: W7's `launchLockDoor`; a greybox placeholder in `placeholders5`)
-    L.screen('tern_board', 'dock_status', 2.4, 0.8, 34.0, 7.2, -18.22, '-z', { text: 'TERN — CRADLE — LAUNCH READY' });
+    L.screen('tern_board', 'dock_status', 2.4, 0.8, 34.0, 7.2, -18.22, '-z', { text: '턴 — 크레이들 — 발사 준비' });
     L.marker('mk5_tern_board', 34.0, 7.2, -18.22, PI);
-    L.screen('tunnel_panel', 'terminal_idle', 0.5, 0.3, 22.22, 1.6, -50.9, '+x', { text: "TRUNK TUNNEL — CO'S AUTHORITY" });
+    L.screen('tunnel_panel', 'terminal_idle', 0.5, 0.3, 22.22, 1.6, -50.9, '+x', { text: "트렁크 터널 — 함장 권한" });
     L.marker('mk5_lockside_door', 42, 0, -56, 0);
     L.marker('mk5_dive_door', 46, 0, -34, -PI / 2);
-    roomLabel(b, 'SUB BAY', 22.2, 2.6, -30.0, '+x', 2.4);
-    roomLabel(b, 'SUB BAY — GALLERY', 22.2, GAL + 2.2, -40.0, '+x', 3.0);
+    roomLabel(b, '서브베이', 22.2, 2.6, -30.0, '+x', 2.4);
+    roomLabel(b, '서브베이 — 갤러리', 22.2, GAL + 2.2, -40.0, '+x', 3.0);
   },
 
   dive5: ({ L, G, b, standin }) => {
     air(G, 'dive5');
     stand(b, standin, 49.0, 0, -39.6, 51.6, 2.0, -36.0);             // decompression chamber (prop)
-    L.interact('note5_dive', 'log', 'Read board', 51.78, 1.6, -30.0);
+    L.interact('note5_dive', 'log', '게시판 읽기', 51.78, 1.6, -30.0);
     shelf(b, standin, 51.4, 1.0, -29.0, 0.4, 0.4);
-    roomLabel(b, 'DIVE LOCKER', 51.8, 2.5, -33.0, '-x', 2.4);
+    roomLabel(b, '잠수 장비함', 51.8, 2.5, -33.0, '-x', 2.4);
   },
 
   lockacc5: ({ G, b }) => {
     air(G, 'lockacc5');
-    b.sign('LAUNCH LOCK — FLOODED — 210 BAR', 'stencil', 38.22, 1.6, -59.0, 1.6, 0.22, '+x');
-    roomLabel(b, 'LAUNCH LOCK — ACCESS', 45.8, 2.5, -59.0, '-x', 2.8);
+    b.sign('발사 록 — 침수 — 210 BAR', 'stencil', 38.22, 1.6, -59.0, 1.6, 0.22, '+x');
+    roomLabel(b, '발사 록 — 출입', 45.8, 2.5, -59.0, '-x', 2.8);
   },
 
   tunnel5: ({ L, G, b, dark }) => {
     air(G, 'tunnel5');
     sealedOpening(G, 'door5_headend', 14, 0, -53, 'x', 1.6, 2.4, ['tunnel5']);
     sealedDoor(L, b, {
-      id: 'door5_headend', x: 14, y: 0, z: -53, wall: 'x', kind: 'std', sides: 'front', leafMat: 'navy_grey', labelFront: 'TRUNK — HEAD-END',
-      panel: { text: 'TRUNK — HEAD-END 200 M — CYCLING', side: 'front' },
+      id: 'door5_headend', x: 14, y: 0, z: -53, wall: 'x', kind: 'std', sides: 'front', leafMat: 'navy_grey', labelFront: '트렁크 — 헤드엔드',
+      panel: { text: '트렁크 — 헤드엔드 200 M — 순환 중', side: 'front' },
     });
     b.bx(dark, 14.2, 2.2, -50.4, 21.8, 2.28, -50.3);                 // cable tray (north wall)
     b.bx(dark, 14.2, 0.35, -50.45, 21.8, 0.6, -50.2);                // the trunk cable (⌀ 0.25), along the north wall
     shelf(b, dark, 21.0, 1.0, -50.6, 0.4, 0.4);
-    b.sign('TRUNK — HEAD-END 200 M ←', 'stencil', 18.0, 1.5, -55.78, 2.0, 0.22, '+z');
-    roomLabel(b, 'TRUNK TUNNEL', 18.0, 2.4, -55.8, '+z', 2.4);
+    b.sign('트렁크 — 헤드엔드 200 M ←', 'stencil', 18.0, 1.5, -55.78, 2.0, 0.22, '+z');
+    roomLabel(b, '트렁크 터널', 18.0, 2.4, -55.8, '+z', 2.4);
   },
 };
 
@@ -766,7 +766,7 @@ export function placeholders5(L: LevelBuild, m: { standin: Mat; dark: Mat; glass
     const o = L.marker('door5_cmd', 44, 0, -16, -PI / 2); o.userData.placeholder = true; o.userData.sealed = true;
     pane(b, m.glass, PANES5[1].box);
     // (W7's door names its panel `door5_cmd_panel`; the greybox one keeps §6.4's `cmd_panel`)
-    L.screen('cmd_panel', 'terminal_idle', 0.42, 0.28, 43.78, 1.75, -17.5, '-x', { text: 'COMMAND MODULE — SHIELDED — SEALED FROM INSIDE' });
+    L.screen('cmd_panel', 'terminal_idle', 0.42, 0.28, 43.78, 1.75, -17.5, '-x', { text: '지휘 모듈 — 차폐됨 — 내부에서 밀봉' });
   }
   if (!L.objects.has('lock5_launch')) {
     const b = pb('ph5:lock5_launch', ['sub5']);
@@ -792,7 +792,7 @@ export function placeholders5(L: LevelBuild, m: { standin: Mat; dark: Mat; glass
   vig('gate5_booth', () => L.sfx('booth_door_shut', 5.7, 1.1, -1.6, 0.8), none);
   vig('v5_turnstile', () => { L.sfx('turnstile_click', -2.55, 0.9, -5.0); L.after(0.4, () => { L.sfx('counter_tick', -4.0, 2.6, -0.3); text('onpost', 'onpost', '27'); }); }, () => text('onpost', 'onpost', '27'));
   vig('v5_hull_groan', () => { L.sfx('hull_groan_long', -4, 2.5, -30); L.after(3.4, () => L.sfx('locker_bang', -0.4, 1.2, -31.5)); }, none);
-  vig('key5_power', () => { L.sfx('keypad_power_on', 7.78, 1.35, -13.9); text('key5_panel', 'keypad', 'ENTER CODE'); }, () => text('key5_panel', 'keypad', 'ENTER CODE'));
+  vig('key5_power', () => { L.sfx('keypad_power_on', 7.78, 1.35, -13.9); text('key5_panel', 'keypad', '코드 입력'); }, () => text('key5_panel', 'keypad', '코드 입력'));
   // spine, crawl, armoury / magazine (D2a)
   const lidOpen = (id: string) => L.objects.get(id)?.userData.open as ((k: number) => void) | undefined;
   const swing = (id: string) => { const o = lidOpen(id); if (o && lidK(L, id) === 0) L.tween(0.3, 1.2, (k) => o(k * k * (3 - 2 * k)), () => o(1)); };
@@ -812,7 +812,7 @@ export function placeholders5(L: LevelBuild, m: { standin: Mat; dark: Mat; glass
   // sub bay (D3)
   vig('v5_sub_check', () => {
     (L.objects.get('tern')?.userData.check as (() => void) | undefined)?.();
-  }, () => text('tern_board', 'dock_status', 'COMPLETE — AWAITING OFFICER PALM'));
+  }, () => text('tern_board', 'dock_status', '완료 — 장교 손바닥 인증 대기'));
   vig('wheel5_turn', () => { L.sfx('wheel_crank', 22.4, 5.9, -52.0); L.after(3.6, () => L.sfx('hydraulic_release', 22.4, 3.0, -53.0)); }, none);
   vig('drain5_a', () => obj('drain5_a_grille')?.open('lift'), () => obj('drain5_a_grille')?.open('lift', true));
   vig('drain5_b', () => obj('drain5_b_grille')?.open('lift'), () => obj('drain5_b_grille')?.open('lift', true));
@@ -848,9 +848,9 @@ export function placeholders5(L: LevelBuild, m: { standin: Mat; dark: Mat; glass
     const t = L.marker('tern', 34.0, 0.6, -35.0, 0);
     t.userData.placeholder = true;
     t.userData.check = () => {
-      text('tern_board', 'dock_status', 'PRE-LAUNCH CHECK — RUNNING');
+      text('tern_board', 'dock_status', '발사 전 점검 — 진행 중');
       L.sfx('sub_ballast_hiss', 34, 1.2, -35);
-      L.after(6, () => text('tern_board', 'dock_status', 'COMPLETE — AWAITING OFFICER PALM'));
+      L.after(6, () => text('tern_board', 'dock_status', '완료 — 장교 손바닥 인증 대기'));
     };
   }
 }

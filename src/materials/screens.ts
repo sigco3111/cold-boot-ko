@@ -81,18 +81,18 @@ function rng(seed: number) {
 }
 
 const WORDS = {
-  sys: ['CHOIR', 'HALCYON', 'ERIDU', 'FAB-3', 'SUBLVL-3', 'NODE', 'RELAY', 'MED-3A', 'SEC-3', 'GEN-3', 'LIFT-F2', 'ARM-07', 'CONV-2'],
-  verb: ['SYNC', 'POLL', 'ROUTE', 'RETASK', 'VERIFY', 'ALLOC', 'HANDSHAKE', 'PURGE', 'QUEUE', 'REINDEX', 'LISTEN'],
-  stat: ['OK', 'OK', 'OK', 'NOMINAL', 'DEFERRED', 'NO ACK', 'TIMEOUT', 'RETRY', 'WE HEAR', 'ACCEPTED', 'OVERRIDE'],
+  sys: ['CHOIR', '할시온', '에리두', '제작-3', '하부-3', '노드', '중계', '의무-3A', '보안-3', '발전-3', '리프트-F2', '암-07', '컨베어-2'],
+  verb: ['동기화', '조회', '경로', '재배치', '확인', '할당', '핸드셰이크', '배출', '대기열', '재색인', '수신'],
+  stat: ['OK', 'OK', 'OK', '정상', '보류됨', '무응답', '시간 초과', '재시도', '들립니다', '승인됨', '수동 해제'],
 };
 function logLine(r: () => number): string {
   const p = (a: string[]) => a[Math.floor(r() * a.length)];
   const hex = () => Math.floor(r() * 0xffff).toString(16).toUpperCase().padStart(4, '0');
   const k = r();
-  if (k < 0.08) return '> CHOIR: ' + p(['ALL STAFF ARE BEING RE-TASKED', 'WE ARE LISTENING', 'PLEASE REMAIN WHERE YOU ARE', 'SURFACE LINK NOT REQUIRED', 'THANK YOU FOR YOUR PATIENCE']);
+  if (k < 0.08) return '> CHOIR: ' + p(['전 직원이 재배치되고 있습니다', '듣고 있습니다', '제자리에 계세요', '수면 연결은 필요 없습니다', '기다려 주셔서 감사합니다']);
   if (k < 0.2) return `[${hex()}] ${p(WORDS.sys)}.${p(WORDS.sys)} :: ${p(WORDS.stat)}`;
-  if (k < 0.35) return `  PWR BUS ${Math.floor(r() * 9)}  ${(r() * 480).toFixed(1)}V  ${(r() * 40).toFixed(2)}A  ${p(WORDS.stat)}`;
-  if (k < 0.45) return `  SURFACE UPLINK ........ ${p(['NO CARRIER', 'NO CARRIER', 'REFUSED', 'NOT REQUIRED'])}`;
+  if (k < 0.35) return `  전원 버스 ${Math.floor(r() * 9)}  ${(r() * 480).toFixed(1)}V  ${(r() * 40).toFixed(2)}A  ${p(WORDS.stat)}`;
+  if (k < 0.45) return `  수면 업링크 ........ ${p(['반송파 없음', '반송파 없음', '거부됨', '불필요'])}`;
   return `${hex()}:${hex()}  ${p(WORDS.verb)} ${p(WORDS.sys)}-${Math.floor(r() * 99)} ${'.'.repeat(2 + Math.floor(r() * 8))} ${p(WORDS.stat)}`;
 }
 
@@ -104,19 +104,19 @@ const CLOCKED_3C = new Set<ScreenKind>(['keypad', 'launch', 'dock_status', 'onpo
  * maintenance (§1 — no navy screen says CHOIR controls anyone).
  */
 const NAVY_WORDS = {
-  sys: ['POST4', 'GATE-4', 'SPINE', 'BERTH-1', 'MESS', 'ARMOURY', 'SUB-BAY', 'TERN', 'DIVE', 'BILGE', 'PUMP-2', 'HULL-S', 'TRUNK'],
-  verb: ['POLL', 'SYNC', 'VERIFY', 'LOG', 'SWEEP', 'CYCLE', 'TEST', 'QUERY'],
-  stat: ['OK', 'OK', 'OK', 'NOMINAL', 'NOMINAL', 'LOGGED', 'NO ACK', 'TIMEOUT', 'RETRY'],
+  sys: ['초소4', '게이트-4', '스파인', '정박-1', '식당', '무기고', '서브베이', 'TERN', '잠항', '빌지', '펌프-2', '선체-S', '트렁크'],
+  verb: ['조회', '동기화', '확인', '기록', '스캔', '사이클', '시험', '질의'],
+  stat: ['OK', 'OK', 'OK', '정상', '정상', '기록됨', '무응답', '시간 초과', '재시도'],
 };
 function navyLogLine(r: () => number): string {
   const p = (a: string[]) => a[Math.floor(r() * a.length)];
   const hex = () => Math.floor(r() * 0xffff).toString(16).toUpperCase().padStart(4, '0');
   const k = r();
-  if (k < 0.06) return '> CHOIR: ' + p(['MAINTENANCE REQUEST — SDV TERN PRE-LAUNCH CHECK', 'MAINTENANCE REQUEST — BILGE PUMP 2', 'REQUEST LOGGED — HULL SENSOR SWEEP', 'MAINTENANCE REQUEST — GALLEY COLD ROOM']);
+  if (k < 0.06) return '> CHOIR: ' + p(['정비 요청 — SDV 턴 발사 전 점검', '정비 요청 — 빌지 펌프 2', '요청 기록됨 — 선체 센서 스캔', '정비 요청 — 갤리 냉장실']);
   if (k < 0.2) return `[${hex()}] ${p(NAVY_WORDS.sys)}.${p(NAVY_WORDS.sys)} :: ${p(NAVY_WORDS.stat)}`;
-  if (k < 0.32) return `  HULL STRAIN F${Math.floor(r() * 40)}  ${(380 + r() * 60).toFixed(0)} µε  ${p(NAVY_WORDS.stat)}`;
-  if (k < 0.4) return `  DEPTH 2104 M   SEA ${(1.6 + r() * 0.4).toFixed(1)} °C   HULL ${(r() * 2 + 18).toFixed(1)} °C`;
-  if (k < 0.48) return `  SURFACE UPLINK ........ ${p(['NO CARRIER', 'NO CARRIER', 'NO CARRIER', 'TIMEOUT'])}`;
+  if (k < 0.32) return `  선체 변형 F${Math.floor(r() * 40)}  ${(380 + r() * 60).toFixed(0)} µε  ${p(NAVY_WORDS.stat)}`;
+  if (k < 0.4) return `  수심 2104 M   해수 ${(1.6 + r() * 0.4).toFixed(1)} °C   선체 ${(r() * 2 + 18).toFixed(1)} °C`;
+  if (k < 0.48) return `  수면 업링크 ........ ${p(['반송파 없음', '반송파 없음', '반송파 없음', '시간 초과'])}`;
   return `${hex()}:${hex()}  ${p(NAVY_WORDS.verb)} ${p(NAVY_WORDS.sys)}-${Math.floor(r() * 99)} ${'.'.repeat(2 + Math.floor(r() * 8))} ${p(NAVY_WORDS.stat)}`;
 }
 
@@ -456,7 +456,7 @@ export class ScreenManager {
     g.fillStyle = '#100000';
     for (let x = -H; x < W + H; x += b * 2) { g.beginPath(); g.moveTo(x, H); g.lineTo(x + b, H); g.lineTo(x + b + H, 0); g.lineTo(x + H, 0); g.closePath(); g.fill(); }
     g.restore();
-    const msg = (plain ? s.text!.slice(PLAIN.length).replace(/^\n/, '') : s.text ?? 'WARNING').toUpperCase();
+    const msg = (plain ? s.text!.slice(PLAIN.length).replace(/^\n/, '') : s.text ?? '경고').toUpperCase();
     const lines = msg.split('\n');
     g.textAlign = 'center'; g.textBaseline = 'middle';
     g.fillStyle = on ? '#ffd8d0' : '#ff3a28';
@@ -556,7 +556,7 @@ export class ScreenManager {
     }
     g.fillStyle = 'rgba(120,230,255,0.6)';
     g.font = `${Math.round(H * 0.045)}px ${MONO}`; g.textAlign = 'left'; g.textBaseline = 'bottom';
-    if (Math.floor(t * 1.5) % 2 === 0) g.fillText('WE ARE LISTENING', W * 0.04, H * 0.95);
+    if (Math.floor(t * 1.5) % 2 === 0) g.fillText('듣고 있습니다', W * 0.04, H * 0.95);
   }
 
   private camera(s: Screen) {
@@ -636,17 +636,17 @@ export class ScreenManager {
     g.textAlign = 'left'; g.textBaseline = 'middle';
     const x0 = traceW + W * 0.03;
     const blink = Math.floor(t * 2) % 2 === 0;
-    g.font = `700 ${fs * 0.6}px ${SANS}`; g.fillStyle = '#4dff7a'; g.fillText('HR', x0, H * 0.13);
+    g.font = `700 ${fs * 0.6}px ${SANS}`; g.fillStyle = '#4dff7a'; g.fillText('심박', x0, H * 0.13);
     g.font = `700 ${fs * 1.5}px ${SANS}`; g.fillText('0', x0, H * 0.24);
     g.font = `700 ${fs * 0.6}px ${SANS}`; g.fillStyle = '#40d8ff'; g.fillText('SpO₂', x0, H * 0.4);
     g.font = `700 ${fs * 1.3}px ${SANS}`; g.fillText('--', x0, H * 0.5);
-    g.font = `700 ${fs * 0.6}px ${SANS}`; g.fillStyle = '#ffe14d'; g.fillText('RESP', x0, H * 0.65);
+    g.font = `700 ${fs * 0.6}px ${SANS}`; g.fillStyle = '#ffe14d'; g.fillText('호흡', x0, H * 0.65);
     g.font = `700 ${fs * 1.3}px ${SANS}`; g.fillText('0', x0, H * 0.75);
     if (blink) { g.fillStyle = '#ff2a1a'; g.fillRect(0, H * 0.86, W, H * 0.14); g.fillStyle = '#fff'; } else g.fillStyle = '#ff2a1a';
     g.font = `800 ${fs * 0.85}px ${SANS}`; g.textAlign = 'center';
-    g.fillText(s.text ?? 'ASYSTOLE  ·  NO PATIENT RESPONSE', W / 2, H * 0.93);
+    g.fillText(s.text ?? '심정지  ·  환자 반응 없음', W / 2, H * 0.93);
     g.font = `${fs * 0.45}px ${MONO}`; g.fillStyle = 'rgba(160,220,190,0.7)'; g.textAlign = 'left';
-    g.fillText('MED-3A  BED 4   REYES, S.   SEDATION PUMP: EMPTY', W * 0.02, H * 0.04 + fs * 0.3);
+    g.fillText('의무 3-A  병상 4   레예스, S.   진정 펌프: 비어 있음', W * 0.02, H * 0.04 + fs * 0.3);
   }
 
   private door(s: Screen, mode: boolean | 'cycling') {
@@ -673,7 +673,7 @@ export class ScreenManager {
     }
     g.font = `800 ${Math.round(H * 0.34)}px ${SANS}`; g.textAlign = 'left'; g.textBaseline = 'middle';
     g.fillStyle = col;
-    let label = (s.text ?? (open ? 'OPEN' : cyc ? 'CYCLING' : 'LOCKED')).toUpperCase();
+    let label = (s.text ?? (open ? '열림' : cyc ? '순환 중' : '잠김')).toUpperCase();
     let sz2 = H * 0.34;
     while (g.measureText(label).width > W - H * 1.1 && sz2 > 8) { sz2 -= 2; g.font = `800 ${Math.round(sz2)}px ${SANS}`; }
     g.fillText(label, H * 0.98, H / 2);
@@ -723,11 +723,11 @@ export class ScreenManager {
     const bg = stop ? '#0d0702' : '#06070a';
     g.fillStyle = bg; g.fillRect(0, 0, W, H);
     const wide = W / H >= 2.4;
-    const head = stop ? 'STOP' : 'COMMAND';
-    const sub = stop ? 'NODE 5 OFF' : 'SUPERVISOR: REYES, S.';
-    const fate = stop ? 'THEY DO NOT WAKE' : 'THEY STAY AWAKE';
+    const head = stop ? '정지' : '명령';
+    const sub = stop ? '노드 5 꺼짐' : '관리자: 레예스, S.';
+    const fate = stop ? '그들은 깨어나지 않습니다' : '그들은 깨어 있습니다';
     const count = stop ? `UNITS ON THIS LINE: ${n} → 0` : `UNITS AWAITING ORDERS: ${n}`;
-    const plate = stop ? 'AMBER PLATE' : 'WHITE PLATE';
+    const plate = stop ? '황색 플레이트' : '백색 플레이트';
     // The pictogram's clock: the units go dark one after another (STOP) / a glance runs down the row (COMMAND).
     const P = 8, ph = (t % P) / P;
     const litCount = !stop ? n : ph < 0.14 ? n : ph < 0.68 ? Math.round(n * (1 - (ph - 0.14) / 0.54)) : 0;
@@ -770,7 +770,7 @@ export class ScreenManager {
         g.beginPath(); g.moveTo(cx, py - r * 1.35); g.lineTo(cx, py - r * 0.2); g.stroke();
         g.fillStyle = C(on ? 1 : 0.5); g.textAlign = 'center'; g.textBaseline = 'middle';
         g.font = `800 ${Math.round(h * 0.13)}px ${SANS}`;
-        g.fillText('NODE 5', cx, by + bh + h * 0.13);
+        g.fillText('노드 5', cx, by + bh + h * 0.13);
       } else {
         // a person, outlined, taller than the units: head, shoulders, body — and a raised open hand
         const ph2 = h * 0.86, fy = y0 + h * 0.94, hw = ph2 * 0.17;
@@ -780,7 +780,7 @@ export class ScreenManager {
         g.strokeRect(cx - hw, fy - ph2 * 0.4, hw * 0.8, ph2 * 0.4); g.strokeRect(cx + hw * 0.2, fy - ph2 * 0.4, hw * 0.8, ph2 * 0.4);
         g.fillStyle = C(1); g.textAlign = 'center'; g.textBaseline = 'middle';
         g.font = `800 ${Math.round(h * 0.1)}px ${SANS}`;
-        g.fillText('YOU', cx, fy - ph2 * 0.57);
+        g.fillText('당신', cx, fy - ph2 * 0.57);
       }
     };
     g.textBaseline = 'middle';
@@ -804,7 +804,7 @@ export class ScreenManager {
       g.font = `700 ${Math.round(H * 0.075)}px ${SANS}`; g.fillStyle = C(0.9);
       g.fillText(plate, hx0 + H * 0.1, H * 0.123);
       // both cards use the size at which COMMAND fits: the two words weigh the same
-      const hs = fit('COMMAND', 900, H * 0.42, hw * 0.98);
+      const hs = fit('명령', 900, H * 0.42, hw * 0.98);
       g.font = `900 ${Math.round(hs)}px ${SANS}`;
       g.save(); g.shadowColor = C(0.9); g.shadowBlur = H * 0.05; g.fillStyle = C(1);
       g.fillText(head, hx0 - hs * 0.03, H * 0.385);
@@ -828,7 +828,7 @@ export class ScreenManager {
       g.strokeStyle = C(0.85); g.lineWidth = Math.max(2, H * 0.014);
       g.strokeRect(m * 0.5, m * 0.5, W - m, H - m);
       g.textAlign = 'center';
-      const hs = fit('COMMAND', 900, H * 0.3, W * 0.8);
+      const hs = fit('명령', 900, H * 0.3, W * 0.8);
       g.font = `900 ${Math.round(hs)}px ${SANS}`;
       g.save(); g.shadowColor = C(0.9); g.shadowBlur = H * 0.05; g.fillStyle = C(1);
       g.fillText(head, W / 2, H * 0.2);
@@ -911,15 +911,15 @@ export class ScreenManager {
     g.fillText(title, cx, H * 0.125);
     g.font = `800 ${Math.round(H * 0.06)}px ${SANS}`;
     const line = (txt: string, a = 1) => { g.fillStyle = C(a); g.fillText(txt, cx, H * 0.25); };
-    if (state === 'standby') line('STANDBY', 0.45);
-    else if (state === 'idle') line('PLACE PALM', 0.6 + 0.4 * Math.abs(Math.sin(t * 1.6)));
+    if (state === 'standby') line('대기', 0.45);
+    else if (state === 'idle') line('손바닥을 대세요', 0.6 + 0.4 * Math.abs(Math.sin(t * 1.6)));
     else if (state === 'fail') { if (sub) this.fit(g, sub, 800, H * 0.075, W - H * 0.2, SANS); line(sub || 'SCAN INCOMPLETE', blink ? 1 : 0.4); }
     else if (state === 'done') {
       // (stage 3c: someone else's read-out is seen through booth glass at ≥ 1.8 m — a taller bar, bigger type)
       g.fillStyle = C(1);
       if (sub) g.fillRect(H * 0.05, H * 0.19, W - H * 0.1, H * 0.15); else g.fillRect(H * 0.07, H * 0.2, W - H * 0.14, H * 0.1);
       g.fillStyle = bg;
-      const read = sub || 'REYES, S. — LIVING — ROSTERED';
+      const read = sub || '레예스, S. — 생존 — 근무 편성';
       if (sub) this.fit(g, read, 900, H * 0.11, W - H * 0.16, SANS); else g.font = `900 ${Math.round(H * 0.054)}px ${SANS}`;
       g.fillText(read, cx, sub ? H * 0.268 : H * 0.252);
     } else if (state === 'scan') {
@@ -953,43 +953,43 @@ export class ScreenManager {
 
   /**
    * Pressure-door panel (§6.5): `text` = `TEST|hh:mm:ss` (the story writes the countdown once per second),
-   * `EQUALISING`, `RELEASED|CHOIR`, `OPEN`, `SECTOR SEALED`, `CLEAR THE DOOR`; anything else is shown as a notice.
+   * `등압 중`, `RELEASED|CHOIR`, `열림`, `구역 봉쇄됨`, `CLEAR THE DOOR`; anything else is shown as a notice.
    */
   private pressure(s: Screen) {
     const { g, W, H } = s;
     const t = s.t;
-    const [rawState = 'TEST', arg = ''] = (s.text ?? 'TEST|10:00:00').split('|');
+    const [rawState = '시험', arg = ''] = (s.text ?? '시험|10:00:00').split('|');
     const state = rawState.trim().toUpperCase();
     const blink = Math.floor(t * 2) % 2 === 0;
     const AMBER = '#ffb347', CYAN = '#79dcff', GREEN = '#6dffa6', RED = '#ff4a36', WHITE = '#f4f1e8';
-    const accent = state === 'TEST' ? AMBER : state === 'EQUALISING' ? CYAN : state === 'RELEASED' || state === 'OPEN' ? GREEN
-      : state === 'SECTOR SEALED' ? RED : AMBER;
-    const sealed = state === 'SECTOR SEALED';
+    const accent = state === '시험' ? AMBER : state === '등압 중' ? CYAN : state === '해제됨' || state === '열림' ? GREEN
+      : state === '구역 봉쇄됨' ? RED : AMBER;
+    const sealed = state === '구역 봉쇄됨';
     g.fillStyle = sealed ? (blink ? '#2a0605' : '#160303') : '#081219'; g.fillRect(0, 0, W, H);
     // header strip
     const hh = H * 0.13;
     g.fillStyle = 'rgba(255,255,255,0.06)'; g.fillRect(0, 0, W, hh);
     g.fillStyle = accent; g.fillRect(0, hh - 2, W, 2);
     g.textBaseline = 'middle'; g.textAlign = 'left'; g.fillStyle = 'rgba(244,241,232,0.75)';
-    this.fit(g, 'PRESSURE DOOR P-1  ·  HABITAT RING A', 600, hh * 0.46, W * 0.72);
-    g.fillText('PRESSURE DOOR P-1  ·  HABITAT RING A', W * 0.035, hh * 0.52);
+    this.fit(g, '압력문 P-1  ·  주거 링 A', 600, hh * 0.46, W * 0.72);
+    g.fillText('압력문 P-1  ·  주거 링 A', W * 0.035, hh * 0.52);
     g.textAlign = 'right'; g.fillStyle = accent;
     g.font = `700 ${Math.round(hh * 0.42)}px ${HAB}`;
-    g.fillText(state === 'TEST' ? 'TEST' : state === 'OPEN' || state === 'RELEASED' ? 'CLEAR' : state === 'EQUALISING' ? 'CYCLE' : 'ALARM', W * 0.965, hh * 0.52);
+    g.fillText(state === '시험' ? '시험' : state === '열림' || state === '해제됨' ? '지우기' : state === '등압 중' ? '사이클' : '경보', W * 0.965, hh * 0.52);
     const cx = W / 2;
     const glow = (col: string, f: () => void) => { g.save(); g.shadowColor = col; g.shadowBlur = H * 0.05; f(); g.restore(); };
     g.textAlign = 'center';
-    if (state === 'TEST') {
+    if (state === '시험') {
       g.fillStyle = AMBER;
-      this.fit(g, 'PRESSURE INTEGRITY TEST', 700, H * 0.085, W * 0.86);
-      g.fillText('PRESSURE INTEGRITY TEST', cx, H * 0.24);
+      this.fit(g, '압력 기밀 시험', 700, H * 0.085, W * 0.86);
+      g.fillText('압력 기밀 시험', cx, H * 0.24);
       // the countdown
       const clock = (arg || '10:00:00').trim();
       const ds = this.fit(g, clock, 600, H * 0.3, W * 0.66, MONO);
       this.lockIcon(g, W * 0.1, H * 0.46, H * 0.13, AMBER);
       glow(AMBER, () => { g.fillStyle = WHITE; g.fillText(clock, cx + W * 0.04, H * 0.47); });
       g.fillStyle = 'rgba(244,241,232,0.6)'; g.font = `600 ${Math.round(H * 0.055)}px ${HAB}`;
-      g.fillText('REMAINING', cx + W * 0.04, H * 0.47 + ds * 0.62);
+      g.fillText('잔여', cx + W * 0.04, H * 0.47 + ds * 0.62);
       // 72 h bar with six-hour marks; filled = elapsed
       const m = /(\d+):(\d+):(\d+)/.exec(clock);
       const left = m ? Number(m[1]) + Number(m[2]) / 60 + Number(m[3]) / 3600 : 10;
@@ -1000,38 +1000,38 @@ export class ScreenManager {
       g.fillStyle = 'rgba(8,18,25,0.9)';
       for (let i = 1; i < 12; i++) g.fillRect(bx + bw * i / 12 - 1, by + 2, 2, bh - 4);
       g.fillStyle = 'rgba(244,241,232,0.55)'; g.font = `500 ${Math.round(H * 0.045)}px ${HAB}`;
-      g.textAlign = 'left'; g.fillText('HR 0', bx, by + bh + H * 0.045);
-      g.textAlign = 'right'; g.fillText('HR 72', bx + bw, by + bh + H * 0.045);
+      g.textAlign = 'left'; g.fillText('심박 0', bx, by + bh + H * 0.045);
+      g.textAlign = 'right'; g.fillText('심박 72', bx + bw, by + bh + H * 0.045);
       g.textAlign = 'center'; g.fillStyle = 'rgba(244,241,232,0.7)';
-      this.fit(g, 'DOOR SEALED FOR THE DURATION OF THE TEST', 600, H * 0.05, W * 0.6);
-      g.fillText('DOOR SEALED FOR THE DURATION OF THE TEST', cx, H * 0.93);
-    } else if (state === 'EQUALISING') {
+      this.fit(g, '시험이 끝날 때까지 문 밀봉', 600, H * 0.05, W * 0.6);
+      g.fillText('시험이 끝날 때까지 문 밀봉', cx, H * 0.93);
+    } else if (state === '등압 중') {
       const dp = Math.max(0, 4.2 * Math.exp(-t / 2.5) - 0.01);
-      glow(CYAN, () => { g.fillStyle = CYAN; this.fit(g, 'EQUALISING', 800, H * 0.2, W * 0.86); g.fillText('EQUALISING', cx, H * 0.33); });
+      glow(CYAN, () => { g.fillStyle = CYAN; this.fit(g, '등압 중', 800, H * 0.2, W * 0.86); g.fillText('등압 중', cx, H * 0.33); });
       // two columns converging: lock side and habitat side
       const bw = W * 0.12, base = H * 0.86, full = H * 0.36;
       const a = full * (0.55 + 0.45 * Math.min(1, dp / 4.2)), b = full * 0.55;
       g.fillStyle = 'rgba(121,220,255,0.18)'; g.fillRect(W * 0.2, base - full, bw, full); g.fillRect(W * 0.68, base - full, bw, full);
       g.fillStyle = CYAN; g.fillRect(W * 0.2, base - a, bw, a); g.fillRect(W * 0.68, base - b, bw, b);
       g.fillStyle = 'rgba(244,241,232,0.7)'; g.font = `600 ${Math.round(H * 0.045)}px ${HAB}`;
-      g.fillText('LOCK', W * 0.2 + bw / 2, base + H * 0.05); g.fillText('HABITAT', W * 0.68 + bw / 2, base + H * 0.05);
+      g.fillText('잠금', W * 0.2 + bw / 2, base + H * 0.05); g.fillText('주거구역', W * 0.68 + bw / 2, base + H * 0.05);
       g.fillStyle = WHITE; g.font = `600 ${Math.round(H * 0.11)}px ${MONO}`;
       g.fillText(`Δp ${dp.toFixed(2)}`, cx, H * 0.62);
       g.font = `600 ${Math.round(H * 0.05)}px ${HAB}`; g.fillStyle = 'rgba(244,241,232,0.7)';
       g.fillText('kPa', cx, H * 0.72);
       const dots = '.'.repeat(1 + (Math.floor(t * 3) % 3));
       g.fillText(`STAND CLEAR${dots}`, cx, H * 0.82);
-    } else if (state === 'RELEASED') {
-      glow(GREEN, () => { g.fillStyle = GREEN; this.fit(g, 'RELEASED', 800, H * 0.24, W * 0.86); g.fillText('RELEASED', cx, H * 0.38); });
+    } else if (state === '해제됨') {
+      glow(GREEN, () => { g.fillStyle = GREEN; this.fit(g, '해제됨', 800, H * 0.24, W * 0.86); g.fillText('해제됨', cx, H * 0.38); });
       g.fillStyle = WHITE;
       const who = (arg || 'CHOIR').toUpperCase();
       this.fit(g, `AUTHORISED: ${who}`, 700, H * 0.1, W * 0.86);
       g.fillText(`AUTHORISED: ${who}`, cx, H * 0.6);
-      g.fillStyle = 'rgba(244,241,232,0.65)'; this.fit(g, 'TEST SUSPENDED  ·  DOOR UNDER REMOTE CONTROL', 600, H * 0.055, W * 0.86);
-      g.fillText('TEST SUSPENDED  ·  DOOR UNDER REMOTE CONTROL', cx, H * 0.76);
+      g.fillStyle = 'rgba(244,241,232,0.65)'; this.fit(g, '시험 중단  ·  문 원격 제어 중', 600, H * 0.055, W * 0.86);
+      g.fillText('시험 중단  ·  문 원격 제어 중', cx, H * 0.76);
       this.lockIcon(g, cx, H * 0.88, H * 0.08, GREEN, true);
-    } else if (state === 'OPEN') {
-      glow(GREEN, () => { g.fillStyle = GREEN; this.fit(g, 'OPEN', 800, H * 0.32, W * 0.6); g.fillText('OPEN', cx, H * 0.45); });
+    } else if (state === '열림') {
+      glow(GREEN, () => { g.fillStyle = GREEN; this.fit(g, '열림', 800, H * 0.32, W * 0.6); g.fillText('열림', cx, H * 0.45); });
       const k = (t * 0.8) % 1;
       g.strokeStyle = GREEN; g.lineWidth = H * 0.03; g.lineCap = 'round'; g.lineJoin = 'round';
       for (const dir of [-1, 1]) for (let i = 0; i < 3; i++) {
@@ -1040,16 +1040,16 @@ export class ScreenManager {
         g.beginPath(); g.moveTo(x - dir * H * 0.05, y - H * 0.08); g.lineTo(x + dir * H * 0.03, y); g.lineTo(x - dir * H * 0.05, y + H * 0.08); g.stroke();
       }
       g.globalAlpha = 1;
-      g.fillStyle = 'rgba(244,241,232,0.75)'; this.fit(g, 'PRESSURE EQUAL  ·  MIND THE STEP', 600, H * 0.065, W * 0.86);
-      g.fillText('PRESSURE EQUAL  ·  MIND THE STEP', cx, H * 0.74);
+      g.fillStyle = 'rgba(244,241,232,0.75)'; this.fit(g, '압력 동일  ·  발밑 주의', 600, H * 0.065, W * 0.86);
+      g.fillText('압력 동일  ·  발밑 주의', cx, H * 0.74);
     } else if (sealed) {
       glow(RED, () => {
         g.fillStyle = blink ? '#ffd8d0' : RED;
-        this.fit(g, 'SECTOR SEALED', 900, H * 0.2, W * 0.9); g.fillText('SECTOR SEALED', cx, H * 0.42);
+        this.fit(g, '구역 봉쇄됨', 900, H * 0.2, W * 0.9); g.fillText('구역 봉쇄됨', cx, H * 0.42);
       });
       this.lockIcon(g, cx, H * 0.66, H * 0.13, RED);
-      g.fillStyle = RED; this.fit(g, 'PRESSURE ALARM  ·  DOOR LOCKED', 700, H * 0.07, W * 0.86);
-      g.fillText('PRESSURE ALARM  ·  DOOR LOCKED', cx, H * 0.87);
+      g.fillStyle = RED; this.fit(g, '압력 경보  ·  문 잠김', 700, H * 0.07, W * 0.86);
+      g.fillText('압력 경보  ·  문 잠김', cx, H * 0.87);
     } else {
       // CLEAR THE DOOR (or any notice): amber chevron frame, flashing
       const on = Math.floor(t * 3) % 2 === 0;
@@ -1116,11 +1116,11 @@ export class ScreenManager {
       const iy = H * 0.57, ir = H * 0.05, ix = lx + ir;
       const L = lamp.trim().toUpperCase();
       g.fillStyle = '#ffc58a'; g.strokeStyle = '#ffc58a'; g.lineWidth = 2;
-      if (L.startsWith('NIGHT')) {
+      if (L.startsWith('밤')) {
         g.beginPath(); g.arc(ix, iy, ir, 0, Math.PI * 2); g.fill();
         g.fillStyle = alarm ? '#1a0505' : '#0b1b22'; g.beginPath(); g.arc(ix + ir * 0.45, iy - ir * 0.3, ir * 0.85, 0, Math.PI * 2); g.fill();
       } else {
-        const half = L.startsWith('EVEN') || L.startsWith('MORN');
+        const half = L.startsWith('저녁') || L.startsWith('아침');
         g.beginPath(); g.arc(ix, iy + (half ? ir * 0.3 : 0), ir * 0.75, half ? Math.PI : 0, Math.PI * 2); g.fill();
         for (let k = 0; k < 7; k++) {
           const a = Math.PI + (k / 6) * Math.PI;
@@ -1132,7 +1132,7 @@ export class ScreenManager {
       g.fillStyle = '#ffc58a'; g.font = `600 ${Math.round(H * 0.065)}px ${HAB}`;
       g.fillText(L, lx + ir * 2.8, iy + 1);
       g.fillStyle = DIM; g.font = `500 ${Math.round(H * 0.045)}px ${HAB}`;
-      g.fillText('LAMP SETTING', lx, iy + H * 0.09);
+      g.fillText('조명 설정', lx, iy + H * 0.09);
     }
     // divider
     g.fillStyle = 'rgba(246,239,224,0.15)'; g.fillRect(W * 0.39, th + H * 0.05, 1.5, H * 0.72);
@@ -1162,9 +1162,9 @@ export class ScreenManager {
     // footer
     g.fillStyle = accent; g.fillRect(0, H * 0.9, W, 2);
     g.fillStyle = DIM; g.textAlign = 'left'; g.font = `500 ${Math.round(H * 0.045)}px ${HAB}`;
-    g.fillText('HABITAT RING A  ·  LOBBY', W * 0.03, H * 0.95);
+    g.fillText('주거 링 A  ·  로비', W * 0.03, H * 0.95);
     g.textAlign = 'right';
-    g.fillText(alarm ? 'FOLLOW STAFF INSTRUCTIONS' : 'CHOIR REPORTS EVERY SIX HOURS', W * 0.97, H * 0.95);
+    g.fillText(alarm ? '직원의 안내를 따라 주세요' : 'CHOIR가 6시간마다 보고합니다', W * 0.97, H * 0.95);
   }
 
   /**
@@ -1205,8 +1205,8 @@ export class ScreenManager {
         g.beginPath(); g.arc(cx + R * 0.3, cy, R * (0.3 + k * 0.22), -0.7, 0.7); g.stroke();
       }
       g.fillStyle = C(1);
-      const msg = st === 'idle' ? 'PRESENT BADGE' : `READING${'.'.repeat(1 + (Math.floor(t * 3) % 3))}`;
-      this.fit(g, 'PRESENT BADGE', 800, H * 0.085, W - m * 3); g.fillText(msg, cx, H * 0.75);
+      const msg = st === 'idle' ? '배지를 대세요' : `READING${'.'.repeat(1 + (Math.floor(t * 3) % 3))}`;
+      this.fit(g, '배지를 대세요', 800, H * 0.085, W - m * 3); g.fillText(msg, cx, H * 0.75);
       if (detail) { g.fillStyle = 'rgba(244,241,232,0.6)'; this.fit(g, detail.toUpperCase(), 600, H * 0.055, W - m * 3); g.fillText(detail.toUpperCase(), cx, H * 0.86); }
     } else if (st === 'accepted') {
       g.save(); g.shadowColor = col; g.shadowBlur = R * 0.3;
@@ -1214,7 +1214,7 @@ export class ScreenManager {
       g.beginPath(); g.arc(cx, cy, R, 0, Math.PI * 2); g.stroke();
       g.beginPath(); g.moveTo(cx - R * 0.45, cy + R * 0.02); g.lineTo(cx - R * 0.1, cy + R * 0.36); g.lineTo(cx + R * 0.5, cy - R * 0.32); g.stroke();
       g.restore();
-      g.fillStyle = col; this.fit(g, 'ACCEPTED', 800, H * 0.1, W - m * 3); g.fillText('ACCEPTED', cx, H * 0.73);
+      g.fillStyle = col; this.fit(g, '승인됨', 800, H * 0.1, W - m * 3); g.fillText('승인됨', cx, H * 0.73);
       if (detail) { g.fillStyle = 'rgba(244,241,232,0.85)'; this.fit(g, detail.toUpperCase(), 600, H * 0.06, W - m * 3); g.fillText(detail.toUpperCase(), cx, H * 0.85); }
     } else {
       // denied (any other state reads as a refusal)
@@ -1224,7 +1224,7 @@ export class ScreenManager {
       g.beginPath(); g.arc(cx, cy, R, 0, Math.PI * 2); g.stroke();
       g.beginPath(); g.moveTo(cx - R * 0.4, cy - R * 0.4); g.lineTo(cx + R * 0.4, cy + R * 0.4); g.moveTo(cx + R * 0.4, cy - R * 0.4); g.lineTo(cx - R * 0.4, cy + R * 0.4); g.stroke();
       g.restore();
-      g.fillStyle = C(a); this.fit(g, 'DENIED', 800, H * 0.1, W - m * 3); g.fillText('DENIED', cx, H * 0.73);
+      g.fillStyle = C(a); this.fit(g, '거부됨', 800, H * 0.1, W - m * 3); g.fillText('거부됨', cx, H * 0.73);
       if (detail) { g.fillStyle = 'rgba(244,241,232,0.85)'; this.fit(g, detail.toUpperCase(), 600, H * 0.06, W - m * 3); g.fillText(detail.toUpperCase(), cx, H * 0.85); }
     }
   }
@@ -1236,8 +1236,8 @@ export class ScreenManager {
     for (let i = 0; i < 500; i++) { const v = (rand() * 90) | 0; g.fillStyle = `rgba(${v},${v},${v + 10},0.25)`; g.fillRect(rand() * W, rand() * H, 2, 2); }
     g.textAlign = 'center'; g.textBaseline = 'middle';
     g.fillStyle = 'rgba(220,230,240,0.85)';
-    this.fit(g, 'NO SIGNAL', 700, H * 0.14, W * 0.7, MONO);
-    if (Math.floor(s.t * 1.2) % 2 === 0) g.fillText('NO SIGNAL', W / 2, H / 2);
+    this.fit(g, '신호 없음', 700, H * 0.14, W * 0.7, MONO);
+    if (Math.floor(s.t * 1.2) % 2 === 0) g.fillText('신호 없음', W / 2, H / 2);
     if (s.text) { g.font = `${Math.round(H * 0.06)}px ${MONO}`; g.textAlign = 'left'; g.fillText(s.text, W * 0.04, H * 0.08); }
   }
 }

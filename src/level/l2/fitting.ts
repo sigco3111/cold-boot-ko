@@ -21,7 +21,7 @@ const REF = { x: 13.5, z: -37.5 };
 export function buildFitting(L: LevelBuild) {
   const b = L.builder('fitting');
   const R = rng(2601);
-  L.room('fitting', 'FITTING BAYS', 10, 20, -40, -28, H);
+  L.room('fitting', '장착 베이', 10, 20, -40, -28, H);
   floorSlab(b, 'floor_rubber', 10, -40, 20, -28, [], 'rubber');
   ceilingSlab(b, 10.0, -40.4, 20.4, -27.6, H); // starts behind the hall's wall face (x 9.8): no coplanar end face
   wallFace(b, { n: '+x', plane: 10.2, from: -39.8, to: -28.2, h: H, t: 0.2, seed: 261, openings: [{ c: -34, w: 1.6, h: 2.4 }], features: 0.2, trayY: H - 0.45 });
@@ -34,7 +34,7 @@ export function buildFitting(L: LevelBuild) {
     hazardStrip(b, REF.x - 1.4, REF.z - 1.1, REF.x + 1.4, REF.z - 1.02);
     b.box(L.overlay('painted_white'), 15.0, 0.002, -34, 0.08, 0.004, 11.4);
   });
-  b.sign('GAIT CAPTURE', 'stencil', 15.6, 0.004, -28.9, 2.0, 0.36, '+y', PI);
+  b.sign('걸음걸이 캡처', 'stencil', 15.6, 0.004, -28.9, 2.0, 0.36, '+y', PI);
 
   // ── treadmills ──
   const belt = scrollMat(L, 'conveyor_belt', 'u');
@@ -82,8 +82,8 @@ export function buildFitting(L: LevelBuild) {
     b.box('brass', 0, 1.18, 0.016, 0.34, 0.12, 0.012);
     b.detail(() => { for (const s of [-1, 1]) b.cyl('steel_raw', s * 0.15, 1.18, 0.024, 0.007, 0.006, 'z', 6); });
   });
-  b.detail(() => b.quad(engravedMat(['REF PATTERN 00', 'REYES, S.'], 0.34 / 0.12, { px: 512 }), REF.x - 0.15, 1.18, REF.z + 0.85 + 0.0225, 0.32, 0.11, '+z'));
-  L.interact('tag2_rig', 'log', 'Read tag', REF.x - 0.15, 1.18, REF.z + 0.9, true, 1.9);
+  b.detail(() => b.quad(engravedMat(['기준 패턴 00', '레예스, S.'], 0.34 / 0.12, { px: 512 }), REF.x - 0.15, 1.18, REF.z + 0.85 + 0.0225, 0.32, 0.11, '+z'));
+  L.interact('tag2_rig', 'log', '태그 읽기', REF.x - 0.15, 1.18, REF.z + 0.9, true, 1.9);
   const ro = new THREE.Object3D(); ro.name = 'rig_ref'; ro.position.set(REF.x, 0, REF.z); L.root.add(ro); L.objects.set('rig_ref', ro);
   L.screen('fitting_rig_screen', 'terminal_idle', 0.42, 0.28, REF.x - 1.06, 1.37, REF.z, '+x', { tilt: 0, text: 'REF 00 — MASTER\nLOCKED · DO NOT OVERWRITE' });
   // the ring's projection of a walking outline (fitting_rig_wake)
@@ -96,10 +96,10 @@ export function buildFitting(L: LevelBuild) {
   b.at(12.55, 0.76, -29.3, 0.4, () => mug(b));
   b.at(11.4, 0.76, -29.4, -0.3, () => clipboard(b));
   b.at(12.3, 0.76, -29.55, 0.2, () => tablet(b, 'emissive_cyan'));
-  L.interact('note2_fitting', 'log', 'Read note', 11.4, 0.85, -29.4, true, 2.0);
+  L.interact('note2_fitting', 'log', '쪽지 읽기', 11.4, 0.85, -29.4, true, 2.0);
   L.pickup('p2_section_pass', 'keycard', 12.15, 0.78, -29.15, 1, 0.3);
   b.at(0, 0, -28.2, PI, () => monitorBezel(b, -12.0, 1.55, 0.7, 0.42, 0.1));
-  L.screen(null, 'terminal_idle', 0.7, 0.42, 12.0, 1.55, -28.2 - 0.101, '-z', { text: 'GAIT LIBRARY\n31 PATTERNS + REF 00' });
+  L.screen(null, 'terminal_idle', 0.7, 0.42, 12.0, 1.55, -28.2 - 0.101, '-z', { text: '걸음걸이 라이브러리\n패턴 31개 + 기준 00' });
   // charging alcoves (g2_fit_wake: two units standing in them, eyes dark)
   for (const x of [13.9, 15.5]) {
     b.at(x, 0, -28.2, PI, () => {
@@ -110,7 +110,7 @@ export function buildFitting(L: LevelBuild) {
         b.box('robot_frame', 0, 1.5, 0.12, 0.3, 0.4, 0.06);
         b.inst('led_green', 0.08, 1.75, 0.155); b.inst('led_amber', -0.08, 1.75, 0.155);
         cable(b, 'rubber', [0, 1.35, 0.14], [0.05, 1.0, 0.3], 0.1, 0.02, 8, 5);
-        b.sign('CHARGE', 'label', 0, 2.25, 0.105, 0.3, 0.07, '+z');
+        b.sign('충전', 'label', 0, 2.25, 0.105, 0.3, 0.07, '+z');
         hazardStrip(b, -0.45, 0.05, 0.45, 0.5);
       });
       b.collide(-0.55, 0, 0, 0.55, 2.5, 0.5);
@@ -125,13 +125,13 @@ export function buildFitting(L: LevelBuild) {
       b.box('trim_steel', 0, 1.03, 0.075, 2.4, 0.03, 0.08);
     });
   });
-  b.sign('GAIT LIBRARY — PATTERNS 01–31 (STAFF), 00 (REF)', 'label', 19.97, 2.3, -34, 2.2, 0.12, '-x');
+  b.sign('걸음걸이 라이브러리 — 패턴 01–31(직원), 00(기준)', 'label', 19.97, 2.3, -34, 2.2, 0.12, '-x');
   b.detail(() => {
     pipe(b, 'steel_raw', [[10.4, H - 0.3, -39.6], [19.8, H - 0.3, -39.6]], 0.04, { every: 2 });
     for (const z of TREAD_Z) cable(b, 'rubber', [RIG_X + 0.9, H, z + 0.3], [RIG_X + 1.2, 0.9, z + 0.6], 0.3, 0.022, 10, 5);
   });
-  b.sign('FITTING BAYS', 'stencil', 15.1, 3.1, -39.795, 2.4, 0.4, '+z');
-  b.sign('UNITS IN CALIBRATION — DO NOT DISTURB', 'warning', 10.22, 2.3, -31.0, 1.5, 0.2, '+x', 0, true);
+  b.sign('장착 베이', 'stencil', 15.1, 3.1, -39.795, 2.4, 0.4, '+z');
+  b.sign('유닛 교정 중 — 건드리지 마세요', 'warning', 10.22, 2.3, -31.0, 1.5, 0.2, '+x', 0, true);
   // pickups
   L.pickup('p2_fitting_ammo', 'ammo_pistol', 19.4, 0, -39.3, 12, 0.4);
   L.pickup('p2_fitting_shells', 'ammo_shotgun', 10.8, 0, -39.3, 6, 0.2);
@@ -158,7 +158,7 @@ export function buildFitting(L: LevelBuild) {
     b.detail(() => {
       for (let i = 0; i < 10; i++) for (let j = 0; j < 8; j++) if ((i + j) % 2 === 0) b.box(chk, -1.17 + i * 0.26, 0.56 + j * 0.26, 0.063, 0.25, 0.25, 0.006);
       for (let cm = 0; cm <= 200; cm += 10) b.box('painted_yellow', 1.36, 0.4 + cm / 100, 0.063, cm % 50 === 0 ? 0.14 : 0.07, 0.008, 0.006);
-      b.sign('REF 00 · CALIBRATION', 'label', 0, 2.75, 0.062, 1.4, 0.16, '+z');
+      b.sign('REF 00 · 교정', 'label', 0, 2.75, 0.062, 1.4, 0.16, '+z');
     });
   });
   b.detail(() => {
@@ -218,10 +218,10 @@ function treadmill(L: LevelBuild, b: Builder, beltB: Builder, beltMat: THREE.Mat
     b.detail(() => {
       for (const s of [-1, 1]) b.rod('chrome', 0, 1.0, s * 0.42, 0.85, 1.0, s * 0.48, 0.018, 6);
       b.inst('led_green', 0.045, 1.38, -0.25, 0, PI / 2); b.inst('led_amber', 0.045, 1.38, -0.2, 0, PI / 2);
-      b.sign(ref ? 'REF 00' : 'RIG 0' + (TREAD_Z.indexOf(z) + 1), 'label', 0.045, 1.22, 0.15, 0.24, 0.07, '+x');
+      b.sign(ref ? 'REF 00' : '리그 0' + (TREAD_Z.indexOf(z) + 1), 'label', 0.045, 1.22, 0.15, 0.24, 0.07, '+x');
     });
     b.pop();
-    if (!ref) L.screen(null, 'terminal_idle', 0.36, 0.22, x - len / 2 - 0.005, 1.33, z + 0.12, '+x', { text: 'GAIT ' + String(Math.round(R.range(1, 31))).padStart(2, '0') });
+    if (!ref) L.screen(null, 'terminal_idle', 0.36, 0.22, x - len / 2 - 0.005, 1.33, z + 0.12, '+x', { text: '걸음 ' + String(Math.round(R.range(1, 31))).padStart(2, '0') });
     // safety tether rail + harness hanging over the belt (the empty rig's harness dangles)
     b.detail(() => {
       b.rod('trim_steel', -len / 2, 2.6, 0, len / 2, 2.6, 0, 0.02, 6);

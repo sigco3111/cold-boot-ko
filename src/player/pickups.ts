@@ -1,6 +1,6 @@
 /**
  * World pickups: weapon props lying on their side, labelled ammo boxes, medkits, keycards.
- * Weapons/keycards are interactables ("Take pistol"); ammo/medkits are collected on touch when needed.
+ * Weapons/keycards are interactables ("권총 가져가기"); ammo/medkits are collected on touch when needed.
  * Idle highlight: a soft, slowly twinkling glint — no arcade spinning.
  */
 import * as THREE from 'three';
@@ -20,8 +20,8 @@ export interface PickupHost {
   give(kind: PickupKind, amount: number): void;
   addKey(key: string): void;
   /**
-   * Stage 3b §8.2: "Put on vest" — start the 0.8 s strap; `take` is called when it completes (the vest is collected
-   * then). Returns false when refused (armour full: the host shows `Armour full`); a cancelled strap leaves the vest.
+   * Stage 3b §8.2: "방탄복 입기" — start the 0.8 s strap; `take` is called when it completes (the vest is collected
+   * then). Returns false when refused (armour full: the host shows `방탄복이 가득 찼습니다`); a cancelled strap leaves the vest.
    */
   vest(take: () => void): boolean;
 }
@@ -36,7 +36,7 @@ interface Item {
   taken: boolean;
 }
 
-const PROMPTS: Partial<Record<PickupKind, string>> = { pistol: 'Take pistol', shotgun: 'Take shotgun', carbine: 'Take carbine', keycard: 'Take keycard', vest: 'Put on vest' };
+const PROMPTS: Partial<Record<PickupKind, string>> = { pistol: '권총 가져가기', shotgun: '산탄총 가져가기', carbine: '카빈 가져가기', keycard: '키카드 가져가기', vest: '방탄복 입기' };
 /** Kinds whose prop hangs from its spawn point (top at the point) instead of resting on it. */
 /** Pickups farther than this from the camera are not drawn (squared metres). */
 const FAR2 = 50 * 50;
@@ -141,7 +141,7 @@ export class Pickups {
         pp.add(rbox(w + 0.004, h * 0.26, d + 0.004, 0.004), m.polymer, M(0, h * 0.87, 0)); // lid
         pp.add(rbox(w * 0.3, 0.004, 0.012, 0.0015), m.rubber, M(0, h + 0.002, 0)); // lid tab
         pp.build(g);
-        const label = lib.sign(pistol ? '9MM  FMJ  ×24' : '12 GA  00 BUCK', 'label', 3.2);
+        const label = lib.sign(pistol ? '9MM  FMJ  ×24' : '12게이지  00 벅', 'label', 3.2);
         const front = new THREE.Mesh(new THREE.PlaneGeometry(w * 0.86, w * 0.86 / 3.2), label);
         front.position.set(0, h * 0.42, d / 2 + 0.0012);
         g.add(front);
@@ -186,7 +186,7 @@ export class Pickups {
         pp.add(new THREE.BoxGeometry(0.05, 0.015, 0.002), m.emRed, M(-0.08, H * 0.3, D / 2 + 0.002));
         pp.add(new THREE.BoxGeometry(0.015, 0.05, 0.002), m.emRed, M(-0.08, H * 0.3, D / 2 + 0.002));
         pp.build(g);
-        const label = lib.sign('TRAUMA KIT', 'label', 3);
+        const label = lib.sign('외상 키트', 'label', 3);
         const lab = new THREE.Mesh(new THREE.PlaneGeometry(0.12, 0.04), label);
         lab.position.set(0.05, H * 0.3, D / 2 + 0.0015);
         g.add(lab);
@@ -228,9 +228,9 @@ export class Pickups {
     glint.renderOrder = 5;
     this.root.add(glint);
     const auto = !(sp.kind in PROMPTS);
-    let prompt = PROMPTS[sp.kind] ?? 'Take';
+    let prompt = PROMPTS[sp.kind] ?? '가져가기';
     // Levels with a named keycard (2+): it is named after its key ('p2_section_pass' → "Take section pass").
-    if (sp.kind === 'keycard' && levelOf(this.ctx).keycardName !== null) prompt = `Take ${keyOf(sp.id).replace(/_/g, ' ')}`;
+    if (sp.kind === 'keycard' && levelOf(this.ctx).keycardName !== null) prompt = `${keyOf(sp.id).replace(/_/g, ' ')} 가져가기`;
     const item: Item = { spawn: sp, obj, glint, center, phase: Math.random() * 10, auto, taken: false };
     this.items.push(item);
     if (!auto) {

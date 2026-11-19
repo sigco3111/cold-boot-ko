@@ -135,7 +135,7 @@ const he6: RoomDress = {
     // ── OLT racks: R1 fronts the door (+z), R2 the console (−z) ──
     b.at(10.0, 0, -164.3, 0, () => oltRack(b, L, { len: 10, d: 0.6, h: 2.2, prefix: 'OLT 1-', seed: 41, collide: false }));
     b.at(10.0, 0, -169.3, PI, () => oltRack(b, L, { len: 10, d: 0.6, h: 2.2, prefix: 'OLT 2-', seed: 43, collide: false }));
-    stencil6(b, 'ROW 1 — TRUNK 1 LINE TERMINALS', 10.0, 2.62, -163.92, 1.8, 0.1, '+z', { style: 'stencil' });
+    stencil6(b, '열 1 — 트렁크 1 라인 단자', 10.0, 2.62, -163.92, 1.8, 0.1, '+z', { style: 'stencil' });
 
     // ── the yellow fibre raceway: up from the trench gland in the SW corner, along the ceiling, down onto both racks ──
     {
@@ -160,7 +160,7 @@ const he6: RoomDress = {
     b.bx('painted_dark', 8.68, 1.03, -179.1, 9.32, 1.47, -179.012);
     b.bx('painted_dark', 8.97, 1.002, -179.16, 9.03, 1.03, -179.1);
     b.bx('painted_dark', 8.82, 1.002, -179.26, 9.18, 1.014, -179.04);
-    stencil6(b, 'OUTBOUND QUEUE', 9.0, 1.5, -179.011, 0.26, 0.035, '+z', { style: 'label' });
+    stencil6(b, '발송 대기열', 9.0, 1.5, -179.011, 0.26, 0.035, '+z', { style: 'label' });
     // a chair pushed back from the desk, a mug, a clipboard
     b.detail(() => {
       b.cyl('painted_dark', 13.2, 0.25, -177.9, 0.03, 0.5, 'y', 8);
@@ -172,7 +172,7 @@ const he6: RoomDress = {
     });
 
     // ── the mimic board's frame on the south wall (W5's `mimic6` screen inside it, moved 15 mm off the backing) ──
-    b.at(12.0, 2.6, -179.8, 0, () => mimicFrame(b, L, { w: 10, h: 2, title: 'HEAD-END — TRUNK 1 — MIMIC' }));
+    b.at(12.0, 2.6, -179.8, 0, () => mimicFrame(b, L, { w: 10, h: 2, title: '헤드엔드 — 트렁크 1 — 미믹' }));
     const mim = L.root.children.find((o) => o.name === 'screen:mimic6');
     if (mim) mim.position.z = -179.765;
 
@@ -180,7 +180,7 @@ const he6: RoomDress = {
     b.bx('painted_dark', 19.75, 0, -171.8, 20.95, 0.012, -170.2);
     b.cyl('steel_raw', 21.55, 3.25, -171.6, 0.04, 2.5, 'y', 10);
     b.cyl('steel_raw', 21.55, 3.25, -170.4, 0.03, 2.5, 'y', 10);
-    stencil6(b, 'HEAD-END PROTECTION — CHANGEOVER CS-1', 21.79, 2.45, -171.0, 1.4, 0.12, '-x', { style: 'stencil' });
+    stencil6(b, '헤드엔드 보호 — 절체 CS-1', 21.79, 2.45, -171.0, 1.4, 0.12, '-x', { style: 'stencil' });
 
     // ── the phone station's call lamp (flashes with the howler) and its plate ──
     const callLamp = mat4(L, 'd2_call_lamp', () => new THREE.MeshStandardMaterial({ name: 'd2_call_lamp', color: 0x3a2206, emissive: 0xffa020, emissiveIntensity: 0, roughness: 0.25 }));

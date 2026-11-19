@@ -4,8 +4,8 @@
  * `LevelInfo.keycardName`).
  */
 export const KEY_NAMES: Readonly<Record<string, string>> = {
-  key6_a: 'KEY A — HEAD-END',
-  key6_b: 'KEY B — MOON POOL',
+  key6_a: '키 A — 헤드엔드',
+  key6_b: '키 B — 문 풀',
 };
 
 export function keyName(id: string): string {

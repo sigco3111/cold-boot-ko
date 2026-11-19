@@ -1,6 +1,6 @@
 /**
  * Stage 3d container stencil atlas (docs/plans/stage-3d.md §8.8): one 1024² canvas with the cargo marks the moon-pool
- * containers carry — `B-01` … `B-14`, `HALCYON BIO-SYSTEMS DIV.`, the owner code, `MAX GROSS` / `TARE` — in worn
+ * containers carry — `B-01` … `B-14`, `할시온 바이오 시스템즈 사업부`, the owner code, `MAX GROSS` / `TARE` — in worn
  * white stencil paint, so every container label in the chamber is ONE material (instanced label quads with per-
  * instance UV offsets, or merged quads). Not a contract member: the kit / dressing import it directly.
  *
@@ -12,8 +12,8 @@
  *
  * Cells: rows of 128 px. Rows 0–3: the 14 batch marks + 2 spares (`B-15`, `B-16`) at 256 × 128 (aspect 2); row 4
  * the division name at 1024 × 128 (aspect 8); row 5 the owner code `HBSU 140 031 [4]` at 1024 × 128; row 6
- * `MAX GROSS 30,480 KG` and `TARE 2,250 KG` at 512 × 128 (aspect 4); row 7 `CLASP ASSY (CERVICAL)` and
- * `THIS WAY UP` at 512 × 128.
+ * `최대 총중량 30,480 KG` and `공차중량 2,250 KG` at 512 × 128 (aspect 4); row 7 `클라스프 조립체(경추용)` and
+ * `이쪽이 위` at 512 × 128.
  */
 import * as THREE from 'three';
 
@@ -33,12 +33,12 @@ interface Cell { label: string; x: number; y: number; w: number; h: number }
 function layout(): Cell[] {
   const cells: Cell[] = [];
   for (let i = 0; i < 16; i++) cells.push({ label: `B-${String(i + 1).padStart(2, '0')}`, x: (i % 4) * 256, y: Math.floor(i / 4) * ROW, w: 256, h: ROW });
-  cells.push({ label: 'HALCYON BIO-SYSTEMS DIV.', x: 0, y: 4 * ROW, w: N, h: ROW });
+  cells.push({ label: '할시온 바이오 시스템즈 사업부', x: 0, y: 4 * ROW, w: N, h: ROW });
   cells.push({ label: 'HBSU 140 031 [4]', x: 0, y: 5 * ROW, w: N, h: ROW });
-  cells.push({ label: 'MAX GROSS 30,480 KG', x: 0, y: 6 * ROW, w: 512, h: ROW });
-  cells.push({ label: 'TARE 2,250 KG', x: 512, y: 6 * ROW, w: 512, h: ROW });
-  cells.push({ label: 'CLASP ASSY (CERVICAL)', x: 0, y: 7 * ROW, w: 512, h: ROW });
-  cells.push({ label: 'THIS WAY UP', x: 512, y: 7 * ROW, w: 512, h: ROW });
+  cells.push({ label: '최대 총중량 30,480 KG', x: 0, y: 6 * ROW, w: 512, h: ROW });
+  cells.push({ label: '공차중량 2,250 KG', x: 512, y: 6 * ROW, w: 512, h: ROW });
+  cells.push({ label: '클라스프 조립체(경추용)', x: 0, y: 7 * ROW, w: 512, h: ROW });
+  cells.push({ label: '이쪽이 위', x: 512, y: 7 * ROW, w: 512, h: ROW });
   return cells;
 }
 

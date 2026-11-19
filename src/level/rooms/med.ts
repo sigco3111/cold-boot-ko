@@ -14,7 +14,7 @@ export function buildMed(L: LevelBuild) {
   const b = L.builder('med');
   const R = rng(101);
   const H = 3.2;
-  L.room('med', 'MEDICAL 3-A', -5, 5, 0, 10, H);
+  L.room('med', '의무실 3-A', -5, 5, 0, 10, H);
 
   floorSlab(b, 'floor_rubber', -5, 0, 5, 10, [[-2.3, 4.7, -1.7, 5.3]], 'rubber');
   trench(b, -2.3, 4.7, -1.7, 5.3, 0.3, R, true);
@@ -121,21 +121,21 @@ export function buildMed(L: LevelBuild) {
   b.detail(() => {
     for (let i = 0; i < 6; i++) b.cyl(i % 2 ? 'plastic_white' : 'glass', -1.5 + i * 0.11 + R.range(-0.02, 0.02), 0.96, 9.75 + R.range(-0.05, 0.05), 0.025, 0.12, 'y', 6);
     b.box('plastic_white', -3.2, 0.95, 9.7, 0.3, 0.1, 0.22);
-    b.sign('BIOHAZARD', 'danger', -3.55, 1.25, 9.999, 0.36, 0.14, '-z');
-    b.sign('WASH HANDS', 'label', -0.55, 1.25, 9.999, 0.3, 0.1, '-z');
+    b.sign('생물학적 위험', 'danger', -3.55, 1.25, 9.999, 0.36, 0.14, '-z');
+    b.sign('손 씻기', 'label', -0.55, 1.25, 9.999, 0.3, 0.1, '-z');
   });
 
   // ── terminal by the door ──
   b.at(1.75, 0, 0.2, 0, () => wallTerminal(b, 1.35));
   L.screen('med_terminal', 'terminal_idle', 0.44, 0.3, 1.75, 1.43, 0.333, '+z', { tilt: -0.18 });
-  L.interact('log_med', 'log', 'Read terminal', 1.75, 1.42, 0.38);
+  L.interact('log_med', 'log', '단말기 읽기', 1.75, 1.42, 0.38);
 
   // ── signage / misc ──
-  b.sign('MEDICAL 3-A', 'stencil', -3.2, 2.35, 0.236, 1.5, 0.28, '+z');
-  b.sign('← SERVICE CORRIDOR A', 'directional', -1.9, 1.75, 0.236, 0.9, 0.16, '+z', 0, true);
-  b.sign('SEDATION IN USE — DO NOT DISCONNECT', 'warning', 4.964, 1.9, 7.6, 0.9, 0.14, '-x', 0, true);
-  b.sign('HALCYON DYNAMICS — OCCUPATIONAL HEALTH', 'label', 0, 2.5, 9.964, 1.6, 0.12, '-z');
-  b.sign('BED 4', 'label', 1.3, 0.72, 6.115, 0.2, 0.07, '-z');
+  b.sign('의무실 3-A', 'stencil', -3.2, 2.35, 0.236, 1.5, 0.28, '+z');
+  b.sign('← 서비스 통로 A', 'directional', -1.9, 1.75, 0.236, 0.9, 0.16, '+z', 0, true);
+  b.sign('진정제 사용 중 — 분리 금지', 'warning', 4.964, 1.9, 7.6, 0.9, 0.14, '-x', 0, true);
+  b.sign('할시온 다이내믹스 — 산업 보건', 'label', 0, 2.5, 9.964, 1.6, 0.12, '-z');
+  b.sign('병상 4', 'label', 1.3, 0.72, 6.115, 0.2, 0.07, '-z');
   b.at(-1.3, 0.55, 0.2, 0, () => fireExtinguisher(b));
   b.decal('grime', 2, 0, 0.002, 4.5, 3.5, 3.5, '+y', 0.7);
   b.decal('scratches', 1, 0.2, 0.002, 1.2, 1.4, 1.4, '+y', 0.3);
@@ -146,7 +146,7 @@ export function buildMed(L: LevelBuild) {
 
   // ── marker on the privacy screen by the player's bed ──
   b.push(2.75, 0, 7.6, PI / 2 + 0.12); b.push(0, 1.06, 0.099, 0.25);
-  b.detail(() => b.quad(scrawlMaterial(['THEY CARRIED', 'ANAND OUT.', 'HE WAS', 'STILL', 'TALKING.'], { style: 'marker', aspect: 0.6, seed: 11, px: 512, color: '#07080b' }), 0, 0.04, 0, 0.74, 1.23, '-z', 0.02, 'unit', 0.075));
+  b.detail(() => b.quad(scrawlMaterial(['그들이', '아난드를 밖으로 옮겼다.', '그는', '아직도', '말하고 있었다.'], { style: 'marker', aspect: 0.6, seed: 11, px: 512, color: '#07080b' }), 0, 0.04, 0, 0.74, 1.23, '-z', 0.02, 'unit', 0.075));
   b.pop(); b.pop();
 
   // ── the flat monitor beside the sheeted body: one green line (med_monitor_spike draws two beats on it) ──
@@ -178,7 +178,7 @@ export function buildMed(L: LevelBuild) {
     const beating = live && beats.length > 0;
     mg.fillStyle = beating ? '#52ff9a' : '#ff5540'; mg.font = 'bold 26px monospace';
     mg.fillText(beats.length > 1 && live ? '41' : '--', 10, 34);
-    mg.font = '13px monospace'; mg.fillText(beating ? 'HR' : 'ASYSTOLE', 60, 30);
+    mg.font = '13px monospace'; mg.fillText(beating ? '심박' : '심정지', 60, 30);
     mtex.needsUpdate = true;
   };
   drawTrace(0, []);

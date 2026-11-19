@@ -241,7 +241,7 @@ export type EnemyType = 'skitter' | 'husk' | 'sentry' | 'foreman' | 'soldier' | 
 export type ActorType = EnemyType | 'human';
 /**
  * Stage 3b §8.2 / §8.3: `carbine` (weapon; amount = rounds, as the others), `ammo_carbine` (+amount to the reserve,
- * cap 180), `vest` (+amount armour, 50 — taken by an interaction "Put on vest" with a 0.8 s strap, not on touch),
+ * cap 180), `vest` (+amount armour, 50 — taken by an interaction "방탄복 입기" with a 0.8 s strap, not on touch),
  * `plate` (+amount armour, 15 — on touch while armour < 100).
  */
 export type PickupKind = 'pistol' | 'shotgun' | 'carbine' | 'ammo_pistol' | 'ammo_shotgun' | 'ammo_carbine' | 'medkit' | 'keycard' | 'vest' | 'plate';
@@ -462,7 +462,7 @@ export interface Interactable {
   position: THREE.Vector3;
   /** Max use distance in metres (default 2.2). */
   radius?: number;
-  /** HUD prompt, e.g. "Read terminal". Shown as "[E] Read terminal". */
+  /** HUD prompt, e.g. "단말기 읽기". Shown as "[E] Read terminal". */
   prompt: string;
   enabled: boolean;
   /** Called when the player uses it. An 'interact' event is also emitted automatically by `use()`. */
@@ -775,7 +775,7 @@ export type ScreenKind =
   | 'choir'            // the antagonist's waveform "face"
   | 'camera_feed'      // grainy CCTV-style view
   | 'vitals'           // medical monitor traces
-  | 'door_cycling'     // REVISION 5: small amber panel, "CYCLING"
+  | 'door_cycling'     // REVISION 5: small amber panel, "순환 중"
   | 'door_locked'      // small red panel
   | 'door_open'        // small green panel
   // REVISION 6 (the core's two palm scanners). `text` of the option cards = the unit count, e.g. "28".
@@ -789,15 +789,15 @@ export type ScreenKind =
   | 'feed'             // live surveillance feed: `opts.texture` (RenderSystem.feed)
   | 'cctv'             // canvas CCTV animation (only if the feed spike falls back, §8.4)
   // stage 3b (§8.7, §6.4): drawn by materials once W6 lands; until then a blank panel (K placeholder)
-  | 'containment'      // amber hold panel: hazard bar, ticking counter, `[ ACKNOWLEDGE ]` box (`text` per §6.4)
+  | 'containment'      // amber hold panel: hazard bar, ticking counter, `[ 확인 ]` box (`text` per §6.4)
   | 'video_log'        // Sunde's video log (§6.4; the story animates it per line)
-  | 'roster'           // controller roster: 19 red + 4 grey dots, `NODE 2` (§6.4)
+  | 'roster'           // controller roster: 19 red + 4 grey dots, `노드 2` (§6.4)
   | 'theatre_cam'      // canvas close-up of the nape: LED dot + LINK state; `text` = '<cue>|<t>|<attempt>' (§6.4)
   // stage 3c (§8.9, §6.4): drawn by materials once W5 lands; until then drawn as `terminal_idle` (K placeholder)
-  | 'keypad'           // keypad panel: `NO AUTHORITY` → `ENTER CODE` → `* * * _` → `CODE REJECTED` → `ACCEPTED` → `OPEN`
-  | 'launch'           // SDV launch console (pre-launch check, launch authority, `AWAITING PALM`)
+  | 'keypad'           // keypad panel: `권한 없음` → `코드 입력` → `* * * _` → `코드 거부됨` → `승인됨` → `열림`
+  | 'launch'           // SDV launch console (pre-launch check, launch authority, `손바닥 인증 대기 중`)
   | 'dock_status'      // duty board / boat board: status lines (`\n`-separated)
-  | 'onpost'           // `ON POST` + a big number (`text` = the number, e.g. "26")
+  | 'onpost'           // `근무 중` + a big number (`text` = the number, e.g. "26")
   // stage 3d (§8.8, §6.4): drawn by materials once W5 lands; until then drawn as `terminal_idle` (K placeholder)
   | 'mimic'            // the head-end's single-line mimic (feeds, the changeover switch AUTO / MANUAL)
   | 'manifest'         // the outbound queue / Clasp manifest (`text` = `\n`-separated lines)
@@ -955,7 +955,7 @@ export interface Door {
   /** REVISION 5: true only when the leaves are fully shut (not merely closing). */
   readonly closed: boolean;
   /**
-   * REVISION 5: override what the door's status panel shows. 'cycling' = amber "CYCLING" (locked for a
+   * REVISION 5: override what the door's status panel shows. 'cycling' = amber "순환 중" (locked for a
    * stated, temporary reason), 'dark' = panel off (unpowered), null = default (red locked / green open).
    * 'private' (stage 3a §8.12): blue panel, prompt "Private cabin", locked — until level implements it, as null.
    */
@@ -1148,7 +1148,7 @@ export interface FloorInfo {
 
 export interface Room {
   id: string;
-  /** Display name, e.g. "MEDICAL 3-A". */
+  /** Display name, e.g. "의무실 3-A". */
   name: string;
   /** §8.9: y0 − 0.5 … y0 + h. */
   bounds: THREE.Box3;
@@ -1562,7 +1562,7 @@ export interface ActorOpts {
   look?: ActorLook;
   /** §8.8 (stage 3a): which person a 'human' actor is (body, head, voice). Default 'tomas'. */
   who?: ActorWho;
-  /** Stage 3c §8.2.8: a 'soldier' actor's name tape (e.g. 'BREKKE'); other types ignore it. */
+  /** Stage 3c §8.2.8: a 'soldier' actor's name tape (e.g. '브레케'); other types ignore it. */
   name?: string;
 }
 /** §8.8: the human actors. */

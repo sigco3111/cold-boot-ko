@@ -112,7 +112,7 @@ export function buildQuarters(L: LevelBuild) {
   const b = L.builder('quarters');
   const R = rng(1212);
   const XE = -1.92;
-  L.room('quarters', 'CREW QUARTERS 3', -9.5, -1.5, -11, -3, H, 1.4);
+  L.room('quarters', '승조원 숙소 3', -9.5, -1.5, -11, -3, H, 1.4);
 
   floorSlab(b, 'floor_rubber', -9.5, -11, -1.5, -3, [], 'rubber');
   ceilingSlab(b, -9.7, -11.2, -1.9, -2.8, H);
@@ -184,13 +184,13 @@ export function buildQuarters(L: LevelBuild) {
 
   // Tomas's bunk: notebook on the mattress, photo strip taped to the wall, reading lamp (dead)
   b.detail(() => {
-    b.at(-6.35, 0.5, SZ - 0.1, 0.35, () => { b.box('painted_dark', 0, 0.006, 0, 0.3, 0.012, 0.21); b.quad(notePaper(['I HEAR HIM', 'WALKING', 'AT NIGHT'], 7, 1.4), 0.0, 0.0125, 0, 0.28, 0.2, '+y'); b.rod('steel_raw', -0.15, 0.02, -0.1, 0.02, 0.02, -0.11, 0.004, 4); });
+    b.at(-6.35, 0.5, SZ - 0.1, 0.35, () => { b.box('painted_dark', 0, 0.006, 0, 0.3, 0.012, 0.21); b.quad(notePaper(['밤에 그가', '걷는 소리가', '들려'], 7, 1.4), 0.0, 0.0125, 0, 0.28, 0.2, '+y'); b.rod('steel_raw', -0.15, 0.02, -0.1, 0.02, 0.02, -0.11, 0.004, 4); });
     b.quad(photoStrip(), -5.95, 0.98, -3.085, 0.05, 0.185, '-z', 0.12, 'unit', 0.004);
     b.box('plastic_white', -5.95, 1.085, -3.082, 0.03, 0.012, 0.002);
     b.rod('painted_dark', -5.7, 1.27, -3.1, -5.7, 1.18, -3.25, 0.008, 4); b.cyl('painted_dark', -5.7, 1.16, -3.27, 0.035, 0.05, 'y', 8, 0.015);
     b.at(-7.2, 0.5, SZ + 0.1, 0.8, () => mug(b));
   });
-  L.interact('note_quarters_bunk', 'log', 'Read notebook', -6.35, 0.55, SZ - 0.1, true, 2.3);
+  L.interact('note_quarters_bunk', 'log', '노트 읽기', -6.35, 0.55, SZ - 0.1, true, 2.3);
   b.at(-5.65, 0, SZ - 0.75, 2.6, () => boots(b));
   b.at(-8.2, 0, -5.2, 0.9, () => boots(b));
 
@@ -218,7 +218,7 @@ export function buildQuarters(L: LevelBuild) {
       b.cyl('steel_raw', 0.5, 0.79, 0.32, 0.05, 0.04, 'y', 10);
     });
   });
-  L.interact('note_quarters_badges', 'log', 'Look at the badges', TX, 0.8, TZ + 0.12, true, 2.4);
+  L.interact('note_quarters_badges', 'log', '배지 보기', TX, 0.8, TZ + 0.12, true, 2.4);
   b.at(TX + 0.05, 0, TZ + 0.68, 0, () => bench(b, 1.4));
   b.at(TX + 0.2, 0, TZ - 0.72, 0.16, () => bench(b, 1.4));
 
@@ -238,7 +238,7 @@ export function buildQuarters(L: LevelBuild) {
     b.box('painted_dark', -4.5, 1.12, -10.76, 0.34, 0.44, 0.3);
     b.box('screen_off', -4.5, 1.2, -10.608, 0.22, 0.1, 0.004);
     b.inst('led_green', -4.38, 1.03, -10.606);
-    b.sign('HOT WATER ONLY — SYRUP LINE OUT OF ORDER', 'label', -4.5, 1.37, -10.609, 0.3, 0.05, '+z');
+    b.sign('온수만 나옴 — 시럽 라인 고장', 'label', -4.5, 1.37, -10.609, 0.3, 0.05, '+z');
     b.at(-6.9, 0, -10.4, 0, () => papers(b, 3, 0.4, R));
   });
   L.point('quarters', -4.4, 1.15, -10.4, 0x58ffb0, 0.3, 2.2);
@@ -260,8 +260,8 @@ export function buildQuarters(L: LevelBuild) {
     // inside the open one: a folded overall, a helmet, a box of 9 mm on the shelf
     b.box('fabric', LX + 0.02, 0.5, oz, 0.34, 0.07, 0.36);
     b.sphere('painted_yellow', LX + 0.02, 1.68, oz, 0.12, 10, 0.75);
-    b.sign('T. BERG', 'label', LX - 0.251, 1.75, oz + 0.5, 0.16, 0.035, '-x');
-    b.sign('M. OKAFOR', 'label', LX - 0.266, 1.75, bz, 0.16, 0.035, '-x');
+    b.sign('T. 베리', 'label', LX - 0.251, 1.75, oz + 0.5, 0.16, 0.035, '-x');
+    b.sign('M. 오카포', 'label', LX - 0.266, 1.75, bz, 0.16, 0.035, '-x');
     b.decal('scratches', 2, LX - 0.266, 0.9, bz + 0.5, 0.4, 0.5, '-x');
   });
   L.pickup('p_quarters_ammo', 'ammo_pistol', LX - 0.04, 1.11, oz, 12, PI / 2);
@@ -320,7 +320,7 @@ export function buildQuarters(L: LevelBuild) {
       b.sphere('painted_orange', 0, 1.66, 0.1, 0.1, 8, 0.9, 1.2, 0.7);
       for (const y of [1.08, 1.26]) b.box('chrome', 0, y, 0.196, 0.46, 0.035, 0.006);
       for (const s of [-1, 1]) b.box('chrome', s * 0.26, 1.02, 0.166, 0.13, 0.03, 0.006);
-      b.sign('QUIET — NIGHT SHIFT SLEEPING', 'warning', -1.05, 1.5, 0.036, 0.5, 0.1, '+z', 0, true);
+      b.sign('정숙 — 야간조 수면 중', 'warning', -1.05, 1.5, 0.036, 0.5, 0.1, '+z', 0, true);
     });
     b.at(-0.35, 0, 0.2, 0.3, () => boots(b));
     // duffel bag
@@ -329,13 +329,13 @@ export function buildQuarters(L: LevelBuild) {
   });
 
   // ── signs, stains ──
-  b.sign('CREW QUARTERS 3', 'stencil', -2.9, 2.5, -10.964, 1.5, 0.24, '+z');
-  b.sign('B SHIFT', 'stencil', -9.464, 2.45, -8.7, 0.9, 0.22, '+x');
+  b.sign('승조원 숙소 3', 'stencil', -2.9, 2.5, -10.964, 1.5, 0.24, '+z');
+  b.sign('B조', 'stencil', -9.464, 2.45, -8.7, 0.9, 0.22, '+x');
   b.detail(() => {
     // notice board: rota, a child's drawing, somebody's lost-cat joke
     b.box('rust', -9.455, 1.5, -8.7, 0.02, 0.7, 1.0);
     for (let i = 0; i < 5; i++) b.box('plastic_white', -9.442, 1.36 + (i % 2) * 0.26 + R.range(-0.03, 0.03), -9.08 + i * 0.19, 0.003, 0.24, 0.16);
-    b.sign('ROTA — WEEK 31', 'label', -9.44, 1.8, -8.7, 0.34, 0.06, '+x');
+    b.sign('근무표 — 31주차', 'label', -9.44, 1.8, -8.7, 0.34, 0.06, '+x');
   });
   b.decal('grime', 1, -5.5, 0.002, -6.9, 3.2, 3.2, '+y', 0.4);
   b.decal('scratches', 0, -3.3, 0.002, -9.5, 1.1, 1.1, '+y', 0.6);

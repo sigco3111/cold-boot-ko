@@ -457,7 +457,7 @@ function coaming6(L: LevelBuild, b: Builder) {
   b.bx(Y, x0 + 0.09, top, z0 + 0.09, x1 - 0.09, top + 0.025, z0 + t + 0.012).bx(Y, x0 + 0.09, top, z1 - t - 0.012, x1 - 0.09, top + 0.025, z1 - 0.09);
   b.bx(Y, x0 + 0.09, top, z0 + t + 0.012, x0 + t + 0.012, top + 0.025, z1 - t - 0.012).bx(Y, x1 - t - 0.012, top, z0 + t + 0.012, x1 - 0.09, top + 0.025, z1 - t - 0.012);
   for (const [f, cx, cz] of [['-z', (x0 + x1) / 2, z0], ['+z', -55.0, z1], ['+z', -49.0, z1], ['-x', x0, -179.5], ['-x', x0, -172.5], ['+x', x1, -179.5], ['+x', x1, -172.5]] as const) {
-    stencil6(b, 'NO ENTRY — WET WELL', cx, y + 0.7, cz, 1.6, 0.14, f, { style: 'danger' });
+    stencil6(b, '출입 금지 — 웨트웰', cx, y + 0.7, cz, 1.6, 0.14, f, { style: 'danger' });
   }
   // the guard: bars on the outer line (outer bar face on the coaming's outer plane), gaps at the ladder gates
   const gh = CM.guardTop - top, gy = top, inset = 0.04;
@@ -524,7 +524,7 @@ function windows(L: LevelBuild, b: Builder, dark: Mat) {
   for (const x of [-56, -48]) b.bx(F, x - 0.17, y0, wall - 0.01, x + 0.17, y1, fz1);
   // an amber marker line along the frame's sill (hard-wired: the window walk reads in the dark)
   b.detail(() => b.bx(stripMat6(L, 'amber'), x0 - 0.3, y0 - 0.3, fz1, x1 + 0.3, y0 - 0.26, fz1 + 0.02));
-  stencil6(b, 'VIEWPORT — 2,140 M — DO NOT STRIKE', -52, y1 + 0.22, fz1 + 0.002, 3.2, 0.2, '+z', { style: 'stencil' });
+  stencil6(b, '관찰창 — 2,140 M — 충격 금지', -52, y1 + 0.22, fz1 + 0.002, 3.2, 0.2, '+z', { style: 'stencil' });
   void dark;
 }
 

@@ -213,7 +213,7 @@ function buildLock(L: LevelBuild) {
   b.bx(N, xe - 0.03, 1.35, 0.55, xe, 1.95, 1.65);
   const dial = dialFaceMat(L);
   b.detail(() => {
-    for (const [z, t] of [[0.85, 'TUBE'], [1.35, 'POST 4']] as const) {
+    for (const [z, t] of [[0.85, '튜브'], [1.35, '초소 4']] as const) {
       b.cyl('steel_raw', xe - 0.05, 1.7, z, 0.12, 0.04, 'x', 16);
       b.quad(dial, xe - 0.072, 1.7, z, 0.2, 0.2, '-x', 0, 'unit', 0.001);
       b.sign(t, 'navy', xe - 0.034, 1.47, z, 0.3, 0.07, '-x');
@@ -227,17 +227,17 @@ function buildLock(L: LevelBuild) {
   b.bx('painted_dark', -2.43, 1.0, 0.2, -2.17, 1.3, 0.225);
   b.detail(() => {
     b.quad(mat4(L, 'd1_palm_glass', () => L.ctx.materials.clone('screen_off', {})), -2.3, 1.15, 0.227, 0.2, 0.24, '+z', 0, 'unit', 0.001);
-    b.sign('PALM', 'label', -2.3, 1.035, 0.226, 0.12, 0.035, '+z');
+    b.sign('손바닥', 'label', -2.3, 1.035, 0.226, 0.12, 0.035, '+z');
     b.rod('painted_dark', -2.3, 1.8, 0.21, -2.3, 3.5, 0.21, 0.018, 6); // conduit to the ceiling
   });
 
   // stencils, the hold-back line, the lintel label of the sealed tube door (label: false drops the shell's signs)
-  navySign(b, 'POST 4 — PRESSURE GATE — NAVAL ACCESS ONLY', 0, 3.27, 0.205, 2.6, 0.12, '+z');   // (IA-5: 3.4 → 3.27 — at 3.4 the HUD's location caption "POST 4 — GATE LOCK" lay over it in the start view)
-  navySign(b, 'POST 4 — GATE LOCK', 2.795, 2.35, 3.0, 0.95, 0.1, '-x');
+  navySign(b, '초소 4 — 압력 게이트 — 해군 전용', 0, 3.27, 0.205, 2.6, 0.12, '+z');   // (IA-5: 3.4 → 3.27 — at 3.4 the HUD's location caption "초소 4 — 게이트 록" lay over it in the start view)
+  navySign(b, '초소 4 — 게이트 록', 2.795, 2.35, 3.0, 0.95, 0.1, '-x');
   navySign(b, 'FR 4-001', -2.795, 2.35, 3.0, 0.5, 0.1, '+x');
-  b.detail(() => b.sign('TRANSFER TUBE', 'label', 0, 2.555, 5.68, 1.4, 0.13, '-z'));
+  b.detail(() => b.sign('이송 튜브', 'label', 0, 2.555, 5.68, 1.4, 0.13, '-z'));
   deckLine(b, L, -1.9, 1.15, 1.9, 1.15, { w: 0.1 });
-  b.detail(() => b.sign('KEEP CLEAR OF GATE', 'navy', 0, 0.003, 1.45, 1.4, 0.14, '+y'));
+  b.detail(() => b.sign('게이트 앞에 서지 마세요', 'navy', 0, 0.003, 1.45, 1.4, 0.14, '+y'));
 
   // cable tray along the ceiling (nothing on the wall over the gate: the rising leaf's pocket, check:doors rule c)
   cableTray(b, 0.3, 5.7, 1.8, H - 0.3, 'z');
@@ -286,7 +286,7 @@ function buildGate(L: LevelBuild): GateParts {
   b.bx(N, 2.4, 2.4, -4.0, 2.6, 2.6, -0.2);
   b.bx(N, 2.6, 0, -4.0, 5.8, 2.6, -3.85);
   b.bx(N, 2.35, 2.6, -4.05, 5.8, 2.72, -0.2);
-  navySign(b, 'GATE 4 — SENTRY', 2.395, 2.5, -2.1, 1.4, 0.16, '-x');
+  navySign(b, '게이트 4 — 보초', 2.395, 2.5, -2.1, 1.4, 0.16, '-x');
   // deal tray through the cap under the north pane (the visitors' clipboard lies under the middle one)
   b.bx('steel_raw', 2.18, 1.04, -1.05, 2.62, 1.052, -0.65);
   b.bx(N, 2.6, 0.98, -1.05, 2.75, 1.04, -0.65);
@@ -324,7 +324,7 @@ function buildGate(L: LevelBuild): GateParts {
   boothBackDoor(L, b);
   // the visitors' clipboard on the outside ledge (kit cap top 1.04; `note5_visitors` (2.3, 1.05, −2.0))
   paper(b, 2.34, 1.04, -2.0, 0.22, 0.32, 0.12);
-  b.detail(() => b.sign('VISITORS — SIGN IN', 'label', 2.36, 1.06, -2.0, 0.2, 0.04, '+y', PI / 2 + 0.12));
+  b.detail(() => b.sign('방문자 — 출입 기록', 'label', 2.36, 1.06, -2.0, 0.2, 0.04, '+y', PI / 2 + 0.12));
 
   // ── the turnstile line z −5.0: two tripods, the open equipment gate (the route), fences ──
   let left!: Turnstile, right!: Turnstile;
@@ -335,19 +335,19 @@ function buildGate(L: LevelBuild): GateParts {
   // equipment gate x −1.0 … 1.2, leaves swung open toward −z along the lane edges (posts + leaves collide: thin, beside the lane)
   b.at(0.1, 0, -5.0, 0, () => equipmentGate(b, L, { w: 2.2 }));
   deckLine(b, L, -0.95, -3.7, 1.15, -3.7, { w: 0.1 });
-  b.detail(() => b.sign('WAIT HERE', 'navy', 0.1, 0.003, -3.35, 0.9, 0.14, '+y'));
+  b.detail(() => b.sign('여기서 대기', 'navy', 0.1, 0.003, -3.35, 0.9, 0.14, '+y'));
   deckLine(b, L, -5.75, -5.45, -3.0, -5.45, { w: 0.06, color: 'white' });
   deckLine(b, L, -5.75, -4.55, -3.0, -4.55, { w: 0.06, color: 'white' });
-  b.detail(() => b.sign('ARRIVALS — ONE AT A TIME', 'navy', -4.4, 1.0, -5.035, 1.2, 0.1, '-z', 0, true));
+  b.detail(() => b.sign('입장 — 한 명씩', 'navy', -4.4, 1.0, -5.035, 1.2, 0.1, '-z', 0, true));
 
   // ── the ON POST board over the arrivals' side (screen 1.0 × 0.6 at (−4.0, 2.6, −0.22) facing −z) ──
   b.at(-4.0, 2.6, -0.19, PI, () => boardFrame(b, L, { w: 1.0, h: 0.6 }));
-  navySign(b, 'GATE 4 — PERSONNEL', -4.0, 2.16, -0.205, 1.0, 0.09, '-z');
+  navySign(b, '게이트 4 — 인원', -4.0, 2.16, -0.205, 1.0, 0.09, '-z');
 
   // ── east wall: first-aid cabinet (`p5_gate_med` (5.4, 1.0, −6.0) on its dropped door) ──
   b.at(5.8, 1.0, -6.0, -PI / 2, () => firstAidCabinet(b, L));
   // west wall: the gate notices; the weapon-clearing barrel in the south-west corner (the shell's box is its collider)
-  b.at(-5.8, 1.55, -3.65, PI / 2, () => noticeBoard(b, L, { notices: ['SECURITY STATE\nBRAVO', 'ALL VISITORS\nSIGN IN AT THE BOOTH', 'NO PERSONAL DEVICES\nBEYOND THIS POINT', 'CLEAR ALL WEAPONS\nBEFORE THE DUTY ROOM'] }));
+  b.at(-5.8, 1.55, -3.65, PI / 2, () => noticeBoard(b, L, { notices: ['경계 상태\n브라보', 'ALL VISITORS\nSIGN IN AT THE BOOTH', '개인 기기\n이 지점 너머 반입 금지', '모든 총기 안전 처리\n당직실 입실 전'] }));
   b.at(-5.2, 0, -8.6, PI / 2, () => clearingBarrel(b, L, { collide: false }));
   deckLine(b, L, -5.8, -7.85, -4.45, -7.85, { w: 0.06 });
   deckLine(b, L, -4.45, -9.8, -4.45, -7.85, { w: 0.06 });
@@ -364,7 +364,7 @@ function buildGate(L: LevelBuild): GateParts {
   batten(b, 0.5, H - 0.072, -7.0, 'x', 1.5, glass);
   b.at(-3.2, 2.6, -9.8, 0, () => emergFitting(b, eglass));
   b.at(-5.8, 2.6, -2.2, PI / 2, () => emergFitting(b, eglass));
-  navySign(b, 'DUTY ROOM →', -2.6, 2.1, -9.795, 0.8, 0.1, '+z');
+  navySign(b, '당직실 →', -2.6, 2.1, -9.795, 0.8, 0.1, '+z');
   b.decal('scratches', 2, 0.6, 0.002, -6.8, 1.6, 1.2, '+y', 0.3);
   b.decal('grime', 1, -4.2, 0.002, -2.6, 1.8, 1.4, '+y', 1.2);
 
@@ -401,11 +401,11 @@ function buildDuty(L: LevelBuild): DutyParts {
 
   // ── west wall: the duty board (`dock_status` 3.0 × 1.2 at (−7.78, 1.7, −18.0) facing +x), the module-watch card ──
   b.at(-7.81, 1.7, -18.0, PI / 2, () => boardFrame(b, L, { w: 3.0, h: 1.2 }));
-  navySign(b, 'POST 4 — STATE BOARD', -7.795, 2.42, -18.0, 1.6, 0.11, '+x');
+  navySign(b, '초소 4 — 상태 보드', -7.795, 2.42, -18.0, 1.6, 0.11, '+x');
   b.bx(N, -7.8, 1.15, -14.35, -7.785, 1.65, -13.65);
   b.detail(() => {
     b.bx('painted_white', -7.785, 1.28, -14.12, -7.78, 1.52, -13.88);
-    b.sign('MODULE WATCH\nMON 0800–1200', 'label', -7.779, 1.42, -14.0, 0.2, 0.09, '+x');
+    b.sign('모듈 당직\n월 0800–1200', 'label', -7.779, 1.42, -14.0, 0.2, 0.09, '+x');
     b.bx('painted_white', -7.785, 1.22, -14.32, -7.781, 1.42, -14.18);
     b.bx('painted_white', -7.785, 1.36, -13.84, -7.781, 1.6, -13.68);
   });
@@ -428,7 +428,7 @@ function buildDuty(L: LevelBuild): DutyParts {
     b.bx(K, 7.775, 1.55, -13.95, 7.8, 1.6, -13.85);
     b.rod(K, 7.79, 1.6, -13.9, 7.79, 3.38, -13.9, 0.015, 6); // conduit
   });
-  navySign(b, 'SPINE — AUTHORISED ACCESS — CODE', 7.795, 1.72, -13.9, 0.9, 0.07, '-x');
+  navySign(b, '스파인 — 인가된 출입 — 코드', 7.795, 1.72, -13.9, 0.9, 0.07, '-x');
   // the duty camera, east wall high (its tally red: the cameras are on)
   b.at(7.8, 2.6, -19.2, -PI / 2, () => wallCamera(b, L, { tilt: 0.38 }));
   // the shelf under `p5_duty_ammo` (7.5, 1.2, −11.0)
@@ -445,7 +445,7 @@ function buildDuty(L: LevelBuild): DutyParts {
   });
   mug(b, 3.8, 0.9, -10.5); mug(b, 3.95, 0.9, -10.38, PI / 2); mug(b, 4.25, 0.9, -10.55);
   // north wall, west of the door: the watch bill board
-  b.at(-4.6, 1.6, -10.2, PI, () => noticeBoard(b, L, { w: 1.4, notices: ['WATCH BILL\nDUTY ROOM — MON', 'LINK DRILL\nALL STATIONS 08:40', 'READINESS TRIAL\nDAY 9', 'SDV TERN\nDIVES — SEE DIVE BOARD'] }));
+  b.at(-4.6, 1.6, -10.2, PI, () => noticeBoard(b, L, { w: 1.4, notices: ['WATCH BILL\nDUTY ROOM — MON', 'LINK DRILL\nALL STATIONS 08:40', '대비 훈련\n9일차', 'SDV 턴\n잠항 — 다이브 보드 참조'] }));
 
   // ── structure: frames, cable tray, pipes, luminaires, emergency fitting ──
   const st = vesselRoom(b, L, {
@@ -489,7 +489,7 @@ function buildReady(L: LevelBuild): ReadyParts {
 
   // ── locker rows (h 2.0, the shell's boxes are the colliders) ──
   // L1 x −8.0 … −7.4: Brekke's locker 7 on its east face (door centre z −29.25)
-  b.at(-7.7, 0, -29.5, PI / 2, () => lockerBank(b, L, { name: 'ready5_l1', names: { '+z6': 'BREKKE' }, collide: false }));
+  b.at(-7.7, 0, -29.5, PI / 2, () => lockerBank(b, L, { name: 'ready5_l1', names: { '+z6': '브레케' }, collide: false }));
   // his note, taped on the door (`note5_locker` (−7.38, 1.5, −29.0) facing +x)
   b.detail(() => {
     b.bx('painted_white', -7.39, 1.42, -29.2, -7.385, 1.6, -29.06);
@@ -506,8 +506,8 @@ function buildReady(L: LevelBuild): ReadyParts {
 
   // ── gear crates (h 1.2), the kit rack along the south wall (h 2.2) with helmets on its top shelf ──
   b.at(-4.0, 0, -29.5, 0, () => gearCrate(b, L, { seed: 3, collide: false }));
-  b.at(-4.0, 0, -34.0, PI, () => gearCrate(b, L, { seed: 8, label: 'READY USE — RACK 1', collide: false }));
-  b.at(2.0, 0, -35.2, 0, () => gearCrate(b, L, { seed: 13, label: 'BATTERIES — WEAPON LIGHTS', collide: false }));
+  b.at(-4.0, 0, -34.0, PI, () => gearCrate(b, L, { seed: 8, label: '상시 사용 — 랙 1', collide: false }));
+  b.at(2.0, 0, -35.2, 0, () => gearCrate(b, L, { seed: 13, label: '배터리 — 무기 조명', collide: false }));
   let rack!: ReturnType<typeof kitRack>;
   b.at(-4.0, 0, -37.8, 0, () => { rack = kitRack(b, L, { len: 15.6, collide: false }); });
   rack.top.forEach((p, i) => { if (i % 3 !== 1) { b.push(); b.m.identity(); b.at(p.x, p.y, p.z, 0, () => helmetRow(b, L, { n: 2, seed: 5 + i })); b.pop(); } });
@@ -527,11 +527,11 @@ function buildReady(L: LevelBuild): ReadyParts {
   b.at(-10.0, 3.0, -22.2, PI, () => wallCamera(b, L, { tilt: 0.42 }));
   b.at(3.8, 0.97, -23.0, -PI / 2, () => wallShelf(b, L, { w: 0.6, d: 0.4 }));
   b.at(-11.8, 0.97, -30.0, PI / 2, () => wallShelf(b, L, { w: 0.6, d: 0.4 }));
-  navySign(b, 'MEDICAL', 3.795, 1.35, -23.0, 0.5, 0.08, '-x');
-  navySign(b, '5.56 — READY USE', -11.795, 1.35, -30.0, 0.7, 0.08, '+x');
+  navySign(b, '의무', 3.795, 1.35, -23.0, 0.5, 0.08, '-x');
+  navySign(b, '5.56 — 상시 사용', -11.795, 1.35, -30.0, 0.7, 0.08, '+x');
   // the west wall board: kit check, the collar check (Brekke's note answers it)
-  b.at(-11.8, 1.6, -25.6, PI / 2, () => noticeBoard(b, L, { notices: ['READY ROOM\nKIT CHECK DAILY 07:30', 'COLLAR CHECK\nMON 08:40 — ALL HANDS', 'WEAPON LIGHTS\nON — DARKEN SHIP'] }));
-  navySign(b, 'READY ROOM — DETACHMENT', -4.0, 2.75, -37.795, 2.2, 0.14, '+z');
+  b.at(-11.8, 1.6, -25.6, PI / 2, () => noticeBoard(b, L, { notices: ['대기실\n장비 점검 매일 07:30', '칼라 점검\n월 08:40 — 전원', 'WEAPON LIGHTS\nON — DARKEN SHIP'] }));
+  navySign(b, '대기실 — 파견대', -4.0, 2.75, -37.795, 2.2, 0.14, '+z');
 
   // ── lived in (B1): a carbine stripped for cleaning on C1, the radio chargers on C2, weapon lights on C3, kit bags,
   // boots and a towel by the benches, jackets and a vest on hooks on the east wall, the team board on the west wall
@@ -561,7 +561,7 @@ function buildReady(L: LevelBuild): ReadyParts {
           if (i === 1 || i === 4) continue;
           b.bx(K, x - 0.03, top + 0.08, -34.08, x + 0.03, top + 0.28, -33.98).rod(K, x + 0.015, top + 0.28, -34.06, x + 0.015, top + 0.42, -34.06, 0.005, 4);
         }
-        b.sign('RADIOS — SIGN OUT', 'label', -4.0, top + 0.04, -33.745, 0.5, 0.04, '+z');
+        b.sign('무전기 — 반출 기록', 'label', -4.0, top + 0.04, -33.745, 0.5, 0.04, '+z');
       });
     }
     // C3 (x 1.4 … 2.6, z −35.6 … −34.8): weapon lights and battery packs laid out
@@ -597,7 +597,7 @@ function buildReady(L: LevelBuild): ReadyParts {
     // the team board on the west wall between the frames at −35.5 and −32.5
     b.bx('painted_white', -11.8, 1.15, -35.2, -11.78, 2.05, -33.8);
     b.bx('steel_raw', -11.8, 1.12, -35.22, -11.77, 1.15, -33.78);
-    b.detail(() => b.sign('LINK DRILL 08:40\nTEAM A — SPINE · TEAM B — BAY\nKIT CHECK 07:30 — ALL HANDS', 'label', -11.776, 1.62, -34.5, 1.3, 0.75, '+x'));
+    b.detail(() => b.sign('링크 훈련 08:40\nA조 — 스파인 · B조 — 베이\n장비 점검 07:30 — 전원', 'label', -11.776, 1.62, -34.5, 1.3, 0.75, '+x'));
   }
 
   // ── structure: frames, cable trays, pipes, luminaires, emergency fitting ──
@@ -662,7 +662,7 @@ function arrivalVignettes(L: LevelBuild, g: GateParts) {
 
 function dutyVignettes(L: LevelBuild, d: DutyParts) {
   // key5_power (§4.4, at `l5_kes_4`'s end): the keypad wakes — ENTER CODE, its power LED green
-  const on = () => { screen(L, 'key5_panel', 'keypad', 'ENTER CODE'); d.led.emissiveIntensity = 0.9; };
+  const on = () => { screen(L, 'key5_panel', 'keypad', '코드 입력'); d.led.emissiveIntensity = 0.9; };
   L.vignette('key5_power', () => { L.sfx('keypad_power_on', 7.78, 1.35, -13.9); on(); }, { snap: on });
 }
 

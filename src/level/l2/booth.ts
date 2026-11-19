@@ -27,7 +27,7 @@ export const BOOTH_MARKS: [number, number][] = [[-16.5, -48.65], [-16.5, -43.35]
 export function buildBooth(L: LevelBuild) {
   const b = L.builder('booth');
   const R = rng(2501);
-  L.room('booth', 'LINE CONTROL', -17, -10, -50, -42, H);
+  L.room('booth', '라인 관제', -17, -10, -50, -42, H);
   floorSlab(b, 'floor_rubber', -17, -50, -10, -42, [], 'rubber');
   ceilingSlab(b, -17.0, -50.2, -10.0, -41.8, H); // inside the hall's / spine's wall faces
   wallFace(b, { n: '-x', plane: -10.2, from: -49.8, to: -42.2, h: H, t: 0.2, seed: 251, trayY: 0, features: 0, clearWindows: true, ext: [0, 0],
@@ -79,22 +79,22 @@ export function buildBooth(L: LevelBuild) {
     }
     for (let i = 0; i < 2; i++) panelOn(b, 'trim_steel', cx - 0.41, 0.38, cz0 + 0.4 + i * (cw - 0.8), 0.7, 0.55, '-x', 0.012, 0.012);
     for (let i = 0; i < 4; i++) b.rod('rubber', cx + 0.3, 0.05, cz0 + 0.3 + i * 0.07, cx + 0.3, 0.7, cz0 + 0.3 + i * 0.07, 0.016, 5);
-    b.sign('LINE 2 — LOCAL CONTROL', 'label', cx + 0.36, 0.9, czc, 1.2, 0.09, '-x');
+    b.sign('라인 2 — 현장 제어', 'label', cx + 0.36, 0.9, czc, 1.2, 0.09, '-x');
   });
   b.collide(cx - 0.45, 0, cz0, cx + 0.5, 0.95, cz1);
   // main console screen, sunk into the desk at the operator's left hand (seen from the hall, glowing)
   b.box('plastic_dark', cx - 0.03, 0.8, -48.75, 0.4, 0.06, 0.6);
-  const scr = L.screen('booth_console', 'terminal_idle', 0.52, 0.3, cx - 0.02, 0.86, -48.75, '-x', { text: 'ORDER 0031-H  (HEAD OFFICE)\nMAINTAIN YIELD AT ZERO HEADCOUNT\nSTATUS: EXECUTING' });
+  const scr = L.screen('booth_console', 'terminal_idle', 0.52, 0.3, cx - 0.02, 0.86, -48.75, '-x', { text: '오더 0031-H  (본사)\n인원 0으로 수율 유지\n상태: 실행 중' });
   scr.rotation.set(-1.15, -PI / 2, 0, 'YXZ');
   scr.position.set(cx - 0.03, 0.85, -48.75);
   const co = new THREE.Object3D(); co.name = 'booth_console'; co.position.set(cx - 0.05, 0.85, -48.75); L.root.add(co); L.objects.set('booth_console', co);
   // disabled until Tomas is gone (story enables it — REVISION 5.1)
-  L.interact('term2_booth', 'terminal', 'Read console', cx - 0.15, 0.95, -48.75, false, 2.0);
+  L.interact('term2_booth', 'terminal', '콘솔 읽기', cx - 0.15, 0.95, -48.75, false, 2.0);
   // the e-stop he hit: mushroom head pressed down in its yellow collar
   b.at(cx - 0.02, 0.78, -48.22, 0, () => {
     b.box('painted_yellow', 0, 0.04, 0, 0.16, 0.08, 0.16);
     b.cyl('painted_dark', 0, 0.09, 0, 0.045, 0.04, 'y', 12);
-    b.detail(() => b.sign('EMERGENCY STOP', 'label', 0.11, 0.06, 0, 0.14, 0.03, '-x'));
+    b.detail(() => b.sign('비상 정지', 'label', 0.11, 0.06, 0, 0.14, 0.03, '-x'));
   });
   const est = L.part('booth:estop');
   est.cyl('emissive_red', 0, 0.0, 0, 0.065, 0.04, 'y', 16);
@@ -167,7 +167,7 @@ export function buildBooth(L: LevelBuild) {
       b.cyl('steel_raw', 0, 0.018, 0.068, 0.012, 0.01, 'z', 8);
     });
   });
-  L.interact('booth_headset', 'log', 'Pick up recorder', -12.4, 0.12, -45.6, false, 2.0);
+  L.interact('booth_headset', 'log', '녹음기 줍기', -12.4, 0.12, -45.6, false, 2.0);
   const rec = new THREE.Object3D(); rec.name = 'booth_recorder'; rec.position.set(-12.4, 0.04, -45.6); L.root.add(rec); L.objects.set('booth_recorder', rec);
   // supplies (REVISION 5.1): a medkit and shells on the side desk
   L.pickup('p2_booth_med', 'medkit', -12.9, 0.77, -42.55, 35, 0.2);
@@ -212,7 +212,7 @@ export function buildBooth(L: LevelBuild) {
     b.box('plastic_white', -13.6, 1.75, -49.78, 0.32, 0.44, 0.005);
     b.box('painted_orange', -13.6, 1.93, -49.775, 0.32, 0.08, 0.005);
   });
-  b.sign('LINE CONTROL', 'stencil', -13.4, 2.5, -49.79, 1.8, 0.3, '+z');
+  b.sign('라인 관제', 'stencil', -13.4, 2.5, -49.79, 1.8, 0.3, '+z');
 
   // ── a small face light at each spine-window mark (own group: booth_light_fail does not kill them). From the
   //    window head on the booth side, angled back onto a face 0.5 m inside the glass, seen from the spine ──
@@ -243,8 +243,8 @@ function writing(L: LevelBuild) {
   const x = GLASS.x - 0.035;
   const items: [string, string, number, number, number, number, number][] = [
     // id, text, z centre, y centre, width, height, write seconds
-    ['booth_write_1', "CAN'T HEAR YOU", -47.05, 1.95, 1.6, 0.5, 2.6],
-    ['booth_write_2', 'INTERCOM →', -45.43, 1.55, 1.15, 0.34, 2.0], // north of the intercom mullion (-46.1): the arrow points at it
+    ['booth_write_1', "들리지 않습니다", -47.05, 1.95, 1.6, 0.5, 2.6],
+    ['booth_write_2', '인터컴 →', -45.43, 1.55, 1.15, 0.34, 2.0], // north of the intercom mullion (-46.1): the arrow points at it
   ];
   const wipes: (() => void)[] = [];
   items.forEach(([id, text, z, y, w, h, dur], i) => {

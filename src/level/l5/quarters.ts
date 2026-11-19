@@ -277,10 +277,10 @@ const berths5: RoomDress = {
     b.detail(() => {
       const ph = [[12.83, 1.25, -8.35, 3], [12.83, 1.32, -8.05, 7], [12.83, 0.5, -12.5, 2], [23.17, 1.3, -12.2, 5], [23.17, 0.52, -5.75, 9], [23.17, 1.27, -3.8, 4]] as const;
       for (const [x, y, z, s] of ph) b.quad(artMat(L, 'photo', s), x, y, z, 0.1, 0.13, x < 18 ? '+x' : '-x', (s % 3 - 1) * 0.06);
-      b.sign('AB NILSEN K.', 'label', 13.35, 0.985, -7.7, 0.3, 0.05, '+z');
-      b.sign('LS LUND P.', 'label', 13.35, 0.235, -11.9, 0.3, 0.05, '+z');
-      b.sign('AB SOLBERG T.', 'label', 22.65, 0.985, -12.8, 0.3, 0.05, '-z');
-      b.sign('BERTHING 1 — DARKEN SHIP 2200–0600', 'stencil', 23.79, 2.35, -10.5, 2.2, 0.14, '-x');
+      b.sign('수병 닐센 K.', 'label', 13.35, 0.985, -7.7, 0.3, 0.05, '+z');
+      b.sign('선임수병 룬드 P.', 'label', 13.35, 0.235, -11.9, 0.3, 0.05, '+z');
+      b.sign('수병 솔베르그 T.', 'label', 22.65, 0.985, -12.8, 0.3, 0.05, '-z');
+      b.sign('침실구역 1 — 2200–0600 소등', 'stencil', 23.79, 2.35, -10.5, 2.2, 0.14, '-x');
       b.sign('FR 44', 'stencil', 12.21, 2.6, -10.0, 0.4, 0.14, '+x');
       b.quad(paper(L, 0xd9cfb4), 13.9, 1.08, -8.05, 0.2, 0.13, '+y', 0.5);          // a paperback face down on the radio bunk
       b.quad(paper(L, 0xb8c4cc), 22.4, 0.333, -12.1, 0.7, 0.4, '+y', -0.3);        // a towel thrown on a bottom bunk
@@ -371,7 +371,7 @@ const heads5: RoomDress = {
       b.quad(paper(L, 0xc8d2d8), 15.6, 0.004, 2.6, 0.55, 0.35, '+y', 0.7);
       b.quad(paper(L, 0xc8d2d8), 15.2, 1.25, 3.785, 0.32, 0.6, '-z', 0.02);
       for (const [z, c] of [[-0.45, 0xe8e4d0], [0.4, 0x6a8aa8], [1.25, 0xe8e4d0]] as const) b.bx(paint(L, c, 0.4), 12.42, 0.9, z, 12.5, 0.93, z + 0.06);
-      b.sign('WASHROOM — CONSERVE FRESH WATER', 'stencil', 15.6, 2.3, 3.79, 2.6, 0.14, '-z');
+      b.sign('세면실 — 담수 절약', 'stencil', 15.6, 2.3, 3.79, 2.6, 0.14, '-z');
       b.sign('FR 46', 'stencil', 19.79, 2.45, -1.4, 0.4, 0.14, '-x');
     });
     // ── wet deck in front of the showers and under the sinks (fx overlay + audio's wet footsteps) ──
@@ -488,15 +488,15 @@ const mess5: RoomDress = {
     }
     // the menu over the counter and the scullery hatch sign
     b.detail(() => {
-      b.sign('MON — BREAKFAST 0630 · DINNER 1130 · SUPPER 1730', 'stencil', 28.6, 2.45, -2.21, 3.2, 0.14, '-z');
-      b.sign('SCRAPE · STACK · RETURN TRAYS', 'stencil', 35.4, 1.7, -2.21, 1.1, 0.12, '-z');
+      b.sign('월 — 아침 0630 · 점심 1130 · 저녁 1730', 'stencil', 28.6, 2.45, -2.21, 3.2, 0.14, '-z');
+      b.sign('긁고 · 쌓고 · 트레이 반납', 'stencil', 35.4, 1.7, -2.21, 1.1, 0.12, '-z');
       b.sign('FR 52', 'stencil', 37.79, 2.6, -11.0, 0.4, 0.14, '-x');
     });
     // ── the mess board (`note5_mess` reads it): the cake order ──
-    b.at(24.2, 1.6, -4.0, PI / 2, () => noticeBoard(b, L, { w: 1.2, h: 0.9, notices: ['MESS BOARD', 'READINESS TRIAL\nDAY 9\nWELL DONE ALL', 'CAKE 15:00 MON\nCO\'S TREAT', 'GALLEY CLOSED\nTUE 1400–1600'] }));
+    b.at(24.2, 1.6, -4.0, PI / 2, () => noticeBoard(b, L, { w: 1.2, h: 0.9, notices: ['식당 게시판', '대비 훈련\n9일차\n모두 수고했습니다', 'CAKE 15:00 MON\nCO\'S TREAT', '갤리 휴무\n화 1400–1600'] }));
     // ── the ready-use ammunition locker by the spine door (`p5_mess_ammo` (37.4, 1.0, −13.4) on its shelf) ──
     b.at(37.8, 0, -13.4, -PI / 2, () => openShelf(b, L, { w: 0.6, d: 0.55, h: 1.6, shelves: [0.45, 0.97, 1.4] }));
-    b.detail(() => b.sign('READY USE — 5.56', 'stencil', 37.79, 1.75, -12.95, 0.6, 0.08, '-x'));
+    b.detail(() => b.sign('상시 사용 — 5.56', 'stencil', 37.79, 1.75, -12.95, 0.6, 0.08, '-x'));
     // ── lived in (B1): the tea counter and the telly, the stopped clock, darts, the card game, caps and jackets left behind
     {
       const red = paint(L, 0x8a3b2e, 0.35), cream = paint(L, 0xe8e2d6, 0.3), dark = 'painted_dark' as const;
@@ -513,7 +513,7 @@ const mess5: RoomDress = {
         for (let i = 0; i < 9; i++) b.cyl(cream, 37.48, 0.913 + i * 0.009, -7.4, 0.11, 0.008, 'y', 18); // a stack of plates
         b.cyl(cream, 37.62, 0.96, -7.15, 0.05, 0.11, 'y', 12).cyl(dark, 37.62, 1.02, -7.15, 0.052, 0.012, 'y', 12); // sugar tin
         b.bx('stainless', 37.35, 0.905, -9.2, 37.62, 1.07, -9.02).bx(dark, 37.4, 1.07, -9.17, 37.57, 1.075, -9.05); // toaster
-        b.sign('TEA · COFFEE · RINSE YOUR MUG', 'stencil', 37.79, 1.35, -8.0, 1.6, 0.1, '-x');
+        b.sign('차 · 커피 · 컵은 헹궈 주세요', 'stencil', 37.79, 1.35, -8.0, 1.6, 0.1, '-x');
       });
       for (const [z, k] of [[-7.8, 1], [-8.08, 2], [-7.68, 3]] as const) b.at(37.42 + (k === 2 ? 0.12 : 0), 0.905, z, 0.3 * k, () => mug(b, L, k));
       // the telly on its bracket over the counter (off: its glass catches the lamps)
@@ -535,13 +535,13 @@ const mess5: RoomDress = {
       b.detail(() => {
         b.cyl(cream, 26.4, 1.73, -13.748, 0.2, 0.005, 'z', 24).cyl(red, 26.4, 1.73, -13.744, 0.13, 0.005, 'z', 24).cyl(dark, 26.4, 1.73, -13.74, 0.085, 0.005, 'z', 20).cyl(red, 26.4, 1.73, -13.736, 0.018, 0.005, 'z', 10);
         for (const [dx, dy] of [[0.04, 0.06], [-0.07, -0.02], [0.11, -0.09]] as const) b.rod('steel_raw', 26.4 + dx, 1.73 + dy, -13.735, 26.4 + dx + 0.01, 1.73 + dy + 0.015, -13.62, 0.004, 4).cyl(red, 26.4 + dx + 0.01, 1.73 + dy + 0.015, -13.6, 0.012, 0.04, 'z', 6);
-        b.sign('THE OCHE', 'stencil', 26.4, 0.004, -11.3, 0.6, 0.08, '+y');
+        b.sign('투구선', 'stencil', 26.4, 0.004, -11.3, 0.6, 0.08, '+y');
       });
       // a photograph of the detachment and the post's crest plaque on the south wall east of the door
       b.bx('navy_grey', 34.3, 1.35, -13.8, 35.3, 2.05, -13.78);
-      b.detail(() => { b.quad(artMat(L, 'photo', 11), 34.8, 1.7, -13.775, 0.9, 0.6, '+z'); b.sign('POST 4 — DETACHMENT — DAY 1', 'label', 34.8, 1.31, -13.778, 0.9, 0.06, '+z'); });
+      b.detail(() => { b.quad(artMat(L, 'photo', 11), 34.8, 1.7, -13.775, 0.9, 0.6, '+z'); b.sign('초소 4 — 파견대 — 1일차', 'label', 34.8, 1.31, -13.778, 0.9, 0.06, '+z'); });
       b.bx('navy_grey', 36.2, 1.55, -13.8, 36.7, 2.1, -13.77).cyl('painted_yellow', 36.45, 1.86, -13.765, 0.15, 0.01, 'z', 6);
-      b.detail(() => b.sign('POST 4', 'navy', 36.45, 1.64, -13.764, 0.4, 0.07, '+z'));
+      b.detail(() => b.sign('초소 4', 'navy', 36.45, 1.64, -13.764, 0.4, 0.07, '+z'));
       // the fire extinguisher by the spine door
       b.bx(dark, 33.65, 1.15, -13.8, 33.85, 1.2, -13.74);
       b.cyl(red, 33.75, 0.88, -13.66, 0.08, 0.52, 'y', 14).cyl(dark, 33.75, 1.18, -13.66, 0.03, 0.08, 'y', 8).rod(dark, 33.75, 1.2, -13.66, 33.85, 1.15, -13.55, 0.012, 5);
@@ -642,7 +642,7 @@ const galley5: RoomDress = {
     });
     // ── the medkit shelf (`p5_galley_med` (28.6, 1.0, 3.4)) in the north-west corner ──
     b.at(28.6, 0, 3.8, PI, () => openShelf(b, L, { w: 0.7, d: 0.6, h: 1.8, shelves: [0.4, 0.97, 1.45] }));
-    b.detail(() => b.sign('+  FIRST AID', 'label', 28.6, 1.95, 3.79, 0.5, 0.1, '-z'));
+    b.detail(() => b.sign('+  응급처치', 'label', 28.6, 1.95, 3.79, 0.5, 0.1, '-z'));
     // ── the walk-in cold room behind the frosted window (x 38.2 … 39.4, never entered) ──
     let clear!: THREE.Vector3;
     b.at(37.8, 1.5, 1.0, -PI / 2, () => { clear = frostedWindow(b, L, { w: 2.0, h: 1.0, corner: 'bl', collide: false }).clear; });
@@ -679,12 +679,12 @@ const galley5: RoomDress = {
       b.bx('stainless', 37.7, 0.95, 3.35, 37.74, 1.25, 3.42);
       b.bx('steel_raw', 37.71, 1.4, 3.3, 37.74, 1.46, 3.5);
       b.bx('painted_dark', 37.69, 1.34, 3.44, 37.71, 1.42, 3.48);
-      b.sign('COLD ROOM  +2 °C', 'stencil', 37.735, 1.75, 3.0, 0.8, 0.12, '-x');
+      b.sign('냉장실  +2 °C', 'stencil', 37.735, 1.75, 3.0, 0.8, 0.12, '-x');
     });
     // the cold mist behind the pane (fx5_galley_mist)
     fx.fog({ box: box3([38.22, 0, -0.18, 39.38, 2.2, 2.18]), color: 0xd8e6f0, density: 0.9, height: 1.2, drift: [0, 0.05], rooms: ['galley5'], seenFrom: ['mess5'], id: 'fx5_galley_mist' });
     b.detail(() => {
-      b.sign('GALLEY — NO UNAUTHORISED ENTRY', 'stencil', 33.0, 2.5, 3.79, 2.4, 0.14, '-z');
+      b.sign('갤리 — 무단 출입 금지', 'stencil', 33.0, 2.5, 3.79, 2.4, 0.14, '-z');
       b.sign('FR 52', 'stencil', 28.21, 2.6, -1.3, 0.4, 0.14, '+x');
     });
     // ── v5_galley_shape ──

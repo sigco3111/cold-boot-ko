@@ -132,7 +132,7 @@ export function buildLoaderTemplate(ctx: GameContext, geom: LoaderGeom = LOADER_
   const rope = libOr(ctx, 'rope_wire', 'steel_raw', {}, { color: 0x4a4a48, roughness: 0.48, metalness: 0.9 });
   rope.name = 'loader_rope';
   const hazard = M.get('hazard_stripes');
-  const sign = M.sign('HALCYON DOCK SYSTEMS  —  DL-2  —  SWL 32 T', 'stencil', 9);
+  const sign = M.sign('할시온 도크 시스템즈  —  DL-2  —  SWL 32 T', 'stencil', 9);
   const glass = M.clone('screen_off', { roughness: 0.08, metalness: 0.2, color: 0x20262c }); glass.name = 'loader_glass';
   const mats: Record<string, THREE.Material> = { glow: glowMaterial(), yellow, dark, steel, chrome, rope, hazard, sign, glass };
   const cx = (geom.spanX0 + geom.spanX1) / 2, cz = (geom.zMin + geom.zMax) / 2;

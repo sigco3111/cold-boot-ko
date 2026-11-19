@@ -53,7 +53,7 @@ export class LogReader {
     const keys = h('div', 'keys lbl', bot);
     const k1 = h('span', '', keys); h('span', 'key', k1, 'E'); h('span', '', k1, '닫기');
     const k2 = h('span', '', keys); h('span', 'key', k2, 'W'); h('span', 'key', k2, 'S'); h('span', '', k2, '스크롤');
-    h('span', 'lbl', bot, 'HALCYON DYNAMICS · INTERNAL');
+    h('span', 'lbl', bot, '할시온 다이내믹스 · 내부용');
     addEventListener('wheel', this.wheel, { passive: true });
   }
 
@@ -374,7 +374,7 @@ export class DeathScreen {
     h('div', 'lbl', st, '작업자 원격 측정');
     h('h2', '', st, '신호 끊김');
     const t = (ctx.story as StoryInternal | undefined)?.stats?.time ?? ctx.time;
-    h('div', 'lbl meta', st, ['REYES, S.', '생체 신호 없음', this.roomName(), fmtTime(t)].filter(Boolean).join('  ·  '));
+    h('div', 'lbl meta', st, ['레예스, S.', '생체 신호 없음', this.roomName(), fmtTime(t)].filter(Boolean).join('  ·  '));
     const taunt = h('div', 'taunt', st);
     h('div', 'spk', taunt, 'CHOIR');
     const line = h('div', 'line', taunt);

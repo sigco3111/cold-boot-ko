@@ -80,10 +80,10 @@ function styleDoors(L: LevelBuild) {
       // (stage 3b B9: the clinic's glass is frosted — its portal is `see: false`, so a clear leaf showed the void where
       // the culled atrium should be; frosted = opaque to the eye, still the glazed habitat leaf)
       case 'd3_clinic': return { style: 'habitat', leafMat: frosted ??= frostedGlass(L) };
-      case 'd3_lobby_inner': return { ...veneer, plates: [null, 'Staff'] };
-      case 'd3_office': return { ...veneer, plates: ['P. Halvorsen', null] };
+      case 'd3_lobby_inner': return { ...veneer, plates: [null, '직원'] };
+      case 'd3_office': return { ...veneer, plates: ['P. 할보센', null] };
       case 'd3_stair_w': case 'd3_canteen': return { ...veneer, vision: true };
-      case 'd3_kitchen': return { style: 'habitat', leafMat: paint(L, 0xe9e3d6, 0.45), plates: ['Staff only', null] };
+      case 'd3_kitchen': return { style: 'habitat', leafMat: paint(L, 0xe9e3d6, 0.45), plates: ['직원 전용', null] };
       case 'd3_ring_e': return { style: 'habitat', leafMat: paint(L, 0x5a5550, 0.5) };
       default: break;
     }
@@ -189,8 +189,8 @@ const stair_w: RoomDress = {
     alongWall(b, '+x', -19.8, 0, () => wainscot(b, 31.0, 33.8, 0.9));
     alongWall(b, '-x', -15.2, 0, () => wainscot(b, -33.8, -31.0, 0.9));
     // door casings on the stair side
-    doorCasing(b, L, { x: -20, y: Y, z: -18.5, wall: 'x', front: 'Facilities Offices', sides: [1] });
-    doorCasing(b, L, { x: -17.5, z: -34, wall: 'z', front: 'Canteen', sides: [1] });
+    doorCasing(b, L, { x: -20, y: Y, z: -18.5, wall: 'x', front: '시설팀 사무실', sides: [1] });
+    doorCasing(b, L, { x: -17.5, z: -34, wall: 'z', front: '식당', sides: [1] });
     // the fjord print on the top landing, the sea at the bottom; sconces at the bottom landing
     alongWall(b, '-x', -15.2, Y, () => pictureFrame(b, artMat(L, 'fjord', 21), -19.1, 1.65, 1.2, 0.85));
     alongWall(b, '+x', -19.8, 0, () => pictureFrame(b, artMat(L, 'seabed', 22), 32.4, 1.42, 0.75, 0.55));
@@ -199,8 +199,8 @@ const stair_w: RoomDress = {
     }
     fixture(L, low, -17.5, 2.1, -32.5);
     pottedPlant(b, -15.65, Y, -16.65, 'palm', 1.0, R, 'stone_pale');
-    wayfind(b, 'Canteen · Garden ↓', -17.5, Y + 2.3, -16.205, 1.6, 0.3, '-z');
-    alongWall(b, '-x', -15.2, 0, () => wayfind(b, 'Facilities Offices ↑', -32.5, 2.75, 0.005, 1.5, 0.28, '+z'));
+    wayfind(b, '식당 · 정원 ↓', -17.5, Y + 2.3, -16.205, 1.6, 0.3, '-z');
+    alongWall(b, '-x', -15.2, 0, () => wayfind(b, '시설팀 사무실 ↑', -32.5, 2.75, 0.005, 1.5, 0.28, '+z'));
   },
 };
 
@@ -248,8 +248,8 @@ const canteen: RoomDress = {
 
     // ── door casings on the canteen side
     doorCasing(b, L, { x: -17.5, z: -34, wall: 'z', back: 'West Stair · Offices', sides: [-1] });
-    doorCasing(b, L, { x: -12, z: -39, wall: 'x', w: 2.4, back: 'Garden Atrium', sides: [-1] });
-    doorCasing(b, L, { x: -21, z: -46, wall: 'z', front: 'Kitchen — staff only', sides: [1] });
+    doorCasing(b, L, { x: -12, z: -39, wall: 'x', w: 2.4, back: '정원 아트리움', sides: [-1] });
+    doorCasing(b, L, { x: -21, z: -46, wall: 'z', front: '주방 — 직원 전용', sides: [1] });
 
     // ── ceiling: drum pendants over the tables, oak trims round the two hatches (their voids stay open)
     for (const [x, z] of TABLES) pendant(b, L, pend, x, H, z, 0.95, 0.24, TINT.mustard);
@@ -303,7 +303,7 @@ const canteen: RoomDress = {
     b.bx('wood_dark', -19.6, 0.96, -45.8, -18.3, 1.95, -45.76);
     b.detail(() => { for (let y = 1.0; y < 1.9; y += 0.06) b.bx('trim_steel', -19.52, y, -45.76, -18.38, y + 0.05, -45.752); });
     b.bx('chrome', -19.65, 0.93, -45.8, -18.25, 0.96, -45.55);
-    wayfind(b, 'Trays & cutlery here — thank you!', -18.95, 2.15, -45.795, 1.5, 0.22, '+z');
+    wayfind(b, '트레이와 식기는 여기에 — 감사합니다!', -18.95, 2.15, -45.795, 1.5, 0.22, '+z');
     // chalk menu over the servery
     const menu = canvasMat(L, 'canteen_chalk', 512, 288, (g, W, Hh) => {
       g.fillStyle = '#1f2421'; g.fillRect(0, 0, W, Hh);
@@ -325,7 +325,7 @@ const canteen: RoomDress = {
       const quiz = canvasMat(L, 'canteen_quiz', 256, 352, (g, W) => {
         g.fillStyle = '#2f5f8a'; g.fillRect(0, 0, W, 352);
         g.fillStyle = '#f2c230'; g.textAlign = 'center'; g.font = '800 34px Arial'; g.fillText('목요일', W / 2, 60); g.fillText('퀴즈의 밤', W / 2, 100);
-        g.fillStyle = '#f4efe2'; g.font = '600 20px Arial'; ['Teams of four', 'Prize: a day on', 'the surface rota', '', 'Question master:', 'Halvorsen'].forEach((t, i) => g.fillText(t, W / 2, 160 + i * 28));
+        g.fillStyle = '#f4efe2'; g.font = '600 20px Arial'; ['4인 1조', '상품: 지상 근무조에서', '하루', '', '퀴즈 진행:', '할보센'].forEach((t, i) => g.fillText(t, W / 2, 160 + i * 28));
         g.fillStyle = '#f2c230'; g.font = 'italic 600 16px Arial'; g.fillText('CHOIR에게 묻기 금지.', W / 2, 336);
       });
       pictureFrame(b, quiz, 20.9, 1.6, 0.42, 0.58, 'chrome', false);
@@ -479,7 +479,7 @@ const clinic: RoomDress = {
     alongWall(b, '-z', -14.2, 0, () => wainscot(b, -19.8, -12.2, 1.0, [], dado, rail));
     alongWall(b, '-x', 19.8, 0, () => wainscot(b, -23.8, -14.2, 1.0, [], dado, rail));
     alongWall(b, '+z', -23.8, 0, () => wainscot(b, 12.2, 19.8, 1.0, [], dado, rail));
-    doorCasing(b, L, { x: 12, z: -19, wall: 'x', front: 'Garden Atrium', sides: [1] });
+    doorCasing(b, L, { x: 12, z: -19, wall: 'x', front: '정원 아트리움', sides: [1] });
 
     // ── the desk on the south wall: sick-call clipboard (note3_clinic_post4), remote-patients printout
     //    (note3_clinic_reyes), the found-property tray (p3_clinic_ammo), the wall monitor (clinic_monitor)
@@ -525,7 +525,7 @@ const clinic: RoomDress = {
         b.torus('painted_dark', 0.15, 0.012, 0.035, 0.022, 0.003, 'y', 10);
         b.torus('brass', -0.15, 0.008, 0.09, 0.015, 0.002, 'y', 10);
       });
-      b.sign('FOUND PROPERTY', 'label', 16.0, top + 0.05, -22.8, 0.2, 0.03, '+z');
+      b.sign('분실물 보관', 'label', 16.0, top + 0.05, -22.8, 0.2, 0.03, '+z');
     });
     b.at(15.6, 0, -22.25, PI + 0.2, () => officeChair(b, L, TINT.teal));
     b.at(16.85, 0, -22.05, PI - 0.3, () => visitorChair(b, L, TINT.sage));
@@ -540,7 +540,7 @@ const clinic: RoomDress = {
       b.bx('painted_dark', 22.0, 0.95, 0.1, 22.3, 0.952, 0.36);
       b.rod('chrome', 22.15, 0.95, 0.07, 22.15, 1.12, 0.07, 0.01, 6);
       b.rod('chrome', 22.15, 1.12, 0.07, 22.15, 1.1, 0.2, 0.009, 6);
-      b.sign('CONTROLLED DRUGS — KEEP LOCKED', 'label', 22.4, 2.15, 0.0, 0.9, 0.1, '+z', 0, true);
+      b.sign('관리 약품 — 잠금 유지', 'label', 22.4, 2.15, 0.0, 0.9, 0.1, '+z', 0, true);
       // eye chart and a hand-sanitiser by the door, a health poster
       pictureFrame(b, eyeChartMat(L), 15.9, 1.55, 0.36, 0.56, 'chrome', false);
       b.bx('plastic_white', 20.7, 1.1, 0.0, 20.82, 1.32, 0.09);
@@ -549,7 +549,7 @@ const clinic: RoomDress = {
       g.fillStyle = '#e7efe9'; g.fillRect(0, 0, W, 340);
       g.fillStyle = '#2f5f6a'; g.textAlign = 'center'; g.font = '800 26px Arial'; g.fillText('잘 자요', W / 2, 52); g.fillText('링에서', W / 2, 84);
       g.fillStyle = '#3d4a4f'; g.font = '500 17px Arial';
-      ['Keep a surface clock', 'Lamps to EVENING by 21:00', 'Headaches, ear pressure,', 'stiff neck? Come and see us.', '', '— Dr. Lund, Clinic'].forEach((t, i) => g.fillText(t, W / 2, 140 + i * 30));
+      ['지상 시간을 맞춰 두세요', '조명은 21:00까지 저녁으로', '두통, 귀압,', '목 뻐근함? 진료실로 오세요.', '', '— 룬드 의사, 진료실'].forEach((t, i) => g.fillText(t, W / 2, 140 + i * 30));
     });
     alongWall(b, '+z', -23.8, 0, () => pictureFrame(b, poster, 18.6, 1.65, 0.45, 0.6, 'chrome', false));
 
@@ -572,7 +572,7 @@ const clinic: RoomDress = {
       b.bx(wb, -16.62, 1.2, 0.0, -15.78, 1.29, 0.3).bx(wb, -16.62, 1.62, 0.0, -15.78, 1.68, 0.3);
       b.bx(wb, -16.62, 1.29, 0.0, -16.58, 1.62, 0.3).bx(wb, -15.82, 1.29, 0.0, -15.78, 1.62, 0.3);
       b.bx(wb, -16.58, 1.29, 0.0, -15.82, 1.62, 0.012);
-      b.sign('FIRST AID', 'label', -16.2, 1.75, 0.0, 0.4, 0.1, '+z', 0, true);
+      b.sign('응급처치', 'label', -16.2, 1.75, 0.0, 0.4, 0.1, '+z', 0, true);
     });
     // ── exam bay 2 (south-east): couch on the east wall, curtains, a drip stand and a stool
     b.at(19.42, 0, -21.4, -PI / 2, () => examCouch(b, L, 0x6a7f5a));
@@ -584,7 +584,7 @@ const clinic: RoomDress = {
       b.rod('chrome', -0.15, 1.95, 0, 0.15, 1.95, 0, 0.008, 5);
     });
     b.at(18.4, 0, -20.4, 0, () => { b.cyl('chrome', 0, 0.28, 0, 0.02, 0.5, 'y', 8); b.cyl(fabric(L, TINT.charcoal), 0, 0.55, 0, 0.17, 0.06, 'y', 14); for (let i = 0; i < 5; i++) { const a = (i / 5) * PI * 2; b.rod('chrome', 0, 0.05, 0, Math.sin(a) * 0.22, 0.03, Math.cos(a) * 0.22, 0.01, 5); } });
-    wayfind(b, 'Clinic — Dr. Lund · surgery 08:00–12:00', 15.2, 2.35, -14.205, 2.2, 0.26, '-z');
+    wayfind(b, '진료실 — 룬드 의사 · 진료 08:00–12:00', 15.2, 2.35, -14.205, 2.2, 0.26, '-z');
   },
 };
 
@@ -637,12 +637,12 @@ const quarters: RoomDress = {
       b.bx(fabric(L, TINT.rust), 12.85, 0.008, -31.6, 27.15, 0.012, -30.4);
     });
     // casings: cabins (name on the casing head, number on the leaf), the garden door, ring east
-    const names: Record<string, string> = { d3_q1: 'L. Moen', d3_q2: 'A. & J. Karlsen', d3_q3: 'S. Vik', d3_q4: 'D. Oyelaran', d3_q5: 'R. Brandt', d3_q6: 'T. Halvorsen' };
+    const names: Record<string, string> = { d3_q1: 'L. 모엔', d3_q2: 'A. & J. 칼센', d3_q3: 'S. 비크', d3_q4: 'D. 오예라란', d3_q5: 'R. 브란트', d3_q6: 'T. 할보센' };
     for (const [id, x, north] of [['d3_q1', 15, true], ['d3_q2', 19, true], ['d3_q3', 23, true], ['d3_q4', 15, false], ['d3_q5', 19, false], ['d3_q6', 23, false]] as const) {
       doorCasing(b, L, north ? { x, z: -28, wall: 'z', back: names[id], sides: [-1] } : { x, z: -34, wall: 'z', front: names[id], sides: [1] });
     }
-    doorCasing(b, L, { x: 12, z: -31, wall: 'x', front: 'Garden Atrium', sides: [1] });
-    doorCasing(b, L, { x: 28, z: -31, wall: 'x', back: 'Ring A — East', sides: [-1] });
+    doorCasing(b, L, { x: 12, z: -31, wall: 'x', front: '정원 아트리움', sides: [1] });
+    doorCasing(b, L, { x: 28, z: -31, wall: 'x', back: '링 A — 동측', sides: [-1] });
 
     // ── lived-in: shoes by the doors, a pram, a scooter, an airer, plants, umbrellas, a bench and the residents' board
     // north row (corridor face z −28.2; things stand within 0.9 m of the wall), toes toward the door
@@ -673,7 +673,7 @@ const quarters: RoomDress = {
       pictureFrame(b, artMat(L, 'photo', 41), 13.5, 1.65, 0.45, 0.34);
     });
     alongWall(b, '-z', -28.2, 0, () => pictureFrame(b, artMat(L, 'fjord', 42), -26.2, 1.65, 0.9, 0.62));
-    wayfind(b, 'Ring A · cabins 1–6', 27.795, 2.45, -33.0, 1.3, 0.26, '-x');
+    wayfind(b, '링 A · 침실 1–6', 27.795, 2.45, -33.0, 1.3, 0.26, '-x');
   },
 };
 
@@ -719,8 +719,8 @@ const bio_lock: RoomDress = {
     }
     L.marker('bio_nozzles', 14, Y + 1.5, -38).userData.points = pts;
     // BIOLOGICAL SYSTEMS stencil over the inner door's wall run (north wall), DECON panel bezel by the inner door
-    b.sign('BIOLOGICAL SYSTEMS', 'stencil', 14, Y + 2.45, -36.205, 2.4, 0.3, '-z');
-    b.sign('DECONTAMINATION ON ENTRY — WAIT FOR GREEN', 'label', 14, Y + 2.12, -36.205, 2.0, 0.12, '-z', 0, true);
+    b.sign('생물 시스템', 'stencil', 14, Y + 2.45, -36.205, 2.4, 0.3, '-z');
+    b.sign('입장 시 제염 — 녹색등 대기', 'label', 14, Y + 2.12, -36.205, 2.0, 0.12, '-z', 0, true);
     alongWall(b, '-x', 15.8, Y, () => {
       b.bx('plastic_dark', -37.0, 1.33, 0.0, -36.4, 1.36, 0.03).bx('plastic_dark', -37.0, 1.64, 0.0, -36.4, 1.67, 0.03);
       b.bx('plastic_dark', -37.0, 1.36, 0.0, -36.97, 1.64, 0.03).bx('plastic_dark', -36.43, 1.36, 0.0, -36.4, 1.64, 0.03);
@@ -747,7 +747,7 @@ const bio_lock: RoomDress = {
       b.bx('brass', 13.17, 1.12, 0.06, 13.23, 1.18, 0.08);
       b.bx('painted_dark', 14.9, 1.1, 0.0, 15.6, 1.13, 0.22);
       b.rbox(paper(L, 0xf1ece0), 15.2, 1.135, 0.12, 0.22, 0.004, 0.3, 0, 0.1, 0);
-      b.sign('SIGN IN — ALL PERSONNEL', 'label', 15.25, 1.3, 0.0, 0.7, 0.1, '+z', 0, true);
+      b.sign('출입 기록 — 전원', 'label', 15.25, 1.3, 0.0, 0.7, 0.1, '+z', 0, true);
     });
     // a small painted-over crest by the outer door
     alongWall(b, '-z', -36.2, Y, () => b.bx(paint(L, 0x8f8c82, 0.85), -12.95, 1.55, 0.0, -12.55, 1.95, 0.003));
@@ -766,12 +766,12 @@ const ring_e: RoomDress = {
     // the ring goes on east behind a lowered fire shutter; a red emergency strip is the only light
     b.bx('painted_dark', 30.97, 0, -32.6, 31.0, 2.7, -29.4);
     b.detail(() => { for (let y = 0.1; y < 2.6; y += 0.1) b.bx('trim_steel', 30.955, y, -32.5, 30.97, y + 0.07, -29.5); });
-    b.sign('FIRE SHUTTER — KEEP CLEAR', 'label', 30.95, 2.85, -31.0, 1.6, 0.14, '-x', 0, true);
+    b.sign('방화 셔터 — 앞에 물건 두지 마세요', 'label', 30.95, 2.85, -31.0, 1.6, 0.14, '-x', 0, true);
     const red = mat3(L, 'ring_e_red', () => L.ctx.materials.clone('emissive_red', { emissiveIntensity: 1.1 }));
     b.bx(red, 28.6, 2.97, -31.08, 30.6, 3.0, -30.92);
     alongWall(b, '-z', -29.0, 0, () => wainscot(b, -31.0, -28.2, 0.95));
     alongWall(b, '+z', -33.0, 0, () => wainscot(b, 28.2, 31.0, 0.95));
-    wayfind(b, 'Ring A · cabins 7–12', 29.6, 2.2, -29.005, 1.3, 0.26, '-z');
+    wayfind(b, '링 A · 침실 7–12', 29.6, 2.2, -29.005, 1.3, 0.26, '-z');
   },
 };
 

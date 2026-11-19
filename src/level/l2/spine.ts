@@ -17,7 +17,7 @@ const H = 3.0;
 export function buildSpine(L: LevelBuild) {
   const b = L.builder('spine');
   const R = rng(2801);
-  L.room('spine', 'SERVICE SPINE', -21, -17, -68, -30, H);
+  L.room('spine', '서비스 스파인', -21, -17, -68, -30, H);
   floorSlab(b, 'floor_plate', -21, -68, -17, -30, [[-19.4, -67.6, -18.6, -30.4]], 'metal');
   grate(b, -19.4, -67.6, -18.6, -30.4, 0, 1.2);
   b.detail(() => {
@@ -66,7 +66,7 @@ export function buildSpine(L: LevelBuild) {
   // ── doors' surrounds: hazard frames, labels ──
   for (const z of [-56, -36]) {
     b.detail(() => { hazardStrip(b, -20.9, z + 0.32, -17.3, z + 0.5); hazardStrip(b, -20.9, z - 0.5, -17.3, z - 0.32); });
-    b.sign(z === -56 ? 'BULKHEAD C-2' : 'BULKHEAD C-1', 'stencil', -20.0 + 1.0, 2.75, z + 0.205, 1.2, 0.18, '+z');
+    b.sign(z === -56 ? '격벽 C-2' : '격벽 C-1', 'stencil', -20.0 + 1.0, 2.75, z + 0.205, 1.2, 0.18, '+z');
   }
   // north end: a sealed blast door to section B (not a door anyone uses)
   b.at(-19, 0, -30.2, PI, () => {
@@ -74,17 +74,17 @@ export function buildSpine(L: LevelBuild) {
     b.detail(() => {
       for (let i = 0; i < 5; i++) b.box('hazard_stripes', -1.0 + i * 0.5, 1.35, 0.125, 0.18, 2.5, 0.004);
       panel(b, 'trim_steel', -1.1, 0.2, 1.1, 2.5, 0.12, 0.03, 0.03);
-      b.sign('SECTION B — SEALED', 'danger', 0, 1.6, 0.16, 1.4, 0.2, '+z', 0, true);
+      b.sign('구역 B — 봉쇄됨', 'danger', 0, 1.6, 0.16, 1.4, 0.2, '+z', 0, true);
       bolts4(b, -1.25, 0.05, 1.25, 2.65, 0.12);
     });
   });
   // clutter: a drum, a crate, a dropped helmet
   b.at(-20.4, 0, -41.0, 0, () => drum(b, 'painted_yellow'));
-  b.at(-20.35, 0, -60.5, 0.2, () => crate(b, 0.9, 0.7, 0.8, 'painted_dark', 'SPARES'));
+  b.at(-20.35, 0, -60.5, 0.2, () => crate(b, 0.9, 0.7, 0.8, 'painted_dark', '예비품'));
   b.detail(() => b.sphere('painted_yellow', -18.0, 0.1, -52.6, 0.14, 10, 0.75));
   L.pickup('p2_spine_ammo', 'ammo_pistol', -20.4, 0.9, -41.0, 12, 0.2);
-  b.sign('SERVICE SPINE — SECTION C', 'stencil', -20.98, 2.0, -62, 2.6, 0.3, '+x');
-  b.sign('LINE CONTROL →', 'directional', -20.98, 1.7, -52.5, 1.0, 0.2, '+x', 0, true);
+  b.sign('서비스 스파인 — 구역 C', 'stencil', -20.98, 2.0, -62, 2.6, 0.3, '+x');
+  b.sign('라인 관제 →', 'directional', -20.98, 1.7, -52.5, 1.0, 0.2, '+x', 0, true);
 
   // ── light: a few dim fittings (some dead), red beacons for emergencies ──
   let gm: THREE.Material | undefined;
@@ -96,7 +96,7 @@ export function buildSpine(L: LevelBuild) {
   for (const z of [-61, -50.5, -41.5, -33.5]) b.at(-21, 0, z, PI / 2, () => bulkhead(b, L, 'spine', 0, 1.9, 0, 0xffa050, 3.2, 4.2, 'emissive_amber', { flicker: z === -50.5 ? 'broken' : 'none' }));
   for (const z of [-60, -44, -32]) beacon(b, L, 'spine_emergency', -20.9, 2.5, z, -1, 0xff2a12, 34, 8, 'emissive_red', false, 'alarm');
   // the window from this side: the booth is warm; the spine is not
-  b.at(-17.2, 0, -46, -PI / 2, () => b.detail(() => b.sign('LINE CONTROL', 'label', 0, 2.62, 0.01, 1.0, 0.13, '+z')));
+  b.at(-17.2, 0, -46, -PI / 2, () => b.detail(() => b.sign('라인 관제', 'label', 0, 2.62, 0.01, 1.0, 0.13, '+z')));
 
   // ── the link passage: hall door (x = -10) → spine (x = -17) at z ≈ -66 ──
   const lp = L.builder('spine_link');

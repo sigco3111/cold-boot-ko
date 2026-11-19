@@ -21,7 +21,7 @@ export const GLASS = { x: -10, z0: -49.85, z1: -44.85, y0: 0.88, y1: 2.72, mulli
 export const BOOTH_HALL_Z = -43.12;
 
 export function buildHall(L: LevelBuild) {
-  L.room('line', 'LINE TWO', -10, 10, -70, -22, H, 1.8);
+  L.room('line', '2번 라인', -10, 10, -70, -22, H, 1.8);
   const R = rng(2301);
   const b = L.builder('hall');
   shell(L, b, R);
@@ -60,7 +60,7 @@ function machinery(L: LevelBuild, b: Builder, R: ReturnType<typeof rng>) {
   b.collide(9.1, 0, -58.1, 9.8, 1.9, -52.5);
   b.detail(() => {
     for (let i = 0; i < 8; i++) b.rod(i % 3 ? 'rubber' : 'plastic_dark', 9.5, 1.92, -52.8 - i * 0.65, 9.5, 5.0, -52.8 - i * 0.65 + 0.2, 0.03, 6);
-    b.sign('LINE 2 — MCC', 'label', 9.12, 2.55, -55.3, 1.2, 0.18, '-x', 0, true);
+    b.sign('라인 2 — MCC', 'label', 9.12, 2.55, -55.3, 1.2, 0.18, '-x', 0, true);
   });
   // shell racks: A-frames with torso shells hung on pegs, waiting to be fitted
   for (const [x, z] of [[-1.6, -29.0], [-1.6, -31.6]] as const) b.at(x, 0, z, 0, () => {
@@ -88,7 +88,7 @@ function machinery(L: LevelBuild, b: Builder, R: ReturnType<typeof rng>) {
   b.at(-7.4, 0.12, -37.3, 0.35, () => { pallet(b, 1.1, 1.0); b.detail(() => { for (let i = 0; i < 6; i++) { b.push(-0.4 + (i % 3) * 0.4, 0.2 + Math.floor(i / 3) * 0.12, -0.15 + Math.floor(i / 3) * 0.2, 0.2, 0, PI / 2); androidArmFlat(b); b.pop(); } }); });
   // overhead signs hung from the trusses
   b.detail(() => {
-    for (const [x, z, t] of [[-3.0, -44.0, 'LOAD STATION 2'], [-3.0, -60.0, 'STAGING · NODE 5'], [5.0, -48.9, 'FITTING TUNNEL 2']] as const) {
+    for (const [x, z, t] of [[-3.0, -44.0, '적재 스테이션 2'], [-3.0, -60.0, '스테이징 · 노드 5'], [5.0, -48.9, '피팅 터널 2']] as const) {
       for (const s of [-1, 1]) b.rod('steel_raw', x + s * 1.2, 5.1, z, x + s * 1.2, 8.05, z, 0.008, 4);
       b.box('painted_dark', x, 4.9, z, 2.8, 0.5, 0.06);
       b.sign(t, 'label', x, 4.9, z + 0.032, 2.5, 0.36, '+z');
@@ -197,9 +197,9 @@ function glassFront(L: LevelBuild, b: Builder) {
   b.detail(() => {
     b.box('rubber', x + 0.07, y0 + 0.045, (z0 + z1) / 2, 0.02, 0.03, z1 - z0);
     b.box('rubber', x + 0.07, y1 - 0.05, (z0 + z1) / 2, 0.02, 0.03, z1 - z0);
-    b.sign('LINE CONTROL', 'label', x + 0.14, y1 + 0.32, (z0 + z1) / 2, 1.8, 0.24, '+x', 0, true);
-    b.sign('NO ENTRY — OPERATOR ONLY', 'warning', x + 0.1, 2.05, -41.0, 0.9, 0.2, '+x', 0, true);
-    b.sign('INTERLOCK — LINE RUNNING/HELD', 'danger', x + 0.12, 2.75, -43, 1.3, 0.18, '+x', 0, true);
+    b.sign('라인 관제', 'label', x + 0.14, y1 + 0.32, (z0 + z1) / 2, 1.8, 0.24, '+x', 0, true);
+    b.sign('출입 금지 — 조작자만', 'warning', x + 0.1, 2.05, -41.0, 0.9, 0.2, '+x', 0, true);
+    b.sign('인터록 — 라인 가동/정지', 'danger', x + 0.12, 2.75, -43, 1.3, 0.18, '+x', 0, true);
     // a smear where someone leaned on the glass from this side
     b.decal('handprint', 1, x + 0.06, 1.55, -47.6, 0.22, 0.22, '+x', 0.2);
     b.decal('grime', 2, x + 0.18, 0.9, (z0 + z1) / 2, z1 - z0, 0.3, '+y');
@@ -207,8 +207,8 @@ function glassFront(L: LevelBuild, b: Builder) {
   // the intercom on the mullion between pane 2 and 3
   const mz = mullions[2];
   b.at(x + 0.135, 0, mz, PI / 2, () => intercomPanel(b, 1.45));
-  b.sign('INTERCOM', 'label', x + 0.18, 1.73, mz, 0.22, 0.05, '+x');
-  L.interact('intercom_hall', 'button', 'Use intercom', x + 0.45, 1.4, mz, true, 2.2); // in front of the panel: never reachable through the glass (R8)
+  b.sign('인터컴', 'label', x + 0.18, 1.73, mz, 0.22, 0.05, '+x');
+  L.interact('intercom_hall', 'button', '인터컴 사용', x + 0.45, 1.4, mz, true, 2.2); // in front of the panel: never reachable through the glass (R8)
   const o = new THREE.Object3D(); o.name = 'intercom_hall'; o.position.set(x + 0.2, 1.45, mz); L.root.add(o); L.objects.set('intercom_hall', o);
   const g = new THREE.Object3D(); g.name = 'booth_glass'; g.position.set(x + 0.05, (y0 + y1) / 2, (z0 + z1) / 2); L.root.add(g); L.objects.set('booth_glass', g);
 }
@@ -226,17 +226,17 @@ function dressing(L: LevelBuild, b: Builder, R: ReturnType<typeof rng>) {
     // staging box at the south end, where finished units used to stand
     for (const [x, z, w, d] of [[2.0, -67.8, 3.6, 0.1], [2.0, -64.2, 3.6, 0.1]] as const) b.box(W, x, 0.002, z, w, 0.004, d);
   });
-  b.sign('LINE 2', 'stencil', -5.5, 0.004, -26.0, 3.2, 1.4, '+y', PI);
-  b.sign('STAGING', 'stencil', 2.0, 0.004, -66.0, 2.4, 0.5, '+y', PI);
-  b.sign('WALKWAY', 'stencil', -3.5, 0.004, -38.0, 1.8, 0.36, '+y', PI / 2);
-  b.sign('WALKWAY', 'stencil', -3.5, 0.004, -58.0, 1.8, 0.36, '+y', PI / 2);
+  b.sign('라인 2', 'stencil', -5.5, 0.004, -26.0, 3.2, 1.4, '+y', PI);
+  b.sign('스테이징', 'stencil', 2.0, 0.004, -66.0, 2.4, 0.5, '+y', PI);
+  b.sign('통로', 'stencil', -3.5, 0.004, -38.0, 1.8, 0.36, '+y', PI / 2);
+  b.sign('통로', 'stencil', -3.5, 0.004, -58.0, 1.8, 0.36, '+y', PI / 2);
   hazardStrip(b, -9.0, -70.0 + 0.3, 9.0, -70.0 + 0.45);
 
   // ── north: parts racks, spare frames, a tug ──
   b.at(-9.2, 0, -27.5, PI / 2, () => shelfRack(b, L, 5.0, 0.9, 3.4, 4, R, 0.8));
   b.at(-6.2, 0, -24.4, 0, () => shellPallet(b, L, 3, 2, 4));
   b.at(-4.8, 0, -24.4, 0.04, () => shellPallet(b, L, 3, 2, 3, true));
-  b.at(-7.9, 0, -32.6, 0.2, () => crate(b, 1.4, 1.1, 1.1, 'wall_panel_dark', 'ACTUATOR SET'));
+  b.at(-7.9, 0, -32.6, 0.2, () => crate(b, 1.4, 1.1, 1.1, 'wall_panel_dark', '액추에이터 세트'));
   b.at(-8.7, 0, -34.2, -0.1, () => { pallet(b, 1.3, 1.1); for (let i = 0; i < 3; i++) { b.push(-0.35 + i * 0.35, 0.3, 0, 0, 0, PI / 2); androidLeg(b); b.pop(); } });
   b.collide(-9.35, 0, -34.75, -8.05, 0.45, -33.65);
   L.pickup('p2_hall_shells_n', 'ammo_shotgun', -7.6, 1.1, -32.5, 6, 0.3);
@@ -245,7 +245,7 @@ function dressing(L: LevelBuild, b: Builder, R: ReturnType<typeof rng>) {
     b.box('painted_dark', 0, 0.9, 0, 0.62, 1.8, 0.6);
     b.detail(() => {
       b.box('painted_orange', 0, 1.55, 0.31, 0.56, 0.4, 0.016);
-      b.sign('HOT DRINKS', 'label', 0, 1.55, 0.31, 0.4, 0.09, '+z');
+      b.sign('뜨거운 음료', 'label', 0, 1.55, 0.31, 0.4, 0.09, '+z');
       b.box('painted_dark', 0, 0.85, 0.24, 0.3, 0.3, 0.14);
       b.box('screen_off', 0.18, 1.2, 0.302, 0.12, 0.08, 0.01);
       for (let i = 0; i < 6; i++) b.box('plastic_white', -0.2 + (i % 3) * 0.1, 1.1 - Math.floor(i / 3) * 0.06, 0.305, 0.06, 0.03, 0.01);
@@ -260,8 +260,8 @@ function dressing(L: LevelBuild, b: Builder, R: ReturnType<typeof rng>) {
   b.push(-8.9, 0.2, -45.4, 0.6, PI / 2, 0); b.cyl('painted_dark', 0, 0, 0, 0.18, 0.05, 'y', 12); b.cyl('chrome', 0, -0.3, 0, 0.025, 0.6, 'y', 8); b.pop();
   // ── middle (hall_mid fight): cover between the gate and the line south ──
   b.at(-7.0, 0, -53.2, 0.1, () => shellPallet(b, L, 3, 2, 5)); // ≥ 2 m from the partition
-  b.at(-7.4, 0, -55.5, -0.2, () => crate(b, 1.6, 1.2, 1.2, 'painted_white', 'SHELL SET 4-B'));
-  b.at(-3.0, 0, -54.0, 0.3, () => { pallet(b, 1.3, 1.1); b.at(0, 0.145, 0, 0, () => crate(b, 1.2, 0.8, 1.0, 'wall_panel_dark', 'JOINTS R2', false)); b.collide(-0.65, 0, -0.55, 0.65, 0.95, 0.55); });
+  b.at(-7.4, 0, -55.5, -0.2, () => crate(b, 1.6, 1.2, 1.2, 'painted_white', '셸 세트 4-B'));
+  b.at(-3.0, 0, -54.0, 0.3, () => { pallet(b, 1.3, 1.1); b.at(0, 0.145, 0, 0, () => crate(b, 1.2, 0.8, 1.0, 'wall_panel_dark', '조인트 R2', false)); b.collide(-0.65, 0, -0.55, 0.65, 0.95, 0.55); });
   b.at(-0.3, 0, -57.6, -0.1, () => workTable(b, 2.0, 0.8, 0.92));
   b.at(-0.6, 0.92, -57.6, 0.3, () => { b.push(0, 0.05, 0, 0, 0, PI / 2); androidTorso(b, true, 1, R); b.pop(); });
   b.at(-8.7, 0, -55.0, 0, () => drum(b)); b.at(-8.1, 0, -54.4, 0, () => drum(b, 'painted_yellow')); b.at(-8.8, 0, -54.0, 0, () => drum(b));
@@ -283,16 +283,16 @@ function dressing(L: LevelBuild, b: Builder, R: ReturnType<typeof rng>) {
   b.detail(() => {
     for (const s of [-1, 1]) { b.box('trim_steel', s * 4.14, 5.6, -69.45, 0.16, 3.86, 0.08); b.box('trim_steel', 0, 5.6 + s * 1.85, -69.45, 8.44, 0.16, 0.08); }
     for (const x of [-3, -1, 1, 3]) b.rbox('trim_steel', x, 8.0, -69.6, 0.08, 1.2, 0.08, 0.2, 0, 0);
-    b.sign('LINE 2 — PRODUCTION STATUS', 'label', 0, 3.55, -69.76, 2.6, 0.14, '+z');
+    b.sign('라인 2 — 생산 현황', 'label', 0, 3.55, -69.76, 2.6, 0.14, '+z');
   });
-  L.screen('line_bigscreen', 'terminal_idle', 7.9, 3.4, 0, 5.6, -69.46, '+z', { text: 'LINE TWO — SECTION C\nYIELD   31 / 31\nHEADCOUNT   0' });
+  L.screen('line_bigscreen', 'terminal_idle', 7.9, 3.4, 0, 5.6, -69.46, '+z', { text: '2번 라인 — 구역 C\n수율   31 / 31\n인원   0' });
   const bigscreen = L.screens.get('line_bigscreen')!;
   L.vignette('hall_screen_count', () => {
     let n = 28;
     const tick = () => {
       L.ctx.materials.setScreen(bigscreen, 'terminal_idle', { text: `LINE TWO — SECTION C\nYIELD   ${n} / 31\nHEADCOUNT   0` });
       L.sfx('terminal_beep', 0, 5, -69, 0.6);
-      if (n < 31) { n++; L.after(0.6, tick); } else L.after(1.4, () => { L.ctx.materials.setScreen(bigscreen, 'terminal_alert', { text: 'HELD — LOCAL STOP:\nLINE CONTROL' }); L.sfx('alarm_blip', 0, 5, -69, 0.8); });
+      if (n < 31) { n++; L.after(0.6, tick); } else L.after(1.4, () => { L.ctx.materials.setScreen(bigscreen, 'terminal_alert', { text: '정지됨 — 현장 정지:\n라인 관제' }); L.sfx('alarm_blip', 0, 5, -69, 0.8); });
     };
     tick();
   });
@@ -305,14 +305,14 @@ function dressing(L: LevelBuild, b: Builder, R: ReturnType<typeof rng>) {
   }
   b.decal('oil_stain', 2, 5, 0.003, -64.8, 2.2, 1.6, '+y', 0.2);
   // ── signs ──
-  b.sign('LINE TWO', 'stencil', 5.0, 7.0, -22.236, 6.0, 1.0, '-z');
-  b.sign('HALCYON DYNAMICS', 'stencil', 9.764, 7.2, -46, 7.0, 0.8, '-x');
-  b.sign('SECTION C', 'stencil', -9.764, 6.6, -36, 4.0, 0.8, '+x');
-  b.sign('FITTING BAYS →', 'directional', 9.764, 2.2, -36.0, 1.2, 0.22, '-x', 0, true);
-  b.sign('SECTION C RELAY →', 'directional', 9.764, 2.2, -63.0, 1.4, 0.22, '-x', 0, true);
-  b.sign('← SERVICE SPINE', 'directional', -9.764, 2.2, -63.8, 1.3, 0.22, '+x', 0, true);
-  b.sign('NODE 5 — AUTHORISED ACCESS ONLY', 'danger', 3.3, 2.6, -69.764, 1.8, 0.24, '+z', 0, true);
-  b.sign('YIELD IS SAFETY', 'label', -6.0, 3.2, -69.764, 1.6, 0.2, '+z', 0, true);
+  b.sign('2번 라인', 'stencil', 5.0, 7.0, -22.236, 6.0, 1.0, '-z');
+  b.sign('할시온 다이내믹스', 'stencil', 9.764, 7.2, -46, 7.0, 0.8, '-x');
+  b.sign('구역 C', 'stencil', -9.764, 6.6, -36, 4.0, 0.8, '+x');
+  b.sign('장착 베이 →', 'directional', 9.764, 2.2, -36.0, 1.2, 0.22, '-x', 0, true);
+  b.sign('구역 C 중계 →', 'directional', 9.764, 2.2, -63.0, 1.4, 0.22, '-x', 0, true);
+  b.sign('← 서비스 스파인', 'directional', -9.764, 2.2, -63.8, 1.3, 0.22, '+x', 0, true);
+  b.sign('노드 5 — 인가된 인원만 출입', 'danger', 3.3, 2.6, -69.764, 1.8, 0.24, '+z', 0, true);
+  b.sign('수율이 곧 안전', 'label', -6.0, 3.2, -69.764, 1.6, 0.2, '+z', 0, true);
   void cable; void ibeam;
 }
 

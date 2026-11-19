@@ -1,7 +1,7 @@
 /**
- * STORY, level 3 — "THE QUIET SIDE" (stage 3a). The page-level flow (menu / one-click gate → title card → the lift),
+ * STORY, level 3 — "고요한 쪽" (stage 3a). The page-level flow (menu / one-click gate → title card → the lift),
  * the checkpoint writer and resume are the shared scaffolding (../stage/page.ts); the script is ./script.ts (on
- * ./scenes.ts, ./base.ts). This file adds the level end (D19: the carry for 3b + the end card `THE QUIET SIDE` /
+ * ./scenes.ts, ./base.ts). This file adds the level end (D19: the carry for 3b + the end card `고요한 쪽` /
  * `TO BE CONTINUED` + the menu; stage 3b D4/D5: with a next level — `nextOf(3)`, `?next=3:4` in tests — the card
  * without "TO BE CONTINUED" and the hand-over).
  * Test hooks on `__game.story`: `end()`, `checkpoint(id)`, `fire(name)`, `hurry(fast?)`, `debugState`, `lineLog`,
@@ -27,7 +27,7 @@ export async function createStoryL3(ctx: GameContext): Promise<StorySystem> {
    * D19: the stage end. The carry for 3b (`from: 3`, facts + `badge`, `halvorsenAlive`, `kills3`, `testHour`) is
    * written, the level-3 checkpoint cleared. No next level (`nextOf(3) === null`, main until I1): the stored level
    * stays 3, the end card with "TO BE CONTINUED", then the menu. Next level 4 (3b D5): it becomes the stored level, the
-   * card `THE QUIET SIDE` alone (6 s, skippable), then the hand-over reload. Test runs (`?autostart=1`) store only
+   * card `고요한 쪽` alone (6 s, skippable), then the hand-over reload. Test runs (`?autostart=1`) store only
    * with `&handoff=1` and stay on the card.
    */
   async function end(): Promise<void> {

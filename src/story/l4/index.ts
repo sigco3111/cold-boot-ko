@@ -1,11 +1,11 @@
 /**
- * STORY, level 4 — "BIOLOGICAL SYSTEMS" (stage 3b §4–§7, §8.10). The page flow (menu / gate → title card → the lock),
+ * STORY, level 4 — "생물 시스템" (stage 3b §4–§7, §8.10). The page flow (menu / gate → title card → the lock),
  * the checkpoint writer and resume are the shared scaffolding (../stage/page.ts); the script is ./script.ts (on
  * ./base.ts), the lines' rules ./dialogue.ts, every written text and the clock ./text.ts. This file adds the stage end
  * (§7: carry `from: 4` with facts + `kills4`, `testHour`, the first-view flags; weapons incl. the carbine; armour; the
- * level-4 checkpoint cleared; end card `BIOLOGICAL SYSTEMS` / `TO BE CONTINUED` 12 s skippable; the menu; stored level
+ * level-4 checkpoint cleared; end card `생물 시스템` / `TO BE CONTINUED` 12 s skippable; the menu; stored level
  * stays 4 while `LEVELS[4].next === null`). Stage 3c §8.1 / D2: with a next (`nextOf(4) === 5` — the test override
- * `?next=4:5` until IA sets `LEVELS[4].next`) the card is `BIOLOGICAL SYSTEMS` alone, 6 s skippable, then `goToLevel()`.
+ * `?next=4:5` until IA sets `LEVELS[4].next`) the card is `생물 시스템` alone, 6 s skippable, then `goToLevel()`.
  *
  * ═════════════════════════════════════════ TEST HOOKS on `window.__game.story` (scripts/playthrough-l4.mjs H1–H9)
  *  H1 end()                 the stage end of §7 (as the natural end calls it).

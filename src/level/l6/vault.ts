@@ -284,7 +284,7 @@ function reward(L: LevelBuild, b: Builder) {
   b.bx('steel_raw', -12.99, -1.1, -176.55, -12.975, -0.985, -176.25);
   b.rbox(paper(L, 0xe8e0c8), -12.88, -0.9, -176.4, 0.02, 0.19, 0.14, 0, 0, -0.18);
   b.rbox('painted_dark', -12.893, -0.9, -176.4, 0.004, 0.195, 0.145, 0, 0, -0.18);
-  stencil6(b, 'M. LIE — HALCYON SUBSEA', -12.99 + 0.002, -0.72, -176.4, 0.3, 0.045, '+x', { style: 'label' });
+  stencil6(b, 'M. 리에 — 할시온 서브시', -12.99 + 0.002, -0.72, -176.4, 0.3, 0.045, '+x', { style: 'label' });
 }
 
 const vault6: RoomDress = {
@@ -345,7 +345,7 @@ const vault6: RoomDress = {
     }
     let drum: CableDrum = null as unknown as CableDrum;
     b.at(-18.5, 0, -163.0, 0, () => { drum = cableDrum(b, L, { mount: 'stand', ratchet: true, collide: false, name: 'cd2_drum6' }); });
-    stencil6(b, 'CD 2 — SPARE SEA CABLE 96F', -16.49, 0.6, -163.6, 0.9, 0.08, '+x', { style: 'stencil' });
+    stencil6(b, 'CD 2 — 예비 해저 케이블 96F', -16.49, 0.6, -163.6, 0.9, 0.08, '+x', { style: 'stencil' });
     // the brake post stands 0.22 m proud of the shell's drum collider: its own collider
     b.collide(-16.44, 0, -162.09, -16.36, 2.8, -161.87, 'metal', true);
     let slack: SlackCoil = null as unknown as SlackCoil;
@@ -383,8 +383,8 @@ const vault6: RoomDress = {
     }
 
     // ── dehumidifiers DH1 / DH2 (north wall), nitrogen rack NR, the east shelf ──
-    b.at(-5.0, 0, -148.2, PI, () => dehumidifier(b, L, { collide: false, label: 'DH 1 — DESICCANT — KEEP DOORS SHUT' }));
-    b.at(-1.0, 0, -148.2, PI, () => dehumidifier(b, L, { collide: false, label: 'DH 2 — DESICCANT — KEEP DOORS SHUT' }));
+    b.at(-5.0, 0, -148.2, PI, () => dehumidifier(b, L, { collide: false, label: 'DH 1 — 건조제 — 문 닫아 둘 것' }));
+    b.at(-1.0, 0, -148.2, PI, () => dehumidifier(b, L, { collide: false, label: 'DH 2 — 건조제 — 문 닫아 둘 것' }));
     stencil6(b, 'CABLE VAULT — RH < 30 % — KEEP DRY', -3.0, 4.3, -148.21, 1.8, 0.14, '-z', { style: 'stencil' });
     b.at(-3.0, 0, -151.4, 0, () => nitrogenRack(b, L, { collide: false }));
     b.at(1.8, 0, -150.8, -PI / 2, () => wallShelf6(b, L, { w: 2.4, d: 0.4, collide: false, seed: 31 }));
@@ -413,7 +413,7 @@ const vault6: RoomDress = {
     trenchVault(L, b, red);
     reward(L, b);
     shipStair(b, L, STAIR6_T);
-    stencil6(b, 'TRENCH HATCH — OPENS FROM ABOVE — TWO-WAY', -12.4, 1.15, -160.43, 0.9, 0.08, '+z', { style: 'stencil' });
+    stencil6(b, '트렌치 해치 — 위에서 열림 — 양방향', -12.4, 1.15, -160.43, 0.9, 0.08, '+z', { style: 'stencil' });
     // the hatch lid (kit, two-way, wheel on top) + the stopper over the exit stair (W4a's trap)
     hatchLid6(L, b, HATCH6_VAULT);
     // (the kit curb's north bar sits on the pit's end wall face at z −158: dropped, the floor edge needs none)
@@ -549,10 +549,10 @@ const hold6: RoomDress = {
     b.at(-9.3, 0, -146.7, 0, () => spareCoil(b, L, { r: 0.55, turns: 7 }));
     // west wall: a racking shelf of joint kits; crates in the south-west corner
     b.at(-21.8, 0, -144.6, PI / 2, () => wallShelf6(b, L, { w: 2.4, d: 0.45, seed: 41 }));
-    b.at(-20.6, 0, -147.0, 0, () => crate6(b, L, { w: 1.4, d: 1.1, h: 1.2, label: 'HALCYON SUBSEA — JOINT KIT 96F' }));
-    b.at(-17.6, 0, -140.65, PI, () => storeBox(b, L, { w: 1.0, d: 0.7, h: 0.8, label: 'CABLE STORE — TOOLS' }));
-    stencil6(b, 'CABLE STORE — SPARES — TRUNK 1', -15.0, 2.6, -140.21, 1.6, 0.14, '-z', { style: 'stencil' });
-    stencil6(b, 'NO NAKED LIGHTS', -8.21, 1.8, -142.0, 0.5, 0.08, '-x', { style: 'warning' });
+    b.at(-20.6, 0, -147.0, 0, () => crate6(b, L, { w: 1.4, d: 1.1, h: 1.2, label: '할시온 서브시 — 조인트 키트 96F' }));
+    b.at(-17.6, 0, -140.65, PI, () => storeBox(b, L, { w: 1.0, d: 0.7, h: 0.8, label: '케이블 저장고 — 공구' }));
+    stencil6(b, '케이블 저장고 — 예비품 — 트렁크 1', -15.0, 2.6, -140.21, 1.6, 0.14, '-z', { style: 'stencil' });
+    stencil6(b, '노화 금지', -8.21, 1.8, -142.0, 0.5, 0.08, '-x', { style: 'warning' });
     // a torn-open joint-kit carton on the floor and a spilled reel of tape (no colliders)
     b.detail(() => {
       b.rbox('painted_dark', -12.0, 0.15, -141.0, 0.6, 0.3, 0.4, 0, 0.4, 0);

@@ -1,5 +1,5 @@
 /**
- * Level 5 "POST 4" — every piece of written text (stage 3c §6.3–§6.4) and the ONE clock (`CLOCK5`).
+ * Level 5 "초소 4" — every piece of written text (stage 3c §6.3–§6.4) and the ONE clock (`CLOCK5`).
  * Spoken lines live in `voice/lines.l5.json` (read-only here). Readables ≤ 30 words, each stands alone (R3).
  * Foreshadowing rule (user): nothing here says outright that navy people are taken or controlled — the plan's texts only.
  */

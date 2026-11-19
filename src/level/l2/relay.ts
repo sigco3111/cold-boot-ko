@@ -18,7 +18,7 @@ const H = 3.6;
 export function buildRelay(L: LevelBuild) {
   const b = L.builder('relay');
   const R = rng(2701);
-  L.room('relay', 'SECTION C RELAY', 10, 18, -66, -56, H);
+  L.room('relay', '구역 C 중계', 10, 18, -66, -56, H);
   const tr: [number, number, number, number] = [11.0, -57.6, 17.4, -57.0];
   floorSlab(b, 'floor_plate', 10, -66, 18, -56, [tr], 'metal');
   trench(b, tr[0], tr[1], tr[2], tr[3], 0.55, R, false);
@@ -50,9 +50,9 @@ export function buildRelay(L: LevelBuild) {
       panel(b, 'painted_yellow', -0.6, 0.6, 0.6, 2.0, 0.1, 0.03, 0.03);
       b.box('hazard_stripes', 0, 1.3, 0.132, 0.9, 1.0, 0.004);
       b.box('painted_dark', 0, 1.3, 0.14, 0.34, 0.9, 0.02);
-      b.sign('SECTION C — MAIN CONTACTOR', 'danger', 0, 2.15, 0.102, 1.2, 0.16, '+z', 0, true);
-      b.sign('CLOSED', 'label', 0.32, 0.95, 0.134, 0.2, 0.07, '+z');
-      b.sign('OPEN', 'label', 0.32, 1.65, 0.134, 0.2, 0.07, '+z');
+      b.sign('구역 C — 주 접촉기', 'danger', 0, 2.15, 0.102, 1.2, 0.16, '+z', 0, true);
+      b.sign('닫힘', 'label', 0.32, 0.95, 0.134, 0.2, 0.07, '+z');
+      b.sign('열림', 'label', 0.32, 1.65, 0.134, 0.2, 0.07, '+z');
       for (let i = 0; i < 5; i++) b.rod('rubber', -0.6 + i * 0.3, 2.45, -0.15, -0.6 + i * 0.3, H, -0.15, 0.035, 6);
       bolts4(b, -0.78, 0.05, 0.78, 2.35, 0.101);
     });
@@ -75,14 +75,14 @@ export function buildRelay(L: LevelBuild) {
   lever.userData.rooms = ['relay'];
   L.root.add(lever);
   L.objects.set('relay_switch', lever);
-  L.interact('relay_switch', 'lever', 'Close section C', SX - 0.45, 1.35, SZ, true, 2.4);
+  L.interact('relay_switch', 'lever', '구역 C 차단', SX - 0.45, 1.35, SZ, true, 2.4);
   const thrown = { v: false };
   L.ctx.events.on('interact', (e) => {
     if (e.id !== 'relay_switch' || thrown.v) return;
     thrown.v = true;
     L.tween(0.15, 0.5, (k) => { arm.rotation.x = OPEN + (CLOSED - OPEN) * (k < 0.8 ? easeIn(k / 0.8) : 1 + Math.sin(((k - 0.8) / 0.2) * PI) * 0.03); }, () => L.sfx('lever', SX, 1.3, SZ, 1));
   });
-  L.screen('relay_panel', 'terminal_alert', 0.5, 0.3, SX - 0.19, 1.82, SZ + 0.55, '-x', { text: 'SECTION C\nDE-ENERGISED' });
+  L.screen('relay_panel', 'terminal_alert', 0.5, 0.3, SX - 0.19, 1.82, SZ + 0.55, '-x', { text: '구역 C\n무전압' });
   // ── the cabinet with its door open, a note taped inside ──
   const NX = 12.6, NZ = -65.6;
   b.at(NX, 0, NZ, 0, () => {
@@ -94,11 +94,11 @@ export function buildRelay(L: LevelBuild) {
   b.box('wall_panel_dark', 0.42, 1.2, -0.012, 0.84, 2.1, 0.024);
   b.detail(() => {
     b.box('trim_steel', 0.42, 1.2, -0.03, 0.8, 2.0, 0.008);
-    b.quad(scrawlMaterial(['SECTION C', 'CLOSING THIS', 'OPENS EVERYTHING', '— T.'], { style: 'pen', aspect: 0.21 / 0.28, px: 512, seed: 77, bg: (g, W, H2) => { g.fillStyle = '#e8e4d8'; g.fillRect(0, 0, W, H2); } }), 0.42, 1.45, -0.036, 0.21, 0.28, '-z', 0.04);
+    b.quad(scrawlMaterial(['구역 C', '이걸 닫으면', '전부 열린다', '— T.'], { style: 'pen', aspect: 0.21 / 0.28, px: 512, seed: 77, bg: (g, W, H2) => { g.fillStyle = '#e8e4d8'; g.fillRect(0, 0, W, H2); } }), 0.42, 1.45, -0.036, 0.21, 0.28, '-z', 0.04);
     b.box('plastic_white', 0.42, 1.6, -0.037, 0.06, 0.02, 0.002);
   });
   b.pop();
-  L.interact('note2_relay', 'log', 'Read note', 12.95, 1.45, -65.3, true, 2.0);
+  L.interact('note2_relay', 'log', '쪽지 읽기', 12.95, 1.45, -65.3, true, 2.0);
   // ── the slumped unit (g2_relay) against the south wall; the skitters come out of the trench ──
   L.enemy('g2_relay', 'husk', 'dormant', 15.4, 0, -65.4, PI, 'slumped', 'watch');
   L.enemy('g2_relay', 'skitter', 'spawn', 12.2, -0.3, -57.3, PI / 2);
@@ -111,8 +111,8 @@ export function buildRelay(L: LevelBuild) {
     cableBundle(b, [12, H - 0.15, -58], [16, H - 0.15, -63], 5, 0.4, 0.025, 0.08, R);
     hazardStrip(b, 16.6, -62.0, 17.0, -59.8);
   });
-  b.sign('SECTION C RELAY', 'stencil', 14.2, 2.9, -65.795, 2.6, 0.4, '+z');
-  b.sign('11 kV — AUTHORISED PERSONS ONLY', 'danger', 10.22, 2.1, -58.4, 1.5, 0.2, '+x', 0, true);
+  b.sign('구역 C 중계', 'stencil', 14.2, 2.9, -65.795, 2.6, 0.4, '+z');
+  b.sign('11 kV — 인가된 인원만', 'danger', 10.22, 2.1, -58.4, 1.5, 0.2, '+x', 0, true);
   // pickups
   L.pickup('p2_relay_shells', 'ammo_shotgun', 11.0, 0, -63.0, 6, 0.4);
   L.pickup('p2_relay_med', 'medkit', 16.8, 0, -65.2, 35, 0.2);
@@ -133,7 +133,7 @@ export function buildRelay(L: LevelBuild) {
     fx.smoke(p, { count: 6, size: 0.4, color: 0x7a7670, rise: 0.5, life: 2.5 });
     L.sfx('contactor_arc', SX, 1.4, SZ, 1);
     L.ctx.player?.shake(0.35);
-    L.ctx.materials.setScreen(L.screens.get('relay_panel')!, 'terminal_idle', { text: 'SECTION C\nENERGISED · LINE RESET' });
+    L.ctx.materials.setScreen(L.screens.get('relay_panel')!, 'terminal_idle', { text: '구역 C\n급전됨 · 라인 리셋' });
     // cabinets come up one after another, away from the switch
     const order = cabinets.map((c, i) => ({ i, d: Math.hypot(c.x - SX, c.z - SZ) })).sort((a, c) => a.d - c.d);
     order.forEach((o, k) => L.after(0.25 + k * 0.16, () => { bars[o.i].emissiveIntensity = 2.5; L.sfx('button', cabinets[o.i].x, 2.1, cabinets[o.i].z, 0.4, 0.8 + k * 0.05); }));

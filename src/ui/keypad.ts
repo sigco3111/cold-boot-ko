@@ -8,7 +8,7 @@
 import type { GameContext } from '../core/types';
 import { h, setText, toggle, sfx } from './dom';
 
-const KEYS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'CLR', '0', 'ENT'] as const;
+const KEYS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '지움', '0', '입력'] as const;
 const CURSOR_SPEED = 1.15;
 /** Digit1-3 pick weapons: keep them away from the player while the pad is open. */
 const WEAPON_KEYS = ['Digit1', 'Digit2', 'Digit3'];
@@ -42,9 +42,9 @@ export class Keypad {
     this.statusEl = h('div', 'kp-status', panel);
     const grid = h('div', 'kp-grid', panel);
     for (const k of KEYS) {
-      this.keyEls.set(k, h('div', `kp-key${k.length > 1 ? ' fn' : ''}${k === 'ENT' ? ' ent' : ''}`, grid, k));
+      this.keyEls.set(k, h('div', `kp-key${k.length > 1 ? ' fn' : ''}${k === '입력' ? ' ent' : ''}`, grid, k));
     }
-    h('div', 'kp-hint', panel, 'CLICK  ·  DIGITS  ·  ENTER  ·  ESC');
+    h('div', 'kp-hint', panel, '클릭  ·  숫자  ·  입력  ·  ESC');
     this.cursor = h('div', 'kp-cursor', this.root);
     ctx.events.on('player:damaged', () => { if (this.resolve) this.close(); });
   }
@@ -77,7 +77,7 @@ export class Keypad {
     if (injected) {
       this.ctx.debug.keypadInput = null;
       for (const c of injected.slice(0, 16)) this.typeQueue.push(c);
-      this.typeQueue.push('ENT');
+      this.typeQueue.push('입력');
       this.typeLeft = 0.25;
     }
     return new Promise((res) => { this.resolve = res; });
@@ -100,11 +100,11 @@ export class Keypad {
 
   private press(k: string): void {
     sfx(this.ctx, 'keypad_beep', 0.55);
-    this.flashKey = k === 'BKS' ? 'CLR' : k;
+    this.flashKey = k === '지움' ? '지움' : k;
     this.flashLeft = 0.14;
-    if (k === 'CLR') this.value = '';
-    else if (k === 'BKS') this.value = this.value.slice(0, -1);
-    else if (k === 'ENT') {
+    if (k === '지움') this.value = '';
+    else if (k === '지움') this.value = this.value.slice(0, -1);
+    else if (k === '입력') {
       if (this.value.length < this.digits) {
         sfx(this.ctx, 'keypad_err', 0.5);
         this.bad = 0.4;
@@ -162,8 +162,8 @@ export class Keypad {
       if (inp.pressed(`Digit${d}`) || inp.pressed(`Numpad${d}`)) this.press(String(d));
       if (!this.resolve) return;
     }
-    if (inp.pressed('Backspace') || inp.pressed('Delete')) this.press('BKS');
-    if (inp.pressed('Enter') || inp.pressed('NumpadEnter')) this.press('ENT');
+    if (inp.pressed('Backspace') || inp.pressed('Delete')) this.press('지움');
+    if (inp.pressed('Enter') || inp.pressed('NumpadEnter')) this.press('입력');
     if (!this.resolve) return;
 
     // test hook: type the injected code key by key (visible, with the clicks)

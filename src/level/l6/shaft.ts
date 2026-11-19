@@ -135,7 +135,7 @@ function buildShaft(L: LevelBuild) {
   }
   // over L0's open north edge on the east half (y 0 … 2.4, over F2's foot)
   barGuard(b, L, { pts: [[wx1 + ins, -168.4 + e], [X1 - 0.05, -168.4 + e]], y: 0, h: 2.4, style: 'mesh', mat: Y, collide: false });
-  stencil6(b, 'NO ACCESS — STAIRWELL SHAFT', -24.9, 1.55, -168.4 + e - 0.05, 1.3, 0.12, '-z', { style: 'danger' });
+  stencil6(b, '출입 금지 — 계단실 샤프트', -24.9, 1.55, -168.4 + e - 0.05, 1.3, 0.12, '-z', { style: 'danger' });
 
   // ── walls: vertical stiffeners on the north / south walls, a cable riser in the north-east corner, a frame at each
   //    landing on the end walls ──
@@ -152,18 +152,18 @@ function buildShaft(L: LevelBuild) {
   stencil6(b, 'LEVEL −3', -25.0, -1.0, Z1, 1.1, 0.2, '-z');
   stencil6(b, 'LEVEL −6', -25.0, -4.0, Z0, 1.1, 0.2, '+z');
   stencil6(b, 'LEVEL −9', -25.0, -7.0, Z1, 1.1, 0.2, '-z');
-  stencil6(b, 'DOCK GALLERY — MOON POOL ←', -24.4, -9.75, Z0, 2.2, 0.19, '+z', { plate: true });
+  stencil6(b, '도크 갤러리 — 문풀 ←', -24.4, -9.75, Z0, 2.2, 0.19, '+z', { plate: true });
   // a hard-wired lit sign over the chamber door (west wall; reads with every lamp dead)
-  const lit = L.signMat('DOCK GALLERY', 'wayfinding', 1.4 / 0.26).clone();
+  const lit = L.signMat('도크 갤러리', 'wayfinding', 1.4 / 0.26).clone();
   lit.emissive = new THREE.Color(0xffffff); lit.emissiveMap = lit.map; lit.emissiveIntensity = 0.6;
   b.bx(K, X0, -9.06, -170.55, X0 + 0.06, -8.68, -169.05);
   b.detail(() => b.quad(lit, X0 + 0.06, -8.87, -169.8, 1.4, 0.26, '+x', 0, 'unit', 0.004));
-  stencil6(b, 'KEEP CLEAR — HANDRAIL USE MANDATORY', -25.0, -10.7, Z1, 2.4, 0.12, '-z', { style: 'warning' });
+  stencil6(b, '접근 금지 — 난간 사용 필수', -25.0, -10.7, Z1, 2.4, 0.12, '-z', { style: 'warning' });
 
   // ── fire-point cabinet at L2 (east wall, x −22.6 … −22.2, z −171.6 … −170.6, y −6 … −4.6) ──
   b.at(X1, -6, -171.1, -PI / 2, () => firePointCabinet(b, L, { w: 1.0, d: 0.4, h: 1.4, shelf: 1.0, collide: false }));
   // ── the stores box at the bottom south-west (x −27.8 … −27.0, z −171.8 … −171.0, h 0.8), its front to the east ──
-  b.at(-27.4, YB, -171.4, PI / 2, () => storeBox(b, L, { w: 0.8, d: 0.8, h: 0.8, label: 'FIRST AID — STORES', collide: false }));
+  b.at(-27.4, YB, -171.4, PI / 2, () => storeBox(b, L, { w: 0.8, d: 0.8, h: 0.8, label: '응급처치 — 저장고', collide: false }));
 
   // ── lights + lamps ──
   const rows = shaftLights();

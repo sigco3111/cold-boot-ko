@@ -1,5 +1,5 @@
 /**
- * Level 4 "BIOLOGICAL SYSTEMS" — every piece of written text (stage 3b §6.3–§6.4) and the ONE clock (`CLOCK4`, D20).
+ * Level 4 "생물 시스템" — every piece of written text (stage 3b §6.3–§6.4) and the ONE clock (`CLOCK4`, D20).
  * Spoken lines live in `voice/lines.l4.json` (read-only here). Readables ≤ 30 words, each stands alone (R3).
  * Foreshadowing rule (user, §13 B2): nothing here says outright that navy people are taken or controlled.
  */

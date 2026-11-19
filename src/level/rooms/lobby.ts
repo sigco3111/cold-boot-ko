@@ -15,7 +15,7 @@ export function buildLobby(L: LevelBuild) {
   const b = L.builder('lobby');
   const R = rng(909);
   const H = 3.6;
-  L.room('lobby', 'FREIGHT LOBBY', -4, 4, -58, -50, H);
+  L.room('lobby', '화물 로비', -4, 4, -58, -50, H);
 
   floorSlab(b, 'floor_plate', -4, -58, 4, -50, [], 'metal');
   ceilingSlab(b, -4.2, -58, 4.2, -50, H);
@@ -39,7 +39,7 @@ export function buildLobby(L: LevelBuild) {
   b.at(0.3, 0, BZ + 0.48, 0.04, () => weldedPlate(b, 1.7, 1.25, R, 'steel_raw'));
   b.at(-1.6, 0, BZ + 0.5, -0.05, () => weldedPlate(b, 1.4, 1.1, R));
   b.at(1.9, 0, BZ + 0.44, 0.1, () => weldedPlate(b, 1.2, 1.35, R, 'trim_steel'));
-  b.at(2.25, 0, BZ - 0.1, 0.3, () => crate(b, 0.8, 0.7, 0.7, 'painted_dark', 'HALCYON', false));
+  b.at(2.25, 0, BZ - 0.1, 0.3, () => crate(b, 0.8, 0.7, 0.7, 'painted_dark', '할시온', false));
   b.at(2.2, 0.7, BZ - 0.1, -0.2, () => crate(b, 0.6, 0.45, 0.5, 'wall_panel', undefined, false));
   b.at(-3.65, 0, BZ + 0.1, 0, () => drum(b, 'painted_orange', false));
   b.push(-1.1, 1.05, BZ - 0.1, 0.8, 0.5, 2.6); chair(b); b.pop();
@@ -52,7 +52,7 @@ export function buildLobby(L: LevelBuild) {
     cableBundle(b, [-3.6, 1.0, BZ + 0.3], [2.4, 1.2, BZ + 0.35], 2, 0.15, 0.008, 0.04, R, ['steel_raw']);
   });
   b.collide(-3.95, 0, BZ - 0.45, 2.65, 1.3, BZ + 0.5);
-  b.sign('KEEP OUT', 'stencil', 0.3, 0.8, BZ + 0.5, 1.2, 0.3, '+z', 0.05);
+  b.sign('출입 금지', 'stencil', 0.3, 0.8, BZ + 0.5, 1.2, 0.3, '+z', 0.05);
   b.decal('scorch', 0, -1.0, 0.003, -51.8, 1.6, 1.6, '+y', 0.4);
   b.decal('scorch', 3, 1.4, 0.003, -52.0, 1.2, 1.2, '+y', 1.4);
   b.decal('scratches', 0, 3.3, 0.003, -53.2, 1.2, 1.6, '+y');
@@ -70,7 +70,7 @@ export function buildLobby(L: LevelBuild) {
   b.decal('blood_smear', 2, 0.9, 0.003, -57.2, 0.6, 1.2, '+y', 0.0);
   b.at(-3.6, 0, -56.6, PI / 2, () => bench(b, 1.6));
   L.pickup('p_lobby_med', 'medkit', -3.6, 0.46, -56.6, 35, 0.2);
-  b.at(-3.3, 0, -54.5, 0.1, () => crate(b, 0.8, 0.6, 0.6, 'painted_dark', 'ERIDU SEC'));
+  b.at(-3.3, 0, -54.5, 0.1, () => crate(b, 0.8, 0.6, 0.6, 'painted_dark', '에리두 SEC'));
   L.pickup('p_lobby_shells', 'ammo_shotgun', -3.3, 0.6, -54.5, 6, 0.4);
   b.at(3.2, 0, -56.8, -0.2, () => crate(b, 0.9, 0.5, 0.7, 'wall_panel_dark', 'FREIGHT'));
   L.pickup('p_lobby_ammo', 'ammo_pistol', 3.2, 0.5, -56.8, 12, 0.7);
@@ -97,15 +97,15 @@ export function buildLobby(L: LevelBuild) {
   beacon(b, L, 'lobby_emergency', 0, H, -54.4, -1, 0xff2a12, 40, 8, 'emissive_red', false, 'alarm', bm);
   void gm; void workLight;
 
-  b.sign('FREIGHT LOBBY', 'stencil', 3.964, 2.5, -54, 2.0, 0.34, '-x');
-  b.sign('FREIGHT ELEVATOR', 'stencil', 0, 0.004, -56.4, 3.0, 0.4, '+y');
-  b.sign('MAX LOAD 12 t — NO RIDERS WITH FREIGHT', 'warning', 2.9, 2.5, -57.764, 1.1, 0.16, '+z', 0, true);
+  b.sign('화물 로비', 'stencil', 3.964, 2.5, -54, 2.0, 0.34, '-x');
+  b.sign('화물 엘리베이터', 'stencil', 0, 0.004, -56.4, 3.0, 0.4, '+y');
+  b.sign('최대 적재 12 t — 화물과 동승 금지', 'warning', 2.9, 2.5, -57.764, 1.1, 0.16, '+z', 0, true);
   // painted beside the gate, by somebody who rode it
-  b.quad(scrawlMaterial(['NOT UP.', 'NEVER UP.'], { style: 'paint', aspect: 1.9, seed: 21, color: '#a5241a' }), 2.92, 1.66, -57.762, 1.85, 0.97, '+z', -0.03, 'unit', 0.004);
+  b.quad(scrawlMaterial(['위로 안 가.', '절대 위로 안 가.'], { style: 'paint', aspect: 1.9, seed: 21, color: '#a5241a' }), 2.92, 1.66, -57.762, 1.85, 0.97, '+z', -0.03, 'unit', 0.004);
   // note_lobby: a sheet taped to the inside of the barricade, on the crate by the gap
-  b.detail(() => { b.push(2.18, 1.155, BZ - 0.12, -0.2); b.quad(notePaper(['ELEVATOR', 'ONLY GOES', 'ONE WAY', 'NOW'], 13, 0.75), 0, 0, 0, 0.2, 0.27, '+y', 0, 'unit', 0.003); b.box('steel_raw', 0.05, 0.012, -0.1, 0.06, 0.02, 0.04); b.pop(); });
-  L.interact('note_lobby', 'log', 'Read note', 2.18, 1.2, BZ - 0.12, true, 2.3);
-  b.sign('SURFACE TRANSIT SUSPENDED BY ORDER OF CHOIR', 'danger', -2.6, 1.8, -57.764, 1.2, 0.16, '+z', 0, true);
+  b.detail(() => { b.push(2.18, 1.155, BZ - 0.12, -0.2); b.quad(notePaper(['엘리베이터', '이제는', '한 방향으로만', '간다'], 13, 0.75), 0, 0, 0, 0.2, 0.27, '+y', 0, 'unit', 0.003); b.box('steel_raw', 0.05, 0.012, -0.1, 0.06, 0.02, 0.04); b.pop(); });
+  L.interact('note_lobby', 'log', '쪽지 읽기', 2.18, 1.2, BZ - 0.12, true, 2.3);
+  b.sign('수면 수송 중단 — CHOIR 명령', 'danger', -2.6, 1.8, -57.764, 1.2, 0.16, '+z', 0, true);
   b.decal('grime', 2, 0, 0.003, -51.5, 3, 2, '+y');
 
   L.enemy('g_lobby', 'husk', 'dormant', -1.7, 0, -54.05, 0, 'slumped');

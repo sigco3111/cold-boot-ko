@@ -51,7 +51,7 @@ export class SoldierActor extends EnemyBase {
     this.awake = false;
     this.state = 'idle';
     this.body.gravityScale = 0;
-    this.rig = createSoldierRig(world.ctx, tpl, { arms: o.arms ?? 'pistol', name: o.name ?? 'BREKKE', seed: this.id * 3.17 + 0.5 });
+    this.rig = createSoldierRig(world.ctx, tpl, { arms: o.arms ?? 'pistol', name: o.name ?? '브레케', seed: this.id * 3.17 + 0.5 });
     this.object.add(this.rig.root);
     this.lodRig = this.rig.lodRig;
     this.volumes = this.rig.volumes;

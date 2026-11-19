@@ -91,7 +91,7 @@ export abstract class Ghosted extends Base {
         const rig = this.ghostRig();
         // On the rig's post, on the side toward the middle of the room.
         const at = V(rig.x + (rig.x > 15 ? -0.9 : 0.9), 1.15, rig.z);
-        this.ctx.interactables.add({ id: 'note2_rig14', kind: 'log', position: at, radius: 2.0, prompt: 'Read rig fault', enabled: true });
+        this.ctx.interactables.add({ id: 'note2_rig14', kind: 'log', position: at, radius: 2.0, prompt: '리그 고장 기록 읽기', enabled: true });
       }
     } catch { /* ignore */ }
     this.w.screen('fitting_rig14_screen', 'terminal_alert', SCREEN2.rig14);

@@ -480,10 +480,10 @@ export const SWITCH6 = { x0: 21.0, x1: 21.8, z0: -172.0, z1: -170.0, h: 2.0, hub
 
 /**
  * The head-end changeover switch `switch6` (§2.6.6, §8.5, §8.7.1). A navy cabinet against the east wall (face x 21.0,
- * facing −x), a white mode plate `HEAD-END MODE` with AUTO / MANUAL and a travelling pointer, a big two-handed crank
+ * facing −x), a white mode plate `헤드엔드 모드` with AUTO / MANUAL and a travelling pointer, a big two-handed crank
  * (hub at (20.95, 1.2, −171.0), arm 0.72 m, rubber grips 0.22 m long at radius 0.32), the Castell key barrel beside it
  * (z −170.38, `KEY A — RELEASED IN MANUAL ONLY`) holding KEY A, the `switch6` status screen (`terminal_idle`, text
- * `HEAD-END MODE: AUTO`; the story writes it). Moving: `setProgress(k)` 0 … 1 = five turns clockwise as seen by the
+ * `헤드엔드 모드: 자동`; the story writes it). Moving: `setProgress(k)` 0 … 1 = five turns clockwise as seen by the
  * operator, the pointer travelling AUTO → MANUAL over k 0.1 … 0.92 and clunking over; `keyOut(k)` 0 in … 0.4 turned
  * … 0.8 drawn out 5 cm … 1 gone (taken). Calls: ONE rig mesh (crank, pointer, key) + the screen; the cabinet, plate,
  * barrel and labels in the zone. Collider: the cabinet (nav). `userData`: `setProgress`, `keyOut`, `k`, `keyK`,
@@ -500,23 +500,23 @@ export function switch6(L: LevelBuild, b: Builder, o: PieceOpts = {}): THREE.Obj
   b.bx(navy, F - 0.012, 0.145, -171.98, F, 1.96, -171.955).bx(navy, F - 0.012, 0.145, -170.045, F, 1.96, -170.02);
   for (let i = 0; i < 6; i++) b.bx(dark, F - 0.004, 0.22 + i * 0.045, -171.7, F, 0.245 + i * 0.045, -171.3);
   for (const y of [0.5, 1.7]) b.cyl(steel, F - 0.012, y, -171.99, 0.012, 0.12, 'y', 8);
-  b.sign('CHANGEOVER SWITCH CS-1\nHEAD-END PROTECTION', 'label', F - 0.002, 0.62, -171.0, 0.5, 0.12, '-x');
-  b.sign('DANGER — 10 kV DC — FEED', 'warning', F - 0.002, 0.42, -171.0, 0.5, 0.1, '-x');
+  b.sign('절체 스위치 CS-1\n헤드엔드 보호', 'label', F - 0.002, 0.62, -171.0, 0.5, 0.12, '-x');
+  b.sign('위험 — 10 kV DC — 급전', 'warning', F - 0.002, 0.42, -171.0, 0.5, 0.1, '-x');
   // mode plate + labels (the pointer pivots at y 1.90 and points down)
   b.bx('painted_white', F - 0.01, 1.54, -171.3, F, 1.96, -170.7);
-  b.sign('HEAD-END MODE', 'stencil', F - 0.01, 1.585, -171.0, 0.34, 0.05, '-x');
-  b.sign('AUTO', 'label', F - 0.01, 1.72, -171.124, 0.13, 0.05, '-x');
-  b.sign('MANUAL', 'label', F - 0.01, 1.72, -170.876, 0.15, 0.05, '-x');
+  b.sign('헤드엔드 모드', 'stencil', F - 0.01, 1.585, -171.0, 0.34, 0.05, '-x');
+  b.sign('자동', 'label', F - 0.01, 1.72, -171.124, 0.13, 0.05, '-x');
+  b.sign('수동', 'label', F - 0.01, 1.72, -170.876, 0.15, 0.05, '-x');
   // crank boss flange
   b.cyl(steel, F - 0.015, HY, HZ, 0.13, 0.03, 'x', 24);
   // Castell barrel + slot + label
   b.cyl('brass', F - 0.025, KY, KZ, 0.05, 0.05, 'x', 18);
   b.cyl(steel, F - 0.004, KY, KZ, 0.068, 0.008, 'x', 18);
   b.bx('painted_dark', F - 0.054, KY - 0.03, KZ - 0.004, F - 0.05, KY + 0.03, KZ + 0.004);
-  b.sign('KEY A — RELEASED\nIN MANUAL ONLY', 'warning', F - 0.002, 1.04, KZ, 0.3, 0.1, '-x');
+  b.sign('키 A — 해제됨\n수동 모드에서만', 'warning', F - 0.002, 1.04, KZ, 0.3, 0.1, '-x');
   // status screen bezel
   b.bx(dark, F - 0.006, 1.41, -170.53, F, 1.59, -170.27);
-  const scr = L.screen('switch6', 'terminal_idle', 0.24, 0.15, F - 0.01, 1.5, -170.4, '-x', { text: 'HEAD-END MODE: AUTO' });
+  const scr = L.screen('switch6', 'terminal_idle', 0.24, 0.15, F - 0.01, 1.5, -170.4, '-x', { text: '헤드엔드 모드: 자동' });
   scr.userData.rooms = rooms.slice();
   if (o.collide !== false) b.collide(F, 0, -172.0, 21.8, 2.0, -170.0, 'metal', true);
 
@@ -579,7 +579,7 @@ export const BJ6 = {
 
 /**
  * The beach joint `bj6` (§2.6.7, §4.6, §8.7.2, S1j). Static (zone): the enclosure's side walls and roof, the 5.1 m
- * track header over the channel (with the `bj6` interlock screen on its face, `BEACH JOINT — INTERLOCK KEY A`), the
+ * track header over the channel (with the `bj6` interlock screen on its face, `비치 조인트 — 인터록 키 A`), the
  * floor guide (12 mm), the joint housing inside (x −12.9 … −11.1, to z −178.95, top y 0.95) with the splice tray on it,
  * the sea cable rising into its breakout, the connector receptacle, Key B's barrel and lamp. Moving: two **bi-parting
  * sliding leaves** (1.2 × 2.0 m, z −178.58 … −178.53; registered movers; one dynamic box each, following the leaf in
@@ -610,11 +610,11 @@ export function beachJoint6(L: LevelBuild, b: Builder, o: PieceOpts = {}): THREE
   b.bx(dark, x0 + 0.2, 0, zWall + 0.01, x1 - 0.2, 2.0, zWall + 0.04);
   b.bx(navy, x0 - 1.35, 2.04, zFront - 0.06, x1 + 1.35, 2.44, zFront + 0.16);
   b.bx(steel, x0 - 1.35, 0, zFront - 0.01, x1 + 1.35, 0.012, zFront + 0.11);
-  b.sign('BEACH JOINT 2 — 96F SEA CABLE', 'stencil', x0 - 0.55, 2.24, zFront + 0.16, 1.1, 0.1, '+z');
-  b.sign('INTERLOCK — KEY A', 'stencil', x1 + 0.55, 2.24, zFront + 0.16, 1.0, 0.1, '+z');
-  const scr = L.screen('bj6', 'interlock', 0.46, 0.26, xm, 2.24, zFront + 0.165, '+z', { text: 'BEACH JOINT — INTERLOCK KEY A' });
+  b.sign('비치 조인트 2 — 96F 해저 케이블', 'stencil', x0 - 0.55, 2.24, zFront + 0.16, 1.1, 0.1, '+z');
+  b.sign('인터록 — 키 A', 'stencil', x1 + 0.55, 2.24, zFront + 0.16, 1.0, 0.1, '+z');
+  const scr = L.screen('bj6', 'interlock', 0.46, 0.26, xm, 2.24, zFront + 0.165, '+z', { text: '비치 조인트 — 인터록 키 A' });
   scr.userData.rooms = rooms.slice();
-  b.sign('KEY B', 'label', BJ6.keyB[0], BJ6.keyB[1] + 0.1, -178.95, 0.12, 0.05, '+z');
+  b.sign('키 B', 'label', BJ6.keyB[0], BJ6.keyB[1] + 0.1, -178.95, 0.12, 0.05, '+z');
   if (o.collide !== false) {
     b.collide(x0, 0, zWall, x0 + 0.2, h, zFront - 0.02, 'metal', true).collide(x1 - 0.2, 0, zWall, x1, h, zFront - 0.02, 'metal', true);
     b.collide(x0, 2.0, zWall, x1, h, zFront - 0.02, 'metal', false).collide(x0 - 1.35, 2.04, zFront - 0.06, x1 + 1.35, 2.44, zFront + 0.16, 'metal', false);
@@ -800,7 +800,7 @@ export function beachJoint6(L: LevelBuild, b: Builder, o: PieceOpts = {}): THREE
 export const SHAFT6 = { x: -21.8, y: 1.3, z: -167.6 } as const;
 /**
  * The stair-door interlock `shaft6` (§4.6, §8.7.3): a navy panel on the vault's west wall (face x −21.8, facing +x)
- * beside `d6_shaft`, the `shaft6_panel` interlock screen (`MOON POOL ACCESS — INTERLOCK KEY B`), the Castell barrel at
+ * beside `d6_shaft`, the `shaft6_panel` interlock screen (`문풀 출입 — 인터록 키 B`), the Castell barrel at
  * `mk6_shaft_lock` (−21.78, 1.3, −167.6) with a red / green bolt lamp, a conduit to the door frame. `unlock(k)`: Key B
  * appears in the barrel and turns 90° (k 0.05 … 0.6), the lamp goes green at 0.6. Calls: one rig mesh (key + lamp) +
  * the screen; the rest zone. No collider (6 cm proud). `userData`: `unlock`, `k`, `keyPoint`.
@@ -811,13 +811,13 @@ export function shaftLock6(L: LevelBuild, b: Builder, o: PieceOpts = {}): THREE.
   const F = SHAFT6.x + 0.05, Y = SHAFT6.y, Z = SHAFT6.z;
   b.bx(navy, SHAFT6.x + 0.005, 0.9, Z - 0.32, F, 1.84, Z + 0.32);
   b.bx('painted_dark', F, 1.49, Z - 0.19, F + 0.004, 1.71, Z + 0.19);
-  const scr = L.screen('shaft6_panel', 'interlock', 0.34, 0.2, F + 0.009, 1.6, Z, '+x', { text: 'MOON POOL ACCESS — INTERLOCK KEY B' });
+  const scr = L.screen('shaft6_panel', 'interlock', 0.34, 0.2, F + 0.009, 1.6, Z, '+x', { text: '문풀 출입 — 인터록 키 B' });
   scr.userData.rooms = rooms.slice();
   b.cyl('brass', F + 0.025, Y, Z, 0.045, 0.05, 'x', 18);
   b.cyl('steel_raw', F + 0.004, Y, Z, 0.062, 0.008, 'x', 18);
   b.bx('painted_dark', F + 0.05, Y - 0.026, Z - 0.004, F + 0.054, Y + 0.026, Z + 0.004);
   b.cyl('steel_raw', F + 0.005, Y, Z + 0.2, 0.022, 0.01, 'x', 12);
-  b.sign('MOON POOL ACCESS\nINTERLOCK KEY B', 'warning', F + 0.002, 1.05, Z, 0.5, 0.14, '+x');
+  b.sign('문풀 출입\n인터록 키 B', 'warning', F + 0.002, 1.05, Z, 0.5, 0.14, '+x');
   b.rod('steel_raw', SHAFT6.x + 0.016, 1.78, Z - 0.32, SHAFT6.x + 0.016, 1.78, -168.75, 0.014, 8);
   const R = new Rig6(L, 'shaft6');
   R.emit(PAL.lensA, 0xff2a14, 3.0);
@@ -867,7 +867,7 @@ export const FRAME6 = {
  * **tether** (`cable_armour`, ⌀ 110 mm): TWO meshes split at the shear (z −168.5) — winch side: drum → trough →
  * shear; well side: shear → over the sheave → down the well at z −171.9 into the water and on to y −28.
  * API: `pin(k)` (0 in … 0.85 drawn 0.33 m … 1 dropped on the deck), `pump(k)` (12 strokes over k 0 … 1; the needle
- * 0 → 210 bar; with `screenAuto` the `gauge6` screen reads `0 BAR — PUMP` / `n BAR` / `210 BAR — READY` once the pin
+ * 0 → 210 bar; with `screenAuto` the `gauge6` screen reads `0 BAR — 펌프` / `n BAR` / `210 BAR — READY` once the pin
  * is out), `guard(k)` (0 shut … 1 sprung open), `lever(k)` (0 safe … 1 thrown), `fire(onCue?)` — the §4.8.1 timeline:
  * cue `fire` 0.0 (lever), `slam` 0.05 (the blade drops), `part` 0.25 (the tether parts: the winch end whips back 1.5 m
  * along the trough with a decaying S-wave, the drum spins free; the well end slips over the sheave and falls), `splash`
@@ -910,8 +910,8 @@ export function frame6(L: LevelBuild, b: Builder, o: PieceOpts = {}): THREE.Obje
   for (const x of [-53.5, -52.0, -50.5]) b.bx(yellow, x - 0.02, F.roof - 0.045, F.z0, x + 0.02, F.roof + 0.012, F.z1);
   // the instruction plate on the north bars (west of the opening), facing +z
   b.bx(dark, -54.64, -14.68, zn + BR + 0.002, -53.36, -14.02, zn + BR + 0.016);
-  b.sign('TETHER SHEAR\n1  PIN — 2  PRESSURE 210 BAR — 3  FIRE', 'warning', -54.0, -14.35, zn + BR + 0.016, 1.2, 0.58, '+z');
-  b.sign('NO ENTRY BEYOND CAGE — WET WELL', 'danger', -50.0, -14.35, zn + BR + 0.016, 1.0, 0.16, '+z');
+  b.sign('테더 전단\n1  핀 — 2  압력 210 BAR — 3  발사', 'warning', -54.0, -14.35, zn + BR + 0.016, 1.2, 0.58, '+z');
+  b.sign('케이지 너머 출입 금지 — 웨트 웰', 'danger', -50.0, -14.35, zn + BR + 0.016, 1.0, 0.16, '+z');
   b.bx(dark, -50.52, -14.45, zn + BR + 0.002, -49.48, -14.25, zn + BR + 0.016);
   moveOnly(L, F.x0, Y, F.z0, F.x0 + 0.05, F.roof, F.z1);
   moveOnly(L, F.x1 - 0.05, Y, F.z0, F.x1, F.roof, F.z1);
@@ -938,10 +938,10 @@ export function frame6(L: LevelBuild, b: Builder, o: PieceOpts = {}): THREE.Obje
   b.bx(yellow, sx0, -14.95, sz0, sx1, -14.75, sz1);
   b.bx(dark, sx0 + 0.18, Y + 0.05, szm - 0.075, sx0 + 0.19, -14.95, szm + 0.075).bx(dark, sx1 - 0.19, Y + 0.05, szm - 0.075, sx1 - 0.18, -14.95, szm + 0.075);
   b.cyl(steel, sxm, -14.68, szm, 0.2, 0.14, 'y', 20).cyl(dark, sxm, F.shearTop - 0.01, szm, 0.16, 0.02, 'y', 20);
-  b.sign('DANGER — SHEAR', 'danger', sx1 + 0.002, -15.62, sz0 + 0.2, 0.3, 0.09, '+x');
+  b.sign('위험 — 전단 장치', 'danger', sx1 + 0.002, -15.62, sz0 + 0.2, 0.3, 0.09, '+x');
   // gauge housing + the gauge6 screen on the shear's north face
   b.bx(dark, sxm - 0.2, -14.95, sz1, sxm + 0.2, -14.62, sz1 + 0.08);
-  const gscr = L.screen('gauge6', 'gauge', 0.3, 0.26, sxm, -14.785, sz1 + 0.085, '+z', { text: 'PIN IN' });
+  const gscr = L.screen('gauge6', 'gauge', 0.3, 0.26, sxm, -14.785, sz1 + 0.085, '+z', { text: '핀 삽입됨' });
   gscr.userData.rooms = rooms.slice();
   // hose pump → shear, pin anchor block
   b.rod('rubber', -53.42, Y + 0.12, -168.6, sx0, Y + 0.12, -168.6, 0.02, 8);
@@ -956,7 +956,7 @@ export function frame6(L: LevelBuild, b: Builder, o: PieceOpts = {}): THREE.Obje
   b.bx(steel, pxm - 0.15, -15.32, -168.75, pxm + 0.15, -15.0, -168.45);
   b.cyl('painted_white', pxm, -15.45, pz1 - 0.044, 0.07, 0.012, 'z', 20);
   b.torus(steel, pxm, -15.45, pz1 - 0.036, 0.072, 0.006, 'z', 20);
-  b.sign('HYDRAULIC HAND PUMP — 210 BAR', 'label', pxm, -15.7, pz1 - 0.048, 0.5, 0.07, '+z');
+  b.sign('유압 수동 펌프 — 210 BAR', 'label', pxm, -15.7, pz1 - 0.048, 0.5, 0.07, '+z');
   if (col) b.collide(px0, Y, pz0, px1, -15.0, pz1, 'metal', true);
 
   // ── lever post
@@ -964,7 +964,7 @@ export function frame6(L: LevelBuild, b: Builder, o: PieceOpts = {}): THREE.Obje
   b.bx(navy, lx0 + 0.05, Y + 0.03, lz0 + 0.05, lx1 - 0.05, -14.75, lz1 - 0.05);
   b.bx(dark, lx0, Y, lz0, lx1, Y + 0.06, lz1);
   b.bx(steel, lxm - 0.06, -14.88, lz1 - 0.05, lxm + 0.06, -14.76, lz1 - 0.02);
-  b.sign('FIRE', 'danger', lxm, -15.05, lz1 - 0.048, 0.24, 0.08, '+z');
+  b.sign('화재', 'danger', lxm, -15.05, lz1 - 0.048, 0.24, 0.08, '+z');
   if (col) b.collide(lx0, Y, lz0, lx1, -14.75, lz1, 'metal', true);
 
   // ── sheave stand + fairlead
@@ -992,7 +992,7 @@ export function frame6(L: LevelBuild, b: Builder, o: PieceOpts = {}): THREE.Obje
     }
     b.bx(yellow, wx0 - 0.05, -13.03, -152.04, wx1 + 0.05, F.winchTop, -151.96);
   }
-  b.sign('TETHER WINCH TW-1 — 22 t SWL', 'stencil', -52.0, Y + 0.075, wz0, 1.2, 0.1, '-z');
+  b.sign('테더 윈치 TW-1 — 22 t SWL', 'stencil', -52.0, Y + 0.075, wz0, 1.2, 0.1, '-z');
   if (col) b.collide(wx0, Y, wz0, wx1, F.winchTop, wz1, 'metal', true);
 
   // ── work lamp fixture over the frame (hung from the roof's north edge)
@@ -1093,7 +1093,7 @@ export function frame6(L: LevelBuild, b: Builder, o: PieceOpts = {}): THREE.Obje
   let kPin = 0, kPump = 0, kGuard = 0, kLever = 0, fireT = -1, drumA = 0, winchW = 0, braked = false, sheaveA = 0;
   const st = { screenAuto: true };
   const setGauge = (text: string) => { if (st.screenAuto) try { L.ctx.materials.setScreen(gscr.material as THREE.MeshStandardMaterial, 'gauge', { text }); } catch { /* materials not ready */ } };
-  let gaugeText = 'PIN IN';
+  let gaugeText = '핀 삽입됨';
   const gauge = (t: string) => { if (t !== gaugeText) { gaugeText = t; setGauge(t); } };
   const blade = (k: number) => R.pivot(1, 0, 0, 0, 0, 0, 0, 0, -0.42 * k, 0);
   const pin = (v: number) => {
@@ -1101,7 +1101,7 @@ export function frame6(L: LevelBuild, b: Builder, o: PieceOpts = {}): THREE.Obje
     const out = 0.33 * smooth(ramp(kPin, 0, 0.85)), drop = smooth(ramp(kPin, 0.85, 1));
     // drawn: slides +x; dropped: falls to lie on the deck east of the shear
     R.pivot(2, pnx, pny, pnz, 0, lerp(0, 0.6, drop), lerp(0, 0.05, drop), out + 0.18 * drop, lerp(0, Y + 0.04 - pny, drop * drop), 0.2 * drop);
-    if (kPin >= 1 && gaugeText === 'PIN IN') gauge('0 BAR — PUMP');
+    if (kPin >= 1 && gaugeText === '핀 삽입됨') gauge('0 BAR — 펌프');
   };
   const pump = (v: number) => {
     kPump = clamp01(v);
@@ -1110,7 +1110,7 @@ export function frame6(L: LevelBuild, b: Builder, o: PieceOpts = {}): THREE.Obje
     R.pivot(3, PV.x, PV.y, PV.z, a, 0, 0);
     const bar = 210 * kPump;
     R.pivot(4, pxm, -15.45, pz1 - 0.03, 0, 0, (135 - (bar / 250) * 270) * PI / 180);
-    if (kPin >= 1 && fireT < 0) gauge(kPump >= 1 ? '210 BAR — READY' : kPump <= 0 ? '0 BAR — PUMP' : `${Math.round(bar)} BAR`);
+    if (kPin >= 1 && fireT < 0) gauge(kPump >= 1 ? '210 BAR — READY' : kPump <= 0 ? '0 BAR — 펌프' : `${Math.round(bar)} BAR`);
   };
   const guard = (v: number) => { kGuard = clamp01(v); const u = kGuard; R.pivot(6, GH.x, GH.y, GH.z, -1.9 * smooth(u) - 0.12 * Math.sin(PI * ramp(u, 0.7, 1.0)), 0, 0); };
   const lever = (v: number) => { kLever = clamp01(v); R.pivot(5, LV.x, LV.y, LV.z, 1.0 * minJerk(kLever), 0, 0); };
@@ -1141,7 +1141,7 @@ export function frame6(L: LevelBuild, b: Builder, o: PieceOpts = {}): THREE.Obje
     lever(1); guard(1); blade(1);
     winchSide(F.whip, 0, 0); TL.m.visible = false;
     drumA = drumAt(9); drum(); braked = true; winchW = 0; brakeK(1);
-    if (st.screenAuto) gauge('FIRED');
+    if (st.screenAuto) gauge('발사됨');
   };
   const fire = (cue?: Cue6) => {
     if (fireT >= 0) return;
@@ -1156,7 +1156,7 @@ export function frame6(L: LevelBuild, b: Builder, o: PieceOpts = {}): THREE.Obje
       poseFire(t);
       drumA = drum0 + drumAt(t); drum();
       const s = Math.max(0, t - 0.25); sheaveA = sheave0 + Math.min(0.5 * 26 * s * s, aWater + 0.6 - aCut) / 0.3; sheave();
-      if (t >= 0.05) { once('slam', shear); if (st.screenAuto) gauge('FIRED'); }
+      if (t >= 0.05) { once('slam', shear); if (st.screenAuto) gauge('발사됨'); }
       if (t >= 0.25 && !fired_.part) {
         once('part', shear);
         try { L.ctx.fx?.sparks?.(shear.clone().add(V(0, 0.05, 0.08)), V(0, 0.3, 1).normalize(), 28, 5); } catch { /* fx not ready */ }
@@ -1304,7 +1304,7 @@ export type ConsolePage6 = 'idle' | 'manifest' | 'feed' | 'cctv' | 'static' | 'c
 /**
  * The dock console `console6` (§2.6.9, §4.9, §8.7.6, S1h): a navy desk x −46 … −42, z −158.6 … −157.8 (top y −15.0)
  * with keyboard, trackball, lamp buttons; a 3.2 × 1.4 m screen on a stand above the desk's north edge (screen plane
- * z −157.9 facing −z, centre `mk6_end_screen` (−44.0, −14.2, −157.9)), labelled `HEAD-END REPEATER — DOCK`, behind a
+ * z −157.9 facing −z, centre `mk6_end_screen` (−44.0, −14.2, −157.9)), labelled `헤드엔드 중계기 — 도크`, behind a
  * pane of bullet-resistant glass (a `glass` collider: rounds star it, it holds). `page(id, o?)`: `idle` (the dock board's
  * lines, or `o.text`), `manifest` (`o.text` = the E1 scroll, `\n` lines), `feed` (`o.texture` = the feed handle's
  * texture, `o.text` = the OSD; no texture → `cctv`), `cctv`, `static`, `choir`, `black` (the screen off). Calls: the
@@ -1325,13 +1325,13 @@ export function console6(L: LevelBuild, b: Builder, o: PieceOpts & { glass?: boo
   b.sphere('plastic_dark', scx + 0.45, top + 0.02, -158.34, 0.04, 12);
   for (let r = 0; r < 2; r++) for (let i = 0; i < 6; i++) b.bx(i % 3 === 0 ? 'emissive_amber' : i % 3 === 1 ? 'emissive_green' : 'plastic_white', C.x0 + 0.3 + i * 0.09, top, -158.45 + r * 0.1, C.x0 + 0.36 + i * 0.09, top + 0.012, -158.41 + r * 0.1);
   b.bx('plastic_dark', C.x1 - 0.55, top, -158.48, C.x1 - 0.25, top + 0.05, -158.28);
-  b.sign('DL-2 DOCK CONTROL', 'label', scx, Y + 0.8, C.z0 + 0.055, 0.6, 0.08, '-z');
+  b.sign('DL-2 도크 관제', 'label', scx, Y + 0.8, C.z0 + 0.055, 0.6, 0.08, '-z');
   // screen housing, bezel lip, stand posts
   const hx0 = scx - C.w / 2 - 0.12, hx1 = scx + C.w / 2 + 0.12, hy0 = scy - C.sh / 2 - 0.08, hy1 = scy + C.sh / 2 + 0.12;
   b.bx(dark, hx0, hy0, scz + 0.007, hx1, hy1, scz + 0.18);
   b.bx(dark, hx0, hy0, scz - 0.016, hx0 + 0.07, hy1, scz + 0.007).bx(dark, hx1 - 0.07, hy0, scz - 0.016, hx1, hy1, scz + 0.007);
   b.bx(dark, hx0 + 0.07, hy0, scz - 0.016, hx1 - 0.07, hy0 + 0.05, scz + 0.007).bx(dark, hx0 + 0.07, hy1 - 0.09, scz - 0.016, hx1 - 0.07, hy1, scz + 0.007);
-  b.sign('HEAD-END REPEATER — DOCK', 'stencil', scx, hy1 - 0.045, scz - 0.016, 1.6, 0.07, '-z');
+  b.sign('헤드엔드 중계기 — 도크', 'stencil', scx, hy1 - 0.045, scz - 0.016, 1.6, 0.07, '-z');
   for (const x of [scx - 1.25, scx + 1.25]) b.bx('steel_raw', x - 0.05, Y, scz + 0.18, x + 0.05, hy0 + 0.3, scz + 0.24);
   const scr = L.screen('console6', 'manifest', C.w, C.sh, scx, scy, scz, '-z', { text: CONSOLE6_IDLE });
   scr.userData.rooms = rooms.slice();
@@ -1388,10 +1388,10 @@ export function phone6(L: LevelBuild, b: Builder, o: PieceOpts = {}): THREE.Obje
   b.cyl('painted_white', F - 0.004, 1.44, Z + 0.04, 0.07, 0.008, 'x', 24);
   b.cyl(steel, F - 0.02, 1.44, Z + 0.04, 0.022, 0.03, 'x', 12);
   b.push(F - 0.036, 1.44, Z + 0.04, 0, 0.35).box(dark, 0, 0.03, 0, 0.008, 0.06, 0.012).pop();
-  const labels: [string, number][] = [['HEAD-END', -0.95], ['POST 4', -0.32], ['DOCK', 0.32], ['CMD', 0.95]];
+  const labels: [string, number][] = [['헤드엔드', -0.95], ['초소 4', -0.32], ['DOCK', 0.32], ['CMD', 0.95]];
   for (const [t, a] of labels) b.sign(t, 'label', F - 0.009, 1.44 + Math.cos(a) * 0.1, Z + 0.04 + Math.sin(a) * 0.1, 0.075, 0.022, '-x');
-  b.sign('SOUND-POWERED PHONE — JX CIRCUIT', 'label', F - 0.002, 1.6, Z, 0.34, 0.04, '-x');
-  b.sign('LIFT HANDSET — PRESS TO TALK', 'stencil', F - 0.002, 1.24, Z + 0.04, 0.3, 0.04, '-x');
+  b.sign('무전원 전화 — JX 회선', 'label', F - 0.002, 1.6, Z, 0.34, 0.04, '-x');
+  b.sign('수화기를 들고 — 버튼을 눌러 통화', 'stencil', F - 0.002, 1.24, Z + 0.04, 0.3, 0.04, '-x');
   // howler: wall base + horn (mouth −x) + dark throat
   b.bx(navy, 21.68, 1.74, Z - 0.08, 21.79, 1.9, Z + 0.08);
   b.cyl(navy, 21.6, 1.82, Z, 0.11, 0.16, 'x', 20, 0.04);
@@ -1569,7 +1569,7 @@ export function feed6(L: LevelBuild, o: { rooms?: string[]; lights?: boolean } =
       b.rod('chrome', bx2 + s * 0.08, 0.6, z, bx2 + s * 0.55, 1.45, z, 0.03, 8);
     }
   }
-  b.sign('TERN — SDV-07 — CRADLE', 'stencil', cx, 0.32, S.saddles[0] - 0.255, 1.4, 0.12, '-z');
+  b.sign('턴 — SDV-07 — 크레이들', 'stencil', cx, 0.32, S.saddles[0] - 0.255, 1.4, 0.12, '-z');
   // equipment boxes, shore-power cable, a hose
   for (const [ex0, ex1, ez0, ez1] of [[108.4, 109.6, 15, 17], [114.4, 115.6, 15, 17]]) b.bx(dark, ex0, 0, ez0, ex1, 1.3, ez1);
   b.rod('rubber', 101.0, 0.05, 6.0, 108.4, 0.05, 15.6, 0.04, 8).rod('rubber', 108.4, 0.05, 15.6, 108.4, 0.4, 16.0, 0.04, 8);
@@ -1591,11 +1591,11 @@ export function feed6(L: LevelBuild, o: { rooms?: string[]; lights?: boolean } =
   for (const y of [ly - 1.4, ly + 1.4]) b.bx(steel, lx - S.lockR - 0.5, y - 0.2, lz + 0.0, lx - S.lockR + 0.1, y + 0.2, lz + 0.3);
   b.torus(steel, lx, 2.2, lz + 0.155, 0.33, 0.045, 'z', 24);
   b.bx(dark, lx - 0.25, 3.6, lz + 0.12, lx + 0.25, 3.9, lz + 0.135);
-  b.sign('LAUNCH LOCK — FLOODED', 'danger', lx, 6.65, lz + 0.01, 2.4, 0.3, '+z');
-  b.sign('DO NOT OPEN — SEA PRESSURE', 'warning', lx, 6.25, lz + 0.01, 1.8, 0.18, '+z');
+  b.sign('발사 록 — 침수', 'danger', lx, 6.65, lz + 0.01, 2.4, 0.3, '+z');
+  b.sign('열지 마세요 — 해수 압력', 'warning', lx, 6.25, lz + 0.01, 1.8, 0.18, '+z');
   // board + bezel
   b.bx(dark, 102.95, 5.6, lz, 106.05, 6.8, lz + 0.02);
-  const board = L.screen('feed6_board', 'dock_status', 2.8, 1.0, 104.5, 6.2, lz + 0.025, '+z', { text: 'TERN — CRADLE — EMPTY\nLAUNCH LOCK — FLOODED' });
+  const board = L.screen('feed6_board', 'dock_status', 2.8, 1.0, 104.5, 6.2, lz + 0.025, '+z', { text: '턴 — 크레이들 — 비어 있음\n발사 록 — 침수' });
   board.userData.rooms = rooms.slice();
   // rig: the black port, the FLOODED lamp, two beacons (domes + rotating reflectors)
   const R = new Rig6(L, 'feed6');

@@ -12,7 +12,7 @@
  *   nostory — `?nostory=1`: every door auto except d4_bay, d4_store (locked), d4_cold (open)
  *
  * `cycling` doors show the amber CYCLING panel and their `DoorSpec.cyclingPrompt` (index.ts): `d4_inner` (decon),
- * `d4_surg` "Containment hold", `d4_tube_n` "Release from booth", `d4_tube_s` "Gate lock cycling".
+ * `d4_surg` "격리 유지", `d4_tube_n` "부스에서 해제", `d4_tube_s` "게이트 록 순환 중".
  * Machines `theatre_arm`, `cold_jam` run ('active') in every phase.
  *
  * Latches (REVISION 5.1 `closeBehind(door, keepSide)`): `LATCHES4` — door, the trigger that arms it (or the rule),

@@ -205,7 +205,7 @@ const spine: RoomDress = {
     for (const [x, t] of [[9.9, 'FR 104'], [24.9, 'FR 109'], [39.9, 'FR 114']] as const) hullNumber(b, t, x, 2.45, -14.205, '-z', 0.16);
 
     // ── pipe risers on the shell's colliders ──
-    const tags = ['FIRE MAIN ↑', 'CHILLED WATER', 'FIRE MAIN ↑', 'SEA WATER — DO NOT OPEN', 'HP AIR', 'FIRE MAIN ↑', 'CHILLED WATER'];
+    const tags = ['소화 주관 ↑', '냉수', '소화 주관 ↑', '해수 — 열지 마세요', '고압 공기', '소화 주관 ↑', '냉수'];
     RISERS.forEach(([x0, south], i) => b.at(x0 + 0.3, 0, south ? -17.8 : -14.2, south ? 0 : PI, () => pipeRiser(b, L, { collide: false, tag: tags[i] })));
 
     // ── the grating strip over the crawl (the shell's collider stays) + the crawl's deckhead joists ──
@@ -261,7 +261,7 @@ const spine: RoomDress = {
     for (const x of [36.3, 38.5]) b.bx('steel_raw', x - 0.03, 0, -17.79, x + 0.03, 2.24, -17.73);
     b.bx('steel_raw', 36.27, 2.18, -17.79, 38.53, 2.24, -17.73);
     b.bx('painted_yellow', 37.33, 1.9, -17.73, 37.47, 1.96, -17.68);  // the stay hook the open lid rests against
-    navySign(b, 'BILGE ACCESS ↓ — CRAWLWAY TO MAGAZINE', 37.4, 2.5, -17.795, 1.9, 0.16, '+z');
+    navySign(b, '빌지 출입 ↓ — 탄약고 연결 통로', 37.4, 2.5, -17.795, 1.9, 0.16, '+z');
     L.vignette('hatch5_spine_open', () => swingLid(L, lidS, V(37.4, 0.1, -16.5)), {
       snap: () => { const u = lidS.userData; u.dogs(1); u.open(1); },
     });
@@ -273,8 +273,8 @@ const spine: RoomDress = {
     // pane's glass collider goes in it — a round from the line through the port stars the glass, not the frame
     { const p = PANES5.find((q) => q.id === 'port')!.box; b.collide(p[0], p[1], p[2], p[3], p[4], p[5], 'glass', false); }
     // where to stand: the line (glowing, under the rib arch at x 42.5, the camera turning to it) and a deck stencil
-    b.detail(() => b.sign('STOP AT LINE', 'stencil', 41.7, 0.006, -16.0, 1.6, 0.26, '+y', -PI / 2));
-    navySign(b, 'COMMAND MODULE — AUTHORISED PERSONNEL ONLY', 38.4, 1.95, -14.205, 2.6, 0.16, '-z');
+    b.detail(() => b.sign('선에서 정지', 'stencil', 41.7, 0.006, -16.0, 1.6, 0.26, '+y', -PI / 2));
+    navySign(b, '지휘 모듈 — 인가된 인원만', 38.4, 1.95, -14.205, 2.6, 0.16, '-z');
     // the door camera watches whoever is in the east half of the spine (else the line)
     let cmdLine = false, cmdLook = false, watchT = 0;
     const linePt = V(42.5, 1.6, -16);
@@ -322,11 +322,11 @@ const spine: RoomDress = {
     }
 
     // ── the rest of the corridor: fire hose box, cable tray, the ammo shelf by the door, stencils ──
-    b.at(23.1, 1.35, -14.2, PI, () => fireHoseBox(b, L, { label: 'FIRE HOSE 4' }));
+    b.at(23.1, 1.35, -14.2, PI, () => fireHoseBox(b, L, { label: '소화 호스 4' }));
     for (const [x0, x1] of [[9.0, 13.5], [14.5, 25.5], [26.5, 34.5], [35.5, 43.2]] as const) b.at((x0 + x1) / 2, 2.86, -14.2, PI, () => cableTray(b, L, { len: x1 - x0, w: 0.34, cables: 5, seed: Math.round(x0) }));
     b.at(43.4, 1.0, -14.2, PI, () => wallShelf(b, L, { w: 0.6, d: 0.45 }));
     navySign(b, '← DUTY ROOM · KEYPAD', 9.2, 1.9, -17.795, 1.4, 0.13, '+z');
-    navySign(b, 'MAGAZINE ACCESS VIA BILGE CRAWLWAY — FR 112', 30.4, 2.3, -17.795, 2.6, 0.13, '+z');
+    navySign(b, '탄약고 출입 빌지 통로 경유 — FR 112', 30.4, 2.3, -17.795, 2.6, 0.13, '+z');
     b.detail(() => {
       b.decal('grime', 0, 28.5, 0.006, -14.7, 3.0, 0.7, '+y');
       b.decal('scratches', 2, 34.0, 0.006, -17.2, 1.4, 0.6, '+y');
@@ -420,8 +420,8 @@ const arm: RoomDress = {
     b.at(14.2, 0, -26.45, PI / 2, () => openShelf(b, L, { w: 1.7, d: 0.4, h: 1.9, shelves: [0.35, 0.95, 1.5], collide: false }));
     b.at(15.1, 0, -19.6, 0, () => issueDesk(b, L, { len: 1.8, d: 1.2, collide: false }));
     b.at(21.8, 1.4, -19.4, -PI / 2, () => wallShelf(b, L, { w: 0.7, d: 0.45 }));
-    navySign(b, 'SMALL ARMS — ISSUE ON CO AUTHORITY ONLY', 14.205, 2.35, -25.6, 2.6, 0.14, '+x');
-    navySign(b, 'BODY ARMOUR', 21.795, 1.95, -19.4, 0.7, 0.11, '-x');
+    navySign(b, '소화기 — 함장 권한으로만 지급', 14.205, 2.35, -25.6, 2.6, 0.14, '+x');
+    navySign(b, '방탄복', 21.795, 1.95, -19.4, 0.7, 0.11, '-x');
     // the magazine hatch (W7: dogged from below; its top plate lamp red → green) and its rail (west + south)
     const lidM = lidOf(L, b, { ...HATCH5_MAG, y: 0.008 });
     rail(b, L, { pts: [[20.175, -24.3], [20.175, -27.225], [21.8, -27.225]], h: 1.0, collide: false });
@@ -474,19 +474,19 @@ const arm: RoomDress = {
     b.bx('steel_raw', 16.6, -2.24, -27.8, 18.0, -2.2, -27.15);
     for (const x of [16.65, 17.95]) b.bx('steel_raw', x - 0.03, -2.6, -27.75, x + 0.03, -2.24, -27.2);
     b.collide(16.6, -2.6, -27.8, 18.0, -2.2, -27.15, 'metal', true);
-    navySign(b, 'BODY ARMOUR — PLATES', 17.3, -1.85, -27.795, 1.0, 0.1, '+z');
+    navySign(b, '방탄복 — 플레이트', 17.3, -1.85, -27.795, 1.0, 0.1, '+z');
     // the tally board on the east rack's end (`note5_mag` (19.0, −1.4, −22.0))
     b.bx('navy_grey', 18.66, -1.75, -22.4, 19.54, -1.05, -22.37);
     b.bx(ctx.materials.get('painted_white'), 18.82, -1.62, -22.37, 19.18, -1.16, -22.355);
-    b.detail(() => b.sign('MAGAZINE TALLY', 'stencil', 19.0, -1.2, -22.353, 0.3, 0.05, '+z'));
+    b.detail(() => b.sign('탄약고 계수표', 'stencil', 19.0, -1.2, -22.353, 0.3, 0.05, '+z'));
     // the caged emergency lamp (the one that pops) over the aisle, the fire-party board, stencils
     b.push(17.0, -0.1, -24.5);
     const lamp: BulkheadLamp = bulkheadLamp(b, L, { mount: 'ceiling', breakable: true, bind: mp, color: 'warm', intensity: 1.4, floorY: -2.6, name: 'mag5_lamp' });
     b.pop();
-    b.at(21.8, -1.35, -22.9, -PI / 2, () => fireBoard(b, L, { label: 'FIRE PARTY — MAGAZINE' }));
-    navySign(b, 'MAGAZINE — NO NAKED LIGHTS — NO SMOKING', 17.5, -0.55, -21.405, 2.6, 0.12, '-z');
-    navySign(b, 'ESCAPE ↑ ARMOURY HATCH — UNDOG FROM BELOW', 20.2, -1.15, -27.795, 2.2, 0.14, '+z');
-    navySign(b, 'FR 112 — BILGE CRAWLWAY ↑', 17.0, -0.45, -21.405, 1.1, 0.1, '-z');
+    b.at(21.8, -1.35, -22.9, -PI / 2, () => fireBoard(b, L, { label: '화재반 — 탄약고' }));
+    navySign(b, '탄약고 — 노화 금지 — 흡연 금지', 17.5, -0.55, -21.405, 2.6, 0.12, '-z');
+    navySign(b, '탈출 ↑ 무기고 해치 — 아래에서 잠금 해제', 20.2, -1.15, -27.795, 2.2, 0.14, '+z');
+    navySign(b, 'FR 112 — 빌지 통로 ↑', 17.0, -0.45, -21.405, 1.1, 0.1, '-z');
     // a red bar along the hatch coaming's underside (strip channel `red`, on from load, survives the pop): the way out
     // reads from the magazine floor without a lamp
     b.bx(stripMat5(L, 'red'), 20.45, -0.15, -27.09, 21.55, -0.125, -27.06);

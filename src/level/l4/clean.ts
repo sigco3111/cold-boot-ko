@@ -279,7 +279,7 @@ function safetyShower(b: Builder, L: LevelBuild) {
   });
   // floor: a grated drain with the green square painted round it
   b.detail(() => { b.bx(floorPaint(L, 'safety_sq', 'painted_white', { color: 0x1f9a54, map: null, normalMap: null }), -0.6, 0.0, 0.02, 0.6, 0.003, 1.2); b.bx('stainless', -0.15, 0.0, 0.5, 0.15, 0.005, 0.8); });
-  b.sign('EMERGENCY SHOWER · EYEWASH', 'clinical', 0, 2.95, 0.004, 0.9, 0.12, '+z', 0);
+  b.sign('비상 샤워 · 세안기', 'clinical', 0, 2.95, 0.004, 0.9, 0.12, '+z', 0);
   b.collide(-0.05, 0, 0, 0.05, 2.75, 0.12, 'metal', true);
 }
 
@@ -296,7 +296,7 @@ function dewarTrolley(b: Builder, L: LevelBuild) {
     b.cyl('plastic_dark', 0.0, 0.97, 0, 0.03, 0.03, 'y', 8);
     b.rod('stainless', 0.05, 0.94, 0, 0.16, 0.94, 0.0, 0.01, 6);
     b.cyl('stainless', 0.0, 0.97, 0.06, 0.03, 0.02, 'z', 10);
-    b.sign('LN₂ — CRYOGENIC', 'warning', 0, 0.55, 0.222, 0.3, 0.1, '+z');
+    b.sign('LN₂ — 극저온', 'warning', 0, 0.55, 0.222, 0.3, 0.1, '+z');
   });
   b.collide(-0.27, 0, -0.27, 0.27, 1.0, 0.27, 'metal', true);
   void L;
@@ -315,7 +315,7 @@ function coldController(b: Builder, L: LevelBuild, lamp: Mat) {
   b.detail(() => {
     b.quad(readout, 0, 0.1, 0.0705, 0.24, 0.12, '+z');
     for (let r = 0; r < 3; r++) for (let c = 0; c < 3; c++) b.bx('plastic_dark', -0.09 + c * 0.065, -0.17 + r * 0.05, 0.07, -0.045 + c * 0.065, -0.135 + r * 0.05, 0.078);
-    b.sign('COLD STORE 2', 'clinical', 0, 0.265, 0.004, 0.32, 0.06, '+z', 0);
+    b.sign('냉장고 2', 'clinical', 0, 0.265, 0.004, 0.32, 0.06, '+z', 0);
     // the alarm beacon above (amber dome on a base)
     b.cyl('plastic_dark', 0.3, 0.62, 0.035, 0.06, 0.04, 'z', 14);
     b.cyl(lamp, 0.3, 0.62, 0.075, 0.05, 0.06, 'z', 14, 0.035);
@@ -330,7 +330,7 @@ function firePoint(b: Builder, L: LevelBuild) {
   b.detail(() => {
     b.torus('plastic_dark', 0, 1.35, 0.27, 0.2, 0.04, 'z', 18);
     b.cyl('stainless', 0, 1.35, 0.24, 0.05, 0.08, 'z', 10);
-    b.sign('FIRE HOSE', 'clinical', 0, 1.85, 0.004, 0.5, 0.1, '+z', 0);
+    b.sign('소화 호스', 'clinical', 0, 1.85, 0.004, 0.5, 0.1, '+z', 0);
   });
   for (const x of [-0.6, 0.6]) {
     b.cyl(R, x, 0.12, 0.12, 0.08, 0.55, 'y', 14);
@@ -483,13 +483,13 @@ const corr_w: RoomDress = {
     stripRun(b, L, 'z', -14.72, -34.0, -12.2, [[-23.15, -20.85]]);
     stripRun(b, L, 'z', -12.28, -34.28, -12.2, [[-30.15, -27.85], [-19.15, -16.85]]);
     // corners: ceiling-hung signs facing both approaches
-    hangingSign(b, L, -13.5, H, -13.0, 'z', 'COLD STORE 2 · VIVARIUM · WET LAB 1 ↓', 'CLEAN CORRIDOR — NORTH ↑', 1.9, 0.22);
-    hangingSign(b, L, -13.5, H, -33.0, 'z', 'SURGICAL SUITE · RECORDS ↓', 'COLD STORE 2 · VIVARIUM ↑', 1.9, 0.22);
+    hangingSign(b, L, -13.5, H, -13.0, 'z', '냉장고 2 · 생물사육실 · 습식 실험실 1 ↓', '청정 복도 — 북측 ↑', 1.9, 0.22);
+    hangingSign(b, L, -13.5, H, -33.0, 'z', '수술 구역 · 기록실 ↓', '냉장고 2 · 생물사육실 ↑', 1.9, 0.22);
     // ── the held-open cold-store door (east wall, z −29): controller + beacon north of it, frost on the floor
     const beacon = mat4(L, 'd1b_cold_beacon', () => { const m = L.ctx.materials.clone('emissive_amber', { color: 0xffb040 }); m.emissiveIntensity = 0.3; return m; });
     onWall(b, '-x', -12.2, Y + 1.55, -27.3, () => coldController(b, L, beacon));
-    clinicalSign(b, L, 'COLD STORE 2 — −20 °C · snowflake', -12.205, Y + 2.62, -29.0, 1.4, 0.2, '-x');
-    sticker(b, -12.205, Y + 1.6, -30.35, '-x', { text: 'KEEP DOOR CLOSED', w: 0.34, h: 0.1, rot: -0.02 });
+    clinicalSign(b, L, '냉장고 2 — −20 °C · snowflake', -12.205, Y + 2.62, -29.0, 1.4, 0.2, '-x');
+    sticker(b, -12.205, Y + 1.6, -30.35, '-x', { text: '문을 닫아 두세요', w: 0.34, h: 0.1, rot: -0.02 });
     // frost tongue out of the doorway, fading out ≤ 1.3 m into the corridor
     frostPatch(b, L, -12.75, -29.0, 1.3, 1.9, 0.1, 0);
     frostPatch(b, L, -13.3, -29.1, 0.9, 1.1, 0.8, 0, 0.004);
@@ -497,7 +497,7 @@ const corr_w: RoomDress = {
     b.at(-12.55, Y, -31.6, 0.3, () => dewarTrolley(b, L));
     onWall(b, '-x', -12.2, Y, -33.0, () => {
       b.bx(paintD(L, 'safety_yellow', 0xe7c21a, 0.5), -0.35, 0.5, 0, 0.35, 1.2, 0.18);
-      b.detail(() => b.sign('SPILL KIT — BIOLOGICAL', 'warning', 0, 0.95, 0.181, 0.6, 0.12, '+z'));
+      b.detail(() => b.sign('오염 처리 키트 — 생물학적', 'warning', 0, 0.95, 0.181, 0.6, 0.12, '+z'));
       b.collide(-0.35, 0.5, 0, 0.35, 1.2, 0.18, 'metal', true);
     });
     // ── west wall: emergency shower + eyewash opposite the cold store; glove station by the vivarium door
@@ -508,7 +508,7 @@ const corr_w: RoomDress = {
     // wet-lab door, north stretch: a notice board with biosafety posters
     onWall(b, '-x', -12.2, Y + 1.55, -23.5, () => noticeBoard(b, L, R));
     sticker(b, -12.205, Y + 1.55, -16.65, '-x', { rot: -0.03 });
-    clinicalSign(b, L, 'WET LAB 1', -12.205, Y + 2.62, -18.0, 0.9, 0.18, '-x');
+    clinicalSign(b, L, '습식 실험실 1', -12.205, Y + 2.62, -18.0, 0.9, 0.18, '-x');
     // fumigation tape: the cold-store door has a FUMIGATED sticker too
     sticker(b, -12.205, Y + 1.45, -27.65, '-x', { rot: 0.05, w: 0.26 });
     void R;
@@ -524,10 +524,10 @@ function noticeBoard(b: Builder, L: LevelBuild, R: ReturnType<typeof rng>) {
       g.fillStyle = '#ffffff'; g.font = '700 11px Arial'; g.fillText(title, x + 6, y + 17);
       g.fillStyle = '#5a646c'; for (let i = 0; i < lines; i++) g.fillRect(x + 8, y + 36 + i * 9, 70 + ((i * 37) % 26), 3);
     };
-    sheet(14, 20, 'BSL-2 RULES', '#2b5d8a', 11);
-    sheet(136, 40, 'SPILL RESPONSE', '#c9a21a', 9);
-    sheet(258, 18, 'PHASE 2 — ROTA', '#3d7a5a', 12);
-    sheet(380, 52, 'FIRE ASSEMBLY', '#b2261c', 8);
+    sheet(14, 20, 'BSL-2 규칙', '#2b5d8a', 11);
+    sheet(136, 40, '유출 대응', '#c9a21a', 9);
+    sheet(258, 18, '2단계 — 근무표', '#3d7a5a', 12);
+    sheet(380, 52, '화재 집결지', '#b2261c', 8);
     g.fillStyle = '#c62d23'; for (const [x, y] of [[69, 24], [191, 44], [313, 22], [435, 56]]) { g.beginPath(); g.arc(x, y, 4, 0, 6.3); g.fill(); }
   });
   b.bx('stainless', -0.62, -0.34, 0, 0.62, 0.34, 0.02);
@@ -569,12 +569,12 @@ const corr_s: RoomDress = {
     b.detail(() => {
       for (let i = 0; i < 16; i++) b.bx(i % 2 ? white : hold, -1.6 + i * 0.2, Y, -35.95, -1.4 + i * 0.2, Y + 0.002, -35.8);
     });
-    clinicalSign(b, L, 'SURGICAL SUITE · THEATRE 1', 0, Y + 2.75, -36.795, 2.0, 0.22, '+z');
-    sticker(b, 1.45, Y + 1.5, -36.795, '+z', { text: 'STERILE FIELD — GOWNED STAFF ONLY', w: 0.42, h: 0.13, rot: -0.02 });
+    clinicalSign(b, L, '수술 구역 · 수술실 1', 0, Y + 2.75, -36.795, 2.0, 0.22, '+z');
+    sticker(b, 1.45, Y + 1.5, -36.795, '+z', { text: '무균 구역 — 가운 착용 직원만', w: 0.42, h: 0.13, rot: -0.02 });
     // the corners: hanging signs; the junction walls carry wayfinding
-    hangingSign(b, L, -13.5, H, -35.5, 'x', 'COLD STORE 2 · VIVARIUM ↑', 'SURGICAL SUITE →', 1.7, 0.22);
-    hangingSign(b, L, 13.5, H, -35.5, 'x', '← SURGICAL SUITE', 'RECORDS · UNIT BAY ↑', 1.7, 0.22);
-    clinicalSign(b, L, 'SURGICAL SUITE →', -14.795, Y + 2.0, -35.5, 1.3, 0.2, '+x');
+    hangingSign(b, L, -13.5, H, -35.5, 'x', '냉장고 2 · 생물사육실 ↑', '수술 구역 →', 1.7, 0.22);
+    hangingSign(b, L, 13.5, H, -35.5, 'x', '← SURGICAL SUITE', '기록실 · 유닛 베이 ↑', 1.7, 0.22);
+    clinicalSign(b, L, '수술 구역 →', -14.795, Y + 2.0, -35.5, 1.3, 0.2, '+x');
     clinicalSign(b, L, '← SURGICAL SUITE', 14.795, Y + 2.0, -35.5, 1.3, 0.2, '-x');
     // parked transfer gurney and a sterile-supply cart on the north wall (cover in the ambush, nav keeps 1.8 m)
     b.at(-9.6, Y, -34.62, 0.02, () => gurney(b, L));
@@ -591,7 +591,7 @@ const corr_s: RoomDress = {
     onWall(b, '-z', -4.5, Y, -34.2, () => gloveStation(b, L));
     for (const x of [-4.6, 4.4]) b.at(x, Y, -36.5, 0, () => {
       b.cyl(paintD(L, 'safety_yellow', 0xe7c21a, 0.5), 0, 0, 0, 0.2, 0.62, 'y', 16);
-      b.detail(() => { b.cyl(paintD(L, 'safety_yellow', 0xe7c21a, 0.5), 0, 0.62, 0, 0.21, 0.03, 'y', 16); b.sign('CLINICAL WASTE', 'warning', 0, 0.38, 0.201, 0.3, 0.09, '+z'); });
+      b.detail(() => { b.cyl(paintD(L, 'safety_yellow', 0xe7c21a, 0.5), 0, 0.62, 0, 0.21, 0.03, 'y', 16); b.sign('의료 폐기물', 'warning', 0, 0.38, 0.201, 0.3, 0.09, '+z'); });
       b.collide(-0.2, 0, -0.2, 0.2, 0.65, 0.2, 'metal', true);
     });
   },
@@ -617,8 +617,8 @@ const corr_e: RoomDress = {
     wallRun(b, L, '-x', 14.8, -33.8, -12.2, [[-20.15, -17.85], [-27.3, -25.7]]);
     stripRun(b, L, 'z', 12.28, -34.28, -12.2, [[-30.15, -27.85], [-17.15, -14.85]]);
     stripRun(b, L, 'z', 14.72, -34.0, -12.2, [[-20.15, -17.85]]);
-    hangingSign(b, L, 13.5, H, -13.0, 'z', 'RECORDS · UNIT BAY · NODE 2 ↓', 'CLEAN CORRIDOR — NORTH ↑', 1.9, 0.22);
-    hangingSign(b, L, 13.5, H, -33.0, 'z', 'SURGICAL SUITE ↓', 'RECORDS · PI OFFICE ↑', 1.9, 0.22);
+    hangingSign(b, L, 13.5, H, -13.0, 'z', '기록실 · 유닛 베이 · 노드 2 ↓', '청정 복도 — 북측 ↑', 1.9, 0.22);
+    hangingSign(b, L, 13.5, H, -33.0, 'z', '수술 구역 ↓', '기록실 · 책임연구원실 ↑', 1.9, 0.22);
     // ── the Node 2 window: stainless frame on the corridor face, a plate and a dead badge reader
     const fx0 = 12.2, w0 = -23.4, w1 = -20.6, y0 = 5.5, y1 = 7.3, f = 0.06;
     b.detail(() => {
@@ -626,7 +626,7 @@ const corr_e: RoomDress = {
       b.bx('stainless', fx0, y0, w0 - f, fx0 + 0.03, y1, w0).bx('stainless', fx0, y0, w1, fx0 + 0.03, y1, w1 + f);
       b.bx('stainless', fx0, y0 - f - 0.012, w0 - f, fx0 + 0.09, y0 - f, w1 + f); // sill
     });
-    clinicalSign(b, L, 'NODE 2 — BIO-SYS · AUTHORISED IT STAFF', 12.205, Y + 0.42, -22.0, 1.6, 0.16, '+x');
+    clinicalSign(b, L, '노드 2 — 바이오시스 · 인가된 IT 직원', 12.205, Y + 0.42, -22.0, 1.6, 0.16, '+x');
     onWall(b, '+x', 12.2, Y + 1.3, -24.0, () => {
       b.bx('plastic_dark', -0.06, -0.1, 0, 0.06, 0.1, 0.035);
       b.detail(() => b.bx('stainless', -0.045, -0.02, 0.035, 0.045, 0.07, 0.037));
@@ -638,12 +638,12 @@ const corr_e: RoomDress = {
       b.bx(hatch, 13.6, Y, -19.85, 14.78, Y + 0.002, -18.15);
       for (let z = -21.0; z > -33.4; z -= 0.9) b.bx(lane, 14.18, Y, z - 0.5, 14.3, Y + 0.002, z);
     });
-    clinicalSign(b, L, 'UNIT BAY — SERVICE UNITS ONLY', 14.795, Y + 2.62, -19.0, 1.7, 0.2, '-x');
-    L.screen(null, 'terminal_idle', 0.36, 0.22, 14.795, Y + 1.5, -20.6, '-x', { text: 'UNIT BAY — 3 DOCKED · STANDBY' });
+    clinicalSign(b, L, '유닛 베이 — 정비 유닛 전용', 14.795, Y + 2.62, -19.0, 1.7, 0.2, '-x');
+    L.screen(null, 'terminal_idle', 0.36, 0.22, 14.795, Y + 1.5, -20.6, '-x', { text: '유닛 베이 — 3대 도킹 · 대기' });
     // fire point on the east wall; a sharps / waste pair by the records door
     onWall(b, '-x', 14.8, Y, -26.5, () => firePoint(b, L));
-    clinicalSign(b, L, 'RECORDS & CONSENT', 12.205, Y + 2.62, -29.0, 1.2, 0.18, '+x');
-    clinicalSign(b, L, 'DR. A. SUNDE — PI', 12.205, Y + 2.62, -16.0, 1.1, 0.18, '+x');
+    clinicalSign(b, L, '기록 및 동의', 12.205, Y + 2.62, -29.0, 1.2, 0.18, '+x');
+    clinicalSign(b, L, 'A. 순데 박사 — 책임 연구원', 12.205, Y + 2.62, -16.0, 1.1, 0.18, '+x');
     sticker(b, 12.205, Y + 1.55, -27.65, '+x', { rot: 0.03 });
     sticker(b, 12.205, Y + 1.5, -14.75, '+x', { rot: -0.04 });
     onWall(b, '+x', 12.2, Y, -32.4, () => gloveStation(b, L));
@@ -679,8 +679,8 @@ const vivarium: RoomDress = {
     dressVent(b, L, 'vent_viv_grille', -23.4, -22.5, -22.4, -21.5, H);
 
     // pen row A (6, against the west wall; fronts 4 cm proud of the stand-in) and row B (5, glazed both faces)
-    const cardsA = ['P-01  CLASP · COMPLIANT', 'P-02  CLASP · COMPLIANT', 'P-03  CLASP · COMPLIANT', 'P-04  CLASP · COMPLIANT', 'P-05  CLASP · COMPLIANT', 'P-06  CLASP · COMPLIANT'];
-    const cardsB = ['P-07  COMPLIANT', 'P-08  COMPLIANT', 'P-09  COMPLIANT', 'P-10  COMPLIANT', 'P-11  EUTHANISED'];
+    const cardsA = ['P-01  클라스프 · 순응', 'P-02  클라스프 · 순응', 'P-03  클라스프 · 순응', 'P-04  클라스프 · 순응', 'P-05  클라스프 · 순응', 'P-06  클라스프 · 순응'];
+    const cardsB = ['P-07  순응', 'P-08  순응', 'P-09  순응', 'P-10  순응', 'P-11  안락사'];
     const pb = L.builder('vivarium_pens');
     pb.at(-25.56, Y, -23.6, PI / 2, () => penRow(pb, L, { n: 6, w: 2.0, d: 2.4, cards: cardsA }));
     pb.at(-20.2, Y, -22.6, PI / 2, () => penRow(pb, L, { n: 5, w: 2.0, d: 2.44, back: 'glass', cards: cardsB }));
@@ -728,21 +728,21 @@ const vivarium: RoomDress = {
     b.at(-16.2, Y, -29.0, PI, () => {
       b.bx('stainless', -0.6, 0, -0.4, 0.6, 0.08, 0.4);
       b.bx('plastic_dark', -0.1, 0.08, 0.35, 0.1, 1.0, 0.4);
-      b.detail(() => { b.bx('screen_off', -0.12, 1.0, 0.33, 0.12, 1.14, 0.41); b.sign('SCALE 0.00 kg', 'clinical', 0, 1.18, 0.41, 0.2, 0.04, '+z'); });
+      b.detail(() => { b.bx('screen_off', -0.12, 1.0, 0.33, 0.12, 1.14, 0.41); b.sign('저울 0.00 kg', 'clinical', 0, 1.18, 0.41, 0.2, 0.04, '+z'); });
       b.collide(-0.6, 0, -0.4, 0.6, 0.08, 0.4, 'metal', true);
       b.collide(-0.1, 0, 0.35, 0.1, 1.14, 0.41, 'metal', true);
     });
     b.at(-16.0, Y, -15.2, 0, () => {
       b.cyl(paintD(L, 'feedbin', 0x4d6a8a, 0.5), 0, 0, 0, 0.32, 0.8, 'y', 18);
-      b.detail(() => { b.cyl(paintD(L, 'feedbin', 0x4d6a8a, 0.5), 0, 0.8, 0, 0.34, 0.04, 'y', 18); b.sign('FEED — PELLETED', 'clinical', 0, 0.5, 0.321, 0.36, 0.08, '+z'); });
+      b.detail(() => { b.cyl(paintD(L, 'feedbin', 0x4d6a8a, 0.5), 0, 0.8, 0, 0.34, 0.04, 'y', 18); b.sign('사료 — 펠릿', 'clinical', 0, 0.5, 0.321, 0.36, 0.08, '+z'); });
       b.collide(-0.32, 0, -0.32, 0.32, 0.84, 0.32, 'rubber');
     });
     // signage
-    clinicalSign(b, L, 'PEN ROW A', -24.37, Y + 2.35, -17.2, 0.6, 0.12, '+z', { plate: false });
+    clinicalSign(b, L, '펜 열 A', -24.37, Y + 2.35, -17.2, 0.6, 0.12, '+z', { plate: false });
     clinicalSign(b, L, '[biohazard] ANIMAL HOLDING — PPE REQUIRED', -15.205, Y + 2.7, -25.6, 1.8, 0.2, '-x');
-    clinicalSign(b, L, 'PHASE 2 PAIRING — 14.08', -26.795, Y + 2.55, -15.6, 1.1, 0.16, '+x');
+    clinicalSign(b, L, '2단계 페어링 — 14.08', -26.795, Y + 2.55, -15.6, 1.1, 0.16, '+x');
     // Berg: on his side in the aisle at the south end, an arm towards the pens
-    body(L, b, 'lying_side', 'Berg', { x: -23.5, y: Y, z: -27.5, ry: 0.35, collider: 'walk' });
+    body(L, b, 'lying_side', '베리', { x: -23.5, y: Y, z: -27.5, ry: 0.35, collider: 'walk' });
     // floor strips both sides of the aisle (§8.11) and along the east aisle
     stripRun(b, L, 'z', -24.24, -29.7, -17.4);
     stripRun(b, L, 'z', -21.6, -27.9, -17.4);
@@ -840,7 +840,7 @@ const cold: RoomDress = {
       _e.setFromQuaternion(_q, 'YXZ');
       claspInst(b, _p.x, _p.y, _p.z, _e.x, _e.y, _e.z, 'amber');
     });
-    clinicalSign(b, L, 'CLASP — CRADLE RACK 2 · KEEP POWERED', -5.5, Y + 2.05, -24.205, 2.2, 0.16, '-z');
+    clinicalSign(b, L, '클라스프 — 크레이들 랙 2 · 전원 유지', -5.5, Y + 2.05, -24.205, 2.2, 0.16, '-z');
     b.detail(() => { b.bx('frost', -8.03, Y + 1.83, -24.34, -2.97, Y + 1.86, -24.2); });
     // sample racks: west wall south of the door, south wall, east wall either side of the panel
     const rack = (x: number, z: number, face: '+x' | '-x' | '+z' | '-z', w = 1.2) => onWall(b, face, x, Y, z, () => sampleRack(b, L, R, { w, frost: true, fill: 0.75 }));
@@ -855,7 +855,7 @@ const cold: RoomDress = {
       for (let i = 0; i < 9; i++) { const c = i % 3, r = Math.floor(i / 3); b.rbox(box, -0.55 + c * 0.55, 0.12 + 0.155 + r * 0.31, 0, 0.5, 0.3, 0.6, 0, R.range(-0.05, 0.05), 0); }
       b.detail(() => {
         b.bx('frost', -0.85, 1.05, -0.32, 0.85, 1.07, 0.32);
-        for (let r = 0; r < 3; r++) b.sign('CLASP GEL — BATCH 41 · −20 °C', 'clinical', -0.55 + r * 0.55, 0.32 + r * 0.31, 0.305, 0.42, 0.07, '+z');
+        for (let r = 0; r < 3; r++) b.sign('클라스프 젤 — 배치 41 · −20 °C', 'clinical', -0.55 + r * 0.55, 0.32 + r * 0.31, 0.305, 0.42, 0.07, '+z');
       });
     });
     // a −80 freezer in the cold store's east end (back-up for the gel), frosted
@@ -864,7 +864,7 @@ const cold: RoomDress = {
     onWall(b, '+x', -11.8, Y + 1.15, -27.2, () => {
       b.bx(paintD(L, 'aid_green', 0x1f8a4c, 0.45), -0.25, 0.08, 0, 0.25, 0.48, 0.14);
       b.bx('stainless', -0.27, -0.02, 0, 0.27, 0.0, 0.32);
-      b.detail(() => { b.sign('FIRST AID', 'clinical', 0, 0.36, 0.141, 0.3, 0.07, '+z'); b.bx('plastic_white', -0.04, 0.22, 0.14, 0.04, 0.3, 0.145).bx('plastic_white', -0.012, 0.19, 0.14, 0.012, 0.33, 0.145); });
+      b.detail(() => { b.sign('응급처치', 'clinical', 0, 0.36, 0.141, 0.3, 0.07, '+z'); b.bx('plastic_white', -0.04, 0.22, 0.14, 0.04, 0.3, 0.145).bx('plastic_white', -0.012, 0.19, 0.14, 0.012, 0.33, 0.145); });
       b.collide(-0.27, -0.02, 0, 0.27, 0.48, 0.32, 'metal', true);
     });
     // frost on the floor in drifts along the walls, ice on the threshold
@@ -872,7 +872,7 @@ const cold: RoomDress = {
     frostPatch(b, L, -11.35, -29.0, 0.9, 2.2, 0, 3, 0.009);
     // Holm: on his back, head towards the door, right arm stretched to the threshold; a dropped cryobox in the
     // threshold breaks the door's low safety beam (it sits under the door check's 6 cm floor band; D1b decision)
-    const holm = body(L, b, 'lying_back', 'Holm', { x: -10.25, y: Y, z: -29.0, ry: PI / 2, armOut: [-11.39, Y + 0.0, -29.15], collider: 'walk', seed: 36 });
+    const holm = body(L, b, 'lying_back', '홀름', { x: -10.25, y: Y, z: -29.0, ry: PI / 2, armOut: [-11.39, Y + 0.0, -29.15], collider: 'walk', seed: 36 });
     if (L.ctx.debug.verbose) console.info('[d1b] Holm box', holm.box.min.toArray(), holm.box.max.toArray());
     b.detail(() => {
       b.rbox('frost', -11.72, Y + 0.026, -28.86, 0.133, 0.052, 0.133, 0, 0.5, 0);
@@ -893,7 +893,7 @@ const cold: RoomDress = {
     stripRun(b, L, 'z', -11.72, -28.1, -24.3);
     stripRun(b, L, 'x', -24.28, -11.7, -0.3);
     stripRun(b, L, 'x', -33.72, -11.7, -0.3);
-    clinicalSign(b, L, 'CONTAINMENT INTERLOCK — ACKNOWLEDGE AT PANEL', -0.205, Y + 2.15, -29.0, 1.6, 0.14, '-x');
+    clinicalSign(b, L, '격리 인터록 — 패널에서 확인', -0.205, Y + 2.15, -29.0, 1.6, 0.14, '-x');
   },
 };
 
@@ -971,13 +971,13 @@ const records: RoomDress = {
       b.box(binderBlue(L), 4.0, Y + 0.75 + 0.13, -27.2, 0.33, 0.26, 0.42);
       b.rbox('plastic_white', 4.05, Y + 0.765, -26.8, 0.34, 0.03, 0.43, 0, 0.25, 0);
       b.rod('plastic_dark', 3.3, Y + 0.757, -26.9, 3.42, Y + 0.757, -26.82, 0.004, 5);
-      b.sign('CONSENT — POST 4 — 23', 'clinical', 4.0, Y + 0.88, -26.99, 0.28, 0.07, '+z');
+      b.sign('동의서 — 초소 4 — 23', 'clinical', 4.0, Y + 0.88, -26.99, 0.28, 0.07, '+z');
     });
     // Ness: at the reading table, folded over it (desk front edge 0.4 m ahead of her origin; wave-1 note)
-    body(L, b, 'sitting_desk', 'Ness', { x: 3.0, y: Y, z: -28.0, ry: 0, deskY: 0.75, chair: true, collider: 'none' });
+    body(L, b, 'sitting_desk', '네스', { x: 3.0, y: Y, z: -28.0, ry: 0, deskY: 0.75, chair: true, collider: 'none' });
     b.collide(2.62, Y, -28.45, 3.38, Y + 1.15, -27.62, 'flesh', true);
     // Moe: on his back by the south wall
-    body(L, b, 'lying_back', 'Moe', { x: 8.5, y: Y, z: -32.8, ry: PI / 2 + 0.2, collider: 'walk', seed: 31 });
+    body(L, b, 'lying_back', '모에', { x: 8.5, y: Y, z: -32.8, ry: PI / 2 + 0.2, collider: 'walk', seed: 31 });
     // the briefing corner: four stacking chairs in a row facing a whiteboard easel (where the detachment signed)
     for (let i = 0; i < 4; i++) b.at(7.2 + i * 0.6, Y, -27.4 + R.range(-0.05, 0.05), R.range(-0.12, 0.12), () => labChairD(b, L));
     b.at(8.1, Y, -25.0, PI, () => whiteboardEasel(b, L));
@@ -1001,7 +1001,7 @@ const records: RoomDress = {
   },
 };
 
-/** Whiteboard on an easel (floor prop, face +z): "PHASE 2 — VOLUNTEER BRIEFING". */
+/** Whiteboard on an easel (floor prop, face +z): "2단계 — 지원자 브리핑". */
 function whiteboardEasel(b: Builder, L: LevelBuild) {
   const board = canvasMatD(L, 'briefing_board', 512, 320, (g, W, H) => {
     g.fillStyle = '#f7f8f8'; g.fillRect(0, 0, W, H);
@@ -1039,15 +1039,15 @@ const bay: RoomDress = {
       b.at(20.0, H, z, PI / 2, () => cableReel(b, L));
     }
     b.detail(() => {
-      b.sign('UNIT BAY', 'stencil', 15.205, Y + 2.3, -17.2, 1.2, 0.3, '+x');
-      for (const [z, n] of [[-17.3, 'DOCK 1'], [-19.0, 'DOCK 2'], [-20.7, 'DOCK 3']] as const) b.sign(n, 'stencil', 20.795, Y + 2.55, z, 0.6, 0.14, '-x');
+      b.sign('유닛 베이', 'stencil', 15.205, Y + 2.3, -17.2, 1.2, 0.3, '+x');
+      for (const [z, n] of [[-17.3, '도크 1'], [-19.0, '도크 2'], [-20.7, '도크 3']] as const) b.sign(n, 'stencil', 20.795, Y + 2.55, z, 0.6, 0.14, '-x');
       // tyre marks / scuffs from the units' feet along the lane to the door
       b.bx(floorPaint(L, 'bay_lane', 'painted_white', { color: 0xd8b21a, map: null, normalMap: null }), 15.25, Y, -19.06, 19.6, Y + 0.002, -18.94);
     });
     // a spare-parts cabinet and a tool chest along the north wall
     b.at(17.2, Y, -16.45, PI, () => {
       b.bx(paintD(L, 'cab_grey', 0x50565c, 0.5, 0.2), -0.6, 0, -0.25, 0.6, 1.9, 0.25);
-      b.detail(() => { b.bx('stainless', -0.02, 0.8, 0.25, 0.02, 1.1, 0.27); b.sign('SPARES — UNIT S-SERIES', 'clinical', 0, 1.6, 0.252, 0.6, 0.08, '+z'); });
+      b.detail(() => { b.bx('stainless', -0.02, 0.8, 0.25, 0.02, 1.1, 0.27); b.sign('예비품 — 유닛 S시리즈', 'clinical', 0, 1.6, 0.252, 0.6, 0.08, '+z'); });
       b.collide(-0.6, 0, -0.25, 0.6, 1.9, 0.25, 'metal', true);
     });
     stripRun(b, L, 'x', -16.28, 15.3, 20.7);

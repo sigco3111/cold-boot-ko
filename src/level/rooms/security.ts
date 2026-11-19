@@ -13,7 +13,7 @@ export function buildSecurity(L: LevelBuild) {
   const b = L.builder('sec');
   const R = rng(404);
   const H = 3.2;
-  L.room('sec', 'SECURITY 3', -11, -3, -21, -13, H);
+  L.room('sec', '보안실 3', -11, -3, -21, -13, H);
 
   floorSlab(b, 'floor_rubber', -11, -21, -3, -13, [[-9.4, -19.6, -8.8, -14.4]], 'rubber');
   trench(b, -9.4, -19.6, -8.8, -14.4, 0.4, R);
@@ -136,8 +136,8 @@ export function buildSecurity(L: LevelBuild) {
   }
   b.at(-10.15, 0, -17, PI / 2, () => console(b, 3.6, R));
   L.screen('sec_console', 'terminal_idle', 1.0, 0.42, -10.418, 1.17, -17, '+x');
-  L.interact('term_sec_unlock', 'terminal', 'Use security console', -9.95, 1.05, -17);
-  b.sign('SECURITY 3 — WATCH DESK', 'label', -10.418, 1.43, -15.9, 0.8, 0.07, '+x');
+  L.interact('term_sec_unlock', 'terminal', '보안 콘솔 사용', -9.95, 1.05, -17);
+  b.sign('보안실 3 — 당직 데스크', 'label', -10.418, 1.43, -15.9, 0.8, 0.07, '+x');
   // operator chair, pushed back
   b.at(-8.4, 0, -16.4, PI / 2 + 0.9, () => chair(b));
   b.collide(-8.65, 0, -16.65, -8.15, 0.9, -16.15, 'rubber');
@@ -150,7 +150,7 @@ export function buildSecurity(L: LevelBuild) {
   // ── duty officer's desk (north wall), chair knocked over, tablet ──
   b.at(-6.6, 0, -13.5, PI, () => desk(b, 1.7, 0.85));
   b.at(-6.9, 0.765, -13.55, 0.3, () => tablet(b, 'emissive_cyan'));
-  L.interact('log_sec', 'log', 'Read tablet', -6.9, 0.8, -13.55);
+  L.interact('log_sec', 'log', '태블릿 읽기', -6.9, 0.8, -13.55);
   b.at(-6.1, 0.765, -13.4, 0, () => mug(b));
   b.push(-6.3, 0.27, -14.75, 2.3, -PI / 2, 0); chair(b); b.pop();
   b.at(-6.9, 0, -14.6, 0, () => papers(b, 6, 0.6, R));
@@ -183,14 +183,14 @@ export function buildSecurity(L: LevelBuild) {
   L.pickup('p_pistol', 'pistol', -8.0, 1.11, -20.7, 12, PI / 2);
   b.at(-7.0, 0, -20.72, 0, () => { locker(b, 0, 'wall_panel_dark', 0.9, 2.0, 0.5); b.detail(() => b.box('emissive_red', 0, 1.97, 0.26, 0.5, 0.012, 0.012)); });
   b.at(-9.0, 0, -20.72, 0, () => { locker(b, 0.35, 'wall_panel_dark', 0.9, 2.0, 0.5); });
-  b.sign('ARMOURY — SIGN OUT ALL SIDEARMS', 'danger', -8.0, 2.35, -20.964, 1.3, 0.16, '+z', 0, true);
+  b.sign('무기고 — 모든 권총 반출 기록', 'danger', -8.0, 2.35, -20.964, 1.3, 0.16, '+z', 0, true);
   b.decal('handprint', 0, -7.5, 1.3, -20.44, 0.24, 0.24, '+z', -0.3);
   b.decal('blood_smear', 2, -7.6, 0.002, -19.9, 0.5, 1.0, '+y', 0.2);
   b.detail(() => { for (let i = 0; i < 9; i++) b.rbox('brass', -8.3 + R.range(-0.6, 0.9), 0.006, -19.8 + R.range(-0.5, 0.5), 0.02, 0.01, 0.01, 0, R.range(0, 6), 0); });
 
   // ── east side: bench, crate, extinguisher ──
   b.at(-3.65, 0, -19.6, -PI / 2, () => bench(b, 1.5));
-  b.at(-4.0, 0, -20.5, 0.2, () => crate(b, 0.6, 0.5, 0.5, 'painted_dark', 'RIOT KIT'));
+  b.at(-4.0, 0, -20.5, 0.2, () => crate(b, 0.6, 0.5, 0.5, 'painted_dark', '진압 장비'));
   b.at(-3.2, 0.55, -18.4, -PI / 2, () => fireExtinguisher(b));
 
   // ── lights: the monitor wall is the key light; one tired troffer by the lockers ──
@@ -201,9 +201,9 @@ export function buildSecurity(L: LevelBuild) {
   troffer(b, L, { group: 'sec', x: -9.0, y: H, z: -14.6, axis: 'x', dead: true });
 
   // ── signs ──
-  b.sign('SECURITY 3', 'stencil', -3.236, 2.3, -19.6, 1.1, 0.24, '-x');
-  b.sign('ALL FEEDS RECORDED — CHOIR OVERSIGHT ACTIVE', 'label', -10.964, 3.0, -14.6, 1.3, 0.09, '+x');
-  b.sign('SHIFT ROSTER', 'label', -4.6, 1.9, -20.964, 0.5, 0.1, '+z', 0, true);
+  b.sign('보안실 3', 'stencil', -3.236, 2.3, -19.6, 1.1, 0.24, '-x');
+  b.sign('모든 피드 녹화 중 — CHOIR 감시 가동', 'label', -10.964, 3.0, -14.6, 1.3, 0.09, '+x');
+  b.sign('교대 근무표', 'label', -4.6, 1.9, -20.964, 0.5, 0.1, '+z', 0, true);
   b.detail(() => b.box('plastic_white', -4.6, 1.5, -20.955, 0.8, 0.6, 0.01));
   b.decal('grime', 3, -5, 0.002, -18, 2.6, 2.6, '+y', 0.4);
   L.ctx.fx.emitter('dust', L.vec(-8.5, 1.6, -17), L.vec(1, 0, 0), 4);

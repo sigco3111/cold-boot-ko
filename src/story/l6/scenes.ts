@@ -2,7 +2,7 @@
  * Level 6 — the ending (stage 3d §4.9, §8.9; D15, D16, D17; ST-b): the first-person cutscene at the dock console, E1
  * (the manifest) and E2 (the empty cradle on the live feed of `feed6`), then CHOIR's last line, black, `l6_end`.
  *
- * Started by the player only: `console6` ("Use console", feet in `t6_console`) once the tether is cut, the loader is
+ * Started by the player only: `console6` ("콘솔 사용", feet in `t6_console`) once the tether is cut, the loader is
  * dead, the quiet reached and nothing is awake anywhere (the console is enabled only then — boss.ts). Every time is a
  * cue on the scene clock computed from the RECORDED line durations (`lineDuration`); each line starts on its cue's
  * frame (`now`, lines decoded first — `linesReady`, preloaded at `l6_quiet`); E1 ≤ 25 s (cap 24.0 s: the gaps after K1
@@ -26,9 +26,9 @@ export const E1_CAP6 = 24.0;
 export const BEAT_MAX6 = 25.0;
 /** The E1 manifest scroll (§6.4; S10a). B-14's row carries the reveal's time. */
 const BATCHES6: [string, string, number][] = [
-  ['B-01', '14 APR', 120], ['B-02', '12 MAY', 120], ['B-03', '08 JUN', 240], ['B-04', '05 JUL', 240], ['B-05', '01 AUG', 240],
-  ['B-06', '28 AUG', 240], ['B-07', '24 SEP', 240], ['B-08', '21 OCT', 240], ['B-09', '17 NOV', 240], ['B-10', '14 DEC', 240],
-  ['B-11', '10 JAN', 240], ['B-12', '06 FEB', 240], ['B-13', '02 MAR', 240],
+  ['B-01', '4월 14일', 120], ['B-02', '5월 12일', 120], ['B-03', '6월 8일', 240], ['B-04', '7월 5일', 240], ['B-05', '8월 1일', 240],
+  ['B-06', '8월 28일', 240], ['B-07', '9월 24일', 240], ['B-08', '10월 21일', 240], ['B-09', '11월 17일', 240], ['B-10', '12월 14일', 240],
+  ['B-11', '1월 10일', 240], ['B-12', '2월 6일', 240], ['B-13', '3월 2일', 240],
 ];
 const V = (x: number, y: number, z: number) => new THREE.Vector3(x, y, z);
 
@@ -134,16 +134,16 @@ export abstract class Scenes6 extends Boss6 {
 
   /** The console's E1 pages (manifest kind, W5 directives): the header, then the scroll at 0.35 s a line. */
   private manifestText(stage: 'head' | 'scroll' | 'totals' | 'consignee'): string {
-    const head = ['@title HEAD-END REPEATER — DOCK', '@rows 13', 'TRUNK: LOS · BUOY: LOS', 'LAST OUTBOUND (BUFFERED): 1 ITEM'];
+    const head = ['@title HEAD-END REPEATER — DOCK', '@rows 13', '트렁크: 신호 손실 · 부이: 신호 손실', '마지막 발송 (버퍼됨): 1건'];
     if (stage === 'head') return head.join('\n');
     const reveal = (this.prog.flags as unknown as Record<string, unknown>).revealT;
     const hm = typeof reveal === 'number' ? hhmm6(this.hourAt(reveal)) : '--:--';
     const body = [
-      'MANIFEST 0031-H — DISPATCH VIA MOON POOL — SUBSEA SHUTTLE',
+      '적하목록 0031-H — 문풀 경유 발송 — 해저 셔틀',
       ...BATCHES6.map(([b, day, n], i) => (i === 0 ? `${b}  ${day}  CLASP ASSY (CERVICAL) × ${n}` : `${b}  ${day}  × ${n}`)),
       `B-14  WED ${hm}  × 240  — IN WELL`,
       'TOTAL: CLASP ASSY (CERVICAL) — DISPATCHED 2,880 · IN TRANSFER 240',
-      'CONSIGNEE: —',
+      '수령인: —',
     ];
     const dir = ['@rate 0.35'];
     if (stage === 'totals' || stage === 'consignee') dir.push('@hl DISPATCHED 2,880');
@@ -162,8 +162,8 @@ export abstract class Scenes6 extends Boss6 {
     const launch = typeof lt === 'number' ? hhmm6(this.hourAt(lt)) : '--:--';
     // (IA-6, the E2 OSD "overdraw": on one line the running seconds landed on the feed's red-lit FLOODED sign at the
     //  top right and read as garbled digits; the clock now runs on its own line under the camera title, on the dark wall)
-    const lines = ['POST 4 — SUB BAY — CAM 2', this.clockHms()];
-    if (full) lines.push(`SDV TERN — LAUNCHED ${launch}`, 'LAUNCH AUTHORITY: AAS, L. (LT.) — PALM — LIVE');
+    const lines = ['초소 4 — 서브베이 — CAM 2', this.clockHms()];
+    if (full) lines.push(`SDV TERN — LAUNCHED ${launch}`, '발사 권한: AAS, L. (중위) — 손바닥 — 활성');
     return lines.join('\n');
   }
   private page(id: string, o: { text?: string; texture?: THREE.Texture } = {}): void {

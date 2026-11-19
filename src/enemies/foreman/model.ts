@@ -32,7 +32,7 @@ const _g = new THREE.Vector3();
 
 export function buildForemanTemplate(ctx: GameContext): ForemanTemplate {
   const M = ctx.materials;
-  const sign = M.sign('LINE 2 — SUPV', 'stencil', 4);
+  const sign = M.sign('2번 라인 — 관리자', 'stencil', 4);
   const mats: Record<string, THREE.Material> = {
     glow: glowMaterial(), shell: huskShell(ctx), frame: M.get('robot_frame'), joint: M.get('robot_joint'), rubber: M.get('rubber'),
     steel: M.get('steel_raw'), yellow: M.get('painted_yellow'), dark: M.get('painted_dark'), hazard: M.get('hazard_stripes'),

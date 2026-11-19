@@ -13,7 +13,7 @@ export function buildGen(L: LevelBuild) {
   const b = L.builder('gen');
   const R = rng(808);
   const H = 4.5;
-  L.room('gen', 'POWER DISTRIBUTION 3', 12, 22, -44, -32, H, 1.7);
+  L.room('gen', '배전실 3', 12, 22, -44, -32, H, 1.7);
 
   const holes: [number, number, number, number][] = [[13.4, -35.4, 18.0, -34.8], [13.4, -41.2, 18.0, -40.6]];
   floorSlab(b, 'floor_plate', 12, -44, 22, -32, holes, 'metal');
@@ -43,7 +43,7 @@ export function buildGen(L: LevelBuild) {
       b.box('copper', 19.55, 3.6, zz - s * (Math.abs(z + 38) - 1.2) / 2, 0.07, 0.02, Math.abs(z + 38) - 1.2);
     }
     b.detail(() => { for (let zz = z - s * 1.2; Math.abs(zz + 38) > 1.3; zz -= s * 1.3) { b.rod('plastic_white', 19.55, 3.62, zz, 19.55, H - 0.3, zz, 0.04, 8); b.box('trim_steel', 19.55, 3.6, zz, 0.2, 0.03, 0.4); } });
-    b.detail(() => { b.sign('DANGER  11 kV', 'danger', 16.2, 2.75, z - s * 0.02, 1.2, 0.16, s > 0 ? '-z' : '+z', 0, true); });
+    b.detail(() => { b.sign('위험  11 kV', 'danger', 16.2, 2.75, z - s * 0.02, 1.2, 0.16, s > 0 ? '-z' : '+z', 0, true); });
   }
   // one cabinet stands open, arcing
   b.at(17.4 + 0.41, 0, -43.24, 0.9, () => { b.box('wall_panel_dark', 0.4, 1.1, 0, 0.78, 2.0, 0.03); });
@@ -125,9 +125,9 @@ export function buildGen(L: LevelBuild) {
       b.box('hazard_stripes', 0, 1.275, 0.032, 0.72, 1.05, 0.004);
       b.box('painted_dark', 0, 1.275, 0.04, 0.3, 0.9, 0.02);
       b.box('painted_dark', 0, 1.275, 0.06, 0.06, 0.74, 0.03);
-      b.sign('MAIN BREAKER', 'danger', 0, 1.95, 0.002, 0.8, 0.14, '+z', 0, true);
-      b.sign('ON', 'label', 0.27, 0.9, 0.034, 0.14, 0.08, '+z');
-      b.sign('OFF', 'label', 0.27, 1.65, 0.034, 0.14, 0.08, '+z');
+      b.sign('주 차단기', 'danger', 0, 1.95, 0.002, 0.8, 0.14, '+z', 0, true);
+      b.sign('켜짐', 'label', 0.27, 0.9, 0.034, 0.14, 0.08, '+z');
+      b.sign('꺼짐', 'label', 0.27, 1.65, 0.034, 0.14, 0.08, '+z');
       for (const s of [-1, 1]) { b.cyl('painted_dark', s * 0.5, 1.5, 0.02, 0.07, 0.04, 'z', 12); b.cyl('plastic_white', s * 0.5, 1.5, 0.042, 0.058, 0.004, 'z', 12); }
       for (let i = 0; i < 4; i++) b.rod('rubber', -0.45 + i * 0.3, 2.15, -0.2, -0.45 + i * 0.3, H - 0.3, -0.2, 0.03, 6);
       b.box('trim_steel', 0, 0.45, 0.01, 1.0, 0.4, 0.02);
@@ -153,10 +153,10 @@ export function buildGen(L: LevelBuild) {
   lever.add(lampRed, lampGreen);
   L.root.add(lever);
   L.objects.set('gen_lever', lever);
-  const it = L.interact('gen_lever', 'lever', 'Main breaker', LX - 0.25, 1.35, LZ, true, 2.4);
+  const it = L.interact('gen_lever', 'lever', '주 차단기', LX - 0.25, 1.35, LZ, true, 2.4);
 
   // Hale's lock-out: a hasp through the lever with her padlock on it, and the tag. Named `gen_lockout`.
-  const tagMat = scrawlMaterial(['D. HALE', 'DO NOT', 'CLOSE', 'NOT FOR', 'ANYONE'], {
+  const tagMat = scrawlMaterial(['D. 헤일', '닫지', '마세요', '아무도', '못 닫아요'], {
     style: 'pen', aspect: 0.56, px: 256, seed: 9, color: '#161a22', top: 0.3,
     bg: (g, W, Hh) => {
       g.fillStyle = '#d9d4c6'; g.fillRect(0, 0, W, Hh);
@@ -275,7 +275,7 @@ export function buildGen(L: LevelBuild) {
   const gmat = gscr.material as THREE.MeshStandardMaterial;
   const gFull = gmat.emissiveIntensity;
   gmat.emissiveIntensity = 0;
-  const gIt = L.interact('log_gen', 'log', 'Read terminal', 12.4, 1.42, -35.0, false);
+  const gIt = L.interact('log_gen', 'log', '단말기 읽기', 12.4, 1.42, -35.0, false);
   const gGlow = L.point('gen', 12.8, 1.45, -35.0, 0x60ffb0, 1.5, 3, { enabled: false });
   let gBoot = -1;
   L.updaters.push((dt) => {
@@ -310,9 +310,9 @@ export function buildGen(L: LevelBuild) {
     b.at(x, 0, z, x < 13 ? PI / 2 : -PI / 2, () => { bm = (beacon(b, L, 'gen_emergency', 0, 3.2, 0.1, 1, 0xff2a12, 60, 11, 'emissive_red', false, 'alarm', bm) as any).glowMat; });
   }
 
-  b.sign('POWER DISTRIBUTION 3', 'stencil', 21.964, 3.0, -38, 3.4, 0.4, '-x');
-  b.sign('ARC FLASH HAZARD — PPE CAT 4 BEYOND THIS LINE', 'warning', 12.236, 1.9, -40.2, 1.3, 0.16, '+x', 0, true);
-  b.sign('ROTATING MACHINERY', 'danger', 18.24, 1.0, -36.28, 1.2, 0.16, '+z', 0, true);
+  b.sign('배전실 3', 'stencil', 21.964, 3.0, -38, 3.4, 0.4, '-x');
+  b.sign('아크 플래시 위험 — 이 선 너머 PPE CAT 4 착용', 'warning', 12.236, 1.9, -40.2, 1.3, 0.16, '+x', 0, true);
+  b.sign('회전 기계', 'danger', 18.24, 1.0, -36.28, 1.2, 0.16, '+z', 0, true);
   b.decal('oil_stain', 3, 19, 0.003, -35.6, 1.8, 1.6, '+y', 0.5);
   b.decal('grime', 0, 15, 0.003, -38, 3, 3, '+y', 1.2);
   b.decal('scorch', 1, 12.236, 1.3, -36.4, 0.7, 0.7, '+x'); // the arc-flash that put you in medical

@@ -31,7 +31,7 @@ const K = HUMAN_DIM;
 const D = Math.PI / 180;
 
 /** The 19 linked sailors of the Post 4 detachment (materials/screens4.ts `CREW`, linked rows): name-tape surnames. */
-export const SOLDIER_NAMES = ['BREKKE', 'SOLBERG', 'TVEIT', 'NILSEN', 'LUND', 'VIK', 'HOLTE', 'MYHRE', 'BAKKE', 'SÆTHER', 'FJELD', 'NYGÅRD', 'RØNNING', 'STRØM', 'AUNE', 'EIDE', 'SKOG', 'VOLD', 'GRAN'] as const;
+export const SOLDIER_NAMES = ['브레케', '솔베르그', '트베이트', '닐센', '룬드', '비크', '홀테', '미레', '바케', '세테르', '피엘드', '니고르', '뢰닝', '스트룀', '아우네', '에이데', '스코그', '볼드', '그란'] as const;
 
 /** Body measures the runtime needs (model space). */
 export const SOLDIER_DIM = {

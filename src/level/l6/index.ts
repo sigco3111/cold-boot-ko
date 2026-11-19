@@ -1,5 +1,5 @@
 /**
- * COLD BOOT — level 6 "THE TRUNK" (stage 3d, docs/plans/stage-3d.md §2–§3, §5.1–§5.4, §8.5, §8.11; task W4a greybox).
+ * COLD BOOT — level 6 "간선" (stage 3d, docs/plans/stage-3d.md §2–§3, §5.1–§5.4, §8.5, §8.11; task W4a greybox).
  *
  * Final coordinates, no dressing. Files:
  *   grey.ts    rooms (§2.1), one shell per room (structure, the trench + the under-wall crossing, the shaft's landings,
@@ -85,14 +85,14 @@ export function doors6(): DoorSpec[] {
   const x = (id: string, xx: number, y: number, zz: number, front: string, back: string, rooms: [string, string], o: Partial<DoorSpec> = {}): DoorSpec =>
     ({ id, x: xx, y, z: zz, wall: 'x', kind: 'std', locked: true, labelFront: front, labelBack: back, rooms, ...nv, ...o });
   return [
-    z('d6_tube', 0, 0, 0, 'HEAD-END TUBE', 'TRUNK TUNNEL', ['lock6', 'tun6_a'], { ...pr, cyclingPrompt: 'Tube cycling' }),
-    x('d6_bay', 14.5, 0, -102, 'CABLE TUNNEL', 'JOINT BAY 2', ['tun6_b', 'bay6'], { auto: false }),
-    z('d6_he', 12, 0, -160, 'TRUNK HEAD-END', 'CABLE TUNNEL', ['tun6_b', 'he6'], { leafDetail: porthole }),
-    x('d6_vault', 2, 0, -168, 'CABLE VAULT — KEEP DRY', 'TRUNK HEAD-END', ['he6', 'vault6']),
-    z('d6_hold', -14, 0, -148, 'CABLE VAULT', 'CABLE STORE', ['vault6', 'hold6'], { auto: false }),
-    x('d6_shaft', -22, 0, -169.8, 'MOON POOL ACCESS', 'CABLE VAULT', ['vault6', 'shaft6'], { ...pr }),
-    x('d6_pool', -28, -12, -169.8, 'MOON POOL', 'STAIR SHAFT', ['shaft6', 'pool6'], { ...pr, leafDetail: porthole }),
-    z('d6_stores', -70, -12, -148, 'MOON POOL', 'DOCK STORES', ['pool6', 'stores6'], { auto: false }),
+    z('d6_tube', 0, 0, 0, '헤드엔드 튜브', '트렁크 터널', ['lock6', 'tun6_a'], { ...pr, cyclingPrompt: '튜브 순환 중' }),
+    x('d6_bay', 14.5, 0, -102, '케이블 터널', '조인트 베이 2', ['tun6_b', 'bay6'], { auto: false }),
+    z('d6_he', 12, 0, -160, '트렁크 헤드엔드', '케이블 터널', ['tun6_b', 'he6'], { leafDetail: porthole }),
+    x('d6_vault', 2, 0, -168, '케이블 볼트 — 건조 유지', '트렁크 헤드엔드', ['he6', 'vault6']),
+    z('d6_hold', -14, 0, -148, '케이블 볼트', '케이블 저장고', ['vault6', 'hold6'], { auto: false }),
+    x('d6_shaft', -22, 0, -169.8, '문풀 출입', '케이블 볼트', ['vault6', 'shaft6'], { ...pr }),
+    x('d6_pool', -28, -12, -169.8, '문풀', '계단실', ['shaft6', 'pool6'], { ...pr, leafDetail: porthole }),
+    z('d6_stores', -70, -12, -148, '문풀', '도크 저장고', ['pool6', 'stores6'], { auto: false }),
   ];
 }
 

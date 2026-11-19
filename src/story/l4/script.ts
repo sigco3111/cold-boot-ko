@@ -1,5 +1,5 @@
 /**
- * Level 4 — "BIOLOGICAL SYSTEMS" (stage 3b §4). The flow: the decon (A), the gowning room (B), the air shower (S), the
+ * Level 4 — "생물 시스템" (stage 3b §4). The flow: the decon (A), the gowning room (B), the air shower (S), the
  * clean loop (C) with its optional rooms, the containment hold and the cold-store override, lights-out and the ambush
  * (D), the theatre gallery, the navy level, the refusal → valve → 25 s equalising holdout (D2), the booth release (E),
  * the tube fight (F), the gate lock (G) and the end.
@@ -160,7 +160,7 @@ export class ScriptL4 extends Base4 {
     s('plant_gauge', 'terminal_idle', SCREEN4.gaugeIdle);
     s('gate_panel', 'terminal_idle', SCREEN4.gateIdle);
     for (const id of ['cold_ack', 'valve4', 'booth_release', 'log4_video']) this.usable(id, true);
-    this.w.setPrompt('log4_video', 'Play log');
+    this.w.setPrompt('log4_video', '기록 재생');
     this.w.lights('plant_beacon', { enabled: false });
     for (const m of ['theatre_arm', 'cold_jam']) this.w.machine(m, 'active');
     // §4.4: failHold = max(2.5, dur(l4_unit_theatre_2) + 0.5), set at level start
@@ -209,7 +209,7 @@ export class ScriptL4 extends Base4 {
     this.recordsRules();
     // view timers (§6.2 "in view": a clear ray from the eye within 50°)
     const deck2 = Math.abs(this.pos.y - 4.8) < 1.5;
-    const body = deck2 && this.bodies.some((b) => b.name !== 'Dahl' && Math.abs(b.p.y - 4.8) < 1 && this.sees(b.p.clone().setY(b.p.y + 0.35), 3.6));
+    const body = deck2 && this.bodies.some((b) => b.name !== '달' && Math.abs(b.p.y - 4.8) < 1 && this.sees(b.p.clone().setY(b.p.y + 0.35), 3.6));
     this.bodySeen = body ? this.bodySeen + step : 0;
     this.node2Seen = this.sees(this.mk('mk4_node2_win'), 6) ? this.node2Seen + step : 0;
     this.rosterSeen = this.sees(this.mk('mk4_roster'), 6) ? this.rosterSeen + step : 0;
@@ -795,7 +795,7 @@ export class ScriptL4 extends Base4 {
   private pauseLog(): void {
     this.vlog.state = 'paused';
     this.screen('pi_video', 'video_log', SCREEN4.video.paused(this.vlog.next + 1));
-    this.w.setPrompt('log4_video', 'Play log');
+    this.w.setPrompt('log4_video', '기록 재생');
   }
   /** Each line on its beat: the scene owns the gaps; the screen's pose runs for exactly the line; the last stops at `cut`. */
   private async runLog(tok: number): Promise<void> {
@@ -831,7 +831,7 @@ export class ScriptL4 extends Base4 {
     }
     this.vlog.state = 'done';
     this.vlog.next = 0;
-    this.w.setPrompt('log4_video', 'Play log');
+    this.w.setPrompt('log4_video', '기록 재생');
   }
   /** `l4_sunde_9` stops at the line's `cut` (fade 0.03 s) and the screen goes to static on the same frame. */
   private scheduleCut(tok: number): void {

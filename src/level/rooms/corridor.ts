@@ -11,7 +11,7 @@ export function buildCorridor(L: LevelBuild) {
   const b = L.builder('corr_a');
   const R = rng(202);
   const H = 3.0, Z0 = -13.6, Z1 = -0.2;
-  L.room('corr_a', 'SERVICE CORRIDOR A', -1.5, 1.5, -14, 0, H);
+  L.room('corr_a', '서비스 통로 A', -1.5, 1.5, -14, 0, H);
 
   const holes: [number, number, number, number][] = [[-0.45, -12.6, 0.45, -9.3], [-0.45, -8.7, 0.45, -5.3], [-0.45, -4.7, 0.45, -1.6]];
   floorSlab(b, 'floor_plate', -1.5, -14, 1.5, 0, holes, 'metal');
@@ -117,15 +117,15 @@ export function buildCorridor(L: LevelBuild) {
   b.decal('handprint', 1, 1.464, 1.0, -4.5, 0.22, 0.22, '-x', 0.6);
 
   // ── signs ──
-  b.sign('SERVICE CORRIDOR A', 'stencil', -1.464, 2.0, -2.9, 1.3, 0.2, '+x');
-  b.sign('JUNCTION 3 ^', 'directional', 1.464, 1.75, -1.4, 0.7, 0.16, '-x', 0, true);
-  b.sign('← MEDICAL 3-A', 'directional', 1.464, 1.75, -12.4, 0.8, 0.16, '-x', 0, true);
-  b.sign('CAUTION — LIVE TRENCH BELOW GRATING', 'warning', -1.464, 1.45, -8.6, 0.9, 0.14, '+x', 0, true);
+  b.sign('서비스 통로 A', 'stencil', -1.464, 2.0, -2.9, 1.3, 0.2, '+x');
+  b.sign('정션 3 ^', 'directional', 1.464, 1.75, -1.4, 0.7, 0.16, '-x', 0, true);
+  b.sign('← 의무실 3-A', 'directional', 1.464, 1.75, -12.4, 0.8, 0.16, '-x', 0, true);
+  b.sign('주의 — 그레이팅 아래 활선 트렌치', 'warning', -1.464, 1.45, -8.6, 0.9, 0.14, '+x', 0, true);
   b.sign('A', 'stencil', 0.95, 0.003, -13.2, 0.5, 0.6, '+y');
   // scratched into the paint opposite the quarters door, where the light from that door falls
-  b.quad(scrawlMaterial(["DON'T LET", 'THEM', 'CARRY YOU'], { style: 'scratch', aspect: 1.25, seed: 3 }), 1.465, 1.66, -6.3, 0.9, 0.72, '-x', 0.03, 'unit', 0.004);
+  b.quad(scrawlMaterial(["그들이", '너를', '업어 가게 두지 마'], { style: 'scratch', aspect: 1.25, seed: 3 }), 1.465, 1.66, -6.3, 0.9, 0.72, '-x', 0.03, 'unit', 0.004);
   b.decal('scratches', 3, 1.464, 1.0, -6.0, 0.5, 0.5, '-x', 1.0);
-  b.sign('ERIDU DEEP FABRICATION — SUBLEVEL 3', 'label', 1.464, 2.35, -7.0, 1.4, 0.1, '-x');
+  b.sign('에리두 심해 제작 — 하부 3층', 'label', 1.464, 2.35, -7.0, 1.4, 0.1, '-x');
   b.at(1.5, 0.6, -3.2, -Math.PI / 2, () => fireExtinguisher(b));
   b.decal('grime', 1, 0, 0.002, -11.5, 2.4, 2.4, '+y', 0.3);
 }

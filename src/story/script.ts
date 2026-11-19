@@ -735,7 +735,7 @@ export class Script {
 
     if (!short) {
       await this.wait(1.4);
-      this.say(WAKE_PUMP, 'INFUSION PUMP');
+      this.say(WAKE_PUMP, '주입 펌프');
       w.fade(0.2, 1.8); ui.eyelids?.(0.28, 1.6);
       await this.wait(1.9);
       ui.eyelids?.(0, 0.22);
@@ -1435,7 +1435,7 @@ export class Script {
     w.play('alarm_blip', undefined, 0.9);
     w.glitch(0.6, 0.4);
     await this.wait(1.2);
-    await this.wait(this.say(ELEVATOR_VOICE, 'ELEVATOR') + 0.6);
+    await this.wait(this.say(ELEVATOR_VOICE, '엘리베이터') + 0.6);
     await this.choir(CHOIR.descent, 0.5);
     w.play('power_down', undefined, 1);
     w.lights('elevator', { enabled: false });

@@ -17,7 +17,7 @@ export function buildIntake(L: LevelBuild) {
   const b = L.builder('intake');
   const R = rng(2201);
   const H = 3.2;
-  L.room('intake', 'INTAKE', -5, 5, -22, -8, H);
+  L.room('intake', '흡입구', -5, 5, -22, -8, H);
 
   floorSlab(b, 'floor_rubber', -5, -22, 5, -8, [], 'rubber');
   ceilingSlab(b, -5.2, -22, 5.2, -8, H, 'wall_medical');
@@ -42,7 +42,7 @@ export function buildIntake(L: LevelBuild) {
     for (let z = -9.5; z > -20; z -= 1.1) b.sign('▼', 'stencil', 0, 0.004, z, 0.4, 0.4, '+y');
     hazardStrip(b, -1.6, -20.2, 1.6, -19.95);
   });
-  b.sign('STAND ON THE MARKS', 'stencil', 0, 0.004, -18.6, 2.2, 0.36, '+y', PI);
+  b.sign('표시 위에 서세요', 'stencil', 0, 0.004, -18.6, 2.2, 0.36, '+y', PI);
 
   // ── queue rails: three lanes, posts and belts, perfectly straight ──
   const post = (x: number, z: number) => {
@@ -57,7 +57,7 @@ export function buildIntake(L: LevelBuild) {
     b.detail(() => { b.box('painted_dark', x, 0.88, (z0 + z1) / 2, 0.012, 0.06, z1 - z0 + 0.0); b.box('painted_yellow', x, 0.88, (z0 + z1) / 2, 0.026, 0.012, z1 - z0); });
     b.collide(x - 0.05, 0, Math.min(z0, z1), x + 0.05, 0.95, Math.max(z0, z1));
   }
-  b.sign('PLEASE WAIT TO BE CALLED', 'label', -3.1, 1.95, -8.4, 1.3, 0.16, '-z'); // beside the door, not in its leaves' path
+  b.sign('호출될 때까지 기다려 주세요', 'label', -3.1, 1.95, -8.4, 1.3, 0.16, '-z'); // beside the door, not in its leaves' path
 
   // ── west wall: coverall cubbies (31, filled in order, then the empty ones) and the folding table ──
   const cubX = -4.78, cub0 = -9.3, cubW = 0.4, cols = 13, rows = 4;
@@ -83,7 +83,7 @@ export function buildIntake(L: LevelBuild) {
     n++;
   }
   b.collide(-5, 0, cub0 - cols * cubW - 0.05, -4.4, 2.3, cub0 + 0.05);
-  b.sign('ISSUE — RETURN — FOLD', 'label', -4.42, 2.45, cub0 - (cols * cubW) / 2, 1.4, 0.16, '+x');
+  b.sign('지급 — 반납 — 개어두기', 'label', -4.42, 2.45, cub0 - (cols * cubW) / 2, 1.4, 0.16, '+x');
   // folding table with a half-done stack
   b.at(-3.25, 0, -14.1, PI / 2, () => {
     b.box('trim_steel', 0, 0.98, 0, 2.4, 0.04, 0.8);
@@ -120,7 +120,7 @@ export function buildIntake(L: LevelBuild) {
   // the note, folded into one shoe
   const noteZ = shoe0 - 17 * pitch;
   b.detail(() => { b.rbox('plastic_white', 4.2, 0.12, noteZ + 0.065, 0.06, 0.004, 0.09, 0.9, 0.3, 0.2); });
-  L.interact('note2_intake', 'log', 'Read note', 4.2, 0.35, noteZ, true, 2.2);
+  L.interact('note2_intake', 'log', '쪽지 읽기', 4.2, 0.35, noteZ, true, 2.2);
   L.objects.set('intake_shoes', Object.assign(new THREE.Object3D(), { name: 'intake_shoes' }));
   L.objects.get('intake_shoes')!.position.set(4.22, 0, shoe0 - 15 * pitch);
   L.root.add(L.objects.get('intake_shoes')!);
@@ -186,11 +186,11 @@ export function buildIntake(L: LevelBuild) {
     papers(b, 3, 0.15, R);
     b.collide(-0.8, 0, -0.3, 0.8, 0.95, 0.3);
   });
-  b.sign('RECEIVED', 'label', 2.9, 1.08, -19.2 + 0.33, 0.38, 0.08, '+z');
+  b.sign('접수됨', 'label', 2.9, 1.08, -19.2 + 0.33, 0.38, 0.08, '+z');
   // receiving terminal by the arch
   b.at(1.95, 0, -21.8, 0, () => wallTerminal(b, 1.35));
-  L.screen('intake_terminal', 'terminal_idle', 0.44, 0.3, 1.95, 1.43, -21.8 + 0.126, '+z', { tilt: -0.18, text: 'INTAKE — LINE TWO\nRECEIVED: 31 / 31' });
-  L.interact('term2_intake', 'terminal', 'Read terminal', 1.95, 1.4, -21.4, true, 2.2);
+  L.screen('intake_terminal', 'terminal_idle', 0.44, 0.3, 1.95, 1.43, -21.8 + 0.126, '+z', { tilt: -0.18, text: '흡입구 — 2번 라인\n접수: 31 / 31' });
+  L.interact('term2_intake', 'terminal', '단말기 읽기', 1.95, 1.4, -21.4, true, 2.2);
 
   // ── height gauge: west wall by the arch ──
   const gz = -19.4;
@@ -221,7 +221,7 @@ export function buildIntake(L: LevelBuild) {
     L.tween(0, 0.9, (k) => { sliderPivot.position.y = 2.12 - (2.12 - 1.78) * (k < 0.85 ? easeInOut(k / 0.85) * 1.02 : 1.02 - (k - 0.85) / 0.15 * 0.02); },
       () => { sliderPivot.position.y = 1.78; L.sfx('button', -4.9, 1.78, gz, 0.8, 1.4); });
   });
-  b.sign('HEIGHT', 'label', -4.94, 2.42, gz, 0.3, 0.07, '+x');
+  b.sign('높이', 'label', -4.94, 2.42, gz, 0.3, 0.07, '+x');
 
   // ── processing arch ──
   const AZ = -20.7;
@@ -238,8 +238,8 @@ export function buildIntake(L: LevelBuild) {
     b.box('painted_white', 0, 2.75, 0, 2.76, 0.3, 0.7);
     b.detail(() => {
       b.box('painted_dark', 0, 2.59, 0, 2.1, 0.02, 0.5);
-      b.sign('PROCESSING', 'label', 0, 2.75, 0.352, 1.0, 0.16, '+z');
-      b.sign('PROCESSING', 'label', 0, 2.75, -0.352, 1.0, 0.16, '-z');
+      b.sign('처리 중', 'label', 0, 2.75, 0.352, 1.0, 0.16, '+z');
+      b.sign('처리 중', 'label', 0, 2.75, -0.352, 1.0, 0.16, '-z');
     });
   });
   const archLight = L.spot('intake', 0, 2.55, AZ, 0, 0, AZ, 0xbfeaff, 30, 4, 0.9, { priority: 2 });
@@ -263,10 +263,10 @@ export function buildIntake(L: LevelBuild) {
     b.rbox('painted_dark', 3.34, 2.48, -8.187, 0.012, 0.11, 0.004, 0, 0, -0.7);
     b.rbox('painted_dark', 3.28, 2.43, -8.187, 0.012, 0.07, 0.004, 0, 0, 2.2);
   });
-  b.sign('INTAKE', 'stencil', -2.9, 2.6, -8.21, 1.6, 0.36, '-z');
-  b.sign('LINE TWO', 'directional', 2.9, 2.2, -21.785, 0.9, 0.2, '+z', 0, true);
-  b.sign('REMOVE FOOTWEAR', 'label', 4.97, 1.6, -14.6, 1.2, 0.16, '-x', 0, true);
-  b.sign('LEAVE PERSONAL ITEMS', 'label', -4.97, 2.55, -12.0, 1.4, 0.16, '+x', 0, true);
+  b.sign('흡입구', 'stencil', -2.9, 2.6, -8.21, 1.6, 0.36, '-z');
+  b.sign('2번 라인', 'directional', 2.9, 2.2, -21.785, 0.9, 0.2, '+z', 0, true);
+  b.sign('신발을 벗으세요', 'label', 4.97, 1.6, -14.6, 1.2, 0.16, '-x', 0, true);
+  b.sign('개인 물품은 두고 가세요', 'label', -4.97, 2.55, -12.0, 1.4, 0.16, '+x', 0, true);
 
   L.pickup('p2_intake_med', 'medkit', 2.4, 0.95, -19.25, 35, 0.2);
   void R;

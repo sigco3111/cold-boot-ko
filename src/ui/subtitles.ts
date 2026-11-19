@@ -110,7 +110,7 @@ export class Subtitles {
     const ic = h('span', 'ic', this.icom);
     svg('0 0 16 16', ['M8 1.5 a2.2 2.2 0 0 1 2.2 2.2 v4 a2.2 2.2 0 0 1 -4.4 0 v-4 A2.2 2.2 0 0 1 8 1.5 Z', 'M3.6 7.4 a4.4 4.4 0 0 0 8.8 0', 'M8 11.8 V14.5', 'M5.4 14.5 H10.6'], ic);
     h('i', 'live', this.icom);
-    h('span', 'lbl', this.icom, 'Line control  —  ch 3');
+    h('span', 'lbl', this.icom, '라인 관제  —  채널 3');
     const bars = h('span', 'bars', this.icom);
     for (let i = 0; i < 5; i++) this.icomBars.push(h('i', '', bars));
     ctx.events.on('story:subtitle', (e) => this.show(e.speaker ?? '', e.text ?? '', e.duration ?? 3));

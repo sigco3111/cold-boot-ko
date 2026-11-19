@@ -1,5 +1,5 @@
 /**
- * Level 5 — "POST 4" (stage 3c §4). The flow: the gate (A → B → B2), the cutscene "Under control" (C), the hand-back
+ * Level 5 — "초소 4" (stage 3c §4). The flow: the gate (A → B → B2), the cutscene "Under control" (C), the hand-back
  * and the two units (D0 → D), the first soldier held then released, his radio on the body, Kessler's pickup sequence
  * and her power cue (K), the keypad (S), Post 4 (the spine wave, the quarters, the crawl, the magazine), Kessler's door
  * and the neck check (V), lights-out and the vent wave, the sub bay in the dark, the gallery wheel (W), the tunnel (X)
@@ -165,7 +165,7 @@ export class ScriptL5 extends Scenes5 {
     // (W7's hardened door carries the panel as `door5_cmd_panel`; the greybox placeholder keeps §6.4's `cmd_panel`)
     if (this.ctx.level.screen('door5_cmd_panel')) s('door5_cmd_panel', 'terminal_idle', SCREEN5.cmdPanel.replace(/ — /g, '\n'));
     else s('cmd_panel', 'terminal_idle', SCREEN5.cmdPanel);
-    this.w.setPrompt('key5_duty', 'Keypad — no power');
+    this.w.setPrompt('key5_duty', '키패드 — 전원 없음');
     this.w.setInteractable('radio5', false);
     this.call('door5_cmd', 'tally', 'red');
     this.call('door5_cmd', 'pulse', false);
@@ -208,7 +208,7 @@ export class ScriptL5 extends Scenes5 {
   private restoreWorld(): void {
     const f = this.f;
     this.screen('gate_panel5', 'terminal_idle', f.gateLatched ? SCREEN5.gateClosed : SCREEN5.gateAuth);
-    if (f.powered) { this.snapVig('key5_power'); this.w.setPrompt('key5_duty', 'Use keypad'); }
+    if (f.powered) { this.snapVig('key5_power'); this.w.setPrompt('key5_duty', '키패드 사용'); }
     this.screen('key5_panel', 'keypad', f.keypad ? SCREEN5.keyOpen : f.powered ? SCREEN5.keyReady : SCREEN5.keyOff);
     if (f.radio) this.w.setInteractable('radio5', false);
     if (f.hatchSpine) this.snapVig('hatch5_spine_open');
@@ -356,7 +356,7 @@ export class ScriptL5 extends Scenes5 {
   /** After a load past a beat: what a thread cannot know by itself. */
   private resumeThreads(): void {
     const f = this.f;
-    if (f.powered && !f.keypad) this.w.setPrompt('key5_duty', 'Use keypad');
+    if (f.powered && !f.keypad) this.w.setPrompt('key5_duty', '키패드 사용');
     if (f.dark) this.lightsAt = this.now - 1.5;
     if (f.wheel && !f.released) { this.once('released'); }
     if (f.radio) this.strip = null;
@@ -764,7 +764,7 @@ export class ScriptL5 extends Scenes5 {
     this.stamp('power');
     this.vig('key5_power');
     this.screen('key5_panel', 'keypad', SCREEN5.keyReady);
-    this.w.setPrompt('key5_duty', 'Use keypad');
+    this.w.setPrompt('key5_duty', '키패드 사용');
     this.toast(TOAST5.q);
     // §4.4: cp5_radio "taken now when calm" (else the calm rule takes it at the next calm moment in duty5 / ready5, in K)
     if (this.calm() && ['duty5', 'ready5'].includes(this.w.room() ?? '')) this.checkpointNow('cp5_radio');
@@ -821,7 +821,7 @@ export class ScriptL5 extends Scenes5 {
     this.screen('key5_panel', 'keypad', SCREEN5.keyTyping(0));
     if (code !== undefined) (this.ctx.debug as { keypadInput: string | null }).keypadInput = code;
     let r: string | null = null;
-    try { r = await this.ctx.ui.keypad({ digits: 4, title: 'SPINE — AUTHORISED ACCESS' }); } catch (e) { console.warn('[story] keypad failed', e); }
+    try { r = await this.ctx.ui.keypad({ digits: 4, title: '스파인 — 인가된 출입' }); } catch (e) { console.warn('[story] keypad failed', e); }
     this.keypadOpen = false;
     if (this.ctx.state === 'playing' && pl.alive) pl.controlsEnabled = true;
     if (r === null || r === undefined) { if (!this.f.keypad) this.screen('key5_panel', 'keypad', SCREEN5.keyReady); return 'closed'; }

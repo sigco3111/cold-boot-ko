@@ -1,5 +1,5 @@
 /**
- * Stage 3d "THE TRUNK" (technical level 6; plan docs/plans/stage-3d.md §8.12, §5.6, §5.7, §4.8.1, §11 W2b): the cable
+ * Stage 3d "간선" (technical level 6; plan docs/plans/stage-3d.md §8.12, §5.6, §5.7, §4.8.1, §11 W2b): the cable
  * tunnels, the head-end's handset, the vault's drum and beach joint, the moon pool's frame, the dock loader, water.
  *
  * Owners (§8.12, D25 — the owner is who PLAYS it; audio only renders):

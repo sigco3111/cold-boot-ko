@@ -80,7 +80,7 @@ function pumpSet(b: Builder, label: string, live: boolean, f: 1 | -1) {
     b.cyl('painted_dark', 0.62, 1.42, f * 0.52, 0.07, 0.03, 'z', 12); b.cyl('plastic_white', 0.62, 1.42, f * 0.537, 0.058, 0.004, 'z', 12);
     b.rod('copper', 0.62, 1.2, f * 0.5, 0.62, 1.36, f * 0.5, 0.008, 5);
     b.sign(label, 'stencil', -0.6, 0.92, f * 0.426, 0.5, 0.26, face);
-    b.sign('HALCYON CP-400  2.2 MW', 'label', -0.6, 1.36, f * 0.152, 0.28, 0.05, face);
+    b.sign('할시온 CP-400  2.2 MW', 'label', -0.6, 1.36, f * 0.152, 0.28, 0.05, face);
     // control box on a post
     b.box('trim_steel', 0.15, 0.75, f * 0.66, 0.05, 1.0, 0.05);
     b.box('painted_dark', 0.15, 1.3, f * 0.69, 0.3, 0.4, 0.1);
@@ -135,7 +135,7 @@ function hale(b: Builder, cloth: THREE.Material, hv: THREE.Material) {
 export function buildPump(L: LevelBuild) {
   const b = L.builder('pump');
   const R = rng(1313);
-  L.room('pump', 'COOLANT PUMP ROOM 3', -22, -12, -44, -32, H, 1.3);
+  L.room('pump', '냉각수 펌프실 3', -22, -12, -44, -32, H, 1.3);
 
   // ── floor: four slabs around the sump (a real hole), concrete sump walls, wading floor ──
   floorSlab(b, 'floor_concrete', -22, -44, SX0, -32, [], 'concrete');
@@ -318,8 +318,8 @@ export function buildPump(L: LevelBuild) {
       for (let r = 0; r < 2; r++) for (let c = 0; c < 5; c++) b.inst(c === 1 ? 'led_amber' : 'led_red', -0.3 + c * 0.15, 1.7 - r * 0.08, 0.243);
       b.box('screen_off', 0, 1.35, 0.243, 0.6, 0.3, 0.004);
       for (let c = 0; c < 4; c++) { b.box('plastic_dark', -0.27 + c * 0.18, 0.95, 0.25, 0.1, 0.16, 0.03); b.box('painted_white', -0.27 + c * 0.18, 0.99, 0.275, 0.03, 0.05, 0.02); }
-      b.sign('COOLANT LOOP 3 — P1 / P2', 'label', 0, 1.88, 0.243, 0.6, 0.07, '+z');
-      b.sign('NO MAIN POWER', 'danger', 0, 1.15, 0.243, 0.5, 0.09, '+z');
+      b.sign('냉각수 루프 3 — P1 / P2', 'label', 0, 1.88, 0.243, 0.6, 0.07, '+z');
+      b.sign('주 전원 없음', 'danger', 0, 1.15, 0.243, 0.5, 0.09, '+z');
       for (const s of [-0.3, 0.3]) b.rod('rubber', s, 1.95, 0.1, s, 3.4, 0.1, 0.02, 5);
     });
   });
@@ -366,7 +366,7 @@ export function buildPump(L: LevelBuild) {
 
   // stock by the door (kept well clear of the rails)
   b.at(-13.0, 0, -42.9, 0, () => drum(b, 'painted_yellow')); b.at(-13.6, 0, -43.3, 0, () => drum(b)); b.at(-12.95, 0, -43.55, 0, () => drum(b));
-  b.at(-13.2, 0, -41.3, 0.2, () => crate(b, 0.9, 0.6, 0.7, 'wall_panel_dark', 'GLYCOL'));
+  b.at(-13.2, 0, -41.3, 0.2, () => crate(b, 0.9, 0.6, 0.7, 'wall_panel_dark', '글리콜'));
   floorCable(b, [[-12.7, -36.4], [-13.4, -36.9], [-14.2, -36.7], [-14.6, -37.0]], 0.03);
 
   // ── Dana Hale, against the belt guard of P2 ──
@@ -389,7 +389,7 @@ export function buildPump(L: LevelBuild) {
   });
   b.decal('blood_pool', 1, HAX - 0.1, 0.003, HAZ + 0.35, 1.1, 0.9, '+y', 0.6);
   b.decal('blood_smear', 0, HAX - 0.15, 0.55, HAZ + 0.012, 0.5, 0.7, '+z', 0.1);
-  L.interact('log_pump', 'log', 'Play recorder', wp.rec.x, wp.rec.y, wp.rec.z, true, 2.3);
+  L.interact('log_pump', 'log', '녹음 재생', wp.rec.x, wp.rec.y, wp.rec.z, true, 2.3);
   L.point('pump', wp.rec.x, 0.12, wp.rec.z, 0xff2010, 0.35, 1.2, { flicker: 'pulse' });
   L.pickup('p_lockout_key', 'keycard', wp.key.x, wp.key.y, wp.key.z, 1, 0.6);
   L.pickup('p_shotgun', 'shotgun', wp.gun.x, wp.gun.y, wp.gun.z, 6, HRY + 0.2);
@@ -420,10 +420,10 @@ export function buildPump(L: LevelBuild) {
   });
 
   // ── signs, wet, fx ──
-  b.sign('COOLANT PUMP ROOM 3', 'stencil', -21.964, 3.2, -38, 4.2, 0.5, '+x');
-  b.sign('SUMP 3 — DEPTH 4.5 m — NO ENTRY WITHOUT STANDBY', 'danger', -15.2, 0.8, -33.96, 1.2, 0.16, '-z', 0, true);
-  b.sign('CONFINED SPACE', 'warning', XE - 0.036, 1.8, -40.6, 0.7, 0.14, '-x', 0, true);
-  b.sign('KEEP GRATING CLEAR', 'stencil', -13.6, 0.004, -38, 1.5, 0.26, '+y', PI / 2);
+  b.sign('냉각수 펌프실 3', 'stencil', -21.964, 3.2, -38, 4.2, 0.5, '+x');
+  b.sign('섬프 3 — 수심 4.5 m — 대기자 없이 진입 금지', 'danger', -15.2, 0.8, -33.96, 1.2, 0.16, '-z', 0, true);
+  b.sign('밀폐 공간', 'warning', XE - 0.036, 1.8, -40.6, 0.7, 0.14, '-x', 0, true);
+  b.sign('그레이팅 위에 물건 두지 마세요', 'stencil', -13.6, 0.004, -38, 1.5, 0.26, '+y', PI / 2);
   for (const [x, z, r, sd] of [[-13.5, -39.6, 0.9, 1], [-20.2, -38.4, 1.0, 2], [-16.6, -32.9, 0.8, 3], [-17.9, -43.0, 0.9, 4], [-13.4, -33.4, 0.6, 5], [-21.2, -43.1, 0.7, 6]] as const) puddle(L, b, x, z, r, sd);
   b.decal('grime', 2, -13.5, 0.003, -38, 2.2, 3, '+y', 0.4);
   b.decal('oil_stain', 1, -20.6, 0.003, -36.9, 1.4, 1.2, '+y', 1.0);

@@ -12,7 +12,7 @@ export function buildStorage(L: LevelBuild) {
   const b = L.builder('storage');
   const R = rng(505);
   const H = 3.2;
-  L.room('storage', 'EQUIPMENT STORAGE', 3, 10, -21, -13, H);
+  L.room('storage', '장비 창고', 3, 10, -21, -13, H);
 
   floorSlab(b, 'floor_plate', 3, -21, 10, -13, [], 'metal');
   ceilingSlab(b, 3, -21.2, 10.2, -12.8, H);
@@ -31,8 +31,8 @@ export function buildStorage(L: LevelBuild) {
   b.at(6.9, 0, -20.66, 0, () => shelfRack(b, L, 5.2, 0.6, 2.5, 4, R, 0.8));
   b.at(7.2, 0, -19.0, 0, () => shelfRack(b, L, 4.6, 0.6, 2.5, 4, R, 0.7));
   b.at(5.3, 0, -13.34, PI, () => shelfRack(b, L, 3.6, 0.6, 2.5, 4, R, 0.8));
-  b.sign('AISLE 1', 'label', 4.88, 2.2, -19.0, 0.4, 0.1, '-x', 0, true);
-  b.sign('AISLE 2', 'label', 4.28, 2.2, -20.66, 0.4, 0.1, '-x', 0, true);
+  b.sign('통로 1', 'label', 4.88, 2.2, -19.0, 0.4, 0.1, '-x', 0, true);
+  b.sign('통로 2', 'label', 4.28, 2.2, -20.66, 0.4, 0.1, '-x', 0, true);
 
   // ── the cage (NE corner) ──
   const cg = L.doubleSided('floor_grate');
@@ -52,27 +52,27 @@ export function buildStorage(L: LevelBuild) {
     b.detail(() => { b.box('steel_raw', -1.08, 1.1, 0.04, 0.12, 0.2, 0.05); b.box('painted_dark', -1.08, 1.1, 0.08, 0.06, 0.1, 0.04); });
   });
   b.at(7.4, 0, -15.75, PI / 2 + 2.0, () => b.collide(-1.18, 0, -0.04, 0, 2.1, 0.04));
-  b.sign('CONTROLLED ITEMS — SECURITY RELEASE ONLY', 'danger', 7.37, 2.4, -14.0, 1.1, 0.16, '-x', 0, true);
+  b.sign('관리 물품 — 보안실 승인 시만 반출', 'danger', 7.37, 2.4, -14.0, 1.1, 0.16, '-x', 0, true);
   // inside: table with the shotgun, ammo, gas bottles chained to the wall
   b.at(9.62, 0, -14.6, 0, () => workTable(b, 0.7, 1.8, 0.9));
   b.detail(() => { b.box('rubber', 9.62, 0.903, -14.6, 0.5, 0.006, 1.3); b.box('painted_dark', 9.95, 1.5, -14.6, 0.06, 0.7, 1.6); for (let i = 0; i < 4; i++) b.box('steel_raw', 9.94, 1.3 + i * 0.15, -14.6, 0.06, 0.02, 1.5); });
   // (the shotgun that lived here was signed out — Hale took it to the pump room)
-  b.detail(() => { b.box('painted_dark', 9.62, 0.908, -14.6, 0.16, 0.004, 1.0); b.sign('SIGNED OUT — D. HALE', 'label', 9.62, 0.911, -15.2, 0.3, 0.05, '+y', PI / 2); });
+  b.detail(() => { b.box('painted_dark', 9.62, 0.908, -14.6, 0.16, 0.004, 1.0); b.sign('반출 — D. 헤일', 'label', 9.62, 0.911, -15.2, 0.3, 0.05, '+y', PI / 2); });
   L.pickup('p_storage_shells', 'ammo_shotgun', 9.6, 0.91, -13.95, 6, 0.3);
   for (let i = 0; i < 3; i++) b.at(7.75 + i * 0.26, 0, -13.22, i, () => gasBottle(b, i === 1 ? 'painted_orange' : 'painted_white'));
   b.detail(() => b.rod('steel_raw', 7.6, 0.9, -13.36, 8.45, 0.9, -13.36, 0.008, 4));
   b.collide(7.6, 0, -13.4, 8.45, 1.3, -13.05);
-  b.at(8.9, 0, -15.5, 0.3, () => crate(b, 0.8, 0.5, 0.6, 'painted_dark', 'ERIDU SEC'));
+  b.at(8.9, 0, -15.5, 0.3, () => crate(b, 0.8, 0.5, 0.6, 'painted_dark', '에리두 SEC'));
 
   // ── floor stock ──
-  b.at(4.3, 0, -15.3, 0.1, () => { pallet(b); b.at(0, 0.145, 0, 0, () => crate(b, 1.0, 0.7, 0.8, 'wall_panel', 'SPARES')); });
+  b.at(4.3, 0, -15.3, 0.1, () => { pallet(b); b.at(0, 0.145, 0, 0, () => crate(b, 1.0, 0.7, 0.8, 'wall_panel', '예비품')); });
   b.at(4.3, 0, -15.3, 0.1, () => b.collide(-0.6, 0, -0.5, 0.6, 0.85, 0.5));
   b.at(4.25, 0.845, -15.3, 0.4, () => crate(b, 0.6, 0.4, 0.5, 'painted_yellow', undefined, false));
-  b.at(6.2, 0, -16.6, -0.2, () => crate(b, 0.9, 0.6, 0.7, 'painted_dark', 'HALCYON'));
+  b.at(6.2, 0, -16.6, -0.2, () => crate(b, 0.9, 0.6, 0.7, 'painted_dark', '할시온'));
   L.pickup('p_storage_med', 'medkit', 6.2, 0.6, -16.6, 35, 0.5);
   b.at(4.1, 0, -18.6, 0, () => crate(b, 0.7, 0.8, 0.6, 'wall_panel_dark', 'LOT 3-A'));
   b.at(4.1, 0.8, -18.6, 0.5, () => clipboard(b));
-  L.interact('log_storage', 'log', 'Read note', 4.1, 0.85, -18.6);
+  L.interact('log_storage', 'log', '쪽지 읽기', 4.1, 0.85, -18.6);
   b.at(9.35, 0, -17.2, 0, () => drum(b, 'painted_orange'));
   b.at(9.4, 0, -17.85, 0, () => drum(b, 'painted_yellow'));
   b.at(8.75, 0, -17.5, 0, () => drum(b, 'painted_orange'));
@@ -88,8 +88,8 @@ export function buildStorage(L: LevelBuild) {
   b.detail(() => { b.box('painted_dark', 9.3, 3.0, -13.7, 0.25, 0.2, 0.25); b.sphere(L.glow(cage, 'emissive_amber'), 9.3, 2.88, -13.7, 0.07, 8); for (let i = 0; i < 4; i++) b.rod('steel_raw', 9.3 + Math.cos(i * PI / 2) * 0.09, 2.95, -13.7 + Math.sin(i * PI / 2) * 0.09, 9.3 + Math.cos(i * PI / 2) * 0.09, 2.78, -13.7 + Math.sin(i * PI / 2) * 0.09, 0.005, 4); });
   L.point('storage', 8.0, 0.6, -19.85, 0xff3010, 1.2, 2.5, { flicker: 'pulse' });
 
-  b.sign('EQUIPMENT STORAGE', 'stencil', 3.236, 2.3, -14.9, 1.4, 0.22, '+x');
-  b.sign('STACK MAX 3 HIGH', 'warning', 9.964, 1.8, -18.8, 0.7, 0.14, '-x', 0, true);
+  b.sign('장비 창고', 'stencil', 3.236, 2.3, -14.9, 1.4, 0.22, '+x');
+  b.sign('최대 3단 적재', 'warning', 9.964, 1.8, -18.8, 0.7, 0.14, '-x', 0, true);
   L.navNode(8.7, -14.9, 'storage'); L.navNode(8.3, -15.2, 'storage'); L.navNode(6.5, -19.85, 'storage'); L.navNode(8.3, -19.85, 'storage'); L.navNode(5.0, -19.85, 'storage');
 
   // ── storage_canister: a gas canister on top of the middle rack walks itself off the edge ──

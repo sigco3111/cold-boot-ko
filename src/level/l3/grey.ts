@@ -46,24 +46,24 @@ export interface RoomDef3 {
  * `feed_l2` is the hidden CAM 04 set (no portal: never drawn by the main view, never reached).
  */
 export const ROOMS3: Record<RoomId3, RoomDef3> = {
-  lift3: { name: 'SERVICE LIFT', x0: -2, x1: 2, z0: 0, z1: 5, y0: D2, h: 3.0 },
-  lock: { name: 'PRESSURE LOCK', x0: -3, x1: 3, z0: -7, z1: 0, y0: D2, h: 3.4 },
-  gallery_n: { name: 'NORTH GALLERY', x0: -12, x1: 12, z0: -12, z1: -7, y0: D2, h: 3.2 },
-  lobby: { name: 'HABITAT LOBBY', x0: -20, x1: -12, z0: -14, z1: -4, y0: D2, h: 3.6 },
-  admin: { name: 'FACILITIES OFFICES', x0: -34, x1: -20, z0: -20, z1: -2, y0: D2, h: 3.2 },
-  office: { name: 'SUPERVISOR — FACILITIES', x0: -34, x1: -26, z0: -28, z1: -20, y0: D2, h: 2.9 },
+  lift3: { name: '서비스 리프트', x0: -2, x1: 2, z0: 0, z1: 5, y0: D2, h: 3.0 },
+  lock: { name: '압력 록', x0: -3, x1: 3, z0: -7, z1: 0, y0: D2, h: 3.4 },
+  gallery_n: { name: '북쪽 갤러리', x0: -12, x1: 12, z0: -12, z1: -7, y0: D2, h: 3.2 },
+  lobby: { name: '주거 로비', x0: -20, x1: -12, z0: -14, z1: -4, y0: D2, h: 3.6 },
+  admin: { name: '시설팀 사무실', x0: -34, x1: -20, z0: -20, z1: -2, y0: D2, h: 3.2 },
+  office: { name: '관리자 — 시설팀', x0: -34, x1: -26, z0: -28, z1: -20, y0: D2, h: 2.9 },
   // top landing (Deck 2) as an extra floor; ceiling 8.0 over the whole stairwell (3.2 above the top landing)
-  stair_w: { name: 'WEST STAIR', x0: -20, x1: -15, z0: -34, z1: -16, y0: 0, h: 8.0, floors: [{ y: D2, box: [-20, -15, -22, -16] }] },
-  canteen: { name: 'CANTEEN', x0: -24, x1: -12, z0: -46, z1: -34, y0: 0, h: 3.6 },
+  stair_w: { name: '서쪽 계단', x0: -20, x1: -15, z0: -34, z1: -16, y0: 0, h: 8.0, floors: [{ y: D2, box: [-20, -15, -22, -16] }] },
+  canteen: { name: '식당', x0: -24, x1: -12, z0: -46, z1: -34, y0: 0, h: 3.6 },
   atrium: {
-    name: 'GARDEN ATRIUM', x0: -12, x1: 12, z0: -44, z1: -12, y0: 0, h: 13.5,
+    name: '정원 아트리움', x0: -12, x1: 12, z0: -44, z1: -12, y0: 0, h: 13.5,
     floors: [{ y: D2, box: [9, 12, -40, -12] }, { y: D2, box: [5.5, 12, -32, -29] }],
   },
-  clinic: { name: 'CLINIC', x0: 12, x1: 20, z0: -24, z1: -14, y0: 0, h: 3.0 },
-  quarters: { name: 'RESIDENT QUARTERS — RING A', x0: 12, x1: 28, z0: -34, z1: -28, y0: 0, h: 3.0 },
-  bio_lock: { name: 'BIOLOGICAL SYSTEMS — OUTER LOCK', x0: 12, x1: 16, z0: -40, z1: -36, y0: D2, h: 3.0 },
+  clinic: { name: '진료실', x0: 12, x1: 20, z0: -24, z1: -14, y0: 0, h: 3.0 },
+  quarters: { name: '거주자 숙소 — 링 A', x0: 12, x1: 28, z0: -34, z1: -28, y0: 0, h: 3.0 },
+  bio_lock: { name: '생물 시스템 — 외부 록', x0: 12, x1: 16, z0: -40, z1: -36, y0: D2, h: 3.0 },
   kitchen: { name: 'KITCHEN', x0: -24, x1: -18, z0: -48, z1: -46, y0: 0, h: 3.0 },
-  ring_e: { name: 'RING A — EAST', x0: 28, x1: 31.2, z0: -33.2, z1: -28.8, y0: 0, h: 3.0 },
+  ring_e: { name: '링 A — 동측', x0: 28, x1: 31.2, z0: -33.2, z1: -28.8, y0: 0, h: 3.0 },
   feed_l2: { name: '', x0: 60, x1: 72, z0: -10, z1: 0, y0: 0, h: 6.0 },
 };
 export const ROOM_IDS3 = Object.keys(ROOMS3) as RoomId3[];
@@ -433,8 +433,8 @@ function hatchPanel(L: LevelBuild, id: string, vignette: string, x0: number, z0:
 export const SHELLS3: Record<RoomId3, Shell> = {
   lift3: ({ L, G, b }) => {
     G.air('lift3', airOf('lift3'));
-    roomLabel(b, 'SERVICE LIFT', 1.8, 7.2, 2.6, '-x', 2.4);
-    L.screen('lift3_panel', 'terminal_idle', 0.5, 0.3, 1.795, D2 + 1.5, 1.4, '-x', { text: 'HABITAT RING' });
+    roomLabel(b, '서비스 리프트', 1.8, 7.2, 2.6, '-x', 2.4);
+    L.screen('lift3_panel', 'terminal_idle', 0.5, 0.3, 1.795, D2 + 1.5, 1.4, '-x', { text: '주거 링' });
     L.marker('lift3_spawn', 0, D2, 3.2, 0);
   },
 
@@ -445,11 +445,11 @@ export const SHELLS3: Record<RoomId3, Shell> = {
     G.air('pit:d3_pressure', [-1.7, 2.8, -7.3, 1.7, D2, -6.7], { rooms: ['lock', 'gallery_n'], look: 'reveal' });
     // walking surface over the pit slot (invisible; the door's threshold plate covers it visually)
     L.part('lock:threshold').collide(-1.7, D2 - 0.02, -7.3, 1.7, D2, -6.7, 'metal', false);
-    roomLabel(b, 'PRESSURE LOCK', -2.8, D2 + 2.6, -3.4, '+x', 2.6);
+    roomLabel(b, '압력 록', -2.8, D2 + 2.6, -3.4, '+x', 2.6);
     // two benches (stand-ins: the medkit sits on the west one)
     block(b, standin, -2.8, D2, -4.2, -2.1, D2 + 0.45, -1.8);
     block(b, standin, 2.1, D2, -4.2, 2.8, D2 + 0.45, -1.8);
-    L.screen('pdoor_panel', 'pressure', 0.5, 0.32, 2.3, D2 + 1.55, -6.795, '+z', { text: 'TEST|10:00:00' });
+    L.screen('pdoor_panel', 'pressure', 0.5, 0.32, 2.3, D2 + 1.55, -6.795, '+z', { text: '시험|10:00:00' });
     L.marker('lock_eye_release', 0, D2 + 1.65, -3.5, 0);
     // the three C2 puppets wait here (sealed) in single file, facing the door
     for (const [i, z] of [-5.6, -4.2, -2.8].entries()) L.marker(`puppet_lock_${i + 1}`, 0, D2, z, 0);
@@ -460,9 +460,9 @@ export const SHELLS3: Record<RoomId3, Shell> = {
     // south face z = −12: glass full height x −11.8 … 6; solid x 6 … 9.2 (shutter pocket); shutter opening 9.2 … 11.8
     G.air('glz:gallery', [-11.8, D2, -12.2, 6, D2 + 3.2, -11.8], { rooms: ['gallery_n', 'atrium'], look: 'gallery_n' });
     block(b, glass, -11.8, D2, -12.015, 6, D2 + 3.2, -11.985, 'glass', true);
-    roomLabel(b, 'NORTH GALLERY', -7.5, D2 + 2.5, -7.2, '-z', 3.0);
-    roomLabel(b, 'BIOLOGICAL SYSTEMS →', 7.6, D2 + 2.1, -7.2, '-z', 3.4);
-    L.screen('pdoor_panel_out', 'pressure', 0.5, 0.32, -2.3, D2 + 1.55, -7.205, '-z', { text: 'TEST|10:00:00' });
+    roomLabel(b, '북쪽 갤러리', -7.5, D2 + 2.5, -7.2, '-z', 3.0);
+    roomLabel(b, '생물 시스템 →', 7.6, D2 + 2.1, -7.2, '-z', 3.4);
+    L.screen('pdoor_panel_out', 'pressure', 0.5, 0.32, -2.3, D2 + 1.55, -7.205, '-z', { text: '시험|10:00:00' });
     // CAM 01 (§8.4): high in the gallery's south side, the glazing (and the atrium) behind it; the pressure door at
     // ≈ 25° off its axis, 5 m away, the units' walk west to the lobby door going away from it (I1: was (9, 7.5,
     // −11.5), grazing the door from 10 m — the units read as specks)
@@ -485,23 +485,23 @@ export const SHELLS3: Record<RoomId3, Shell> = {
 
   lobby: ({ L, G, b }) => {
     G.air('lobby', airOf('lobby'));
-    roomLabel(b, 'HABITAT LOBBY', -19.8, D2 + 2.6, -12.4, '+x', 2.6);
-    L.screen('lobby_status', 'habitat_status', 1.6, 0.9, -17.4, D2 + 1.85, -4.205, '-z', { text: 'HABITAT RING A' });
-    L.interact('term3_lobby', 'terminal', 'Read screen', -14.6, 5.9, -4.5);
-    L.interact('note3_guestbook', 'log', 'Read book', -16.0, D2 + 1.05, -12.0);
-    L.interact('note3_board', 'log', 'Read notice', -18.0, D2 + 1.5, -13.77);
+    roomLabel(b, '주거 로비', -19.8, D2 + 2.6, -12.4, '+x', 2.6);
+    L.screen('lobby_status', 'habitat_status', 1.6, 0.9, -17.4, D2 + 1.85, -4.205, '-z', { text: '주거 링 A' });
+    L.interact('term3_lobby', 'terminal', '화면 읽기', -14.6, 5.9, -4.5);
+    L.interact('note3_guestbook', 'log', '책 읽기', -16.0, D2 + 1.05, -12.0);
+    L.interact('note3_board', 'log', '공지 읽기', -18.0, D2 + 1.5, -13.77);
     // the puppets' end marks at the inner door (C2)
     for (const [i, [x, z]] of ([[-18.6, -8.2], [-18.4, -9.8], [-17.2, -9.0]] as const).entries()) L.marker(`puppet_end_${i + 1}`, x, D2, z, PI / 2);
   },
 
   admin: ({ L, G, b, glass }) => {
     G.air('admin', airOf('admin'));
-    roomLabel(b, 'FACILITIES OFFICES', -27, D2 + 2.4, -2.2, '-z', 3.2);
+    roomLabel(b, '시설팀 사무실', -27, D2 + 2.4, -2.2, '-z', 3.2);
     // glass partitions 1.8 m (§2.9: not containment, crouch-jumpable; nothing behind them is forbidden)
     block(b, glass, -28.015, D2, -14.0, -27.985, D2 + 1.8, -8.0, 'glass', true);
     block(b, glass, -33.8, D2, -11.015, -30.0, D2 + 1.8, -10.985, 'glass', true);
-    for (let i = 0; i < 8; i++) L.screen(`admin_screen_${i + 1}`, 'terminal_idle', 0.5, 0.3, -33.795, D2 + 1.4, -4 - 2 * i, '+x', { text: 'FACILITIES' });
-    L.interact('note3_desk', 'log', 'Read printout', -27.4, 5.6, -5.2);
+    for (let i = 0; i < 8; i++) L.screen(`admin_screen_${i + 1}`, 'terminal_idle', 0.5, 0.3, -33.795, D2 + 1.4, -4 - 2 * i, '+x', { text: '시설팀' });
+    L.interact('note3_desk', 'log', '출력물 읽기', -27.4, 5.6, -5.2);
     // the radio behind the inner door (§2.5)
     L.marker('radio_admin', -22, 5.8, -8, 0);
     L.marker('stores_cage', -22.6, D2, -15.0, 0);
@@ -509,7 +509,7 @@ export const SHELLS3: Record<RoomId3, Shell> = {
 
   office: ({ L, G, b, standin }) => {
     G.air('office', airOf('office'));
-    roomLabel(b, 'SUPERVISOR — FACILITIES', -26.2, D2 + 2.0, -25.4, '-x', 3.2);
+    roomLabel(b, '관리자 — 시설팀', -26.2, D2 + 2.0, -25.4, '-x', 3.2);
     // §4.3 desk (stand-in): x −31.8 … −30.6, z −25.6 … −22.8, top 5.56
     block(b, standin, -31.8, D2, -25.6, -30.6, 5.56, -22.8);
     // the monitor on its swivel arm (C2 turns it): the screen hangs on the arm object
@@ -521,9 +521,9 @@ export const SHELLS3: Record<RoomId3, Shell> = {
     L.screen('office_monitor', 'feed', 0.55, 0.33, 0, 0, 0, '-x', { parent: arm });
     for (const [i, z] of [-25.4, -24.2, -23.0].entries()) L.screen(`office_thumb_${i + 1}`, 'camera_feed', 0.6, 0.36, -33.795, 6.5, z, '+x');
     // readables (schedule board 3 cm off the north wall's office face z −20.2; the plan's −20.02 is inside the wall)
-    L.interact('note3_schedule', 'log', 'Read board', -32.6, 6.2, -20.23);
-    L.interact('note3_pad', 'log', 'Read notepad', -31.2, 5.57, -24.4);
-    L.interact('note3_memo', 'log', 'Read memo', -31.25, 5.57, -23.0);
+    L.interact('note3_schedule', 'log', '게시판 읽기', -32.6, 6.2, -20.23);
+    L.interact('note3_pad', 'log', '수첩 읽기', -31.2, 5.57, -24.4);
+    L.interact('note3_memo', 'log', '메모 읽기', -31.25, 5.57, -23.0);
     // §4.3 marks
     L.marker('halv_h2', -32.6, D2, -24.2, -PI / 2);
     L.marker('office_chair', -29.5, D2, -24.2, PI / 2);
@@ -543,8 +543,8 @@ export const SHELLS3: Record<RoomId3, Shell> = {
     // top landing (Deck 2) on solid structure; the flight rises north from the bottom landing
     G.solid([-20, -0.6, -22, -15, D2, -16]);
     buildStair(L, b, STAIR_W, standin, false);
-    roomLabel(b, 'WEST STAIR', -19.8, D2 + 2.2, -21.0, '+x', 2.4);
-    roomLabel(b, 'WEST STAIR — CANTEEN', -19.8, 2.4, -32.6, '+x', 2.6);
+    roomLabel(b, '서쪽 계단', -19.8, D2 + 2.2, -21.0, '+x', 2.4);
+    roomLabel(b, '서쪽 계단 — 식당', -19.8, 2.4, -32.6, '+x', 2.6);
   },
 
   canteen: ({ L, G, b, glass, standin }) => {
@@ -567,10 +567,10 @@ export const SHELLS3: Record<RoomId3, Shell> = {
     G.air('canteen', [-15.1, 3.6, -38.1, -13.9, 6.0, -36.9]);
     hatchPanel(L, 'canteen_hatch_a', 'canteen_hatch_a', -18.6, -41.6, -17.4, -40.4, 3.6, 'drop', standin);
     hatchPanel(L, 'canteen_hatch_b', 'canteen_hatch_b', -15.1, -38.1, -13.9, -36.9, 3.6, 'drop', standin);
-    roomLabel(b, 'CANTEEN', -23.8, 2.7, -35.6, '+x', 2.0);
-    L.screen('canteen_menu', 'terminal_idle', 1.2, 0.7, -14.5, 2.5, -34.205, '-z', { text: 'TODAY — FISH SOUP / LENTIL CURRY' });
-    L.interact('note3_canteen', 'log', 'Read notice', -22.0, 1.6, -34.23);
-    L.interact('note3_quiz', 'log', 'Read poster', -20.9, 1.6, -34.23);
+    roomLabel(b, '식당', -23.8, 2.7, -35.6, '+x', 2.0);
+    L.screen('canteen_menu', 'terminal_idle', 1.2, 0.7, -14.5, 2.5, -34.205, '-z', { text: '오늘 — 생선 수프 / 렌틸 커리' });
+    L.interact('note3_canteen', 'log', '공지 읽기', -22.0, 1.6, -34.23);
+    L.interact('note3_quiz', 'log', '포스터 읽기', -20.9, 1.6, -34.23);
     L.marker('canteen_hatch_a_drop', -18, 4.0, -41, 0);
     L.marker('canteen_hatch_b_drop', -14.5, 4.0, -37.5, 0);
     L.marker('kitchen_spawn', -21, 0, -47.0, 0);
@@ -598,11 +598,11 @@ export const SHELLS3: Record<RoomId3, Shell> = {
     balustrade(L, b, 5.52, -31.98, 5.55, -29.0);          // landing x = 5.5
     balustrade(L, b, 5.55, -31.98, 9.02, -31.95);         // landing z = −32
     balustrade(L, b, 8.48, -29.03, 9.02, -29.0);          // landing z = −29 between the stair and the balcony
-    roomLabel(b, 'GARDEN ATRIUM', 0, 3.2, -12.2, '-z', 3.6);
-    roomLabel(b, 'BALCONY — BIOLOGICAL SYSTEMS', 11.8, D2 + 2.6, -30.5, '-x', 4.2);
-    L.interact('sign3_viewport', 'log', 'Read plaque', 0, 0.9, -43.6);
-    L.interact('sign3_bio', 'log', 'Read sign', 11.78, 6.3, -36.4);
-    L.interact('bio_reader', 'reader', 'Badge reader', 11.78, 5.95, -39.5);
+    roomLabel(b, '정원 아트리움', 0, 3.2, -12.2, '-z', 3.6);
+    roomLabel(b, '발코니 — 생물 시스템', 11.8, D2 + 2.6, -30.5, '-x', 4.2);
+    L.interact('sign3_viewport', 'log', '명판 읽기', 0, 0.9, -43.6);
+    L.interact('sign3_bio', 'log', '표지 읽기', 11.78, 6.3, -36.4);
+    L.interact('bio_reader', 'reader', '배지 리더', 11.78, 5.95, -39.5);
     L.screen('bio_reader', 'badge', 0.16, 0.22, 11.795, 5.95, -39.5, '-x');
     L.marker('roof_hatch', 0, 13.5, -30, 0);
     L.marker('trunk_beacon', 1.5, 5.2, -62, 0);
@@ -610,10 +610,10 @@ export const SHELLS3: Record<RoomId3, Shell> = {
 
   clinic: ({ L, G, b }) => {
     G.air('clinic', airOf('clinic'));
-    roomLabel(b, 'CLINIC', 19.8, 2.2, -19.0, '-x', 2.0);
+    roomLabel(b, '진료실', 19.8, 2.2, -19.0, '-x', 2.0);
     L.screen('clinic_monitor', 'vitals', 0.5, 0.3, 16.4, 1.35, -23.795, '+z');
-    L.interact('note3_clinic_post4', 'log', 'Read clipboard', 14.8, 0.95, -23.3);
-    L.interact('note3_clinic_reyes', 'log', 'Read printout', 15.6, 0.95, -23.3);
+    L.interact('note3_clinic_post4', 'log', '클립보드 읽기', 14.8, 0.95, -23.3);
+    L.interact('note3_clinic_reyes', 'log', '출력물 읽기', 15.6, 0.95, -23.3);
   },
 
   quarters: ({ L, G, b }) => {
@@ -623,14 +623,14 @@ export const SHELLS3: Record<RoomId3, Shell> = {
       G.air('cabins', [x - 0.8, 0, -27.8, x + 0.8, 2.4, -27.3], { rooms: ['quarters'], look: 'reveal' });
       G.air('cabins', [x - 0.8, 0, -34.7, x + 0.8, 2.4, -34.2]);
     }
-    roomLabel(b, 'QUARTERS — RING A', 25.95, 2.45, -33.8, '+z', 3.0); // (between d3_q6's jamb, x 24.1, and the east wall)
-    L.interact('note3_door', 'log', 'Read note', 23.35, 1.45, -28.09);
+    roomLabel(b, '숙소 — 링 A', 25.95, 2.45, -33.8, '+z', 3.0); // (between d3_q6's jamb, x 24.1, and the east wall)
+    L.interact('note3_door', 'log', '쪽지 읽기', 23.35, 1.45, -28.09);
   },
 
   bio_lock: ({ L, G, b }) => {
     G.air('bio_lock', airOf('bio_lock'));
-    roomLabel(b, 'BIOLOGICAL SYSTEMS — OUTER LOCK', 14, D2 + 2.3, -39.8, '+z', 3.4);
-    L.screen('bio_panel', 'terminal_idle', 0.5, 0.3, 15.795, D2 + 1.5, -36.7, '-x', { text: 'DECON — AWAITING' });
+    roomLabel(b, '생물 시스템 — 외부 록', 14, D2 + 2.3, -39.8, '+z', 3.4);
+    L.screen('bio_panel', 'terminal_idle', 0.5, 0.3, 15.795, D2 + 1.5, -36.7, '-x', { text: '제염 — 대기 중' });
   },
 
   kitchen: ({ L, G }) => {

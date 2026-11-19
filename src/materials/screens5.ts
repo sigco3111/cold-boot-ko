@@ -6,8 +6,8 @@
  *
  * `text` formats (what the level / story writes with `setScreen`; the screen's clock `t` restarts at every write):
  *   keypad       `off` | `ready` | `typing|<n>` (n of 4 digits entered) | `rejected` | `accepted` | `open`.
- *                The §6.4 display strings work as well: `NO AUTHORITY`, `ENTER CODE`, `* * * _` (stars = digits typed),
- *                `CODE REJECTED`, `ACCEPTED`, `OPEN`. `rejected` shows CODE REJECTED for 1.2 s, then ENTER CODE by
+ *                The §6.4 display strings work as well: `권한 없음`, `코드 입력`, `* * * _` (stars = digits typed),
+ *                `코드 거부됨`, `승인됨`, `열림`. `rejected` shows CODE REJECTED for 1.2 s, then ENTER CODE by
  *                itself. Portrait quads (aspect < 1) also draw the 3 × 4 key field under the display (1–9, CLR 0 ENT;
  *                unlit while `off`); landscape quads are the display alone.
  *   launch       `idle` (or `-`, empty) | `running[|<seconds>]` (default 6 s: the checklist fills over it) | `complete`.
@@ -15,7 +15,7 @@
  *                (label over a big value, no header); more = the duty board (level header band, a dot per line). A value
  *                ending in `<d>d <h>h <m>m` counts up by itself from the value written (write it once).
  *                A changed text flips in over 0.45 s (the boards are split-flap-like).
- *   onpost       the number (e.g. `26`); amber LED dot-matrix `ON POST` + the number; a new number rolls in over 0.4 s.
+ *   onpost       the number (e.g. `26`); amber LED dot-matrix `근무 중` + the number; a new number rolls in over 0.4 s.
  */
 
 export interface S5 {
@@ -61,12 +61,12 @@ export function keypadState(text: string | undefined): { st: KeyState; n: number
   const raw = (text ?? '').trim();
   const u = raw.toUpperCase();
   const [a, b] = u.split('|');
-  if (a === 'TYPING') return { st: 'typing', n: Math.max(0, Math.min(4, Number(b) || 0)) };
+  if (a === '입력 중') return { st: 'typing', n: Math.max(0, Math.min(4, Number(b) || 0)) };
   if (/^[*_\s]+$/.test(u) && u.length > 0) return { st: 'typing', n: (u.match(/\*/g) ?? []).length };
-  if (a === 'READY' || a === 'ENTER CODE') return { st: 'ready', n: 0 };
-  if (a === 'REJECTED' || a === 'CODE REJECTED') return { st: 'rejected', n: 0 };
-  if (a === 'ACCEPTED') return { st: 'accepted', n: 4 };
-  if (a === 'OPEN') return { st: 'open', n: 4 };
+  if (a === '준비' || a === '코드 입력') return { st: 'ready', n: 0 };
+  if (a === '거부됨' || a === '코드 거부됨') return { st: 'rejected', n: 0 };
+  if (a === '승인됨') return { st: 'accepted', n: 4 };
+  if (a === '열림') return { st: 'open', n: 4 };
   return { st: 'off', n: 0 };
 }
 
@@ -86,17 +86,17 @@ export function keypad(s: S5) {
   g.textAlign = 'center'; g.textBaseline = 'middle';
   // header (the door's name), dim
   g.fillStyle = off ? 'rgba(122,28,20,0.55)' : K.label;
-  fit(g, 'SPINE — AUTHORISED ACCESS', 700, dh * 0.11, iw);
-  g.fillText('SPINE — AUTHORISED ACCESS', cx, pad + dh * 0.12);
+  fit(g, '스파인 — 인가된 출입', 700, dh * 0.11, iw);
+  g.fillText('스파인 — 인가된 출입', cx, pad + dh * 0.12);
   const main = (txt: string, col: string, size: number, y: number, blur = 0.06) => {
     glow(g, col, dh * blur, () => { g.fillStyle = col; fit(g, txt, 800, size, iw); g.fillText(txt, cx, y); });
   };
   const blink = Math.floor(t * 2) % 2 === 0;
   if (off) {
     // dark red, dim: the panel has no power to act (it still says so)
-    g.fillStyle = K.dimRed; fit(g, 'NO AUTHORITY', 800, dh * 0.3, iw); g.fillText('NO AUTHORITY', cx, dh * 0.58);
+    g.fillStyle = K.dimRed; fit(g, '권한 없음', 800, dh * 0.3, iw); g.fillText('권한 없음', cx, dh * 0.58);
   } else if (st === 'ready' || st === 'typing') {
-    main('ENTER CODE', K.text, dh * (st === 'ready' ? 0.27 : 0.17), st === 'ready' ? dh * 0.44 : dh * 0.36);
+    main('코드 입력', K.text, dh * (st === 'ready' ? 0.27 : 0.17), st === 'ready' ? dh * 0.44 : dh * 0.36);
     // four slots: `*` typed, `_` to come, the next one blinking
     const slots = [0, 1, 2, 3].map((i) => (i < n ? '*' : i === n && !blink ? ' ' : '_'));
     g.fillStyle = K.text;
@@ -110,20 +110,20 @@ export function keypad(s: S5) {
   } else if (st === 'rejected') {
     const on = Math.floor(t * 4) % 2 === 0;
     g.fillStyle = on ? '#3a0806' : '#1a0302'; g.fillRect(pad, pad + dh * 0.22, W - pad * 2, dh * 0.62);
-    main('CODE REJECTED', on ? K.red : '#c83a2c', dh * 0.27, dh * 0.55, 0.08);
+    main('코드 거부됨', on ? K.red : '#c83a2c', dh * 0.27, dh * 0.55, 0.08);
   } else if (st === 'accepted' || st === 'open') {
     g.fillStyle = 'rgba(125,255,176,0.1)'; g.fillRect(pad, pad + dh * 0.22, W - pad * 2, dh * 0.62);
-    main(st === 'open' ? 'OPEN' : 'ACCEPTED', K.green, dh * 0.34, dh * 0.56, 0.08);
+    main(st === 'open' ? '열림' : '승인됨', K.green, dh * 0.34, dh * 0.56, 0.08);
   }
   if (!portrait) return;
   // the key field: 1–9, CLR 0 ENT, backlit when powered
-  const keys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'CLR', '0', 'ENT'];
+  const keys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '지움', '0', '입력'];
   const kx0 = W * 0.1, ky0 = dh + H * 0.03, kw = (W * 0.8) / 3, kh = (H - ky0 - H * 0.05) / 4;
   keys.forEach((k, i) => {
     const x = kx0 + (i % 3) * kw, y = ky0 + Math.floor(i / 3) * kh;
     g.fillStyle = off ? '#0c0c0d' : '#121c26';
     g.beginPath(); g.roundRect(x + kw * 0.08, y + kh * 0.08, kw * 0.84, kh * 0.84, kw * 0.1); g.fill();
-    const col = off ? '#2a2a2a' : k === 'ENT' ? K.green : k === 'CLR' ? '#ff8a70' : K.text;
+    const col = off ? '#2a2a2a' : k === '입력' ? K.green : k === '지움' ? '#ff8a70' : K.text;
     g.fillStyle = col;
     fit(g, k, 800, kh * (k.length > 1 ? 0.34 : 0.5), kw * 0.7);
     g.fillText(k, x + kw / 2, y + kh / 2);
@@ -132,7 +132,7 @@ export function keypad(s: S5) {
 
 // ───────────────────────────── launch (the bridge console)
 
-const CHECKLIST = ['BALLAST BLOW', 'TRIM', 'SAIL HATCH', 'CRADLE CLAMPS', 'MAIN BATTERY', 'NAV / SONAR'];
+const CHECKLIST = ['밸러스트 배출', '트림', '세일 해치', '크레이들 클램프', '주 배터리', '항법 / 소나'];
 
 export function launch(s: S5) {
   const { g, W, H, t } = s;
@@ -145,14 +145,14 @@ export function launch(s: S5) {
   // title band
   g.fillStyle = '#16324a'; g.fillRect(0, 0, W, H * 0.15);
   g.textBaseline = 'middle'; g.textAlign = 'left';
-  g.fillStyle = K.text; fit(g, 'SDV TERN — LAUNCH CONTROL', 800, H * 0.1, W - p * 2); g.fillText('SDV TERN — LAUNCH CONTROL', p, H * 0.077);
+  g.fillStyle = K.text; fit(g, 'SDV 턴 — 발사 관제', 800, H * 0.1, W - p * 2); g.fillText('SDV 턴 — 발사 관제', p, H * 0.077);
   // pre-launch check line
-  const val = complete ? 'COMPLETE (REQUESTED: CHOIR)' : running ? 'RUNNING' : '—';
+  const val = complete ? '완료 (요청: CHOIR)' : running ? '가동 중' : '—';
   const y1 = H * 0.25;
   g.fillStyle = K.label;
-  const ls = fit(g, 'PRE-LAUNCH CHECK:', 700, H * 0.075, W * 0.42);
-  g.fillText('PRE-LAUNCH CHECK:', p, y1);
-  const lw = g.measureText('PRE-LAUNCH CHECK:').width;
+  const ls = fit(g, '발사 전 점검:', 700, H * 0.075, W * 0.42);
+  g.fillText('발사 전 점검:', p, y1);
+  const lw = g.measureText('발사 전 점검:').width;
   const blink = Math.floor(t * 2.5) % 2 === 0;
   const vcol = complete ? K.green : running ? (blink ? K.amber : '#a8701e') : K.label;
   glow(g, vcol, running || complete ? H * 0.03 : 0, () => { g.fillStyle = vcol; fit(g, val, 800, ls, W - p * 3 - lw); g.fillText(val, p * 2 + lw, y1); });
@@ -188,14 +188,14 @@ export function launch(s: S5) {
   });
   // launch authority + awaiting palm
   g.textAlign = 'left'; g.fillStyle = K.text;
-  fit(g, 'LAUNCH AUTHORITY: OFFICER PALM — CO / XO', 800, H * 0.085, W - p * 2);
-  g.fillText('LAUNCH AUTHORITY: OFFICER PALM — CO / XO', p, H * 0.76);
+  fit(g, '발사 권한: 장교 손바닥 인증 — 함장/부함장', 800, H * 0.085, W - p * 2);
+  g.fillText('발사 권한: 장교 손바닥 인증 — 함장/부함장', p, H * 0.76);
   const by = H * 0.83, bh = H * 0.13;
   const pulse = complete ? 0.6 + 0.4 * Math.abs(Math.sin(t * 2)) : 0.55;
   g.globalAlpha = pulse; g.strokeStyle = K.amber; g.lineWidth = Math.max(2, H * 0.012); g.strokeRect(p, by, W - p * 2, bh);
   g.globalAlpha = 1;
   g.textAlign = 'center';
-  glow(g, K.amber, complete ? H * 0.04 : 0, () => { g.fillStyle = complete ? K.amber : '#b07a2a'; fit(g, 'AWAITING PALM', 900, bh * 0.66, W * 0.8); g.fillText('AWAITING PALM', W / 2, by + bh * 0.53); });
+  glow(g, K.amber, complete ? H * 0.04 : 0, () => { g.fillStyle = complete ? K.amber : '#b07a2a'; fit(g, '손바닥 인증 대기 중', 900, bh * 0.66, W * 0.8); g.fillText('손바닥 인증 대기 중', W / 2, by + bh * 0.53); });
 }
 
 // ───────────────────────────── dock_status (duty board, TERN board)
@@ -259,7 +259,7 @@ export function dockStatus(s: S5) {
   g.fillStyle = '#16324a'; g.fillRect(0, 0, W, hb);
   g.textBaseline = 'middle'; g.textAlign = 'left';
   g.fillStyle = K.text; fit(g, s.header, 700, hb * 0.6, W * 0.7); g.fillText(s.header, p, hb / 2);
-  g.textAlign = 'right'; g.fillStyle = K.label; fit(g, 'DOCK STATUS', 800, hb * 0.6, W * 0.25); g.fillText('DOCK STATUS', W - p, hb / 2);
+  g.textAlign = 'right'; g.fillStyle = K.label; fit(g, '도크 상태', 800, hb * 0.6, W * 0.25); g.fillText('도크 상태', W - p, hb / 2);
   const rh = (H - hb - p) / lines.length;
   lines.forEach((ln, i) => {
     const [label, value0] = splitLine(ln);
@@ -312,7 +312,7 @@ export function onpost(s: S5) {
   // ON POST: small, top-left; the number: big, right
   const sd = Math.min(H * 0.065, W * 0.4 / 41);
   g.save(); g.shadowColor = AMB; g.shadowBlur = sd * 1.2;
-  ledText(g, 'ON POST', W * 0.06, H * 0.1, sd, AMB, OFF);
+  ledText(g, '근무 중', W * 0.06, H * 0.1, sd, AMB, OFF);
   g.restore();
   const digits = Math.max(2, num.length);
   const bd = Math.min(H * 0.65 / 7, (W * 0.86) / (digits * 6));
