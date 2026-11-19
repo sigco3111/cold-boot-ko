@@ -8,6 +8,14 @@
 
 **원작 플레이:** https://rossinek.github.io/cold-boot/
 
+## 스크린샷
+
+![타이틀 화면](docs/1-screenshot-title-ko.png)
+
+![인트로 한국어 자막](docs/2-screenshot-subtitle-intro-ko.png)
+
+![일시 정지 · 설정 · 조작](docs/3-screenshot-pause-settings-ko.png)
+
 ## 로컬에서 실행
 
 ```sh
