@@ -112,7 +112,7 @@ function doorNote(L: LevelBuild) {
     g.fillStyle = '#f6efc8'; g.fillRect(0, 0, W, H);
     g.strokeStyle = '#1d3f73'; g.lineWidth = 2;
     for (let i = 0; i < 9; i++) { g.beginPath(); const y = 26 + i * 19; g.moveTo(12, y); for (let x = 12; x < W - 14 - (i % 4) * 12; x += 6) g.lineTo(x, y + Math.sin(x * 0.7 + i * 2) * 2.4); g.stroke(); }
-    g.fillStyle = '#1d3f73'; g.font = 'italic 700 20px "Marker Felt", "Comic Sans MS", sans-serif'; g.fillText('Sigrid —', 12, 20);
+    g.fillStyle = '#1d3f73'; g.font = 'italic 700 20px "Marker Felt", "Comic Sans MS", sans-serif'; g.fillText('시그리드 —', 12, 20);
   });
   return (b: Builder, side: -1 | 1) => {
     if (side !== 1) return;
@@ -307,11 +307,11 @@ const canteen: RoomDress = {
     // chalk menu over the servery
     const menu = canvasMat(L, 'canteen_chalk', 512, 288, (g, W, Hh) => {
       g.fillStyle = '#1f2421'; g.fillRect(0, 0, W, Hh);
-      g.fillStyle = '#f2ead8'; g.textAlign = 'center'; g.font = '700 40px "Marker Felt", "Comic Sans MS", sans-serif'; g.fillText('TODAY', W / 2, 52);
+      g.fillStyle = '#f2ead8'; g.textAlign = 'center'; g.font = '700 40px "Marker Felt", "Comic Sans MS", sans-serif'; g.fillText('오늘', W / 2, 52);
       g.font = '500 30px "Marker Felt", "Comic Sans MS", sans-serif';
-      g.fillText('Fish soup ........ 3.20', W / 2, 110); g.fillText('Lentil curry ...... 2.80', W / 2, 152);
+      g.fillText('생선 수프 ........ 3.20', W / 2, 110); g.fillText('렌즈콩 카레 ...... 2.80', W / 2, 152);
       g.fillStyle = '#d9a75a'; g.font = '500 24px "Marker Felt", "Comic Sans MS", sans-serif';
-      g.fillText('bread & butter  ·  fruit  ·  tea / coffee', W / 2, 200); g.fillStyle = '#c9e0c0'; g.fillText('Thursday: carrot cake (quiz night!)', W / 2, 246);
+      g.fillText('빵과 버터  ·  과일  ·  차 / 커피', W / 2, 200); g.fillStyle = '#c9e0c0'; g.fillText('목요일: 당근 케이크 (퀴즈의 밤!)', W / 2, 246);
     });
     alongWall(b, '+z', -45.8, 0, () => { b.bx('wood_dark', -17.45, 1.72, 0.0, -14.15, 2.68, 0.03); b.quad(menu, -15.8, 2.2, 0.036, 3.2, 0.88, '+z'); });
     // the canteen_menu screen in a wood bezel (north wall), a wall clock
@@ -324,9 +324,9 @@ const canteen: RoomDress = {
       b.quad(paper(L, 0xf4e7a6), 22.15, 1.52, 0.03, 0.2, 0.24, '+z', -0.05, 'unit', 0.004);
       const quiz = canvasMat(L, 'canteen_quiz', 256, 352, (g, W) => {
         g.fillStyle = '#2f5f8a'; g.fillRect(0, 0, W, 352);
-        g.fillStyle = '#f2c230'; g.textAlign = 'center'; g.font = '800 34px Arial'; g.fillText('THURSDAY', W / 2, 60); g.fillText('QUIZ NIGHT', W / 2, 100);
+        g.fillStyle = '#f2c230'; g.textAlign = 'center'; g.font = '800 34px Arial'; g.fillText('목요일', W / 2, 60); g.fillText('퀴즈의 밤', W / 2, 100);
         g.fillStyle = '#f4efe2'; g.font = '600 20px Arial'; ['Teams of four', 'Prize: a day on', 'the surface rota', '', 'Question master:', 'Halvorsen'].forEach((t, i) => g.fillText(t, W / 2, 160 + i * 28));
-        g.fillStyle = '#f2c230'; g.font = 'italic 600 16px Arial'; g.fillText('No asking CHOIR.', W / 2, 336);
+        g.fillStyle = '#f2c230'; g.font = 'italic 600 16px Arial'; g.fillText('CHOIR에게 묻기 금지.', W / 2, 336);
       });
       pictureFrame(b, quiz, 20.9, 1.6, 0.42, 0.58, 'chrome', false);
     });
@@ -492,12 +492,12 @@ const clinic: RoomDress = {
     const sick = canvasMat(L, 'clinic_sickcall', 256, 340, (g, W) => {
       g.fillStyle = '#f4f1e8'; g.fillRect(0, 0, W, 340);
       g.fillStyle = '#1f2a44'; g.fillRect(0, 0, W, 46);
-      g.fillStyle = '#f4f1e8'; g.font = '700 17px Arial'; g.fillText('SICK CALL — POST 4 (RN)', 12, 29);
+      g.fillStyle = '#f4f1e8'; g.font = '700 17px Arial'; g.fillText('진료 — 4번 초소 (해군)', 12, 29);
       g.strokeStyle = '#9aa6b8'; g.lineWidth = 1; for (let i = 0; i < 11; i++) { g.beginPath(); g.moveTo(8, 72 + i * 24); g.lineTo(W - 8, 72 + i * 24); g.stroke(); }
       g.strokeStyle = '#22325a'; g.lineWidth = 2;
       for (let i = 0; i < 11; i++) { g.beginPath(); const y = 66 + i * 24; for (let x = 14; x < W - 20 - ((i * 37) % 60); x += 5) g.lineTo(x, y + Math.sin(x * 0.8 + i) * 2.2); g.stroke(); }
       g.fillStyle = 'rgba(242,194,48,0.45)'; g.fillRect(120, 182, 90, 16); // a highlighter on one line
-      g.fillStyle = '#a12a2a'; g.font = 'italic 700 18px "Marker Felt", "Comic Sans MS", sans-serif'; g.fillText('→ Bio-Sys?', 140, 330);
+      g.fillStyle = '#a12a2a'; g.font = 'italic 700 18px "Marker Felt", "Comic Sans MS", sans-serif'; g.fillText('→ 바이오시스?', 140, 330);
     });
     b.detail(() => {
       // clipboard
@@ -547,7 +547,7 @@ const clinic: RoomDress = {
     });
     const poster = canvasMat(L, 'clinic_poster', 256, 340, (g, W) => {
       g.fillStyle = '#e7efe9'; g.fillRect(0, 0, W, 340);
-      g.fillStyle = '#2f5f6a'; g.textAlign = 'center'; g.font = '800 26px Arial'; g.fillText('SLEEP WELL', W / 2, 52); g.fillText('ON THE RING', W / 2, 84);
+      g.fillStyle = '#2f5f6a'; g.textAlign = 'center'; g.font = '800 26px Arial'; g.fillText('잘 자요', W / 2, 52); g.fillText('링에서', W / 2, 84);
       g.fillStyle = '#3d4a4f'; g.font = '500 17px Arial';
       ['Keep a surface clock', 'Lamps to EVENING by 21:00', 'Headaches, ear pressure,', 'stiff neck? Come and see us.', '', '— Dr. Lund, Clinic'].forEach((t, i) => g.fillText(t, W / 2, 140 + i * 30));
     });
@@ -733,8 +733,8 @@ const bio_lock: RoomDress = {
     const ghost = canvasMat(L, 'bio_paintover', 512, 192, (g, W, Hh) => {
       g.fillStyle = '#8f8c82'; g.fillRect(0, 0, W, Hh);
       for (let i = 0; i < 26; i++) { g.fillStyle = `rgba(${i % 2 ? 255 : 0},${i % 2 ? 255 : 0},${i % 2 ? 255 : 0},0.035)`; g.fillRect(i * 20, 0, 22, Hh); }
-      g.fillStyle = 'rgba(40,40,36,0.085)'; g.textAlign = 'center'; g.font = '800 46px "Arial Black", Arial'; g.fillText('NAVAL SECURITY AREA', W / 2, 78);
-      g.font = '800 30px "Arial Black", Arial'; g.fillText('POST 4 — AUTHORISED PERSONNEL ONLY', W / 2, 128);
+      g.fillStyle = 'rgba(40,40,36,0.085)'; g.textAlign = 'center'; g.font = '800 46px "Arial Black", Arial'; g.fillText('해군 보안 구역', W / 2, 78);
+      g.font = '800 30px "Arial Black", Arial'; g.fillText('4번 초소 — 허가된 인원만', W / 2, 128);
       g.strokeStyle = 'rgba(40,40,36,0.07)'; g.lineWidth = 6; g.beginPath(); g.arc(W - 46, 150, 18, 0, PI * 2); g.moveTo(W - 46, 132); g.lineTo(W - 46, 182); g.stroke();
       for (let i = 0; i < 7; i++) { g.fillStyle = 'rgba(143,140,130,0.9)'; g.fillRect(30 + i * 67, Hh - 14, 6, 10 + (i % 3) * 4); }
     });

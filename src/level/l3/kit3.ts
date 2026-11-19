@@ -131,13 +131,13 @@ export function artMat(L: LevelBuild, kind: 'fjord' | 'abstract' | 'photo' | 'se
       const s = g.createLinearGradient(0, 0, 0, H); s.addColorStop(0, '#0d2a33'); s.addColorStop(1, '#03090b');
       g.fillStyle = s; g.fillRect(0, 0, W, H);
       g.strokeStyle = '#c94a2e'; g.lineWidth = 6; g.beginPath(); g.moveTo(W * 0.55, H); g.lineTo(W * 0.5, 0); g.stroke();
-      g.fillStyle = '#e8dcc4'; g.font = '600 26px "Avenir Next", Arial'; g.fillText('ERIDU DEEP — 2,140 m', 24, H - 24);
+      g.fillStyle = '#e8dcc4'; g.font = '600 26px "Avenir Next", Arial'; g.fillText('에리두 심해 기지 — 2,140m', 24, H - 24);
       for (let i = 0; i < 90; i++) { g.fillStyle = `rgba(200,230,230,${0.2 + r() * 0.4})`; g.fillRect(r() * W, r() * H, 2, 2); }
     } else {
       g.fillStyle = '#e9e1cf'; g.fillRect(0, 0, W, H);
       g.strokeStyle = '#5a6a72'; g.lineWidth = 10; g.beginPath(); g.arc(W / 2, H / 2, H * 0.33, 0, PI * 2); g.stroke();
       g.lineWidth = 3; for (let i = 0; i < 6; i++) { const a = (i / 6) * PI * 2; g.beginPath(); g.moveTo(W / 2 + Math.cos(a) * H * 0.33, H / 2 + Math.sin(a) * H * 0.33); g.lineTo(W / 2 + Math.cos(a) * H * 0.45, H / 2 + Math.sin(a) * H * 0.45); g.stroke(); }
-      g.fillStyle = '#2b3236'; g.font = '700 24px "Avenir Next", Arial'; g.fillText('HABITAT RING A', 24, 36);
+      g.fillStyle = '#2b3236'; g.font = '700 24px "Avenir Next", Arial'; g.fillText('주거 링 A', 24, 36);
     }
   });
 }
@@ -1039,7 +1039,7 @@ export function childDrawingMat(L: LevelBuild): THREE.MeshStandardMaterial {
     g.fillStyle = '#f2c230'; g.beginPath(); g.arc(214, 34, 18, 0, PI * 2); g.fill();
     g.strokeStyle = '#f2c230';
     for (let i = 0; i < 8; i++) { const a = (i / 8) * PI * 2; g.beginPath(); g.moveTo(214 + Math.cos(a) * 24, 34 + Math.sin(a) * 24); g.lineTo(214 + Math.cos(a) * 32, 34 + Math.sin(a) * 32); g.stroke(); }
-    g.fillStyle = '#c0392b'; g.font = '700 26px "Marker Felt", "Comic Sans MS", sans-serif'; g.fillText('for dad', 18, 40);
-    g.fillStyle = '#3a8a3a'; g.font = '700 16px "Marker Felt", "Comic Sans MS", sans-serif'; g.fillText('love Mia', 22, 62);
+    g.fillStyle = '#c0392b'; g.font = '700 26px "Marker Felt", "Comic Sans MS", sans-serif'; g.fillText('아빠에게', 18, 40);
+    g.fillStyle = '#3a8a3a'; g.font = '700 16px "Marker Felt", "Comic Sans MS", sans-serif'; g.fillText('미아가', 22, 62);
   });
 }

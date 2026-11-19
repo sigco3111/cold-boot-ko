@@ -162,7 +162,7 @@ export function buildGen(L: LevelBuild) {
       g.fillStyle = '#d9d4c6'; g.fillRect(0, 0, W, Hh);
       g.fillStyle = '#a3170f'; g.fillRect(0, 0, W, Hh * 0.27);
       g.fillStyle = '#efe9da'; g.font = `bold ${Math.round(W * 0.2)}px sans-serif`; g.textAlign = 'center';
-      g.fillText('DANGER', W / 2, Hh * 0.13); g.font = `bold ${Math.round(W * 0.115)}px sans-serif`; g.fillText('LOCKED OUT', W / 2, Hh * 0.235);
+      g.fillText('위험', W / 2, Hh * 0.13); g.font = `bold ${Math.round(W * 0.115)}px sans-serif`; g.fillText('로크아웃', W / 2, Hh * 0.235);
       g.fillStyle = '#222'; g.beginPath(); g.arc(W / 2, Hh * 0.045, W * 0.035, 0, 6.3); g.fill();
     },
   });

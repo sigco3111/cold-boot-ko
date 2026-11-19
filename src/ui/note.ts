@@ -9,7 +9,7 @@ import type { GameContext } from '../core/types';
 import type { NoteStyle } from '../story/text';
 import { h, sfx, Typewriter } from './dom';
 
-const STYLE_LABEL: Record<NoteStyle, string> = { paper: 'NOTE', terminal: 'TERMINAL', tag: 'TAG', voice: 'PLAYBACK' };
+const STYLE_LABEL: Record<NoteStyle, string> = { paper: '쪽지', terminal: '단말기', tag: '태그', voice: '재생' };
 const WALK_AWAY = 3;
 const WALK_AWAY_MIN_OPEN = 1.5;
 

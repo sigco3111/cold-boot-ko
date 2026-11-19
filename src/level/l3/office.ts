@@ -165,7 +165,7 @@ const office: RoomDress = {
     // ── north wall: schedule board (note3_schedule) over the sideboard, coat hook by the door
     const sched = canvasMat(L, 'office_schedule', 640, 400, (g, W, H) => {
       g.fillStyle = '#f7f6f1'; g.fillRect(0, 0, W, H);
-      g.fillStyle = '#1d3f73'; g.font = '700 34px "Marker Felt", "Comic Sans MS", sans-serif'; g.fillText('FACILITIES — WEEK 46', 24, 46);
+      g.fillStyle = '#1d3f73'; g.font = '700 34px "Marker Felt", "Comic Sans MS", sans-serif'; g.fillText('시설팀 — 46주차', 24, 46);
       g.strokeStyle = '#3a3a3a'; g.lineWidth = 2;
       const days = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
       for (let i = 0; i < 7; i++) { const y = 74 + i * 44; g.beginPath(); g.moveTo(16, y); g.lineTo(W - 16, y); g.stroke(); g.fillStyle = '#333'; g.font = '600 20px Arial'; g.fillText(days[i], 24, y + 30); }

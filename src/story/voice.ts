@@ -52,11 +52,11 @@ export function estimateDuration(text: string): number {
   return Math.max(1.4, 0.7 + words * 0.36);
 }
 
-const NAMES: Record<string, string> = { choir: 'CHOIR', tomas: 'TOMAS', hale: 'D. HALE', unit: 'SERVICE UNIT', halvorsen: 'HALVORSEN', reyes: 'REYES', resident: 'RESIDENT', sunde: 'DR. A. SUNDE' };
+const NAMES: Record<string, string> = { choir: 'CHOIR', tomas: '토마스', hale: 'D. 헤일', unit: '정비 유닛', halvorsen: '할보센', reyes: '레예스', resident: '거주자', sunde: 'A. 순데 박사' };
 
 /** Subtitle speaker label for a line (a unit speaking with a staff voice is still a unit). */
 export function speakerName(l: VoiceLine): string {
-  if (l.fx === 'unit') return 'SERVICE UNIT';
+  if (l.fx === 'unit') return '정비 유닛';
   return NAMES[l.speaker] ?? l.speaker.toUpperCase();
 }
 

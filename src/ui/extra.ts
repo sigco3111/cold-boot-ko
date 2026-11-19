@@ -40,7 +40,7 @@ export class SkipRing {
     this.el = h('div', 'skipring', parent);
     this.el.innerHTML = `<svg viewBox="0 0 22 22"><circle cx="11" cy="11" r="${R}"/><circle class="fill" cx="11" cy="11" r="${R}" stroke-dasharray="${C.toFixed(2)}" stroke-dashoffset="${C.toFixed(2)}"/></svg>`;
     this.arc = this.el.querySelector('circle.fill') as SVGCircleElement;
-    h('span', 'lbl', this.el, 'Hold Space to skip');
+    h('span', 'lbl', this.el, '스페이스를 길게 눌러 건너뛰기');
   }
   set(progress: number | null): void {
     if (progress == null || !Number.isFinite(progress)) { this.el.classList.remove('show', 'done'); return; }

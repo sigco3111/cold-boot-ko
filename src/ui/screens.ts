@@ -42,7 +42,7 @@ export class LogReader {
     const top = h('div', 'top', log);
     const rec = h('div', 'rec lbl', top);
     h('i', '', rec);
-    h('span', '', rec, 'Recovered record');
+    h('span', '', rec, '복구된 기록');
     this.idEl = h('span', 'lbl', top, '');
     this.titleEl = h('h1', '', log, '');
     this.meta = h('dl', 'metab', log);
@@ -51,8 +51,8 @@ export class LogReader {
     this.caret = this.body.querySelector('.caret');
     const bot = h('div', 'bot', log);
     const keys = h('div', 'keys lbl', bot);
-    const k1 = h('span', '', keys); h('span', 'key', k1, 'E'); h('span', '', k1, 'Close');
-    const k2 = h('span', '', keys); h('span', 'key', k2, 'W'); h('span', 'key', k2, 'S'); h('span', '', k2, 'Scroll');
+    const k1 = h('span', '', keys); h('span', 'key', k1, 'E'); h('span', '', k1, '닫기');
+    const k2 = h('span', '', keys); h('span', 'key', k2, 'W'); h('span', 'key', k2, 'S'); h('span', '', k2, '스크롤');
     h('span', 'lbl', bot, 'HALCYON DYNAMICS · INTERNAL');
     addEventListener('wheel', this.wheel, { passive: true });
   }
@@ -202,7 +202,7 @@ export class Cards {
     const style = opts.style ?? 'intro';
     const root = h('div', `layer ov card card-${style} interactive grain`, this.parent);
     const stage = h('div', 'stage', root);
-    const skip = opts.skippable !== false ? h('div', 'skip lbl', root, 'Space — skip') : null;
+    const skip = opts.skippable !== false ? h('div', 'skip lbl', root, '스페이스 — 건너뛰기') : null;
     let skipped = false;
     const onKey = (e: KeyboardEvent) => { if (e.code === 'Space' || e.code === 'Enter' || e.code === 'Escape') skipped = true; };
     const onClick = () => { skipped = true; };
@@ -279,19 +279,19 @@ export class PauseMenu {
   constructor(private ctx: GameContext, settings: Settings, parent: HTMLElement, private roomName: () => string) {
     const root = this.root = h('div', 'layer ov pause scan hidden', parent);
     const col = h('div', 'col', root);
-    h('div', 'lbl', col, 'Session suspended');
-    h('h2', 'glow', col, 'PAUSED');
+    h('div', 'lbl', col, '세션 일시 중단됨');
+    h('h2', 'glow', col, '일시 정지');
     this.meta = h('div', 'lbl meta', col, '');
     this.obj = h('div', 'obj', col, '');
     const items = h('div', 'items', col);
-    button(ctx, items, 'Resume', '01', () => this.resume(), 'primary');
-    this.loadBtn = button(ctx, items, 'Load checkpoint', '02', () => this.load());
-    this.restartBtn = button(ctx, items, 'Restart level', '03', () => this.restart(), 'danger');
+    button(ctx, items, '계속하기', '01', () => this.resume(), 'primary');
+    this.loadBtn = button(ctx, items, '체크포인트 불러오기', '02', () => this.load());
+    this.restartBtn = button(ctx, items, '레벨 다시 시작', '03', () => this.restart(), 'danger');
     this.side = h('div', 'side', root);
     settingsPanel(ctx, settings, this.side);
     h('div', '', this.side).style.height = '18px';
     controlsPanel(this.side);
-    this.hint = h('div', 'hint lbl', root, 'Click Resume or press Esc to continue');
+    this.hint = h('div', 'hint lbl', root, '계속하기를 클릭하거나 Esc를 누르세요');
     root.addEventListener('click', (e) => { if (e.target === root) this.resume(); });
   }
 
@@ -305,15 +305,15 @@ export class PauseMenu {
     try { this.ctx.audio.setMuffle(0.85); } catch { /* ignore */ }
     const obj = this.ctx.story?.objective ?? '';
     this.obj.innerHTML = '';
-    if (obj) { h('b', 'lbl', this.obj, 'Objective'); this.obj.append(obj); }
+    if (obj) { h('b', 'lbl', this.obj, '목표'); this.obj.append(obj); }
     const t = (this.ctx.story as StoryInternal | undefined)?.stats?.time ?? this.ctx.time;
     this.meta.textContent = [levelLabel(this.ctx).toUpperCase(), this.roomName(), fmtTime(t)].filter(Boolean).join('  ·  ');
     this.confirmRestart = false;
     this.confirmLoad = false;
-    (this.restartBtn.lastChild as HTMLElement).textContent = 'Restart level';
-    (this.loadBtn.lastChild as HTMLElement).textContent = 'Load checkpoint';
+    (this.restartBtn.lastChild as HTMLElement).textContent = '레벨 다시 시작';
+    (this.loadBtn.lastChild as HTMLElement).textContent = '체크포인트 불러오기';
     toggle(this.loadBtn, 'hidden', !hasCheckpoint(this.ctx));
-    this.hint.textContent = 'Click Resume or press Esc to continue';
+    this.hint.textContent = '계속하기를 클릭하거나 Esc를 누르세요';
     this.root.classList.remove('hidden');
     void this.root.offsetWidth;
     this.root.classList.add('show');
@@ -334,13 +334,13 @@ export class PauseMenu {
 
   /** Pointer lock was refused (browser cooldown after Esc): stay paused and say so. */
   lockRefused(): void {
-    this.hint.textContent = 'Pointer capture refused by the browser — click Resume again';
+    this.hint.textContent = '브라우저가 포인터 캡처를 거부했습니다 — 계속하기를 다시 클릭하세요';
   }
 
   private load(): void {
     if (!this.confirmLoad) {
       this.confirmLoad = true;
-      (this.loadBtn.lastChild as HTMLElement).textContent = 'Load checkpoint — click to confirm';
+      (this.loadBtn.lastChild as HTMLElement).textContent = '체크포인트 불러오기 — 클릭하여 확인';
       return;
     }
     loadCheckpoint(this.ctx);
@@ -349,7 +349,7 @@ export class PauseMenu {
   private restart(): void {
     if (!this.confirmRestart) {
       this.confirmRestart = true;
-      (this.restartBtn.lastChild as HTMLElement).textContent = 'Restart level — click to confirm';
+      (this.restartBtn.lastChild as HTMLElement).textContent = '레벨 다시 시작 — 클릭하여 확인';
       return;
     }
     restartLevel(this.ctx);
@@ -371,10 +371,10 @@ export class DeathScreen {
     await sleep(1.1);
     const root = this.root = h('div', 'layer ov death interactive grain scan', this.parent);
     const st = h('div', 'stage', root);
-    h('div', 'lbl', st, 'Operator telemetry');
-    h('h2', '', st, 'SIGNAL LOST');
+    h('div', 'lbl', st, '작업자 원격 측정');
+    h('h2', '', st, '신호 끊김');
     const t = (ctx.story as StoryInternal | undefined)?.stats?.time ?? ctx.time;
-    h('div', 'lbl meta', st, ['REYES, S.', 'NO VITALS', this.roomName(), fmtTime(t)].filter(Boolean).join('  ·  '));
+    h('div', 'lbl meta', st, ['REYES, S.', '생체 신호 없음', this.roomName(), fmtTime(t)].filter(Boolean).join('  ·  '));
     const taunt = h('div', 'taunt', st);
     h('div', 'spk', taunt, 'CHOIR');
     const line = h('div', 'line', taunt);
@@ -384,11 +384,11 @@ export class DeathScreen {
     const save = hasCheckpoint(ctx);
     let n = 1;
     if (save) {
-      const b = button(ctx, acts, 'Load checkpoint', `0${n++}`, () => loadCheckpoint(ctx), 'primary');
+      const b = button(ctx, acts, '체크포인트 불러오기', `0${n++}`, () => loadCheckpoint(ctx), 'primary');
       if (save.place) h('span', 'where', b, `—  ${save.place}`);
     }
-    button(ctx, acts, 'Restart level', `0${n++}`, () => restartLevel(ctx), save ? 'danger' : 'primary');
-    button(ctx, acts, 'Title screen', `0${n++}`, () => location.reload());
+    button(ctx, acts, '레벨 다시 시작', `0${n++}`, () => restartLevel(ctx), save ? 'danger' : 'primary');
+    button(ctx, acts, '타이틀 화면', `0${n++}`, () => location.reload());
     void root.offsetWidth;
     root.classList.add('show');
     await sleep(1.4);
@@ -406,7 +406,7 @@ export class DeathScreen {
 
 export class EndingScreen {
   private title: GlitchTitle | null = null;
-  constructor(private ctx: GameContext, private parent: HTMLElement, private text: { eyebrow: string; status: string; tbc: string } = { eyebrow: 'End of Sublevel 3', status: '', tbc: 'TO BE CONTINUED' }) {}
+  constructor(private ctx: GameContext, private parent: HTMLElement, private text: { eyebrow: string; status: string; tbc: string } = { eyebrow: '하부 3층 끝', status: '', tbc: '계속' }) {}
 
   async show(): Promise<void> {
     const ctx = this.ctx;
@@ -423,11 +423,11 @@ export class EndingScreen {
     const stats = h('div', 'stats', stage);
     const stat = (label: string, value: string) => { const s = h('div', 'stat', stats); h('span', 'lbl', s, label); h('b', '', s, value); };
     stat('Time', fmtTime(st?.time ?? ctx.time));
-    stat('Machines stopped', String(st?.kills ?? 0));
-    stat('Records recovered', `${st?.logs ?? ctx.story?.logs.size ?? 0} / ${st?.logsTotal ?? 5}`);
+    stat('멈춘 기계', String(st?.kills ?? 0));
+    stat('복구한 기록', `${st?.logs ?? ctx.story?.logs.size ?? 0} / ${st?.logsTotal ?? 5}`);
     const acts = h('div', 'acts', stage);
-    button(ctx, acts, 'Restart', '01', () => location.reload(), 'primary');
-    const credit = h('div', 'lbl credit', stage, 'Every texture, mesh and sound in this game is generated in code');
+    button(ctx, acts, '다시 시작', '01', () => location.reload(), 'primary');
+    const credit = h('div', 'lbl credit', stage, '이 게임의 모든 텍스처, 메시, 사운드는 코드로 생성되었습니다');
     void root.offsetWidth;
     root.classList.add('show');
     const seq = [eyebrow, tWrap, status, tbc, stats, acts, credit];
@@ -445,8 +445,8 @@ export class EndingScreen {
 export function resumeGate(ctx: GameContext, parent: HTMLElement, place = ''): Promise<void> {
   const root = h('div', 'layer ov gate interactive grain scan', parent);
   const st = h('div', 'stage', root);
-  h('h2', 'glow', st, 'SIGNAL REACQUIRED');
-  h('div', 'lbl', st, ['Click to resume', levelLabel(ctx), place].filter(Boolean).join('  ·  '));
+  h('h2', 'glow', st, '신호 재획득');
+  h('div', 'lbl', st, ['클릭하여 재개', levelLabel(ctx), place].filter(Boolean).join('  ·  '));
   void root.offsetWidth;
   root.classList.add('show');
   return new Promise((resolve) => {

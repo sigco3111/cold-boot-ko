@@ -11,12 +11,12 @@ const QUALITIES: Quality[] = ['low', 'medium', 'high', 'ultra'];
 
 export function settingsPanel(ctx: GameContext, settings: Settings, parent: HTMLElement): HTMLDivElement {
   const p = h('div', 'panel interactive', parent);
-  h('h3', '', p, 'Settings');
+  h('h3', '', p, '설정');
 
   // quality
   const q = h('div', 'setting', p);
   const ql = h('div', 'lbl', q);
-  h('span', '', ql, 'Render quality');
+  h('span', '', ql, '렌더 품질');
   const qv = h('span', '', ql, '');
   const seg = h('div', 'seg', q);
   const qButtons = QUALITIES.map((name) => {
@@ -36,7 +36,7 @@ export function settingsPanel(ctx: GameContext, settings: Settings, parent: HTML
   // master volume
   const v = h('div', 'setting', p);
   const vl = h('div', 'lbl', v);
-  h('span', '', vl, 'Master volume');
+  h('span', '', vl, '전체 음량');
   const vv = h('span', '', vl, '');
   const range = h('input', 'interactive', v);
   range.type = 'range'; range.min = '0'; range.max = '100'; range.step = '1';
@@ -54,7 +54,7 @@ export function settingsPanel(ctx: GameContext, settings: Settings, parent: HTML
     const base = pl.sensitivity;
     const s = h('div', 'setting', p);
     const sl = h('div', 'lbl', s);
-    h('span', '', sl, 'Mouse sensitivity');
+    h('span', '', sl, '마우스 감도');
     sv = h('span', '', sl, '');
     sens = h('input', 'interactive', s);
     sens.type = 'range'; sens.min = '20'; sens.max = '300'; sens.step = '5';
@@ -86,22 +86,22 @@ export function settingsPanel(ctx: GameContext, settings: Settings, parent: HTML
 }
 
 const CONTROLS: [string[], string][] = [
-  [['W', 'A', 'S', 'D'], 'Move'],
-  [['SHIFT'], 'Run'],
-  [['SPACE'], 'Jump'],
-  [['C'], 'Crouch'],
-  [['LMB'], 'Fire'],
-  [['RMB'], 'Aim (hold, carbine)'],
-  [['R'], 'Reload'],
-  [['1', '2', '3'], 'Weapons'],
-  [['F'], 'Flashlight'],
-  [['E'], 'Use'],
-  [['ESC'], 'Pause'],
+  [['W', 'A', 'S', 'D'], '이동'],
+  [['SHIFT'], '달리기'],
+  [['SPACE'], '점프'],
+  [['C'], '웅크리기'],
+  [['LMB'], '발사'],
+  [['RMB'], '조준 (길게, 카빈)'],
+  [['R'], '재장전'],
+  [['1', '2', '3'], '무기'],
+  [['F'], '손전등'],
+  [['E'], '사용'],
+  [['ESC'], '일시 정지'],
 ];
 
 export function controlsPanel(parent: HTMLElement): HTMLDivElement {
   const p = h('div', 'panel', parent);
-  h('h3', '', p, 'Controls');
+  h('h3', '', p, '조작');
   const g = h('div', 'controls', p);
   for (const [keys, label] of CONTROLS) {
     const k = h('div', 'k', g);
@@ -180,20 +180,20 @@ export class MainMenu {
     const col = h('div', 'col', root);
     const eb = h('div', 'eyebrow', col);
     h('span', 'dot', eb);
-    h('span', 'lbl', eb, 'Halcyon Dynamics  ·  Eridu Deep  ·  Sublevel 3');
+    h('span', 'lbl', eb, '할시온 다이내믹스  ·  에리두 심해 기지  ·  하부 3층');
     this.title = new GlitchTitle(col, 'COLD BOOT');
-    h('div', 'subtitle', col, 'The machines kept working.');
+    h('div', 'subtitle', col, '기계들은 계속 일하고 있었다.');
     h('div', 'rule2', col);
     const items = h('div', 'items', col);
     // CONTINUE sits above BEGIN and only exists while a checkpoint is stored (see open()).
     this.levelLine = h('div', 'lvlline lbl hidden', items);
     h('i', '', this.levelLine);
     this.levelLineText = h('span', '', this.levelLine, '');
-    this.continueBtn = button(ctx, items, 'Continue', '00', () => this.begin('continue'), 'primary hidden');
+    this.continueBtn = button(ctx, items, '이어하기', '00', () => this.begin('continue'), 'primary hidden');
     this.continueWhere = h('span', 'where', this.continueBtn, '');
-    this.items.push(button(ctx, items, 'Begin', '01', () => this.begin('begin'), 'primary'));
-    this.items.push(button(ctx, items, 'Settings', '02', () => this.showSide('settings')));
-    this.items.push(button(ctx, items, 'Controls', '03', () => this.showSide('controls')));
+    this.items.push(button(ctx, items, '시작', '01', () => this.begin('begin'), 'primary'));
+    this.items.push(button(ctx, items, '설정', '02', () => this.showSide('settings')));
+    this.items.push(button(ctx, items, '조작', '03', () => this.showSide('controls')));
 
     this.side = h('div', 'side', root);
 
@@ -250,7 +250,7 @@ export class MainMenu {
     const g = this.freshGate = h('div', 'layer ov gate interactive grain scan', this.root.parentElement!);
     const st = h('div', 'stage', g);
     h('h2', 'glow', st, 'COLD BOOT');
-    h('div', 'lbl', st, `Click to begin  ·  ${levelInfo(FIRST_LEVEL).place}`);
+    h('div', 'lbl', st, `클릭하여 시작  ·  ${levelInfo(FIRST_LEVEL).place}`);
     void g.offsetWidth;
     g.classList.add('show');
     return new Promise((r) => {

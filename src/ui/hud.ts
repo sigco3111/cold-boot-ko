@@ -18,18 +18,18 @@ const CELL_SEGMENTS = 10;
 const CELL_LOW = 0.2;
 /** Armour bar: an empty outline stays this long (s) after armour hits 0, then the bar hides (§8.2). */
 const ARMOUR_EMPTY_HOLD = 3;
-const WEAPON_NAMES: Record<WeaponId, string> = { pistol: 'HD-9 SIDEARM', shotgun: 'HD-12 BREACHER', carbine: 'CARBINE' };
+const WEAPON_NAMES: Record<WeaponId, string> = { pistol: 'HD-9 권총', shotgun: 'HD-12 브리처', carbine: '카빈' };
 const PICKUP_TEXT: Record<PickupKind, [string, string]> = {
   pistol: ['HD-9 SIDEARM', 'weapon'],
   shotgun: ['HD-12 BREACHER', 'weapon'],
   ammo_pistol: ['9MM ROUNDS', ''],
   ammo_shotgun: ['12G SHELLS', ''],
-  medkit: ['TRAUMA GEL', 'health'],
-  carbine: ['CARBINE', 'weapon'],
-  ammo_carbine: ['CARBINE ROUNDS', ''],
-  vest: ['ARMOUR VEST', 'armour'],
-  plate: ['ARMOUR PLATE', 'armour'],
-  keycard: ['LOCK-OUT KEY', 'weapon'],
+  medkit: ['트라우마 젤', 'health'],
+  carbine: ['카빈', 'weapon'],
+  ammo_carbine: ['카빈 탄약', ''],
+  vest: ['방탄 조끼', 'armour'],
+  plate: ['방탄판', 'armour'],
+  keycard: ['로크아웃 키', 'weapon'],
 };
 
 export class Hud {
@@ -108,12 +108,12 @@ export class Hud {
     // vitals
     this.vitals = h('div', 'vitals', root);
     const vh = h('div', 'head', this.vitals);
-    h('span', 'lbl hp', vh, 'VITALS');
+    h('span', 'lbl hp', vh, '생체');
     h('span', 'rule', vh);
     // armour (stage 3b §8.2): directly above the health bar, same column grid; hidden until armour > 0
     this.armour = h('div', 'armour row off', this.vitals);
     const al = h('div', 'armour-lbl', this.armour);
-    h('span', 'lbl', al, 'ARMOUR');
+    h('span', 'lbl', al, '방어');
     this.armNum = h('span', 'armour-num', al, '0');
     const abar = h('div', 'armour-bar', this.armour);
     for (let i = 0; i < SEGMENTS; i++) this.armSegs.push(h('div', 'arm-seg', abar));
@@ -123,7 +123,7 @@ export class Hud {
     for (let i = 0; i < SEGMENTS; i++) this.segs.push(h('div', 'hp-seg', bar));
     this.torch = h('div', 'torch', this.vitals);
     h('i', '', this.torch);
-    this.torchState = h('span', '', this.torch, 'LIGHT OFF');
+    this.torchState = h('span', '', this.torch, '조명 꺼짐');
     // the cell (battery): shown while the lamp is on or recharging, hidden when full and off
     this.cell = h('div', 'cell hide', this.torch);
     for (let i = 0; i < CELL_SEGMENTS; i++) this.cellSegs.push(h('div', 'cell-seg', this.cell));
@@ -160,7 +160,7 @@ export class Hud {
     this.objective = h('div', 'objective empty', root);
     const oh = h('div', 'head', this.objective);
     h('span', 'diamond', oh);
-    h('span', 'lbl', oh, 'OBJECTIVE');
+    h('span', 'lbl', oh, '목표');
     h('span', 'rule', oh);
     this.objText = h('div', 'text', this.objective, '');
     this.objScr = new Scrambler(this.objText);
@@ -174,7 +174,7 @@ export class Hud {
     this.pickups = h('div', 'pickups', root);
     // checkpoint indicator (top right): a small turning diamond + label
     this.cpEl = h('div', 'cp', root);
-    h('span', 'lbl', this.cpEl, 'CHECKPOINT');
+    h('span', 'lbl', this.cpEl, '체크포인트');
     h('i', '', this.cpEl);
     // foreman head pips (level 2 boss), under the checkpoint corner
     this.boss = new BossPips(ctx, root);
@@ -326,7 +326,7 @@ export class Hud {
     const charge = typeof p.flashlightCharge === 'number' ? Math.max(0, Math.min(1, p.flashlightCharge)) : 1;
     const flat = !torch && p.flashlightReady === false;
     if (torch !== c.torch) { c.torch = torch; toggle(this.torch, 'on', torch); }
-    const state = torch ? 'LIGHT ON' : flat ? 'CELL FLAT' : 'LIGHT OFF';
+    const state = torch ? '조명 켜짐' : flat ? '배터리 방전' : '조명 꺼짐';
     if (state !== this.torchState.textContent) setText(this.torchState, state);
     // cell meter: lit segments = charge; amber + pulsing when low and on; dim and filling while it recharges
     const cellOn = Math.ceil(charge * CELL_SEGMENTS - 1e-6);
@@ -383,7 +383,7 @@ export class Hud {
           toggle(this.weapon, 'empty', w.clip === 0);
         }
         if (w.reserve !== c.reserve) { c.reserve = w.reserve; setText(this.reserve, `/ ${w.reserve}`); }
-        const status = w.reloading ? 'RELOADING' : w.clip === 0 ? (w.reserve > 0 ? 'RELOAD  [R]' : 'NO AMMO') : '';
+        const status = w.reloading ? '재장전 중' : w.clip === 0 ? (w.reserve > 0 ? '재장전  [R]' : '탄약 없음') : '';
         if (status !== this.wStatus.textContent) {
           setText(this.wStatus, status);
           toggle(this.wStatus, 'blink', status !== '');

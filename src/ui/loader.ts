@@ -25,7 +25,7 @@ export class LoaderPips {
 
   constructor(private ctx: GameContext, parent: HTMLElement) {
     this.root = h('div', 'boss loader', parent);
-    h('span', 'lbl', this.root, 'Dock loader');
+    h('span', 'lbl', this.root, '도크 로더');
     const row = h('div', 'heads', this.root);
     for (const part of PARTS) {
       const p = h('span', 'head part', row);

@@ -328,10 +328,10 @@ const admin: RoomDress = {
       g.clearRect(0, 0, W, H2);
       g.fillStyle = 'rgba(0,0,0,0)'; g.fillRect(0, 0, W, H2);
       g.fillStyle = '#1d3f73'; g.font = '700 38px "Marker Felt", "Comic Sans MS", sans-serif';
-      g.fillText('ON SHIFT:', 24, 60);
-      g.fillStyle = '#a12a2a'; g.fillText('HALVORSEN (NIGHTS)', 24, 112);
+      g.fillText('근무자:', 24, 60);
+      g.fillStyle = '#a12a2a'; g.fillText('할보센 (야간)', 24, 112);
       g.fillStyle = '#2a2a2a'; g.font = '500 24px "Marker Felt", "Comic Sans MS", sans-serif';
-      g.fillText('days: Moen / Vik', 24, 166); g.fillText('fridge clean-out FRIDAY!!', 24, 206);
+      g.fillText('주간: 모엔 / 비크', 24, 166); g.fillText('금요일 냉장고 청소!!', 24, 206);
     });
     ink.transparent = true; ink.color.set(0xffffff);
     alongWall(b, '-z', -2.2, Y, () => whiteboard(b, L, 24.6, 1.6, 1.8, 0.9, ink));
@@ -414,15 +414,15 @@ function nightSign(L: LevelBuild, Y: number) {
     g.fillStyle = '#f4efe2'; g.fillRect(0, 0, W, H);
     g.fillStyle = '#2f5a3a'; g.fillRect(0, 0, W, 120);
     g.fillStyle = '#f4efe2'; g.font = '700 50px Georgia, serif'; g.textAlign = 'center';
-    g.fillText('GARDEN ATRIUM', W / 2, 78);
+    g.fillText('정원 아트리움', W / 2, 78);
     g.fillStyle = '#26302a'; g.font = '600 46px Georgia, serif';
-    g.fillText('Closed for the night', W / 2, 205);
+    g.fillText('야간 폐쇄', W / 2, 205);
     g.font = '700 82px Georgia, serif'; g.fillText('22:00 – 06:00', W / 2, 330);
     g.font = 'italic 38px Georgia, serif'; g.fillStyle = '#4b5a50';
-    g.fillText('Night setting — lamps stay', W / 2, 430);
-    g.fillText('on for the plants.', W / 2, 476);
+    g.fillText('야간 설정 — 조명은 켜 둠', W / 2, 430);
+    g.fillText('식물을 위해.', W / 2, 476);
     g.font = '600 34px Georgia, serif'; g.fillStyle = '#2f5a3a';
-    g.fillText('Sleep well. — Facilities', W / 2, 580);
+    g.fillText('잘 자요. — 시설팀', W / 2, 580);
   });
   const p = L.part('shutter_night_sign');
   // a brass stanchion with a framed board at reading height, turned to the walk from the lobby / the lock

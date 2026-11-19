@@ -97,7 +97,7 @@ export abstract class Scenes5 extends Base5 {
     try {
       const p = this.mk('mk5_c1_sol');
       // yaw +π/2: he stands side-on, facing −x (§4.2), then turns to the camera
-      a = this.ctx.enemies.actor('soldier', p, Math.PI / 2, 'hold', { name: 'BREKKE' }) ?? null;
+      a = this.ctx.enemies.actor('soldier', p, Math.PI / 2, 'hold', { name: '브레케' }) ?? null;
     } catch (e) { console.warn('[story] soldier actor failed', e); }
     if (!a) return null;
     this.actors.add(a);

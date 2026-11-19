@@ -174,7 +174,7 @@ export function dialFaceMat(L: LevelBuild): THREE.MeshStandardMaterial {
         if (big) { g.font = '700 22px Arial'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(String(i / 10), cx + Math.cos(a) * (R - 44), cy + Math.sin(a) * (R - 44)); }
       }
       g.font = '700 20px Arial'; g.textAlign = 'center'; g.fillText('Δp  bar', cx, cy + 46);
-      g.font = '600 13px Arial'; g.fillText('TUBE / SEA', cx, cy + 68);
+      g.font = '600 13px Arial'; g.fillText('튜브 / 바다', cx, cy + 68);
     });
     return L.ctx.materials.clone('plastic_white', { map: tex, color: 0xffffff, normalMap: null, roughnessMap: null, aoMap: null, roughness: 0.3, metalness: 0, polygonOffset: true, polygonOffsetFactor: -1, polygonOffsetUnits: -2 });
   });

@@ -8,8 +8,8 @@ import { h, toggle } from './dom';
 const R = 15, C = 2 * Math.PI * R;
 /** Key id → strip name (§8.3). Unknown ids are not shown (levels 1–5 keep their own prompts / toasts). */
 export const KEY_NAMES: Record<string, string> = {
-  key6_a: 'KEY A — HEAD-END',
-  key6_b: 'KEY B — MOON POOL',
+  key6_a: '키 A — 헤드엔드',
+  key6_b: '키 B — 문풀',
 };
 
 const CSS = `
@@ -53,7 +53,7 @@ export class GripMeter {
     this.el = h('div', 'gripm', parent);
     this.el.innerHTML = `<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="${R}"/><circle class="fill" cx="20" cy="20" r="${R}" stroke-dasharray="${C.toFixed(2)}" stroke-dashoffset="${C.toFixed(2)}"/></svg>`;
     this.arc = this.el.querySelector('circle.fill') as SVGCircleElement;
-    h('span', 'hint', this.el, 'HOLD E');
+    h('span', 'hint', this.el, 'E 길게 누르기');
     this.strip = h('div', 'keystrip', parent);
   }
 

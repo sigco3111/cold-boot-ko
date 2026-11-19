@@ -259,7 +259,7 @@ export class ScriptL3 extends Scenes3 {
       await this.hold(this.short ? 0.6 : 2.2);
       this.sfx('elevator_arrive', V(0, 5.6, 2.5), 0.7);
       this.beat('l3_arrive');
-      await this.say('l3_unit_lift_arrive', { name: 'SERVICE LIFT', at: V(1.6, 6.6, 2.5) });
+      await this.say('l3_unit_lift_arrive', { name: '서비스 리프트', at: V(1.6, 6.6, 2.5) });
       await this.hold(0.4);
     }
     if (this.once('lift_open')) this.liftOpenAt = this.now;

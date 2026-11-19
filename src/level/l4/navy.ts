@@ -165,7 +165,7 @@ function letterMat(L: LevelBuild) {
     g.strokeStyle = 'rgba(80,120,170,0.35)'; g.lineWidth = 1;
     for (let y = 30; y < H; y += 18) { g.beginPath(); g.moveTo(0, y); g.lineTo(W, y); g.stroke(); }
     g.strokeStyle = '#22356b'; g.lineWidth = 1.6;
-    g.fillStyle = '#22356b'; g.font = 'italic 600 18px "Segoe Script", "Comic Sans MS", cursive'; g.fillText('Mum —', 14, 25);
+    g.fillStyle = '#22356b'; g.font = 'italic 600 18px "Segoe Script", "Comic Sans MS", cursive'; g.fillText('엄마 —', 14, 25);
     for (let i = 0; i < 8; i++) { g.beginPath(); const y = 45 + i * 18; g.moveTo(14, y); for (let x = 14; x < W - 16 - (i % 3) * 24; x += 5) g.lineTo(x, y + Math.sin(x * 0.8 + i * 3) * 2.2); g.stroke(); }
   });
 }

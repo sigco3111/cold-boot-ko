@@ -377,7 +377,7 @@ export class ScriptL2 extends Taking {
     w.play('metal_clang', undefined, 0.8);
     w.shake(0.35);
     await this.hold(1.0);
-    await this.say('l2_unit_cab_arrive', { name: 'ELEVATOR' });
+    await this.say('l2_unit_cab_arrive', { name: '엘리베이터' });
     await this.hold(0.6);
     this.beat('l2_arrive'); // phase A: the gate opens
     p.controlsEnabled = true;
@@ -763,16 +763,16 @@ export class ScriptL2 extends Taking {
       const at = () => { const e = this.unit32(); return e ? this.tmp2.copy(e.position).setY(e.position.y + 1.55).clone() : null; };
       await this.hold(0.8);
       // His joke, in his voice, with nothing behind it — if the player ever heard the joke. Then it does its job.
-      await this.say('l2_unit32_1', { name: 'UNIT 32', at });
+      await this.say('l2_unit32_1', { name: '유닛 32', at });
       await this.wait(0.9);
-      await this.say('l2_unit32_2', { name: 'UNIT 32', at });
+      await this.say('l2_unit32_2', { name: '유닛 32', at });
       this.director.setMood('tension');
       let i = 0;
       const rest = ['l2_unit32_3', 'l2_unit32_4', 'l2_unit32_5'];
       let next = this.now + 5;
       await this.until(() => {
         if (!this.unit32()) return true;
-        if (this.now >= next && !this.talk.busy && i < rest.length) { void this.say(rest[i++], { name: 'UNIT 32', at }); next = this.now + 7; }
+        if (this.now >= next && !this.talk.busy && i < rest.length) { void this.say(rest[i++], { name: '유닛 32', at }); next = this.now + 7; }
         return false;
       });
     }
@@ -804,11 +804,11 @@ export class ScriptL2 extends Taking {
     if (group === 'g2_unit32' && !this.f.unit32Dead) {
       // The last thing it says is the biscuit — if there ever was a biscuit.
       this.talk.flush();
-      this.talk.overlap('l2_unit32_die', { name: 'UNIT 32', at: this.pos.clone().setY(1.2) });
+      this.talk.overlap('l2_unit32_die', { name: '유닛 32', at: this.pos.clone().setY(1.2) });
     }
     if (group === 'g2_unit14') {
       this.once('unit14_dead');
-      this.talk.overlap('l2_unit14_die', { name: 'UNIT 14' });
+      this.talk.overlap('l2_unit14_die', { name: '유닛 14' });
     }
   }
 
@@ -850,7 +850,7 @@ export class ScriptL2 extends Taking {
     await this.until(() => this.f.core || this.f.unit14Shot || (() => { const p = at(); return !!p && this.distTo(p) < 4.2; })());
     if (this.f.core || this.f.unit14Shot || !this.once('unit14_after_you')) return;
     // (ahead of whatever CHOIR has queued of its monologue: the unit speaks as the player walks up to it)
-    await this.say('l2_unit14_door', { name: 'UNIT 14', at, ttl: 4, next: true });
+    await this.say('l2_unit14_door', { name: '유닛 14', at, ttl: 4, next: true });
   }
 
   private onEnemyDamaged(id: number): void {
@@ -864,7 +864,7 @@ export class ScriptL2 extends Taking {
     if (!this.once('unit14_shot')) return;
     const pos = e.position.clone().setY(e.position.y + 1.5);
     this.S('unit14_shot', async () => {
-      this.talk.overlap('l2_unit14_shot', { name: 'UNIT 14', at: pos });
+      this.talk.overlap('l2_unit14_shot', { name: '유닛 14', at: pos });
       await this.hold(2.6);
       await this.choir(['l2_choir_unit14_shot']);
     });
@@ -1178,7 +1178,7 @@ export class ScriptL2 extends Taking {
     const loop = (() => { try { return ctx.audio.loop('lift_loop', { volume: 0.8 }); } catch { return null; } })();
     this.director.hard('silence');
     await this.hold(1.2);
-    await this.say('l2_unit_lift', { name: 'SERVICE LIFT' });
+    await this.say('l2_unit_lift', { name: '서비스 리프트' });
     await this.hold(1.4);
     w.fade(1, 3);
     loop?.stop(3.2);
@@ -1295,7 +1295,7 @@ export class ScriptL2 extends Taking {
         if (f.fitOpen) break;
         if (!f.met) {
           this.toast(TOAST2.fittingDark, 4);
-          if (this.now - this.fittingDeniedAt > 12) { this.fittingDeniedAt = this.now; this.talk.overlap('l2_unit_fitting_denied', { name: 'DOOR', at: V(10, 1.6, -34) }); }
+          if (this.now - this.fittingDeniedAt > 12) { this.fittingDeniedAt = this.now; this.talk.overlap('l2_unit_fitting_denied', { name: '문', at: V(10, 1.6, -34) }); }
         } else {
           this.toast(TOAST2.fittingWait, 4);
           if (this.once('fitting_wait')) void this.say('l2_tomas_fitting_wait', { next: true, ttl: 6 });

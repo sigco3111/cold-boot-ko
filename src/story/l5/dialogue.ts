@@ -25,11 +25,11 @@ export function speaker5(l: Line5 | undefined): string {
   if (!l) return '';
   if (l.label) return l.label;
   switch (l.speaker) {
-    case 'kessler': return 'KESSLER';
-    case 'reyes': return 'REYES';
+    case 'kessler': return '케슬러';
+    case 'reyes': return '레예스';
     case 'choir': return 'CHOIR';
-    case 'soldier': return 'SOLDIER';
-    case 'unit': return 'SERVICE UNIT';
+    case 'soldier': return '해군';
+    case 'unit': return '정비 유닛';
     default: return l.speaker.toUpperCase();
   }
 }

@@ -344,7 +344,7 @@ function colonnade(L: LevelBuild, b: Builder, R: Rng) {
   const menu = canvasMat(L, 'cafe_board', 256, 340, (c, W, Hh) => {
     c.fillStyle = '#20231f'; c.fillRect(0, 0, W, Hh);
     c.fillStyle = '#f2ead8'; c.font = '700 38px "Marker Felt", "Comic Sans MS", sans-serif'; c.textAlign = 'center';
-    c.fillText('CLOSED', W / 2, 70); c.font = '500 30px "Marker Felt", "Comic Sans MS", sans-serif'; c.fillText('BACK 07:00', W / 2, 120);
+    c.fillText('폐쇄', W / 2, 70); c.font = '500 30px "Marker Felt", "Comic Sans MS", sans-serif'; c.fillText('07:00 복귀', W / 2, 120);
     c.fillStyle = '#d9a75a'; c.font = '500 22px "Marker Felt", "Comic Sans MS", sans-serif';
     ['coffee  1.20', 'tea  0.90', 'cardamom bun  1.50', 'soup of the day'].forEach((t, i) => c.fillText(t, W / 2, 190 + i * 34));
   });

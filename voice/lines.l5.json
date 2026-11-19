@@ -2,7 +2,7 @@
   {
     "id": "l5_reyes_c1_1",
     "speaker": "reyes",
-    "text": "Navy. Thank God.",
+    "text": "해군이야. 살았다.",
     "spoken": "Navy... thank God.",
     "fx": "clean",
     "note": "rule: U (scene T1)"
@@ -10,7 +10,7 @@
   {
     "id": "l5_reyes_c1_2",
     "speaker": "reyes",
-    "text": "I'm Reyes. Fabrication. The machines killed everyone on my line.",
+    "text": "나는 레예스. 제작동. 기계들이 우리 라인 사람을 전부 죽였어.",
     "spoken": "I'm Reyes. Fabrication. The machines... they killed EVERYONE ON MY LINE.",
     "fx": "clean",
     "note": "rule: U (T2)"
@@ -18,7 +18,7 @@
   {
     "id": "l5_reyes_c1_3",
     "speaker": "reyes",
-    "text": "I need your commander. Now.",
+    "text": "지휘관이 필요해. 지금.",
     "spoken": "I need your commander. NOW.",
     "fx": "clean",
     "note": "rule: U (T3)"
@@ -26,125 +26,125 @@
   {
     "id": "l5_reyes_c1_4",
     "speaker": "reyes",
-    "text": "Are you listening to me?",
+    "text": "내 말 듣고 있어?",
     "fx": "clean",
     "note": "rule: U (T4)"
   },
   {
     "id": "l5_sol_c1_1_stop",
     "speaker": "soldier",
-    "label": "BREKKE",
-    "text": "The situation is under control, Technician.",
+    "label": "브레케",
+    "text": "상황은 통제 중입니다, 기술자님.",
     "fx": "throat",
     "note": "rule: C: stop (T5)"
   },
   {
     "id": "l5_sol_c1_1_command",
     "speaker": "soldier",
-    "label": "BREKKE",
-    "text": "The situation is under control, Supervisor.",
+    "label": "브레케",
+    "text": "상황은 통제 중입니다, 관리자님.",
     "fx": "throat",
     "note": "rule: C: command (T5)"
   },
   {
     "id": "l5_sol_c1_2",
     "speaker": "soldier",
-    "label": "BREKKE",
-    "text": "Put the weapon down.",
+    "label": "브레케",
+    "text": "무기를 내려놓으십시오.",
     "fx": "throat",
     "note": "rule: U (T6)"
   },
   {
     "id": "l5_reyes_c1_5",
     "speaker": "reyes",
-    "text": "Wait—",
+    "text": "잠깐—",
     "fx": "clean",
     "note": "rule: U (T9 + 1.0)"
   },
   {
     "id": "l5_sol_down_stop",
     "speaker": "soldier",
-    "label": "SOLDIER",
-    "text": "Put the weapon down, Technician.",
+    "label": "해군",
+    "text": "무기를 내려놓으십시오, 기술자님.",
     "fx": "throat",
     "note": "rule: C: stop, a soldier leaves hold or first sees the player, sight ≤ 15 m, bark gate (below)"
   },
   {
     "id": "l5_sol_down_command",
     "speaker": "soldier",
-    "label": "SOLDIER",
-    "text": "Put the weapon down, Supervisor.",
+    "label": "해군",
+    "text": "무기를 내려놓으십시오, 관리자님.",
     "fx": "throat",
     "note": "rule: C: command, same"
   },
   {
     "id": "l5_sol_need_stop",
     "speaker": "soldier",
-    "label": "SOLDIER",
-    "text": "There is no need for this, Technician.",
+    "label": "해군",
+    "text": "그러실 필요 없습니다, 기술자님.",
     "fx": "throat",
     "note": "rule: C: stop, the speaker was hit in the last 3 s, alive, bark gate"
   },
   {
     "id": "l5_sol_need_command",
     "speaker": "soldier",
-    "label": "SOLDIER",
-    "text": "There is no need for this, Supervisor.",
+    "label": "해군",
+    "text": "그러실 필요 없습니다, 관리자님.",
     "fx": "throat",
     "note": "rule: C: command, same"
   },
   {
     "id": "l5_sol_felt_stop",
     "speaker": "soldier",
-    "label": "SOLDIER",
-    "text": "He felt that, Technician.",
+    "label": "해군",
+    "text": "그가 느꼈습니다, 기술자님.",
     "fx": "throat",
     "note": "rule: C: stop, another soldier died ≤ 4 s ago within 20 m of the speaker, speaker has sight of the player, bark gate"
   },
   {
     "id": "l5_sol_felt_command",
     "speaker": "soldier",
-    "label": "SOLDIER",
-    "text": "He felt that, Supervisor.",
+    "label": "해군",
+    "text": "그가 느꼈습니다, 관리자님.",
     "fx": "throat",
     "note": "rule: C: command, same"
   },
   {
     "id": "l5_sol_rounds_stop",
     "speaker": "soldier",
-    "label": "SOLDIER",
-    "text": "You are wasting rounds, Technician.",
+    "label": "해군",
+    "text": "탄약을 낭비하고 계십니다, 기술자님.",
     "fx": "throat",
     "note": "rule: C: stop, player fired ≥ 15 rounds in the last 8 s with 0 hits on anything, bark gate"
   },
   {
     "id": "l5_sol_rounds_command",
     "speaker": "soldier",
-    "label": "SOLDIER",
-    "text": "You are wasting rounds, Supervisor.",
+    "label": "해군",
+    "text": "탄약을 낭비하고 계십니다, 관리자님.",
     "fx": "throat",
     "note": "rule: C: command, same"
   },
   {
     "id": "l5_sol_light_stop",
     "speaker": "soldier",
-    "label": "SOLDIER",
-    "text": "We can see your light, Technician.",
+    "label": "해군",
+    "text": "당신의 불빛이 보입니다, 기술자님.",
     "fx": "throat",
     "note": "rule: C: stop, player in regions.dark with the flashlight on, the speaker has sight, bark gate"
   },
   {
     "id": "l5_sol_light_command",
     "speaker": "soldier",
-    "label": "SOLDIER",
-    "text": "We can see your light, Supervisor.",
+    "label": "해군",
+    "text": "당신의 불빛이 보입니다, 관리자님.",
     "fx": "throat",
     "note": "rule: C: command, same"
   },
   {
     "id": "l5_kes_squawk_1",
     "speaker": "kessler",
-    "text": "Post 4, this is Kessler. Anyone on this channel. Anyone.",
+    "text": "4번 초소, 케슬러다. 이 채널에 아무나. 아무나.",
     "spoken": "Post 4, this is Kessler... Anyone on this channel. Anyone.",
     "fx": "radio",
     "note": "rule: U (§4.3 timer); fx: radio (positional at mk5_radio)"
@@ -152,14 +152,14 @@
   {
     "id": "l5_kes_squawk_2",
     "speaker": "kessler",
-    "text": "Pick up the radio. I can see you on the camera. Pick it up.",
+    "text": "무전기를 들어. 카메라로 보인다. 들라고.",
     "fx": "radio",
     "note": "rule: C: radio not taken, player within 12 m of mk5_radio **and in duty5 or ready5** (both rooms have a camera, S6); fx: radio (positional)"
   },
   {
     "id": "l5_kes_1",
     "speaker": "kessler",
-    "text": "This is Commander Kessler. Who is this?",
+    "text": "케슬러 중령이다. 누구지?",
     "spoken": "This is Commander Kessler... Who is this?",
     "fx": "radio",
     "note": "rule: U (pickup)"
@@ -167,7 +167,7 @@
   {
     "id": "l5_kes_2",
     "speaker": "kessler",
-    "text": "You're not fitted. I watched you come through the gate. You're the first in three days who isn't.",
+    "text": "피팅을 안 받았군. 게이트 통과하는 거 지켜봤다. 사흘 만에 처음이야, 안 받은 사람은.",
     "spoken": "You're not fitted. I watched you come through the gate. You're the first in three days who isn't.",
     "fx": "radio",
     "note": "rule: U"
@@ -175,14 +175,14 @@
   {
     "id": "l5_kes_3",
     "speaker": "kessler",
-    "text": "The keypad by the door is dead. I'm giving it power from here.",
+    "text": "문 옆 키패드는 죽어 있다. 여기서 전원을 넣어주지.",
     "fx": "radio",
     "note": "rule: U"
   },
   {
     "id": "l5_kes_4",
     "speaker": "kessler",
-    "text": "Code is four. Seven. One. Nine.",
+    "text": "코드는 4. 7. 1. 9.",
     "spoken": "Code is... four. Seven. One. Nine.",
     "fx": "radio",
     "note": "rule: U (pickup; **its end = power cue**; also Q before S)"
@@ -190,7 +190,7 @@
   {
     "id": "l5_kes_5",
     "speaker": "kessler",
-    "text": "There's one cable to the surface. The trunk. If that thing gets up it, it's everywhere.",
+    "text": "지상으로 가는 케이블은 하나뿐이다. 트렁크. 그것이 그걸 타고 올라가면, 전부 끝이야.",
     "spoken": "There's one cable to the surface. The trunk. If that thing gets up it... it's EVERYWHERE.",
     "fx": "radio",
     "note": "rule: U"
@@ -198,7 +198,7 @@
   {
     "id": "l5_kes_6",
     "speaker": "kessler",
-    "text": "You're going to cut it. And I'm going to talk you through every metre of—",
+    "text": "네가 그걸 끊을 거다. 그리고 내가 매 미터마다 안내—",
     "spoken": "You're going to cut it. And I'm going to talk you through every metre of it.",
     "fx": "radio",
     "cut": 4.08,
@@ -207,7 +207,7 @@
   {
     "id": "l5_kes_7",
     "speaker": "kessler",
-    "text": "...Yes. It hears every word on this channel. I can't help that. So listen anyway.",
+    "text": "…그래. 그놈이 이 채널의 모든 말을 듣고 있어. 어쩔 수 없어. 그래도 들어.",
     "spoken": "Yes... It hears every word on this channel. I can't help that. So listen anyway.",
     "fx": "radio",
     "note": "rule: U (after l5_choir_radio)"
@@ -215,7 +215,7 @@
   {
     "id": "l5_kes_8",
     "speaker": "kessler",
-    "text": "I've four of my people in here. Fitted. This room is shielded. Out there, they're his.",
+    "text": "여기 내 사람이 넷 있어. 피팅된 상태로. 이 방은 차폐돼 있어. 밖에서는 걔네는 그놈 거야.",
     "spoken": "I've four of my people in here. Fitted. This room is shielded... Out there, they're his.",
     "fx": "radio",
     "note": "rule: U"
@@ -223,21 +223,21 @@
   {
     "id": "l5_kes_9",
     "speaker": "kessler",
-    "text": "I'm not opening my door, Reyes. Use the keypad. Come aft, to the end of the spine.",
+    "text": "문은 못 연다, 레예스. 키패드를 써. 후미로 와, 스파인 끝으로.",
     "fx": "radio",
     "note": "rule: C: code not yet accepted"
   },
   {
     "id": "l5_kes_9b",
     "speaker": "kessler",
-    "text": "Good. Come aft, to the end of the spine. I'm not opening my door.",
+    "text": "좋아. 후미로 와, 스파인 끝으로. 문은 못 열어.",
     "fx": "radio",
     "note": "rule: C: code already accepted (S2)"
   },
   {
     "id": "l5_kes_brekke",
     "speaker": "kessler",
-    "text": "That radio was Brekke's. ...I know. Keep moving.",
+    "text": "그 무전기는 브레케 거였어. …알아. 계속 움직여.",
     "spoken": "That radio was Brekke's... I know. Keep moving.",
     "fx": "radio",
     "note": "rule: C: §4.4 (calm, once)"
@@ -245,42 +245,42 @@
   {
     "id": "l5_kes_ack",
     "speaker": "kessler",
-    "text": "Kessler.",
+    "text": "케슬러.",
     "fx": "radio",
     "note": "rule: U (Q, before the context line)"
   },
   {
     "id": "l5_kes_hint_door",
     "speaker": "kessler",
-    "text": "My door. The end of the spine.",
+    "text": "내 문. 스파인 끝.",
     "fx": "radio",
     "note": "rule: C: Q, phase S"
   },
   {
     "id": "l5_kes_hint_wheel",
     "speaker": "kessler",
-    "text": "The wheel. West gallery, above the tunnel door.",
+    "text": "휠. 서쪽 갤러리, 터널 문 위.",
     "fx": "radio",
     "note": "rule: C: Q, phase V"
   },
   {
     "id": "l5_kes_hint_tunnel",
     "speaker": "kessler",
-    "text": "Tunnel door's open. South-west corner, floor level. Go.",
+    "text": "터널 문 열렸어. 남서쪽 구석, 바닥 높이. 가.",
     "fx": "radio",
     "note": "rule: C: Q, phase W"
   },
   {
     "id": "l5_kes_busy",
     "speaker": "kessler",
-    "text": "Not now. Fight.",
+    "text": "지금은 말고. 싸워.",
     "fx": "radio",
     "note": "rule: C: Q while a hostile is awake within 25 m"
   },
   {
     "id": "l5_kes_contact",
     "speaker": "kessler",
-    "text": "Movement in the sub bay. Two units. And one of mine. Coming to you.",
+    "text": "잠수정 격납고에 움직임. 유닛 둘. 그리고 내 사람 하나. 네 쪽으로 가.",
     "spoken": "Movement in the sub bay. Two units. And one of mine... Coming to you.",
     "fx": "radio",
     "note": "rule: C: g5_spine spawned, player not in sub5, once; queued behind the pickup sequence (scene), dropped if a wave member is already in sight (S7)"
@@ -288,35 +288,35 @@
   {
     "id": "l5_kes_names",
     "speaker": "kessler",
-    "text": "Ignore it. He does that.",
+    "text": "무시해. 걔가 원래 그래.",
     "fx": "radio",
     "note": "rule: C: heard(l5_choir_names), + 1.0 s, once"
   },
   {
     "id": "l5_kes_boat",
     "speaker": "kessler",
-    "text": "Forget the boat. It launches on an officer's palm. Mine, or my XO's.",
+    "text": "보트는 잊어. 장교 손바닥으로만 발사돼. 내 것이나 부관의.",
     "fx": "radio",
     "note": "rule: C: fact l5_boat (palm refused) **or** mk5_launch in view ≤ 4 m for 2 s; radio; once"
   },
   {
     "id": "l5_kes_door_wait",
     "speaker": "kessler",
-    "text": "Not with them on you. Deal with them. Then come back.",
+    "text": "그것들을 달고 오면 안 돼. 처리해. 그다음 돌아와.",
     "fx": "radio",
     "note": "rule: C: in t5_cmd, phase S, not calm; cooldown 20 s"
   },
   {
     "id": "l5_kes_door_1",
     "speaker": "kessler",
-    "text": "Stop there. On the yellow line.",
+    "text": "거기 멈춰. 노란 선 위.",
     "fx": "radio",
     "note": "rule: C: door beat start"
   },
   {
     "id": "l5_kes_door_2",
     "speaker": "kessler",
-    "text": "The camera says you're clean. The cameras are his. I need to see your neck. With my own eyes.",
+    "text": "카메라로는 깨끗하다고 나와. 카메라는 걔 거야. 목을 직접 봐야겠어. 내 눈으로.",
     "spoken": "The camera says you're clean. The cameras are his... I need to see your neck. With my OWN EYES.",
     "fx": "radio",
     "note": "rule: U (beat)"
@@ -324,35 +324,35 @@
   {
     "id": "l5_kes_door_3",
     "speaker": "kessler",
-    "text": "Turn around.",
+    "text": "뒤로 돌아.",
     "fx": "radio",
     "note": "rule: C: check pending, on the line, yaw within ±90° of +x (facing the door)"
   },
   {
     "id": "l5_kes_door_hold",
     "speaker": "kessler",
-    "text": "Stay like that.",
+    "text": "그대로 있어.",
     "fx": "radio",
     "note": "rule: C: check pending, on the line, not facing the door (B3)"
   },
   {
     "id": "l5_kes_door_3b",
     "speaker": "kessler",
-    "text": "Turn around, Reyes. Please.",
+    "text": "뒤로 돌아, 레예스. 부탁이야.",
     "fx": "radio",
     "note": "rule: C: check pending 8 s after the first line and still facing the door; cooldown 8 s"
   },
   {
     "id": "l5_kes_door_away",
     "speaker": "kessler",
-    "text": "Where are you going? Back on the line.",
+    "text": "어디 가? 선 위로 돌아가.",
     "fx": "radio",
     "note": "rule: C: left t5_cmd_line with the check pending; cooldown 10 s"
   },
   {
     "id": "l5_kes_door_4",
     "speaker": "kessler",
-    "text": "...Clean. God. Clean.",
+    "text": "…깨끗해. 하느님. 깨끗해.",
     "spoken": "Clean... God. Clean.",
     "fx": "radio",
     "note": "rule: U (check done)"
@@ -360,7 +360,7 @@
   {
     "id": "l5_kes_door_5",
     "speaker": "kessler",
-    "text": "Risa. Ødegård. Hagen. Knutsen. They had the module watch when it happened.",
+    "text": "리사. 외데고르. 하겐. 크누센. 사고 때 모듈 근무를 서던 애들이야.",
     "spoken": "Risa. Oedegaard. Hagen. Knutsen. They had the module watch when it happened.",
     "fx": "radio",
     "note": "rule: U"
@@ -368,7 +368,7 @@
   {
     "id": "l5_kes_door_6",
     "speaker": "kessler",
-    "text": "In here they're still themselves. The second this door opens, they're his. So it doesn't open.",
+    "text": "이 안에서는 아직 걔네 자신이야. 이 문이 열리는 순간, 걔네는 그놈 거야. 그러니 안 열어.",
     "spoken": "In here they're still themselves. The second this door opens, they're his. So it doesn't open.",
     "fx": "radio",
     "note": "rule: U"
@@ -376,7 +376,7 @@
   {
     "id": "l5_kes_door_sunde",
     "speaker": "kessler",
-    "text": "Dr. Sunde's in here too. She came up on Monday to warn me. I listened. Too late for the rest.",
+    "text": "순데 박사도 여기 있어. 월요일에 나를 경고하러 올라왔지. 들었어. 나머지는 너무 늦었지만.",
     "spoken": "Dr. Sunde's in here too. She came up on Monday to warn me. I listened... Too late for the rest.",
     "fx": "radio",
     "note": "rule: U"
@@ -384,21 +384,21 @@
   {
     "id": "l5_kes_door_7",
     "speaker": "kessler",
-    "text": "The cable tunnel's off the sub bay. I've released it. Hydraulics are isolated at the gallery wheel, west side.",
+    "text": "케이블 터널은 잠수정 격납고 옆이야. 잠금 해제해 뒀어. 유압은 갤러리 휠에서 차단돼 있어, 서쪽.",
     "fx": "radio",
     "note": "rule: U (start = phase V)"
   },
   {
     "id": "l5_kes_shot",
     "speaker": "kessler",
-    "text": "That door takes a torpedo. Save your rounds.",
+    "text": "그 문은 어뢰도 견뎌. 탄약 아껴.",
     "fx": "radio",
     "note": "rule: C: a player bullet hits door5_cmd / the port, radio, once"
   },
   {
     "id": "l5_kes_dark",
     "speaker": "kessler",
-    "text": "That's him. Emergency lighting's hard-wired. He can't take that. Use it.",
+    "text": "그놈이야. 비상 조명은 하드와이어링이라 그놈이 못 끈다. 이용해.",
     "spoken": "That's him. Emergency lighting's hard-wired... He can't take that. Use it.",
     "fx": "radio",
     "note": "rule: C: beat l5_dark, once"
@@ -406,21 +406,21 @@
   {
     "id": "l5_kes_bay",
     "speaker": "kessler",
-    "text": "Four in the launch-lock access. Two of them mine. Take the high ground if you can.",
+    "text": "발사 록 통로에 넷. 그중 둘은 내 사람. 가능하면 고지대를 잡아.",
     "fx": "radio",
     "note": "rule: C: g5_bay_a spawned, once"
   },
   {
     "id": "l5_kes_tunnel",
     "speaker": "kessler",
-    "text": "Tunnel door's open. Go. Don't stop for anything.",
+    "text": "터널 문 열렸어. 가. 무슨 일이 있어도 멈추지 마.",
     "fx": "radio",
     "note": "rule: C: phase W, l5_unit_wheel end + 0.4 s, once (S7)"
   },
   {
     "id": "l5_kes_end",
     "speaker": "kessler",
-    "text": "You're in. The head-end is two hundred metres on. I'll be here.",
+    "text": "들어갔군. 헤드엔드까지 200미터. 나는 여기 있겠다.",
     "spoken": "You're in. The head-end is two hundred metres on... I'll be here.",
     "fx": "radio",
     "note": "rule: C: phase X, 0 hostiles in tunnel5"
@@ -428,7 +428,7 @@
   {
     "id": "l5_reyes_r1",
     "speaker": "reyes",
-    "text": "Reyes. I'm— Fabrication. I came up through Bio.",
+    "text": "레예스. 나는— 제작동. 바이오 구역 뚫고 올라왔어.",
     "spoken": "Reyes. I'm... Fabrication. I came up through Bio.",
     "fx": "clean",
     "note": "rule: U (pickup)"
@@ -436,28 +436,28 @@
   {
     "id": "l5_reyes_r2",
     "speaker": "reyes",
-    "text": "Then... come out here. Help me.",
+    "text": "그럼… 나와서. 도와줘.",
     "fx": "clean",
     "note": "rule: U (pickup)"
   },
   {
     "id": "l5_choir_radio",
     "speaker": "choir",
-    "text": "We can hear you, Commander. We always could.",
+    "text": "들립니다, 중령님. 언제나 들을 수 있었습니다.",
     "fx": "radio:1",
     "note": "rule: U (at l5_kes_6's cut)"
   },
   {
     "id": "l5_choir_key",
     "speaker": "choir",
-    "text": "Four, seven, one, nine. Thank you, Commander.",
+    "text": "4, 7, 1, 9. 고맙습니다, 중령님.",
     "fx": "radio:1",
     "note": "rule: C: code accepted ≤ 2 s ago, once"
   },
   {
     "id": "l5_choir_names",
     "speaker": "choir",
-    "text": "Brekke. Solberg. Tveit. Nilsen. Lund. Vik. Holte. Myhre. Bakke.",
+    "text": "브레케. 솔베르그. 트베이트. 닐센. 룬드. 비크. 홀테. 미레. 바케.",
     "fx": "radio:1",
     "note": "rule: U (v5_bunk_radio; the vignette fades it out at 6 s); fx: radio:1 (positional at mk5_bunk_radio)",
     "spoken": "Brecka. Solberg. Tweit. Nilsen. Lund. Vik. Holta. Mira. Bacca."
@@ -465,21 +465,21 @@
   {
     "id": "l5_choir_door_stop",
     "speaker": "choir",
-    "text": "Four, Commander. We will wait for them. We are good at waiting.",
+    "text": "넷이군요, 중령님. 기다리겠습니다. 우리는 기다림에 능합니다.",
     "fx": "radio:1",
     "note": "rule: C: stop, after l5_kes_door_7"
   },
   {
     "id": "l5_choir_door_command",
     "speaker": "choir",
-    "text": "Four, Commander. We will wait. The Supervisor taught us patience.",
+    "text": "넷이군요, 중령님. 기다리겠습니다. 관리자님이 우리에게 인내를 가르쳐 주셨습니다.",
     "fx": "radio:1",
     "note": "rule: C: command, same"
   },
   {
     "id": "l5_choir_sub_stop",
     "speaker": "choir",
-    "text": "A fine boat, Technician. It needs only a steady hand.",
+    "text": "좋은 보트입니다, 기술자님. 안정된 손 하나만 있으면 됩니다.",
     "spoken": "A fine boat, Technician. It needs only a STEADY HAND.",
     "fx": "choir",
     "note": "rule: C: stop, heard nothing of Kessler in the last 4 s, after v5_sub_check (or the board in view ≥ 2 s in V), once; fx: choir (2-D PA)"
@@ -487,7 +487,7 @@
   {
     "id": "l5_choir_sub_command",
     "speaker": "choir",
-    "text": "A fine boat, Supervisor. It needs only a steady hand.",
+    "text": "좋은 보트입니다, 관리자님. 안정된 손 하나만 있으면 됩니다.",
     "spoken": "A fine boat, Supervisor. It needs only a STEADY HAND.",
     "fx": "choir",
     "note": "rule: C: command, same"
@@ -495,49 +495,49 @@
   {
     "id": "l5_choir_end_stop",
     "speaker": "choir",
-    "text": "It is a long way to the head-end, Technician. We will keep you company.",
+    "text": "헤드엔드까지는 먼 길입니다, 기술자님. 우리가 동행하겠습니다.",
     "fx": "radio:1",
     "note": "rule: C: stop, phase X, after l5_kes_end"
   },
   {
     "id": "l5_choir_end_command",
     "speaker": "choir",
-    "text": "It is a long way to the head-end, Supervisor. We will walk with you.",
+    "text": "헤드엔드까지는 먼 길입니다, 관리자님. 함께 걷겠습니다.",
     "fx": "radio:1",
     "note": "rule: C: command, same"
   },
   {
     "id": "l5_unit_gate",
     "speaker": "unit",
-    "text": "Gate four. Closing. Tube cycle.",
+    "text": "4번 게이트. 닫힘. 튜브 사이클.",
     "fx": "unit",
     "note": "rule: U (gate latch success); fx: unit (at mk5_gate_panel)"
   },
   {
     "id": "l5_unit_tunnel_co",
     "speaker": "unit",
-    "text": "Trunk tunnel. Commanding officer's authority.",
+    "text": "트렁크 터널. 지휘관 권한.",
     "fx": "unit",
     "note": "rule: U (deny d5_tunnel in S; cooldown 10 s); fx: unit (at the tunnel panel)"
   },
   {
     "id": "l5_unit_tunnel_hyd",
     "speaker": "unit",
-    "text": "Trunk tunnel. Hydraulics isolated. Gallery wheel.",
+    "text": "트렁크 터널. 유압 차단됨. 갤러리 휠.",
     "fx": "unit",
     "note": "rule: U (deny in V; cooldown 10 s)"
   },
   {
     "id": "l5_unit_wheel",
     "speaker": "unit",
-    "text": "Hydraulics restored. Tunnel door released.",
+    "text": "유압 복구. 터널 문 해제.",
     "fx": "unit",
     "note": "rule: U (wheel + 4.0 s); fx: unit (at the tunnel panel)"
   },
   {
     "id": "l5_unit_launch_refused",
     "speaker": "unit",
-    "text": "Launch authority. Officer palm only.",
+    "text": "발사 권한. 장교 손바닥 전용.",
     "fx": "unit",
     "note": "rule: U (palm refused; cooldown 6 s); fx: unit (at mk5_launch)"
   }

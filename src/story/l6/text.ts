@@ -4,19 +4,19 @@
  */
 import type { Fragment } from '../text';
 
-export const TITLE_CARD_L6 = ['THE TRUNK', 'ERIDU DEEP — NAVAL DETACHMENT'];
+export const TITLE_CARD_L6 = ['간선', '에리두 심해 기지 — 해군 분견대'];
 /** §7.2 / D3: the chapter-end card (`style: 'ending'`, 14 s, skippable), then `END_CARD_L6_CHAPTER` (4 s, `title`). */
-export const END_CARD_L6 = ['THE TRUNK', '', 'TO BE CONTINUED'];
-export const END_CARD_L6_CHAPTER = ['END OF CHAPTER 3'];
+export const END_CARD_L6 = ['간선', '', '계속'];
+export const END_CARD_L6_CHAPTER = ['3장 끝'];
 /** The end card when the chain has a next level (never on main: `LEVELS[6].next` is null; a test `?next=6:N`). */
-export const END_CARD_L6_NEXT = ['THE TRUNK'];
+export const END_CARD_L6_NEXT = ['간선'];
 
 // ───────────────────────────────────────────────────────────── the clock (§6.4 CLOCK6)
 
 /** The test hour at arrival when no carry brings one (62:45 = WED 23:25). */
 export const ARRIVAL_DEFAULT6 = 62.75;
 /** Test hour 0 = MON 08:40 (the link drill; level 3's `CLOCK.testStart`) — the same derivation as 3b / 3c. */
-const DAYS = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
+const DAYS = ['월', '화', '수', '목', '금', '토', '일'];
 /** Wall clock `WED 23:25` of a test hour. */
 export function wallClock6(hour: number): string {
   const min = Math.floor((8 * 60 + 40) + hour * 60);
@@ -25,87 +25,87 @@ export function wallClock6(hour: number): string {
   return `${day} ${String(Math.floor(m / 60)).padStart(2, '0')}:${String(m % 60).padStart(2, '0')}`;
 }
 /** `hh:mm` only. */
-export const hhmm6 = (hour: number) => wallClock6(hour).slice(4);
+export const hhmm6 = (hour: number) => wallClock6(hour).slice(2);
 
 // ───────────────────────────────────────────────────────────── objectives / toasts (§6.4)
 
 export const OBJ6 = {
   none: '',
-  headEnd: 'The head-end — 200 m',
-  switch: 'The changeover switch — east wall',
-  bj: 'The beach joint — vault, south wall',
-  stair: 'The stair door — vault, west wall',
-  pool: 'The moon pool — down the stairs',
-  tether: 'Cut the tether — the frame over the well',
-  loader: 'Destroy the loader',
+  headEnd: '헤드엔드 — 200m',
+  switch: '전환 스위치 — 동쪽 벽',
+  bj: '비치 조인트 — 볼트실 남쪽 벽',
+  stair: '계단 문 — 볼트실 서쪽 벽',
+  pool: '문풀 — 계단 아래',
+  tether: '테더 끊기 — 수직구 위 프레임',
+  loader: '로더 파괴하기',
   /** (IA-6) the wait for the quiet: tether cut + loader dead, hostiles still awake (§4.8 fight-out) — was empty. */
-  clear: 'Clear the dock',
-  console: 'The dock console — mid deck',
+  clear: '도크 확보',
+  console: '도크 콘솔 — 데크 중앙',
 };
 
 export const TOAST6 = {
-  restored: 'Checkpoint restored',
-  keyA: 'Key A — head-end mode',
-  keyB: 'Key B — moon pool',
-  deep: 'Too deep to crouch',
-  crouch: 'Crouch — C',
-  vest: 'Armour vest',
-  plate: 'Armour plate',
-  dogged: 'Hatch dogged from below',
-  q: 'Q — radio Kessler',
+  restored: '체크포인트 복원됨',
+  keyA: '키 A — 헤드엔드 모드',
+  keyB: '키 B — 문풀',
+  deep: '웅크리기엔 너무 깊음',
+  crouch: '웅크리기 — C',
+  vest: '방탄 조끼',
+  plate: '방탄판',
+  dogged: '해치가 아래에서 걸어 잠김',
+  q: 'Q — 케슬러와 무전',
 };
 
 /** Interlock prompts (§2.2, §2.6.7, §4.6): story-set by the key held. */
 export const PROMPT6 = {
-  lockA: 'Insert key A',
-  lockANo: 'Interlock key A required',
-  lockB: 'Interlock — key B',
-  lockBNo: 'Interlock key B required',
+  lockA: '키 A 삽입',
+  lockANo: '인터록 키 A 필요',
+  lockB: '인터록 — 키 B',
+  lockBNo: '인터록 키 B 필요',
 };
 
 // ───────────────────────────────────────────────────────────── screens (§6.4)
 
 export const SCREEN6 = {
-  tubeCycling: 'HEAD-END TUBE — CYCLING',
-  tubeOpen: 'HEAD-END TUBE — OPEN',
-  tubeClear: 'CLEAR THE TUBE',
-  tubeClosed: 'TRUNK TUNNEL — HEAD-END TUBE — CLOSED',
-  mimicAuto: 'HEAD-END — VAULT (BEACH JOINT) — SURFACE 2.1 KM\nMOON POOL — TETHER — ACOUSTIC BUOY: STANDBY\nMODE: AUTO',
-  mimicManual: 'HEAD-END — VAULT (BEACH JOINT) — SURFACE 2.1 KM\nMOON POOL — TETHER — ACOUSTIC BUOY: STANDBY\nMODE: MANUAL — PROTECTION SWITCHING OFF',
-  mimicPulled: 'HEAD-END — VAULT (BEACH JOINT) — SURFACE 2.1 KM: LOS\nMOON POOL — TETHER — ACOUSTIC BUOY: ACTIVE\nTRUNK FIBRE — LOS / BACKUP LINK — ACOUSTIC BUOY — ACTIVE',
-  queue: 'HEAD-END — OUTBOUND QUEUE\nQUEUED: MANIFEST 0031-H / B-14\nSENT: B-01 … B-13\nCONSIGNEE: —',
-  switchAuto: 'HEAD-END MODE: AUTO',
-  switchManual: 'MANUAL — KEY A OUT',
-  bjIdle: 'BEACH JOINT — INTERLOCK KEY A',
-  bjOpen: 'KEY A IN — OPEN',
-  bjLos: 'FIBRE — LOS',
-  shaftIdle: 'MOON POOL ACCESS — INTERLOCK KEY B',
-  shaftOpen: 'KEY B IN — OPEN',
+  tubeCycling: '헤드엔드 튜브 — 순환 중',
+  tubeOpen: '헤드엔드 튜브 — 열림',
+  tubeClear: '튜브에서 비켜나세요',
+  tubeClosed: '간선 터널 — 헤드엔드 튜브 — 닫힘',
+  mimicAuto: '헤드엔드 — 볼트실 (비치 조인트) — 지상 2.1km\n문풀 — 테더 — 음향 부이: 대기\n모드: 자동',
+  mimicManual: '헤드엔드 — 볼트실 (비치 조인트) — 지상 2.1km\n문풀 — 테더 — 음향 부이: 대기\n모드: 수동 — 보호 절체 해제',
+  mimicPulled: '헤드엔드 — 볼트실 (비치 조인트) — 지상 2.1km: 신호 손실\n문풀 — 테더 — 음향 부이: 작동\n간선 광케이블 — 신호 손실 / 백업 링크 — 음향 부이 — 작동',
+  queue: '헤드엔드 — 발송 대기열\n대기: 명세서 0031-H / B-14\n발송됨: B-01 … B-13\n수취인: —',
+  switchAuto: '헤드엔드 모드: 자동',
+  switchManual: '수동 — 키 A 뽑힘',
+  bjIdle: '비치 조인트 — 인터록 키 A',
+  bjOpen: '키 A 삽입됨 — 열림',
+  bjLos: '광케이블 — 신호 손실',
+  shaftIdle: '문풀 출입구 — 인터록 키 B',
+  shaftOpen: '키 B 삽입됨 — 열림',
   /** Every screen after the pull (§4.6). */
-  los: 'TRUNK FIBRE — LOS\nBACKUP LINK — ACOUSTIC BUOY — ACTIVE',
+  los: '간선 광케이블 — 신호 손실\n백업 링크 — 음향 부이 — 작동',
 };
 /** The HUD radio strip label (§4.1) and while the handset is held (§4.5). */
-export const RADIO_LABEL6 = 'POST 4 — CMD — CH 1';
-export const HANDSET_LABEL6 = 'SOUND-POWERED — POST 4';
+export const RADIO_LABEL6 = '4번 초소 — 지휘 — 채널 1';
+export const HANDSET_LABEL6 = '음력 전화 — 4번 초소';
 
 // ───────────────────────────────────────────────────────────── readables (§6.3)
 
 /** `note6_transfer` names the reveal's time: `{reveal hh:mm}` — filled by `transferBody(hhmm)` (ST-b, at the reveal). */
 export const transferBody = (hm: string) =>
-  `B-14 CYCLE START ${hm}. LOADING WELL. CARGO LOCK: AWAITING SEALED CYCLE. DEWATERING 34 % — STOPPED. HOLD: CHOIR. PERSONNEL: NONE (UNMANNED CYCLE).`;
+  `B-14 사이클 시작 ${hm}. 적재 중. 화물 록: 밀봉 사이클 대기. 배수 34% — 정지됨. 보류: CHOIR. 인원: 없음 (무인 사이클).`;
 
 export const FRAGMENTS6: Record<string, Fragment> = {
   note6_jobcard: {
-    header: 'JOB CARD — SPARE TRUNK JOINT — REPEATER 2', style: 'tag', step: 3,
-    body: 'J. RØD (HALCYON SUBSEA) — MON 07:30.\nSTATUS: IN PROGRESS.\nDrum stand brakes OFF for pay-out (vault, CD2). Back by 09:00.',
+    header: '작업 카드 — 예비 간선 조인트 — 중계기 2', style: 'tag', step: 3,
+    body: 'J. 뢰드 (할시온 서브시) — 월 07:30.\n상태: 진행 중.\n페이아웃을 위해 드럼 스탠드 브레이크 해제함 (볼트실, CD2). 09:00까지 복귀.',
   },
   note6_queue: {
-    header: 'HEAD-END — OUTBOUND QUEUE', style: 'terminal', step: 3,
-    body: 'QUEUED: MANIFEST 0031-H / B-14.\nCLASP ASSY (CERVICAL) × 240.\nDISPATCH: MOON POOL → SUBSEA SHUTTLE.\nSENT: B-01 … B-13.\nCONSIGNEE: —',
+    header: '헤드엔드 — 발송 대기열', style: 'terminal', step: 3,
+    body: '대기: 명세서 0031-H / B-14.\n클라스프 조립체 (경부용) ×240.\n발송: 문풀 → 해저 셔틀.\n발송됨: B-01 … B-13.\n수취인: —',
   },
   note6_jointer: {
-    header: 'NOTEBOOK — M. LIE, HALCYON SUBSEA', style: 'paper', step: 4,
-    body: "Mon. Fibre's live, no outage window. Navy says the buoy takes everything if the fibre drops. Slow, but it carries. Told them: then cut the tether too.",
+    header: '수첩 — M. 리에, 할시온 서브시', style: 'paper', step: 4,
+    body: '월. 광케이블이 살아 있어서 정전 창이 없다. 해군 말로는 광케이블이 끊겨도 부이가 다 받아낸단다. 느리지만 전해진다며. 내가 말했지: 그럼 테더도 끊어야 한다고.',
   },
   note6_transfer: {
     header: 'TRANSFER LOG — DOCK LOADER DL-2', style: 'terminal', step: 3,

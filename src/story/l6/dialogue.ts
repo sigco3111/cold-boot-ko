@@ -30,13 +30,13 @@ export function speaker6(l: Line6 | undefined): string {
   if (!l) return '';
   if (l.label) return l.label;
   switch (l.speaker) {
-    case 'kessler': return 'KESSLER';
-    case 'reyes': return 'REYES';
+    case 'kessler': return '케슬러';
+    case 'reyes': return '레예스';
     case 'choir': return 'CHOIR';
-    case 'soldier': return 'SOLDIER';
-    case 'unit': return 'UNIT';
-    case 'aas': return 'LT. AAS';
-    case 'sunde': return 'DR. A. SUNDE';
+    case 'soldier': return '해군';
+    case 'unit': return '유닛';
+    case 'aas': return '아스 중위';
+    case 'sunde': return 'A. 순데 박사';
     default: return l.speaker.toUpperCase();
   }
 }

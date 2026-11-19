@@ -28,40 +28,40 @@ export const unbuilt = (id: LevelId): LevelInfo => ({
 
 export const LEVELS: Readonly<Record<LevelId, LevelInfo>> = {
   1: {
-    id: 1, tag: 'l1', built: true, title: 'COLD BOOT', place: 'Sublevel 3', bootStatus: 'sublevel 3',
+    id: 1, tag: 'l1', built: true, title: 'COLD BOOT', place: '하부 3층', bootStatus: '하부 3층',
     screenHeader: 'HALCYON DYNAMICS // ERIDU DEEP FAB  —  SUBLEVEL 3', camLabel: 'SUBLVL-3', idleText: false, powerOnAtLoad: false,
     keycardName: null, endEyebrow: null, menuLine: null, subtitles: 'single', cast: NO_CAST,
     direct: { facts: {}, loadout: null }, healthFloor: 0, next: 2,
   },
   2: {
-    id: 2, tag: 'l2', built: true, title: 'LINE TWO', place: 'Line Two', bootStatus: 'line two',
+    id: 2, tag: 'l2', built: true, title: 'LINE TWO', place: '2번 라인', bootStatus: '2번 라인',
     screenHeader: 'HALCYON DYNAMICS // ERIDU DEEP FAB  —  LINE TWO / SECTION C', camLabel: 'LINE-2', idleText: true, powerOnAtLoad: true,
-    keycardName: 'SECTION PASS', endEyebrow: 'End of Line Two', menuLine: 'Level 2  —  Line Two', subtitles: 'stacked',
+    keycardName: '구역 출입증', endEyebrow: '2번 라인 끝', menuLine: '레벨 2  —  2번 라인', subtitles: 'stacked',
     cast: { foreman: true, human: true, tomasHead: true, soldier: false },
     direct: { facts: {}, loadout: DIRECT }, healthFloor: 40, next: 3,
   },
   3: {
-    id: 3, tag: 'l3', built: true, title: 'THE QUIET SIDE', place: 'Habitat Ring A', bootStatus: 'habitat ring',
+    id: 3, tag: 'l3', built: true, title: 'THE QUIET SIDE', place: '주거 링 A', bootStatus: '주거 링',
     screenHeader: 'HALCYON DYNAMICS // ERIDU DEEP — HABITAT RING A', camLabel: 'CAM', idleText: true, powerOnAtLoad: true,
-    keycardName: 'FACILITIES BADGE', endEyebrow: 'End of the Quiet Side', menuLine: 'Chapter 3  —  The Quiet Side', subtitles: 'stacked',
+    keycardName: '시설팀 배지', endEyebrow: '고요한 쪽 끝', menuLine: '3장  —  고요한 쪽', subtitles: 'stacked',
     cast: { foreman: false, human: true, tomasHead: false, soldier: false },
     direct: { facts: { choice: 'stop', unitsLeft: 28 }, loadout: { ...DIRECT, flashlight: true } }, healthFloor: 50,
     // stage 3b D4 (integration): finishing 3a hands over to level 4 (Biological Systems).
     next: 4,
   },
   4: {
-    id: 4, tag: 'l4', built: true, title: 'BIOLOGICAL SYSTEMS', place: 'Biological Systems', bootStatus: 'biological systems',
+    id: 4, tag: 'l4', built: true, title: 'BIOLOGICAL SYSTEMS', place: '생물 시스템', bootStatus: '생물 시스템',
     screenHeader: 'HALCYON BIO-SYSTEMS DIV. // ERIDU DEEP — BIOLOGICAL', camLabel: 'BIO', idleText: true, powerOnAtLoad: true,
-    keycardName: 'FACILITIES BADGE', endEyebrow: 'End of Biological Systems', menuLine: 'Chapter 3  —  Biological Systems', subtitles: 'stacked',
+    keycardName: '시설팀 배지', endEyebrow: '생물 시스템 끝', menuLine: '3장  —  생물 시스템', subtitles: 'stacked',
     cast: NO_CAST,
     direct: { facts: { choice: 'stop', unitsLeft: 28, badge: true, halvorsenAlive: true }, loadout: { ...DIRECT, flashlight: true, armor: 0 } },
     // stage 3c: finishing level 4 hands over to level 5 (Post 4)
     healthFloor: 50, next: 5,
   },
   5: {
-    id: 5, tag: 'l5', built: true, title: 'POST 4', place: 'Post 4', bootStatus: 'post 4',
+    id: 5, tag: 'l5', built: true, title: 'POST 4', place: '4번 초소', bootStatus: '4번 초소',
     screenHeader: 'NAVAL DETACHMENT // ERIDU DEEP — POST 4', camLabel: 'POST4', idleText: true, powerOnAtLoad: true,
-    keycardName: 'FACILITIES BADGE', endEyebrow: 'End of Post 4', menuLine: 'Chapter 3  —  Post 4', subtitles: 'stacked',
+    keycardName: '시설팀 배지', endEyebrow: '4번 초소 끝', menuLine: '3장  —  4번 초소', subtitles: 'stacked',
     // the cutscene soldier is an actor: his template is pre-warmed (§8.2.6)
     cast: { ...NO_CAST, soldier: true },
     direct: {
@@ -72,9 +72,9 @@ export const LEVELS: Readonly<Record<LevelId, LevelInfo>> = {
     healthFloor: 50, next: 6,
   },
   6: {
-    id: 6, tag: 'l6', built: true, title: 'THE TRUNK', place: 'The Trunk', bootStatus: 'the trunk',
+    id: 6, tag: 'l6', built: true, title: 'THE TRUNK', place: '간선', bootStatus: '간선',
     screenHeader: 'NAVAL DETACHMENT // ERIDU DEEP — TRUNK HEAD-END', camLabel: 'DOCK', idleText: true, powerOnAtLoad: true,
-    keycardName: 'INTERLOCK KEY', endEyebrow: 'End of Chapter 3', menuLine: 'Chapter 3  —  The Trunk', subtitles: 'stacked',
+    keycardName: '인터록 키', endEyebrow: '3장 끝', menuLine: '3장  —  간선', subtitles: 'stacked',
     // S8b: no soldier actor (the taken soldiers are spawns; the template is pre-warmed from `enemySpawns`)
     cast: NO_CAST,
     direct: {

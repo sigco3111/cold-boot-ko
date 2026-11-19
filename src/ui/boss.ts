@@ -66,7 +66,7 @@ export class BossPips {
 
   constructor(private ctx: GameContext, parent: HTMLElement) {
     this.root = h('div', 'boss', parent);
-    h('span', 'lbl', this.root, 'Line foreman');
+    h('span', 'lbl', this.root, '라인 포먼');
     const row = h('div', 'heads', this.root);
     for (let i = 0; i < 3; i++) {
       const p = h('span', 'head', row);

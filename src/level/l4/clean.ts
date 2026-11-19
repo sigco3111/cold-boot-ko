@@ -309,7 +309,7 @@ function coldController(b: Builder, L: LevelBuild, lamp: Mat) {
     g.fillStyle = '#ff3a26'; g.font = '700 64px "Courier New", monospace'; g.textAlign = 'right'; g.textBaseline = 'middle';
     g.fillText('-20.4', W - 50, H / 2 + 12);
     g.font = '700 26px Arial'; g.fillText('°C', W - 14, H / 2 - 14);
-    g.fillStyle = '#ffb030'; g.font = '700 18px Arial'; g.textAlign = 'left'; g.fillText('DOOR OPEN', 10, 22);
+    g.fillStyle = '#ffb030'; g.font = '700 18px Arial'; g.textAlign = 'left'; g.fillText('문 열림', 10, 22);
   }, true);
   b.bx('plastic_white', -0.17, -0.22, 0, 0.17, 0.22, 0.07);
   b.detail(() => {
@@ -1006,12 +1006,12 @@ function whiteboardEasel(b: Builder, L: LevelBuild) {
   const board = canvasMatD(L, 'briefing_board', 512, 320, (g, W, H) => {
     g.fillStyle = '#f7f8f8'; g.fillRect(0, 0, W, H);
     g.strokeStyle = '#1b3f8f'; g.fillStyle = '#1b3f8f'; g.lineWidth = 3;
-    g.font = '700 30px "Marker Felt", "Comic Sans MS", sans-serif'; g.fillText('PHASE 2 — VOLUNTEER BRIEFING', 22, 46);
+    g.font = '700 30px "Marker Felt", "Comic Sans MS", sans-serif'; g.fillText('2단계 — 자원자 설명회', 22, 46);
     g.font = '24px "Marker Felt", "Comic Sans MS", sans-serif';
-    g.fillText('1. Clasp = ADVISORY only', 30, 100);
-    g.fillText('2. LED amber = powered', 30, 140);
-    g.fillText('3. Controller: TBA (Ops)', 30, 180);
-    g.fillStyle = '#b12a22'; g.fillText('23 / 23 signed ✓', 30, 236);
+    g.fillText('1. 클라스프 = 조언 전용', 30, 100);
+    g.fillText('2. 호박색 LED = 전원 켜짐', 30, 140);
+    g.fillText('3. 제어자: 추후 배정 (운영본부)', 30, 180);
+    g.fillStyle = '#b12a22'; g.fillText('23/23 서명 ✓', 30, 236);
     g.strokeStyle = '#b12a22'; g.beginPath(); g.ellipse(262, 172, 120, 26, 0, 0, 6.3); g.stroke();
   });
   const S: Mat = 'stainless';

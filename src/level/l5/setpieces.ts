@@ -492,11 +492,11 @@ function markMat(L: LevelBuild): THREE.MeshStandardMaterial {
         for (let k = 0; k < 4; k++) { const yy = y + h - 30 - k * 62; g.fillRect(x + 6, yy - 3, 30, 6); g.fillText(String(k + 1), x + 46, yy); } }
       // lifting point: ring + LIFT
       { const [x, y, w, h] = MARK_RECT.lift; g.strokeStyle = yellow; g.lineWidth = 12; g.beginPath(); g.arc(x + w / 2, y + h / 2, w * 0.4, 0, TAU); g.stroke();
-        g.fillStyle = yellow; g.font = `900 30px ${SANS}`; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('LIFT', x + w / 2, y + h / 2); }
+        g.fillStyle = yellow; g.font = `900 30px ${SANS}`; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('리프트', x + w / 2, y + h / 2); }
       // rescue arrow
       { const [x, y, w, h] = MARK_RECT.rescue; g.fillStyle = red; g.fillRect(x + 10, y + 50, w - 50, 28);
         g.beginPath(); g.moveTo(x + w - 44, y + 30); g.lineTo(x + w - 6, y + 64); g.lineTo(x + w - 44, y + 98); g.fill();
-        g.font = `900 26px ${SANS}`; g.textAlign = 'center'; g.fillText('RESCUE', x + w / 2 - 10, y + 22); }
+        g.font = `900 26px ${SANS}`; g.textAlign = 'center'; g.fillText('구조', x + w / 2 - 10, y + 22); }
       // hatch ring: yellow / black chevron annulus
       { const [x, y, w] = MARK_RECT.hatchring; const cx = x + w / 2, cy = y + w / 2, r0 = w * 0.41, r1 = w * 0.49;
         for (let i = 0; i < 24; i++) { const a0 = (i / 24) * TAU, a1 = ((i + 1) / 24) * TAU;

@@ -176,6 +176,6 @@ export class Keypad {
     for (const [k, el] of this.keyEls) toggle(el, 'down', this.flashKey === k);
     if (this.bad > 0) this.bad -= dt;
     toggle(this.dispEl, 'bad', this.bad > 0);
-    setText(this.statusEl, this.value.length >= this.digits ? 'PRESS ENT' : 'ENTER CODE');
+    setText(this.statusEl, this.value.length >= this.digits ? 'ENT 누르기' : '코드 입력');
   }
 }

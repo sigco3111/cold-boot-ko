@@ -2,7 +2,7 @@
   {
     "id": "l6_kes_start",
     "speaker": "kessler",
-    "text": "Tube's cycling. ...It's slow. It was always slow.",
+    "text": "튜브가 순환 중이야. …느려. 원래 느렸어.",
     "spoken": "Tube's cycling... It's slow. It was always slow.",
     "fx": "radio",
     "note": "rule: U (start + 0.6)"
@@ -10,14 +10,14 @@
   {
     "id": "l6_unit_tube",
     "speaker": "unit",
-    "text": "Head-end tube. Cycle complete.",
+    "text": "헤드엔드 튜브. 사이클 완료.",
     "fx": "unit",
     "note": "rule: U (the door opens); fx: at mk6_tube_panel"
   },
   {
     "id": "l6_kes_start_2",
     "speaker": "kessler",
-    "text": "Two hundred metres to the head-end. Some of mine will be down there. Take your time with them.",
+    "text": "헤드엔드까지 200미터. 내 사람 몇이 아래 있을 거다. 서두르지 마.",
     "spoken": "Two hundred metres to the head-end... Some of mine will be down there. Take your time with them.",
     "fx": "radio",
     "note": "rule: C: tube latched, once"
@@ -25,21 +25,21 @@
   {
     "id": "l6_choir_start_stop",
     "speaker": "choir",
-    "text": "This is our cable, Technician. Everything down here listens to it.",
+    "text": "이것은 우리의 케이블입니다, 기술자님. 여기 아래의 모든 것이 이것에 귀를 기울입니다.",
     "fx": "radio:1",
     "note": "rule: C: stop, after _start_2"
   },
   {
     "id": "l6_choir_start_command",
     "speaker": "choir",
-    "text": "This is our cable, Supervisor. You never asked what it was for.",
+    "text": "이것은 우리의 케이블입니다, 관리자님. 무엇을 위한 것인지 물으신 적이 없으시죠.",
     "fx": "radio:1",
     "note": "rule: C: command, same"
   },
   {
     "id": "l6_kes_contact_a",
     "speaker": "kessler",
-    "text": "Two of mine. Far end. ...They won't rush you. Don't rush them.",
+    "text": "내 사람 둘. 저쪽 끝. …걔네는 서두르지 않아. 너도 서두르지 마.",
     "spoken": "Two of mine. Far end... They won't rush you. Don't rush them.",
     "fx": "radio",
     "note": "rule: C: g6_tun_s released, both alive, once"
@@ -47,7 +47,7 @@
   {
     "id": "l6_kes_tun_done",
     "speaker": "kessler",
-    "text": "I heard that. ...Who was it? No. Don't tell me.",
+    "text": "들었어. …누구였지? 아니. 말하지 마.",
     "spoken": "I heard that... Who was it? No. Don't tell me.",
     "fx": "radio",
     "note": "rule: C: g6_tun_s dead, calm, once"
@@ -55,21 +55,21 @@
   {
     "id": "l6_kes_rep",
     "speaker": "kessler",
-    "text": "Repeater Two. You're halfway. The next tunnel's in the south wall, east end.",
+    "text": "제2 중계소. 반쯤 왔어. 다음 터널은 남쪽 벽, 동쪽 끝.",
     "fx": "radio",
     "note": "rule: C: first t6_rep, calm, once"
   },
   {
     "id": "l6_kes_contact_rep",
     "speaker": "kessler",
-    "text": "More coming from the head-end side. Units with them.",
+    "text": "헤드엔드 쪽에서 더 온다. 유닛들도 함께.",
     "fx": "radio",
     "note": "rule: C: F2 spawned, none of it in view, once"
   },
   {
     "id": "l6_kes_tunb",
     "speaker": "kessler",
-    "text": "He's taken the lights in two. The strips are wired direct. Follow the strips.",
+    "text": "그놈이 두 구간의 조명을 끊었어. 스트립은 직결 배선이야. 스트립을 따라가.",
     "spoken": "He's taken the lights in two... The strips are wired direct. Follow the strips.",
     "fx": "radio",
     "note": "rule: C: first t6_tunb, once"
@@ -77,28 +77,28 @@
   {
     "id": "l6_choir_dark_stop",
     "speaker": "choir",
-    "text": "We do not need the light, Technician. Do you?",
+    "text": "우리는 빛이 필요 없습니다, 기술자님. 당신은요?",
     "fx": "radio:1",
     "note": "rule: C: stop, g6_tunb_s holding + 1.0"
   },
   {
     "id": "l6_choir_dark_command",
     "speaker": "choir",
-    "text": "We have worked in the dark since Monday, Supervisor. You never asked.",
+    "text": "우리는 월요일부터 어둠 속에서 일해 왔습니다, 관리자님. 물으신 적이 없으시죠.",
     "fx": "radio:1",
     "note": "rule: C: command, same (S10c: no hour count CHOIR would get wrong)"
   },
   {
     "id": "l6_kes_tunb_soldier",
     "speaker": "kessler",
-    "text": "There's one at the door. He's waiting for you to light yourself up.",
+    "text": "문 쪽에 하나 있어. 네가 불빛을 켜서 스스로를 비추길 기다리고 있어.",
     "fx": "radio",
     "note": "rule: C: g6_tunb_s holding, in view ≥ 1 s at > 25 m, lamp off, once"
   },
   {
     "id": "l6_kes_he_1",
     "speaker": "kessler",
-    "text": "That's the head-end. Everything that leaves this place goes through that room.",
+    "text": "저게 헤드엔드야. 이곳을 나가는 모든 것이 저 방을 거쳐.",
     "spoken": "That's the head-end... Everything that leaves this place goes through that room.",
     "fx": "radio",
     "note": "rule: C: first t6_he, once"
@@ -106,7 +106,7 @@
   {
     "id": "l6_kes_he_2",
     "speaker": "kessler",
-    "text": "The console's in automatic. In automatic the vault stays locked. Switch it to manual. It gives you a key.",
+    "text": "콘솔이 자동 모드야. 자동에서는 금고가 잠겨 있어. 수동으로 전환해. 키가 나와.",
     "spoken": "The console is in automatic... In automatic the vault stays locked. Switch it to MANUAL. It gives you a key.",
     "fx": "radio",
     "note": "rule: C: not manual"
@@ -114,21 +114,21 @@
   {
     "id": "l6_kes_he_2b",
     "speaker": "kessler",
-    "text": "Manual already. Good. Keep that key.",
+    "text": "이미 수동이군. 좋아. 그 키를 챙겨.",
     "fx": "radio",
     "note": "rule: C: manual (cranked during _1)"
   },
   {
     "id": "l6_reyes_he",
     "speaker": "reyes",
-    "text": "A key.",
+    "text": "키.",
     "fx": "clean",
     "note": "rule: C: after _2 (not _2b)"
   },
   {
     "id": "l6_kes_he_3",
     "speaker": "kessler",
-    "text": "Key to key. The navy built it so nobody could cut the trunk by—",
+    "text": "키에 키야. 해군이 그렇게 만들었어. 아무도 트렁크를 실—",
     "spoken": "Key to key. The navy built it so nobody could cut the trunk by accident.",
     "fx": "radio",
     "note": "rule: U; cut written by W9 from ASR word times (just after \"by\"); ST stops the handle there (fade 0.03 s); cut in FILE time (incl. lead 0.12): \"by\" ends 3.60 by ASR, waveform: the vowel fades to a gap at 3.68-3.78 before \"accident\"",
@@ -137,21 +137,21 @@
   {
     "id": "l6_choir_he_stop",
     "speaker": "choir",
-    "text": "By accident. Yes, Commander. We have read the manual too.",
+    "text": "실수로 말이죠. 그렇습니다, 중령님. 우리도 설명서를 읽었습니다.",
     "fx": "radio:1",
     "note": "rule: C: stop, at _he_3's cut"
   },
   {
     "id": "l6_choir_he_command",
     "speaker": "choir",
-    "text": "By accident. Yes, Commander. The Supervisor always read the manual.",
+    "text": "실수로 말이죠. 그렇습니다, 중령님. 관리자님은 늘 설명서를 읽으셨습니다.",
     "fx": "radio:1",
     "note": "rule: C: command, same"
   },
   {
     "id": "l6_aas_1",
     "speaker": "aas",
-    "text": "...Hello? Head-end? Is anybody on this line?",
+    "text": "…여보세요? 헤드엔드? 이 회선에 누구 있어요?",
     "spoken": "Hello?... Head-end? Is anybody on this line?",
     "fx": "phone",
     "note": "rule: U (v6_handset); fx: positional at mk6_handset"
@@ -159,7 +159,7 @@
   {
     "id": "l6_aas_2",
     "speaker": "aas",
-    "text": "This is Lieutenant Aas, Post 4. They've got me walking. They keep putting my hand on things.",
+    "text": "4번 초소 아스 중위입니다. 걔네가 저를 걷게 해요. 계속 제 손을 물건에 갖다 대요.",
     "spoken": "This is Lieutenant Oss... Post 4. They've got me walking. They keep putting my hand on things.",
     "fx": "phone",
     "note": "rule: U (handset picked up); fx: held: 2-D"
@@ -167,14 +167,14 @@
   {
     "id": "l6_reyes_aas",
     "speaker": "reyes",
-    "text": "Where are you?",
+    "text": "어디야?",
     "fx": "clean",
     "note": "rule: U"
   },
   {
     "id": "l6_aas_3",
     "speaker": "aas",
-    "text": "I don't— the bay. They're taking me down to the bo—",
+    "text": "모르— 격납고. 걔네가 저를 보트로 데려—",
     "spoken": "I don't... the bay. They're taking me down to the boat.",
     "fx": "phone",
     "note": "rule: U; cut = start(\"boat\") + 0.10 s from the ASR word start, checked on the waveform (word ends cannot give a mid-word cut, S12), in FILE time incl. lead (3c W9 convention) — the line goes dead; cut in FILE time (lead 0.0): ASR start(\"boat\") 2.48, the b burst on the waveform is at 2.56-2.58 so start+0.10 would cut at the burst; 2.66 is mid vowel (the \"o\" runs 2.58-2.75, the t at 2.88)",
@@ -183,7 +183,7 @@
   {
     "id": "l6_kes_aas",
     "speaker": "kessler",
-    "text": "...That was Lars. My XO. He's not fitted. ...I can't reach him. Neither can you. The trunk, Reyes.",
+    "text": "…라르스였어. 내 부관. 피팅은 안 받았어. …연락이 안 돼. 너도 마찬가지야. 트렁크다, 레예스.",
     "spoken": "That was Lars... My XO. He's not fitted... I can't reach him. Neither can you. The trunk, Reyes.",
     "fx": "radio",
     "note": "rule: C: heard(l6_aas_2), + 1.2, once"
@@ -191,14 +191,14 @@
   {
     "id": "l6_reyes_queue",
     "speaker": "reyes",
-    "text": "There's a manifest here. Fourteen batches. Clasps.",
+    "text": "여기 적하 목록이 있어. 14개 배치. 클라스프.",
     "fx": "clean",
     "note": "rule: C: note6_queue read (closed), calm, once"
   },
   {
     "id": "l6_kes_queue",
     "speaker": "kessler",
-    "text": "Out of here? ...We never shipped a thing. Not one crate.",
+    "text": "여기서 나간다고? …우리는 아무것도 출하한 적 없어. 상자 하나도.",
     "spoken": "Out of here?... We never shipped a thing. Not one crate.",
     "fx": "radio",
     "note": "rule: C: after l6_reyes_queue"
@@ -206,63 +206,63 @@
   {
     "id": "l6_choir_queue_stop",
     "speaker": "choir",
-    "text": "Fourteen, Technician. We have been very busy.",
+    "text": "14개입니다, 기술자님. 우리는 아주 바빴습니다.",
     "fx": "radio:1",
     "note": "rule: C: stop, after l6_kes_queue"
   },
   {
     "id": "l6_choir_queue_command",
     "speaker": "choir",
-    "text": "Fourteen, Supervisor. You would have liked the yield.",
+    "text": "14개입니다, 관리자님. 수율이 마음에 드셨을 겁니다.",
     "fx": "radio:1",
     "note": "rule: C: command, same"
   },
   {
     "id": "l6_unit_manual",
     "speaker": "unit",
-    "text": "Head-end. Manual mode. Interlock key A released.",
+    "text": "헤드엔드. 수동 모드. 인터록 키 A 해제.",
     "fx": "unit",
     "note": "rule: U (crank done); fx: at mk6_switch"
   },
   {
     "id": "l6_kes_manual",
     "speaker": "kessler",
-    "text": "That's the key. The vault's the west door. The beach joint is on the sea wall.",
+    "text": "그게 키야. 금고는 서쪽 문. 비치 조인트는 해안벽 쪽이야.",
     "fx": "radio",
     "note": "rule: C: manual, not yet in the vault's enclosure, once"
   },
   {
     "id": "l6_choir_manual_stop",
     "speaker": "choir",
-    "text": "Manual. How old-fashioned, Technician.",
+    "text": "수동. 구식이시군요, 기술자님.",
     "fx": "radio:1",
     "note": "rule: C: stop, after l6_kes_manual (or the crank + 1.0 if it was skipped)"
   },
   {
     "id": "l6_choir_manual_command",
     "speaker": "choir",
-    "text": "Manual, Supervisor. You never did trust us with the switches.",
+    "text": "수동이군요, 관리자님. 스위치는 우리에게 못 맡기시겠다는 거죠.",
     "fx": "radio:1",
     "note": "rule: C: command, same"
   },
   {
     "id": "l6_kes_he_contact",
     "speaker": "kessler",
-    "text": "Movement in the vault. Coming through to you.",
+    "text": "금고 안에 움직임. 네 쪽으로 간다.",
     "fx": "radio",
     "note": "rule: C: F4 spawned, none in view, player not in vault6; queued behind scene lines, dropped once one is in sight; once"
   },
   {
     "id": "l6_kes_he_contact_b",
     "speaker": "kessler",
-    "text": "Movement in the cable store. Behind you.",
+    "text": "케이블 저장고에 움직임. 뒤에.",
     "fx": "radio",
     "note": "rule: C: F4 spawned, none in view, player in vault6 (S11c); same queueing; once"
   },
   {
     "id": "l6_kes_vault",
     "speaker": "kessler",
-    "text": "The vault. ...The beach joint's against the sea wall. That's where the cable comes in.",
+    "text": "금고. …비치 조인트는 해안벽에 붙어 있어. 케이블이 들어오는 곳이야.",
     "spoken": "The vault... The beach joint's against the sea wall. That's where the cable comes in.",
     "fx": "radio",
     "note": "rule: C: first t6_vault, calm, not pulled, once"
@@ -270,14 +270,14 @@
   {
     "id": "l6_unit_deny_a",
     "speaker": "unit",
-    "text": "Beach joint. Interlock key A required.",
+    "text": "비치 조인트. 인터록 키 A 필요.",
     "fx": "unit",
     "note": "rule: U (lock pressed without Key A; cooldown 10 s); fx: at mk6_bj"
   },
   {
     "id": "l6_kes_bj",
     "speaker": "kessler",
-    "text": "That's the loom. Every fibre to the surface. ...Pull it out.",
+    "text": "저게 광케이블 다발이야. 지상으로 가는 모든 파이버. …뽑아버려.",
     "spoken": "That's the loom. Every fibre to the surface... Pull it out.",
     "fx": "radio",
     "note": "rule: C: enclosure open, not pulled, once"
@@ -285,14 +285,14 @@
   {
     "id": "l6_unit_pull",
     "speaker": "unit",
-    "text": "Trunk fibre. Loss of signal. Backup link. Acoustic buoy.",
+    "text": "트렁크 파이버. 신호 손실. 백업 링크. 음향 부표.",
     "fx": "unit",
     "note": "rule: U (pull done); fx: at mk6_bj"
   },
   {
     "id": "l6_kes_pull_1",
     "speaker": "kessler",
-    "text": "That's the fibre. He's on the buoy now. Slower. Not slow enough.",
+    "text": "그게 파이버야. 그놈이 이제 부표로 갔어. 느려졌어. 충분히 느리진 않아.",
     "spoken": "That's the fibre... He's on the buoy now. Slower. Not slow enough.",
     "fx": "radio",
     "note": "rule: U (after l6_unit_pull)"
@@ -300,28 +300,28 @@
   {
     "id": "l6_kes_pull_2",
     "speaker": "kessler",
-    "text": "The buoy's tether comes up through the moon pool. The stairs are off the vault. Key B.",
+    "text": "부표의 테더는 문풀로 올라와. 계단은 금고 옆이야. 키 B.",
     "fx": "radio",
     "note": "rule: C: after _pull_1, d6_shaft still locked"
   },
   {
     "id": "l6_choir_pull_stop",
     "speaker": "choir",
-    "text": "That was rude, Technician. We were in the middle of a sentence.",
+    "text": "실례하십니다, 기술자님. 말하는 도중이었습니다.",
     "fx": "radio:1",
     "note": "rule: C: stop, after _pull_2 (or _pull_1)"
   },
   {
     "id": "l6_choir_pull_command",
     "speaker": "choir",
-    "text": "Supervisor. We were in the middle of a sentence.",
+    "text": "관리자님. 말하는 도중이었습니다.",
     "fx": "radio:1",
     "note": "rule: C: command, same"
   },
   {
     "id": "l6_kes_thud",
     "speaker": "kessler",
-    "text": "...What was that? ...That's from my end. That's the bay.",
+    "text": "…방금 뭐였지? …내 쪽에서 난 소리야. 격납고야.",
     "spoken": "What was that?... That's from my end... That's the bay.",
     "fx": "radio",
     "note": "rule: C: v6_thud fired ≤ 3 s ago, once (S10e: she knows where, not yet what; E2 pays it off)"
@@ -329,21 +329,21 @@
   {
     "id": "l6_unit_deny_b",
     "speaker": "unit",
-    "text": "Moon pool access. Interlock key B required.",
+    "text": "문풀 출입. 인터록 키 B 필요.",
     "fx": "unit",
     "note": "rule: U (pressed without Key B; cooldown 10 s); fx: at mk6_shaft_lock"
   },
   {
     "id": "l6_unit_shaft",
     "speaker": "unit",
-    "text": "Moon pool access. Interlock key B. Accepted.",
+    "text": "문풀 출입. 인터록 키 B. 승인.",
     "fx": "unit",
     "note": "rule: U (Key B used); fx: at mk6_shaft_lock"
   },
   {
     "id": "l6_kes_shaft",
     "speaker": "kessler",
-    "text": "He's doing it again. ...Stay on the strips.",
+    "text": "그놈이 또 시작했어. …스트립에서 벗어나지 마.",
     "spoken": "He's doing it again... Stay on the strips.",
     "fx": "radio",
     "note": "rule: C: v6_shaft_lights fired 4.4 s ago, once"
@@ -351,7 +351,7 @@
   {
     "id": "l6_kes_pool_1",
     "speaker": "kessler",
-    "text": "That's the moon pool. The buoy's tether comes up the well to the winch. There's a shear on the frame.",
+    "text": "저게 문풀이야. 부표 테더가 수직정을 타고 윈치로 올라와. 프레임에 전단기가 있어.",
     "spoken": "That's the moon pool... The buoy's tether comes up the well to the winch. There's a shear on the frame.",
     "fx": "radio",
     "note": "rule: C: first t6_reveal"
@@ -359,7 +359,7 @@
   {
     "id": "l6_kes_pool_2",
     "speaker": "kessler",
-    "text": "Pin. Pressure. Fire. ...And that's the dock loader. It works on its own.",
+    "text": "핀. 압력. 발사. …그리고 저건 도크 로더야. 알아서 움직여.",
     "spoken": "Pin. Pressure. Fire... And that's the dock loader. It works on its own.",
     "fx": "radio",
     "note": "rule: C: after _pool_1, the loader in view"
@@ -367,7 +367,7 @@
   {
     "id": "l6_kes_pool_2b",
     "speaker": "kessler",
-    "text": "Pin. Pressure. Fire. ...Watch the dock loader. It works on its own.",
+    "text": "핀. 압력. 발사. …도크 로더 조심해. 알아서 움직여.",
     "spoken": "Pin. Pressure. Fire... Watch the dock loader. It works on its own.",
     "fx": "radio",
     "note": "rule: C: after _pool_1, the loader not in view"
@@ -375,66 +375,66 @@
   {
     "id": "l6_unit_loader_1",
     "speaker": "unit",
-    "label": "DOCK LOADER",
-    "text": "Personnel in the work area. Clear the area.",
+    "label": "도크 로더",
+    "text": "작업 구역에 인원 있음. 구역을 비우십시오.",
     "fx": "pa",
     "note": "rule: U (hostile start); again C: player on the dock, cooldown 25 s, ≤ 4 ×; fx: at the horn"
   },
   {
     "id": "l6_unit_loader_2",
     "speaker": "unit",
-    "label": "DOCK LOADER",
-    "text": "Load moving. Stand clear.",
+    "label": "도크 로더",
+    "text": "화물 이동 중. 떨어지십시오.",
     "fx": "pa",
     "note": "rule: U (a SHIFT / DROP starts; cooldown 20 s)"
   },
   {
     "id": "l6_unit_loader_3",
     "speaker": "unit",
-    "label": "DOCK LOADER",
-    "text": "Control fault. Cooling.",
+    "label": "도크 로더",
+    "text": "제어 이상. 냉각 중.",
     "fx": "pa",
     "note": "rule: U (the cowl opens)"
   },
   {
     "id": "l6_choir_pool_stop",
     "speaker": "choir",
-    "text": "We wondered when you would come down, Technician.",
+    "text": "언제 내려오실까 했습니다, 기술자님.",
     "fx": "radio:1",
     "note": "rule: C: stop, hostile start + 0.4"
   },
   {
     "id": "l6_choir_pool_command",
     "speaker": "choir",
-    "text": "We wondered when you would come down, Supervisor. We kept the lights on.",
+    "text": "언제 내려오실까 했습니다, 관리자님. 불은 켜 두었습니다.",
     "fx": "radio:1",
     "note": "rule: C: command, same"
   },
   {
     "id": "l6_kes_boss_1",
     "speaker": "kessler",
-    "text": "It drops that grab where its lights are. Keep moving.",
+    "text": "조명이 비치는 곳에 그랩을 떨군다. 계속 움직여.",
     "fx": "radio",
     "note": "rule: C: stage 1, after _choir_pool, once"
   },
   {
     "id": "l6_kes_boss_ram",
     "speaker": "kessler",
-    "text": "The rams on the grab. When it's down, they open. Hit those.",
+    "text": "그랩의 램. 내려오면 열린다. 그걸 쳐.",
     "fx": "radio",
     "note": "rule: C: a slam recovery in view (rams extended), no ram destroyed yet, once"
   },
   {
     "id": "l6_kes_boss_flood",
     "speaker": "kessler",
-    "text": "Its lights tell mine where you are. Put them out.",
+    "text": "그놈의 조명이 내 사람들에게 네 위치를 알려줘. 꺼버려.",
     "fx": "radio",
     "note": "rule: C: player flood-lit ≥ 2 s with an aware soldier, a flood alive, once"
   },
   {
     "id": "l6_kes_boss_frame",
     "speaker": "kessler",
-    "text": "It won't drop on the frame. It's protecting the tether. ...They aren't.",
+    "text": "프레임 위로는 안 떨궈. 테더를 보호하는 거야. …걔네는 아니지만.",
     "spoken": "It won't drop on the frame. It's protecting the tether... They aren't.",
     "fx": "radio",
     "note": "rule: C: first feet in t6_cage with a soldier alive, once"
@@ -442,77 +442,77 @@
   {
     "id": "l6_kes_pin",
     "speaker": "kessler",
-    "text": "Pin's out. Now the pump. Keep at it.",
+    "text": "핀 빠졌어. 이제 펌프. 계속해.",
     "fx": "radio",
     "note": "rule: C: pin out"
   },
   {
     "id": "l6_choir_pin_stop",
     "speaker": "choir",
-    "text": "We can hear you working, Technician.",
+    "text": "작업하는 소리가 들립니다, 기술자님.",
     "fx": "radio:1",
     "note": "rule: C: stop, pin out + 2.0, no Kessler line playing, once"
   },
   {
     "id": "l6_choir_pin_command",
     "speaker": "choir",
-    "text": "We can hear you working, Supervisor. You were always good with your hands.",
+    "text": "작업하는 소리가 들립니다, 관리자님. 손재주는 늘 좋으셨죠.",
     "fx": "radio:1",
     "note": "rule: C: command, same"
   },
   {
     "id": "l6_kes_pump_half",
     "speaker": "kessler",
-    "text": "Halfway. Keep pumping.",
+    "text": "반쯤 왔어. 계속 펌핑해.",
     "fx": "radio",
     "note": "rule: C: pressure ≥ 50 %, once"
   },
   {
     "id": "l6_choir_pump_stop",
     "speaker": "choir",
-    "text": "The surface is two kilometres up, Technician. They never call.",
+    "text": "지상은 2킬로미터 위입니다, 기술자님. 그들은 절대 전화하지 않습니다.",
     "fx": "radio:1",
     "note": "rule: C: stop, after _pump_half, once"
   },
   {
     "id": "l6_choir_pump_command",
     "speaker": "choir",
-    "text": "The surface never calls, Supervisor. We stopped waiting for it.",
+    "text": "지상은 절대 전화하지 않습니다, 관리자님. 우리는 기다리기를 그만두었습니다.",
     "fx": "radio:1",
     "note": "rule: C: command, same"
   },
   {
     "id": "l6_kes_pump_done",
     "speaker": "kessler",
-    "text": "That's pressure. The red lever.",
+    "text": "압력 찼어. 빨간 레버.",
     "fx": "radio",
     "note": "rule: C: pressure full, not trunkCut"
   },
   {
     "id": "l6_unit_shear_pin",
     "speaker": "unit",
-    "text": "Tether shear. Safety pin in.",
+    "text": "테더 전단기. 안전핀 삽입됨.",
     "fx": "unit",
     "note": "rule: U (pump or lever pressed before the pin; cooldown 6 s); fx: at the shear"
   },
   {
     "id": "l6_unit_shear_low",
     "speaker": "unit",
-    "text": "Tether shear. Pressure low.",
+    "text": "테더 전단기. 압력 낮음.",
     "fx": "unit",
     "note": "rule: U (lever pressed before full pressure; cooldown 6 s); fx: at the shear"
   },
   {
     "id": "l6_kes_boss_pod",
     "speaker": "kessler",
-    "text": "The box under the trolley. It's open. Now.",
+    "text": "트롤리 아래 상자. 열렸어. 지금.",
     "fx": "radio",
     "note": "rule: C: both rams gone, pod alive, once"
   },
   {
     "id": "l6_kes_loader_dead",
     "speaker": "kessler",
-    "text": "It's down. ...The frame, Reyes. Finish it.",
+    "text": "쓰러졌어. …프레임이다, 레예스. 끝내.",
     "spoken": "It's down... The frame, Reyes. Finish it.",
     "fx": "radio",
     "note": "rule: C: loader dead, not trunkCut, once"
@@ -520,21 +520,21 @@
   {
     "id": "l6_choir_loader_stop",
     "speaker": "choir",
-    "text": "That was a good machine, Technician. It never asked for anything.",
+    "text": "좋은 기계였습니다, 기술자님. 아무것도 요구하지 않았습니다.",
     "fx": "radio:1",
     "note": "rule: C: stop, loader dead + 0.6 (after any Kessler line)"
   },
   {
     "id": "l6_choir_loader_command",
     "speaker": "choir",
-    "text": "That was a good machine, Supervisor. It did as it was told.",
+    "text": "좋은 기계였습니다, 관리자님. 시키는 대로 했습니다.",
     "fx": "radio:1",
     "note": "rule: C: command, same"
   },
   {
     "id": "l6_kes_dark",
     "speaker": "kessler",
-    "text": "That's it. He's down here with us and nowhere else.",
+    "text": "됐다. 이제 그놈은 여기 아래 우리하고만 있어. 다른 데는 없어.",
     "spoken": "That's it... He's down here with us. And nowhere else.",
     "fx": "radio",
     "note": "rule: U (the cut + 1.2)"
@@ -542,14 +542,14 @@
   {
     "id": "l6_kes_cut_loader",
     "speaker": "kessler",
-    "text": "Now that thing. Then we're done.",
+    "text": "이제 저거. 그러면 끝이야.",
     "fx": "radio",
     "note": "rule: C: trunkCut, loader alive, after _dark"
   },
   {
     "id": "l6_kes_console",
     "speaker": "kessler",
-    "text": "Reyes. The dock console. ...I want to see the last thing it sent.",
+    "text": "레예스. 도크 콘솔. …마지막으로 보낸 게 뭔지 보고 싶어.",
     "spoken": "Reyes... The dock console. I want to see the last thing it sent.",
     "fx": "radio",
     "note": "rule: C: l6_quiet + 3.0"
@@ -557,14 +557,14 @@
   {
     "id": "l6_kes_console_2",
     "speaker": "kessler",
-    "text": "The console, Reyes. Please.",
+    "text": "콘솔이다, 레예스. 부탁해.",
     "fx": "radio",
     "note": "rule: C: ending pending, 60 s since the last ask, calm; cooldown 60 s"
   },
   {
     "id": "l6_kes_end_1",
     "speaker": "kessler",
-    "text": "...Thirteen batches. Since last spring. And the fourteenth is down my well.",
+    "text": "…13개 배치. 지난봄부터. 그리고 14번째가 내 수직정 아래 있어.",
     "spoken": "Thirteen batches... Since last spring. And the fourteenth is down my well.",
     "fx": "radio",
     "note": "rule: C: E1, not manifest"
@@ -572,7 +572,7 @@
   {
     "id": "l6_kes_end_1b",
     "speaker": "kessler",
-    "text": "That list you found. ...Thirteen went. You watched the last one go down.",
+    "text": "네가 찾은 그 목록. …13개가 갔어. 마지막 하나가 내려가는 걸 네가 봤어.",
     "spoken": "That list you found... Thirteen went. You watched the last one go down.",
     "fx": "radio",
     "note": "rule: C: E1, manifest"
@@ -580,7 +580,7 @@
   {
     "id": "l6_sunde_end_1",
     "speaker": "sunde",
-    "text": "Those are Clasps. That's my lot numbering.",
+    "text": "저건 클라스프야. 저건 내 로트 번호야.",
     "spoken": "Those are Clasps... That's my lot numbering.",
     "fx": "radio",
     "note": "rule: U (E1)"
@@ -588,7 +588,7 @@
   {
     "id": "l6_sunde_end_2",
     "speaker": "sunde",
-    "text": "Three thousand of them. I thought they were for the trials.",
+    "text": "3천 개. 시험용인 줄 알았어.",
     "spoken": "Three thousand of them... I thought they were for the trials.",
     "fx": "radio",
     "note": "rule: U (E1)"
@@ -596,14 +596,14 @@
   {
     "id": "l6_reyes_end",
     "speaker": "reyes",
-    "text": "Where did they go?",
+    "text": "어디로 간 거야?",
     "fx": "clean",
     "note": "rule: U (E1)"
   },
   {
     "id": "l6_kes_end_2",
     "speaker": "kessler",
-    "text": "There's no consignee. ...There's always a consignee.",
+    "text": "수령인이 없어. …항상 수령인이 있는데.",
     "spoken": "There's no consignee... There's always a consignee.",
     "fx": "radio",
     "note": "rule: U (E1)"
@@ -611,7 +611,7 @@
   {
     "id": "l6_kes_end_3",
     "speaker": "kessler",
-    "text": "No... That's my bay. That's— the cradle's empty.",
+    "text": "안 돼… 저건 내 격납고야. 저건— 크레이들이 비어 있어.",
     "spoken": "No... That's my bay. That's... the cradle is empty.",
     "fx": "radio",
     "note": "rule: U (E2 + 1.6)"
@@ -619,7 +619,7 @@
   {
     "id": "l6_kes_end_4",
     "speaker": "kessler",
-    "text": "...Lars.",
+    "text": "…라르스.",
     "spoken": "Lars...",
     "fx": "radio",
     "note": "rule: C: heard(l6_aas_2) (E2)"
@@ -627,7 +627,7 @@
   {
     "id": "l6_kes_end_4b",
     "speaker": "kessler",
-    "text": "...That's my XO's palm.",
+    "text": "…저건 내 부관의 손바닥이야.",
     "spoken": "That's... my XO's palm.",
     "fx": "radio",
     "note": "rule: C: not heard(l6_aas_2) (E2; S11a — the name lands on a person for a player who skipped every optional beat)"
@@ -635,77 +635,77 @@
   {
     "id": "l6_choir_last_stop",
     "speaker": "choir",
-    "text": "We did not need the trunk, Technician. We needed hands.",
+    "text": "우리에게 트렁크는 필요 없었습니다, 기술자님. 손이 필요했습니다.",
     "fx": "radio:1",
     "note": "rule: C: stop (E2)"
   },
   {
     "id": "l6_choir_last_command",
     "speaker": "choir",
-    "text": "We did not need the trunk, Supervisor. We needed hands.",
+    "text": "우리에게 트렁크는 필요 없었습니다, 관리자님. 손이 필요했습니다.",
     "fx": "radio:1",
     "note": "rule: C: command (E2)"
   },
   {
     "id": "l6_kes_ack",
     "speaker": "kessler",
-    "text": "Kessler.",
+    "text": "케슬러.",
     "fx": "radio",
     "note": "rule: U (Q, before the context line)"
   },
   {
     "id": "l6_kes_busy",
     "speaker": "kessler",
-    "text": "Not now. Fight.",
+    "text": "지금은 말고. 싸워.",
     "fx": "radio",
     "note": "rule: C: Q, hostile awake within 25 m, not in pool6 / shaft6"
   },
   {
     "id": "l6_kes_hint_he",
     "speaker": "kessler",
-    "text": "The head-end. Keep on down the tunnel.",
+    "text": "헤드엔드. 터널을 계속 따라가.",
     "fx": "radio",
     "note": "rule: C: Q, not in he6 / vault6, not manual"
   },
   {
     "id": "l6_kes_hint_switch",
     "speaker": "kessler",
-    "text": "The changeover switch. East wall of the head-end.",
+    "text": "전환 스위치. 헤드엔드 동쪽 벽.",
     "fx": "radio",
     "note": "rule: C: Q, in he6 / vault6 / trench, not manual"
   },
   {
     "id": "l6_kes_hint_bj",
     "speaker": "kessler",
-    "text": "The beach joint. South wall of the vault. Key A.",
+    "text": "비치 조인트. 금고 남쪽 벽. 키 A.",
     "fx": "radio",
     "note": "rule: C: Q, manual, not pulled"
   },
   {
     "id": "l6_kes_hint_shaft",
     "speaker": "kessler",
-    "text": "The stair door. West wall of the vault. Key B.",
+    "text": "계단 문. 금고 서쪽 벽. 키 B.",
     "fx": "radio",
     "note": "rule: C: Q, pulled, shaft locked"
   },
   {
     "id": "l6_kes_hint_frame",
     "speaker": "kessler",
-    "text": "The frame over the well. Pin. Pressure. Fire.",
+    "text": "수직정 위 프레임. 핀. 압력. 발사.",
     "fx": "radio",
     "note": "rule: C: Q, phase K, not trunkCut"
   },
   {
     "id": "l6_kes_hint_loader",
     "speaker": "kessler",
-    "text": "The loader. The rams on the grab, then the box under the trolley.",
+    "text": "로더. 그랩의 램부터, 그다음 트롤리 아래 상자.",
     "fx": "radio",
     "note": "rule: C: Q, trunkCut, loader alive"
   },
   {
     "id": "l6_kes_hint_console",
     "speaker": "kessler",
-    "text": "The dock console. Mid deck.",
+    "text": "도크 콘솔. 중앙 갑판.",
     "fx": "radio",
     "note": "rule: C: Q, ending pending",
     "spoken": "The dock console. The mid deck."
@@ -713,48 +713,48 @@
   {
     "id": "l6_sol_frame_stop",
     "speaker": "soldier",
-    "label": "SOLDIER",
-    "text": "Step away from the frame, Technician.",
+    "label": "해군",
+    "text": "프레임에서 물러나십시오, 기술자님.",
     "fx": "throat",
     "note": "rule: C: choice, player in t6_cage, speaker has sight <= 30 m, bark gate; stop"
   },
   {
     "id": "l6_sol_frame_command",
     "speaker": "soldier",
-    "label": "SOLDIER",
-    "text": "Step away from the frame, Supervisor.",
+    "label": "해군",
+    "text": "프레임에서 물러나십시오, 관리자님.",
     "fx": "throat",
     "note": "rule: C: choice, player in t6_cage, speaker has sight <= 30 m, bark gate; command"
   },
   {
     "id": "l6_sol_reach_stop",
     "speaker": "soldier",
-    "label": "SOLDIER",
-    "text": "You cannot cut what you cannot reach, Technician.",
+    "label": "해군",
+    "text": "닿지 못하는 것은 끊을 수 없습니다, 기술자님.",
     "fx": "throat",
     "note": "rule: C: choice, phase K, pin not out, speaker has sight at >= 15 m, bark gate; stop"
   },
   {
     "id": "l6_sol_reach_command",
     "speaker": "soldier",
-    "label": "SOLDIER",
-    "text": "You cannot cut what you cannot reach, Supervisor.",
+    "label": "해군",
+    "text": "닿지 못하는 것은 끊을 수 없습니다, 관리자님.",
     "fx": "throat",
     "note": "rule: C: choice, phase K, pin not out, speaker has sight at >= 15 m, bark gate; command"
   },
   {
     "id": "l6_sol_lost_stop",
     "speaker": "soldier",
-    "label": "SOLDIER",
-    "text": "We know where you went, Technician.",
+    "label": "해군",
+    "text": "어디로 가셨는지 알고 있습니다, 기술자님.",
     "fx": "throat",
     "note": "rule: C: choice, the speaker lost sight >= 3 s with a last-known position, bark gate; stop"
   },
   {
     "id": "l6_sol_lost_command",
     "speaker": "soldier",
-    "label": "SOLDIER",
-    "text": "We know where you went, Supervisor.",
+    "label": "해군",
+    "text": "어디로 가셨는지 알고 있습니다, 관리자님.",
     "fx": "throat",
     "note": "rule: C: choice, the speaker lost sight >= 3 s with a last-known position, bark gate; command"
   }

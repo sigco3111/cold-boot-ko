@@ -398,7 +398,7 @@ export class Script {
   private unitLine(key: keyof typeof UNIT_LINES, at: THREE.Vector3 | null): void {
     // Recorded: the staff member's voice through the unit treatment, from where the unit stands.
     // Without `audio.say` it is a subtitle only (the units mutter `husk_whisper` on their own).
-    speak(this.ctx, UNIT_LINE_IDS[key], { name: 'SERVICE UNIT', position: at ? at.clone().setY(at.y + 1.5) : undefined, fallbackDuration: 3.6 });
+    speak(this.ctx, UNIT_LINE_IDS[key], { name: '정비 유닛', position: at ? at.clone().setY(at.y + 1.5) : undefined, fallbackDuration: 3.6 });
   }
 
   /** Scripted head turn (drives player yaw/pitch directly; player.update applies them to the camera). */

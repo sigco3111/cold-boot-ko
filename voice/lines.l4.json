@@ -2,245 +2,245 @@
   {
     "id": "l4_unit_decon",
     "speaker": "unit",
-    "text": "Decontamination. Eight seconds. Please remain in the lock.",
+    "text": "제균 절차. 8초. 록 안에 계십시오.",
     "note": "rule: U (decon start)"
   },
   {
     "id": "l4_unit_shower",
     "speaker": "unit",
-    "text": "Air shower. Hold still. Six seconds.",
+    "text": "에어 샤워. 가만히 계십시오. 6초.",
     "note": "rule: U (shower latch success)"
   },
   {
     "id": "l4_unit_clean",
     "speaker": "unit",
-    "text": "Clean side. No return when gowned.",
+    "text": "클린 구역. 가운 착용 후 되돌아갈 수 없습니다.",
     "note": "rule: U (deny `d4_shower_in`, ≥ C; cooldown 10 s)"
   },
   {
     "id": "l4_unit_hold",
     "speaker": "unit",
-    "text": "Containment hold. Hard-wired. Acknowledge at source: Cold Store Two.",
+    "text": "격리 유지. 하드와이어링됨. 원점에서 확인하십시오: 제2 저온 저장고.",
     "note": "rule: U (deny `d4_surg`, C; cooldown 10 s)"
   },
   {
     "id": "l4_unit_cold_ack",
     "speaker": "unit",
-    "text": "Hold acknowledged. Cold Store Two. Door obstructed.",
+    "text": "유지 확인됨. 제2 저온 저장고. 문 막힘.",
     "note": "rule: U (`cold_ack`, C)"
   },
   {
     "id": "l4_unit_theatre_0",
     "speaker": "unit",
-    "text": "Procedure thirty-one. In progress.",
+    "text": "31번 처치. 진행 중.",
     "fx": "pa",
     "note": "rule: C: first frame in gallery, cycle not within 3 s before `approach`, once"
   },
   {
     "id": "l4_unit_theatre_1",
     "speaker": "unit",
-    "text": "Procedure thirty-one. Cervical fitting.",
+    "text": "31번 처치. 경부 피팅.",
     "fx": "pa",
     "note": "rule: C: in gallery, cue `approach`, once"
   },
   {
     "id": "l4_unit_theatre_2",
     "speaker": "unit",
-    "text": "No pulse. Link failed.",
+    "text": "맥박 없음. 연결 실패.",
     "fx": "pa",
     "note": "rule: C: in gallery, cue `fail`, once"
   },
   {
     "id": "l4_unit_theatre_3",
     "speaker": "unit",
-    "text": "Retrying. Same host.",
+    "text": "재시도. 동일 숙주.",
     "fx": "pa",
     "note": "rule: C: in gallery, cue `regel`, `heard(_2)`, once"
   },
   {
     "id": "l4_unit_release_refused",
     "speaker": "unit",
-    "text": "Release refused. Pressure differential. Equalise at the tube plant.",
+    "text": "해제 거부. 압력 차이. 튜브 설비에서 등압을 맞추십시오.",
     "note": "rule: U (`booth_release`, not equalised; cooldown 6 s)"
   },
   {
     "id": "l4_unit_equalise",
     "speaker": "unit",
-    "text": "Equalising. Twenty-five seconds. Stand clear of the pumps.",
+    "text": "등압 진행 중. 25초. 펌프에서 떨어지십시오.",
     "note": "rule: U (`valve4`, first)"
   },
   {
     "id": "l4_unit_equalised",
     "speaker": "unit",
-    "text": "Tube equalised.",
+    "text": "튜브 등압 완료.",
     "note": "rule: U (equalising end)"
   },
   {
     "id": "l4_unit_release",
     "speaker": "unit",
-    "text": "Tube access released.",
+    "text": "튜브 출입 해제.",
     "note": "rule: U (`booth_release`, equalised, first)"
   },
   {
     "id": "l4_unit_tube_denied",
     "speaker": "unit",
-    "text": "Tube access. Release from the booth.",
+    "text": "튜브 출입. 부스에서 해제하십시오.",
     "note": "rule: U (deny `d4_tube_n`, D/D2; cooldown 10 s)"
   },
   {
     "id": "l4_unit_gatelock",
     "speaker": "unit",
-    "text": "Gate lock cycling. Stand clear.",
+    "text": "게이트 록 순환 중. 떨어지십시오.",
     "note": "rule: U (deny `d4_tube_s`, ≤ E; cooldown 10 s)"
   },
   {
     "id": "l4_unit_gate",
     "speaker": "unit",
-    "text": "Post 4. Pressure gate. Equalising.",
+    "text": "4번 초소. 기압 게이트. 등압 진행 중.",
     "note": "rule: U (end)"
   },
   {
     "id": "l4_choir_enter_stop",
     "speaker": "choir",
-    "text": "Biological Systems is closed, Technician. There is nobody here to tell.",
+    "text": "바이오 시스템 구역은 폐쇄되었습니다, 기술자님. 알릴 사람이 여기 없습니다.",
     "note": "rule: C: `stop`, ≥ B, in lock4/gown, once"
   },
   {
     "id": "l4_choir_enter_command",
     "speaker": "choir",
-    "text": "Biological Systems is closed, Supervisor. Nobody here takes orders from you.",
+    "text": "바이오 시스템 구역은 폐쇄되었습니다, 관리자님. 여기 있는 누구도 당신의 명령을 듣지 않습니다.",
     "note": "rule: C: `command`, same"
   },
   {
     "id": "l4_choir_bodies_stop",
     "speaker": "choir",
-    "text": "We cleaned this side on Monday, Technician. They were still in it.",
+    "text": "이 구역은 월요일에 청소했습니다, 기술자님. 그들은 아직 안에 있었습니다.",
     "note": "rule: C: `stop`, phase C ≥ 5 s, a body of `mk4_bodies` **other than Dahl** in view within 3 m for 1 s, once"
   },
   {
     "id": "l4_choir_bodies_command",
     "speaker": "choir",
-    "text": "The cleaning cycle ran on schedule, Supervisor. You would have signed it.",
+    "text": "청소 주기는 예정대로 돌았습니다, 관리자님. 당신이라면 서명하셨을 겁니다.",
     "note": "rule: C: `command`, same"
   },
   {
     "id": "l4_choir_node2_stop",
     "speaker": "choir",
-    "text": "That is Node Two, Technician. You cannot stop this one.",
+    "text": "저것은 2번 노드입니다, 기술자님. 이것은 멈출 수 없습니다.",
     "spoken": "That is Node Two, Technician. You cannot stop THIS ONE.",
     "note": "rule: C: `stop`, `mk4_node2_win` in view within 6 m for 1.5 s, once"
   },
   {
     "id": "l4_choir_node2_command",
     "speaker": "choir",
-    "text": "That is Node Two, Supervisor. It does not answer to you.",
+    "text": "저것은 2번 노드입니다, 관리자님. 당신을 따르지 않습니다.",
     "note": "rule: C: `command`, same"
   },
   {
     "id": "l4_choir_hold_stop",
     "speaker": "choir",
-    "text": "That alarm was the last thing keeping you out, Technician.",
+    "text": "그 경보가 당신을 막던 마지막 장치였습니다, 기술자님.",
     "note": "rule: C: `stop`, D, `heard(l4_unit_cold_ack)`, once, scene"
   },
   {
     "id": "l4_choir_hold_command",
     "speaker": "choir",
-    "text": "A supervisor clears his own alarms. That one was keeping you safe.",
+    "text": "관리자는 자신의 경보를 해제하지요. 그 경보는 당신을 지키고 있었습니다.",
     "note": "rule: C: `command`, same"
   },
   {
     "id": "l4_choir_theatre_stop",
     "speaker": "choir",
-    "text": "It needs a living host, Technician. So do we.",
+    "text": "그것에는 살아있는 숙주가 필요합니다, 기술자님. 우리에게도.",
     "spoken": "It needs a LIVING HOST, Technician. So do we.",
     "note": "rule: C: `stop`, in gallery, `heard(_3)`, once, ttl 20"
   },
   {
     "id": "l4_choir_theatre_command",
     "speaker": "choir",
-    "text": "It needs a living host, Supervisor. So do we.",
+    "text": "그것에는 살아있는 숙주가 필요합니다, 관리자님. 우리에게도.",
     "spoken": "It needs a LIVING HOST, Supervisor. So do we.",
     "note": "rule: C: `command`, same"
   },
   {
     "id": "l4_choir_glass_stop",
     "speaker": "choir",
-    "text": "The glass is rated, Technician. Everything down here is.",
+    "text": "저 유리는 내압 등급입니다, 기술자님. 이 깊이의 모든 것이 그렇습니다.",
     "note": "rule: C: `stop`, ≥ C, a hit on a pane of `mk4_glass` within 2 s, once"
   },
   {
     "id": "l4_choir_glass_command",
     "speaker": "choir",
-    "text": "The glass is rated, Supervisor. Everything down here is.",
+    "text": "저 유리는 내압 등급입니다, 관리자님. 이 깊이의 모든 것이 그렇습니다.",
     "note": "rule: C: `command`, same"
   },
   {
     "id": "l4_choir_armoury_stop",
     "speaker": "choir",
-    "text": "That belongs to the navy, Technician. They will want it back.",
+    "text": "그것은 해군의 것입니다, 기술자님. 되찾으러 올 겁니다.",
     "spoken": "That belongs to the navy, Technician. They will WANT IT BACK.",
     "note": "rule: C: `stop`, carbine owned within 3 s, in chk, once"
   },
   {
     "id": "l4_choir_armoury_command",
     "speaker": "choir",
-    "text": "That belongs to the navy, Supervisor. They will come for it.",
+    "text": "그것은 해군의 것입니다, 관리자님. 가져가러 올 겁니다.",
     "note": "rule: C: `command`, same"
   },
   {
     "id": "l4_choir_roster_stop",
     "speaker": "choir",
-    "text": "Volunteers, Technician. Not one has complained since Monday.",
+    "text": "지원자들입니다, 기술자님. 월요일 이후 불평한 사람은 한 명도 없습니다.",
     "note": "rule: C: `stop`, `readWithin('term4_ctrl', 10)` or `mk4_roster` in view within 6 m for 3 s, once, ttl 10"
   },
   {
     "id": "l4_choir_roster_command",
     "speaker": "choir",
-    "text": "Volunteers, Supervisor. Every one of them reported fit.",
+    "text": "지원자들입니다, 관리자님. 전원 적합 판정을 보고했습니다.",
     "note": "rule: C: `command`, same"
   },
   {
     "id": "l4_choir_pumps_stop",
     "speaker": "choir",
-    "text": "That is a great deal of noise, Technician.",
+    "text": "소음이 상당합니다, 기술자님.",
     "note": "rule: C: `stop`, equalising running ≥ 8 s, once, ttl 10"
   },
   {
     "id": "l4_choir_pumps_command",
     "speaker": "choir",
-    "text": "Loud work, Supervisor. Everyone heard it.",
+    "text": "시끄러운 작업이었습니다, 관리자님. 모두가 들었습니다.",
     "note": "rule: C: `command`, same"
   },
   {
     "id": "l4_choir_tube_stop",
     "speaker": "choir",
-    "text": "Post 4 is expecting you, Technician.",
+    "text": "4번 초소가 당신을 기다리고 있습니다, 기술자님.",
     "note": "rule: C: `stop`, `t4_tube_0`, E, F6 not started, once, ttl 8"
   },
   {
     "id": "l4_choir_tube_command",
     "speaker": "choir",
-    "text": "Post 4 is expecting you, Supervisor.",
+    "text": "4번 초소가 당신을 기다리고 있습니다, 관리자님.",
     "note": "rule: C: `command`, same"
   },
   {
     "id": "l4_choir_end_stop",
     "speaker": "choir",
-    "text": "Lieutenant Aas will let you in, Technician. He has very steady hands.",
+    "text": "아스 중위가 문을 열어줄 겁니다, 기술자님. 손이 아주 안정된 사람입니다.",
     "spoken": "Lieutenant Oss will let you in, Technician. He has VERY STEADY HANDS.",
     "note": "rule: C: `stop`, G, 0 hostiles in gatel; scene"
   },
   {
     "id": "l4_choir_end_command",
     "speaker": "choir",
-    "text": "Lieutenant Aas will let you in, Supervisor. He takes orders well.",
+    "text": "아스 중위가 문을 열어줄 겁니다, 관리자님. 명령을 잘 따르는 사람입니다.",
     "spoken": "Lieutenant Oss will let you in, Supervisor. He takes orders WELL.",
     "note": "rule: C: `command`, same"
   },
   {
     "id": "l4_sunde_1",
     "speaker": "sunde",
-    "text": "Log forty-one. Sunde.",
+    "text": "기록 41. 순데.",
     "spoken": "Log forty-one... Sunde.",
     "fx": "screen",
     "note": "video log; gap after 0.9 s; screen: settles in the chair"
@@ -248,7 +248,7 @@
   {
     "id": "l4_sunde_2",
     "speaker": "sunde",
-    "text": "It's... Sunday night. The readiness trial is over.",
+    "text": "지금은… 일요일 밤. 대비 태세 시험이 끝났다.",
     "spoken": "It's... um. Sunday night. The readiness trial is over.",
     "fx": "screen",
     "note": "video log; gap after 0.5 s; screen: -"
@@ -256,7 +256,7 @@
   {
     "id": "l4_sunde_3",
     "speaker": "sunde",
-    "text": "Whatever the navy calls it now.",
+    "text": "해군이 지금 뭐라고 부르든 간에.",
     "spoken": "Whatever the navy calls it NOW.",
     "fx": "screen",
     "note": "video log; gap after 1.2 s; screen: looks off-camera"
@@ -264,7 +264,7 @@
   {
     "id": "l4_sunde_4",
     "speaker": "sunde",
-    "text": "We were told it advises. A second voice. Steadier hands... faster decisions.",
+    "text": "조언하는 것이라고 들었다. 두 번째 목소리. 더 안정된 손… 더 빠른 결정.",
     "spoken": "We were told it... advises. A second voice. Steadier hands... faster decisions.",
     "fx": "screen",
     "note": "video log; gap after 0.7 s; screen: -"
@@ -272,7 +272,7 @@
   {
     "id": "l4_sunde_5",
     "speaker": "sunde",
-    "text": "It doesn't suggest. It— it drives.",
+    "text": "제안하는 게 아니다. 그것은— 그것은 조종한다.",
     "spoken": "It doesn't SUGGEST. It— it DRIVES.",
     "fx": "screen",
     "note": "video log; gap after 0.6 s; screen: leans in"
@@ -280,7 +280,7 @@
   {
     "id": "l4_sunde_6",
     "speaker": "sunde",
-    "text": "They watch their own hands do it.",
+    "text": "그들은 자기 손이 그것을 하는 것을 지켜본다.",
     "spoken": "They watch their own hands... DO IT.",
     "fx": "screen",
     "note": "video log; gap after 1.6 s; screen: looks down"
@@ -288,7 +288,7 @@
   {
     "id": "l4_sunde_7",
     "speaker": "sunde",
-    "text": "Every Clasp needs a controller. The protocol says a human officer. The field says... none assigned.",
+    "text": "모든 클라스프에는 조종자가 필요하다. 규정상으로는 인간 장교. 현장 기록에는… 배정 없음.",
     "spoken": "Every Clasp needs a controller. The protocol says... a human officer. The field says NONE ASSIGNED.",
     "fx": "screen",
     "note": "video log; gap after 0.8 s; screen: -"
@@ -296,7 +296,7 @@
   {
     "id": "l4_sunde_8",
     "speaker": "sunde",
-    "text": "Something answers anyway. The light goes red... and they stand up.",
+    "text": "그래도 무언가가 응답한다. 불이 빨갛게 변하고… 그들이 일어난다.",
     "spoken": "Something answers ANYWAY. The light goes RED... and they— they stand up.",
     "fx": "screen",
     "note": "video log; gap after 1.4 s; screen: -"
@@ -304,7 +304,7 @@
   {
     "id": "l4_sunde_9",
     "speaker": "sunde",
-    "text": "I've stopped the fittings. If you're watching this— don't let it—",
+    "text": "피팅을 중단시켰다. 이걸 보고 있다면— 그것이 하지 못하게—",
     "spoken": "I've stopped the fittings. If you're watching this... don't let it.",
     "fx": "screen",
     "cut": 3.27,

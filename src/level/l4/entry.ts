@@ -342,8 +342,8 @@ const gown: RoomDress = {
       // clipboard + sheet
       const sheet = sheetMat(L, 'signout', 384, 512, (g, W, Hh) => {
         g.fillStyle = '#f4f3ee'; g.fillRect(0, 0, W, Hh);
-        g.fillStyle = '#20303c'; g.font = `700 22px ${SANS}`; g.fillText('GOWNING — SUIT SIGN-OUT', 18, 34);
-        g.font = `600 16px ${SANS}`; g.fillText('DATE: MON', 18, 58); g.fillText('NAME        OUT      IN', 18, 92);
+        g.fillStyle = '#20303c'; g.font = `700 22px ${SANS}`; g.fillText('방호복 착용실 — 슈트 출입 기록', 18, 34);
+        g.font = `600 16px ${SANS}`; g.fillText('날짜: 월요일', 18, 58); g.fillText('이름        외출      복귀', 18, 92);
         g.strokeStyle = '#8b98a3'; g.lineWidth = 1;
         for (let i = 0; i <= 11; i++) { g.beginPath(); g.moveTo(14, 100 + i * 34); g.lineTo(W - 14, 100 + i * 34); g.stroke(); }
         const times = ['07:50', '07:52', '07:58', '08:01', '08:04', '08:07', '08:12', '08:15', '08:22', '08:30'];
@@ -374,7 +374,7 @@ const gown: RoomDress = {
       const poster = sheetMat(L, 'gown_order', 384, 544, (g, W, Hh) => {
         g.fillStyle = '#f6f7f8'; g.fillRect(0, 0, W, Hh);
         g.fillStyle = '#4c6274'; g.fillRect(0, 0, W, 64);
-        g.fillStyle = '#ffffff'; g.font = `800 34px ${SANS}`; g.fillText('GOWNING ORDER', 24, 44);
+        g.fillStyle = '#ffffff'; g.font = `800 34px ${SANS}`; g.fillText('방호복 착용 순서', 24, 44);
         const steps = ['1  HOOD', '2  MASK', '3  SUIT', '4  BOOTS', '5  GLOVES'];
         g.fillStyle = '#22303a'; g.font = `700 28px ${SANS}`;
         steps.forEach((s, i) => {
@@ -382,9 +382,9 @@ const gown: RoomDress = {
           g.strokeStyle = '#4c6274'; g.lineWidth = 3; g.strokeRect(W - 112, 88 + i * 58, 60, 44);
         });
         g.font = `600 20px ${SANS}`; g.fillStyle = '#22303a';
-        g.fillText('Step over the bench.', 40, 418); g.fillText('Air shower: six seconds.', 40, 446);
+        g.fillText('벤치를 넘어갈 것.', 40, 418); g.fillText('에어 샤워: 6초.', 40, 446);
         g.fillStyle = '#b3261e'; g.font = `800 21px ${SANS}`;
-        g.fillText('Once gowned, never return', 40, 490); g.fillText('to the dirty side.', 40, 516);
+        g.fillText('착용 후에는 절대', 40, 490); g.fillText('오염 구역으로 돌아가지 말 것.', 40, 516);
       });
       b.bx('stainless', u(-4.5) - 0.32, 0.9, 0, u(-4.5) + 0.32, 1.78, 0.01);
       b.quad(poster, u(-4.5), 1.34, 0.017, 0.6, 0.84, '+z');
@@ -587,12 +587,12 @@ const wetlab: RoomDress = {
     const proto = sheetMat(L, 'gel_protocol', 384, 512, (g, W, Hh) => {
       g.fillStyle = '#f7f8f6'; g.fillRect(0, 0, W, Hh);
       g.fillStyle = '#4c6274'; g.fillRect(0, 0, W, 58);
-      g.fillStyle = '#fff'; g.font = `800 26px ${SANS}`; g.fillText('CLASP GEL — BATCH 41', 18, 39);
+      g.fillStyle = '#fff'; g.font = `800 26px ${SANS}`; g.fillText('클라스프 젤 — 41번 배치', 18, 39);
       g.fillStyle = '#1f2b33'; g.font = `600 19px ${SANS}`;
       ['Store at −20 °C.', 'Seats on a LIVE HOST only:', 'it needs body heat and a pulse.', '', 'Dead tissue will not link.'].forEach((t, i) => g.fillText(t, 18, 104 + i * 32));
-      g.fillStyle = '#b3261e'; g.font = `800 30px ${SANS}`; g.fillText('DO NOT ATTEMPT.', 18, 300);
+      g.fillStyle = '#b3261e'; g.font = `800 30px ${SANS}`; g.fillText('시도 금지.', 18, 300);
       g.strokeStyle = '#b3261e'; g.lineWidth = 3; g.strokeRect(10, 266, W - 20, 48);
-      g.fillStyle = '#56636c'; g.font = `500 15px ${SANS}`; g.fillText('BIO-SYS SOP 41 rev. 3 — A. Sunde', 18, Hh - 22);
+      g.fillStyle = '#56636c'; g.font = `500 15px ${SANS}`; g.fillText('바이오시스 SOP 41 rev. 3 — A. 순데', 18, Hh - 22);
     });
     b.detail(() => {
       b.at(-2.0, T, -19.0, 0.08, () => { b.bx('plastic_white', -0.115, 0, -0.155, 0.115, 0.003, 0.155); b.quad(proto, 0, 0.008, 0, 0.21, 0.29, '+y'); });
@@ -742,7 +742,7 @@ const pi_office: RoomDress = {
     const plan = sheetMat(L, 'pi_planner', 768, 384, (g, Wc, Hc) => {
       g.fillStyle = '#f7f7f5'; g.fillRect(0, 0, Wc, Hc);
       g.fillStyle = '#4c6274'; g.fillRect(0, 0, Wc, 40);
-      g.fillStyle = '#fff'; g.font = `800 24px ${SANS}`; g.fillText('BIO-SYS — STUDY PLANNER', 14, 28);
+      g.fillStyle = '#fff'; g.font = `800 24px ${SANS}`; g.fillText('바이오시스 — 연구 일정표', 14, 28);
       const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
       g.font = `600 13px ${SANS}`;
       for (let m = 0; m < 12; m++) {
@@ -753,8 +753,8 @@ const pi_office: RoomDress = {
       const block = (m: number, d0: number, d1: number, c: string) => { g.fillStyle = c; g.fillRect(53 + d0 * 22.5, 53 + m * 27, (d1 - d0) * 22.5 - 2, 23); };
       block(4, 2, 30, 'rgba(76,98,116,0.35)'); block(5, 0, 29, 'rgba(76,98,116,0.35)'); block(6, 0, 20, 'rgba(224,123,22,0.45)');
       block(7, 13, 14, 'rgba(176,30,30,0.85)');
-      g.fillStyle = '#b01e1e'; g.font = `700 18px ${HAND}`; g.fillText('P2 pairing', 52 + 15 * 22.5, 53 + 7 * 27 + 18);
-      g.fillStyle = '#26323b'; g.font = `500 15px ${HAND}`; g.fillText('pigs P-01..12', 52 + 3 * 22.5, 53 + 4 * 27 + 17); g.fillText('consent — Post 4 (23)', 52 + 2 * 22.5, 53 + 6 * 27 + 17);
+      g.fillStyle = '#b01e1e'; g.font = `700 18px ${HAND}`; g.fillText('2단계 페어링', 52 + 15 * 22.5, 53 + 7 * 27 + 18);
+      g.fillStyle = '#26323b'; g.font = `500 15px ${HAND}`; g.fillText('돼지 P-01..12', 52 + 3 * 22.5, 53 + 4 * 27 + 17); g.fillText('동의서 — 4번 초소 (23)', 52 + 2 * 22.5, 53 + 6 * 27 + 17);
     });
     onWall(b, '-z', -12.2, (u) => {
       b.bx('stainless', u(7.2) - 0.82, 1.52, 0, u(7.2) + 0.82, 2.36, 0.012);
@@ -805,16 +805,16 @@ const pi_office: RoomDress = {
     // south wall: the whiteboard (CLASP — CONTROLLER = ?), the couch, a schematic poster of the Clasp
     const ink = canvasMat(L, 'd1a_pi_board', 1024, 512, (g, Wc, Hc) => {
       g.clearRect(0, 0, Wc, Hc);
-      g.fillStyle = '#1d3f73'; g.font = `800 72px ${HAND}`; g.fillText('CLASP — CONTROLLER = ?', 40, 100);
+      g.fillStyle = '#1d3f73'; g.font = `800 72px ${HAND}`; g.fillText('클라스프 — 제어자 = ?', 40, 100);
       g.strokeStyle = '#1d3f73'; g.lineWidth = 5;
       const box = (x: number, y: number, t: string) => { g.strokeRect(x, y, 170, 70); g.font = `600 34px ${HAND}`; g.fillText(t, x + 18, y + 47); };
       box(50, 170, 'host'); box(330, 170, 'Clasp'); box(610, 170, 'link');
       const arrow = (x0: number, x1: number, y: number) => { g.beginPath(); g.moveTo(x0, y); g.lineTo(x1, y); g.lineTo(x1 - 16, y - 12); g.moveTo(x1, y); g.lineTo(x1 - 16, y + 12); g.stroke(); };
       arrow(225, 325, 205); arrow(505, 605, 205); arrow(785, 880, 205);
       g.font = `700 70px ${HAND}`; g.fillText('?', 900, 232);
-      g.font = `600 32px ${HAND}`; g.fillText('"advises" — P-01…P-10 do NOT eat unless told', 50, 320);
-      g.fillText('P-11 ✗   pairing 14.08 — postpone?', 50, 366);
-      g.fillStyle = '#b01e1e'; g.font = `800 62px ${HAND}`; g.fillText('who answers?', 560, 455);
+      g.font = `600 32px ${HAND}`; g.fillText('"조언한다" — P-01…P-10은 시키지 않으면 먹지 않음', 50, 320);
+      g.fillText('P-11 ✗   페어링 14.08 — 연기?', 50, 366);
+      g.fillStyle = '#b01e1e'; g.font = `800 62px ${HAND}`; g.fillText('누가 대답하는가?', 560, 455);
       g.strokeStyle = '#b01e1e'; g.lineWidth = 9; g.beginPath(); g.ellipse(745, 435, 225, 66, -0.04, 0, PI * 2); g.stroke();
       g.beginPath(); g.ellipse(748, 438, 232, 62, -0.08, 0.3, PI * 1.9); g.stroke();
     });
@@ -830,14 +830,14 @@ const pi_office: RoomDress = {
       const sch = canvasMat(L, 'd1a_clasp_schematic', 512, 384, (g, Wc, Hc) => {
         g.fillStyle = '#f5f6f7'; g.fillRect(0, 0, Wc, Hc);
         g.fillStyle = '#4c6274'; g.fillRect(0, 0, Wc, 46);
-        g.fillStyle = '#fff'; g.font = `800 24px ${SANS}`; g.fillText('CLASP — CERVICAL INTERFACE  (rev. 7)', 16, 31);
+        g.fillStyle = '#fff'; g.font = `800 24px ${SANS}`; g.fillText('클라스프 — 경부 인터페이스  (rev. 7)', 16, 31);
         g.strokeStyle = '#26323b'; g.lineWidth = 4;
         g.beginPath(); g.roundRect(150, 120, 210, 130, 30); g.stroke();
         g.beginPath(); g.moveTo(190, 250); g.lineTo(190, 300); g.moveTo(320, 250); g.lineTo(320, 300); g.stroke();
         g.fillStyle = '#e07b16'; g.beginPath(); g.arc(255, 160, 9, 0, PI * 2); g.fill();
         g.fillStyle = '#26323b'; g.font = `500 17px ${SANS}`;
-        g.fillText('status LED', 380, 150); g.fillText('ribbed contact pad', 380, 210); g.fillText('C3–C4 prongs', 380, 296);
-        g.fillText('AMBER: powered, not linked', 16, 340); g.fillText('RED (blink): linked', 16, 364);
+        g.fillText('상태 LED', 380, 150); g.fillText('골진 접촉 패드', 380, 210); g.fillText('C3–C4 핀', 380, 296);
+        g.fillText('호박색: 전원 켜짐, 미연결', 16, 340); g.fillText('빨간색 (점멸): 연결됨', 16, 364);
       });
       b.bx('stainless', u(9.8) - 0.42, 1.36, 0.002, u(9.8) + 0.42, 2.0, 0.014);
       b.quad(sch, u(9.8), 1.68, 0.02, 0.8, 0.6, '+z');
