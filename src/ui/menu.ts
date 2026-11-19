@@ -199,7 +199,7 @@ export class MainMenu {
 
     const foot = h('div', 'foot', root);
     const warn = h('div', 'warn', foot);
-    warn.innerHTML = '<b>▲ Headphones recommended.</b><br>Contains flashing lights, sudden loud sounds and violence.';
+    warn.innerHTML = '<b>▲ 헤드폰 사용을 권장합니다.</b><br>깜빡이는 조명, 갑작스러운 큰 소리, 폭력적 표현이 포함되어 있습니다.';
     this.sys = h('div', 'sys', foot);
     this.renderSys();
   }
@@ -222,7 +222,7 @@ export class MainMenu {
     const t = this.sysT;
     const hh = Math.floor(t / 3600), mm = Math.floor((t % 3600) / 60), ss = Math.floor(t % 60);
     const pad = (n: number) => String(n).padStart(2, '0');
-    this.sys.innerHTML = `CHOIR  ·  3,962 NODES RESPONDING<br>SURFACE UPLINK  <em>■ LOST</em>  ${pad(hh)}:${pad(mm)}:${pad(ss)}`;
+    this.sys.innerHTML = `CHOIR  ·  3,962 노드 응답 중<br>지상 업링크  <em>■ 끊김</em>  ${pad(hh)}:${pad(mm)}:${pad(ss)}`;
   }
 
   open(): Promise<void> {
