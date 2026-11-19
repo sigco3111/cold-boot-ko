@@ -155,7 +155,7 @@ const he6: RoomDress = {
     // ── the console, its screens, the queue monitor (note6_queue's screen stands on the desk) ──
     let deskScreens: THREE.Vector3[] = [];
     b.at(12.0, 0, -179.8, 0, () => { deskScreens = consoleDesk(b, L, { len: 8, d: 1.0, h: 1.0, bezels: [-1.4, 0.4, 2.2], collide: false }).screens; });
-    const texts = ['OLT 1 — 32/32 PON UP\nTRUNK 1 RX −11.4 dBm\nPROTECTION: ARMED', 'HEAD-END MODE: AUTO\nBEACH JOINT 2: SEALED\nVAULT RH 24 %', 'ACOUSTIC BUOY: STANDBY\nPING 20 s — 11.5 kHz\nLINK MARGIN 6 dB'];
+    const texts = ['OLT 1 — 32/32 PON 정상\n트렁크 1 RX −11.4 dBm\n보호: 가동', '헤드엔드 모드: 자동\n비치 조인트 2: 밀봉됨\n볼트 RH 24 %', '음향 부이: 대기\n핑 20 s — 11.5 kHz\n링크 마진 6 dB'];
     deskScreens.forEach((p, i) => { L.screen(`he6_desk_${i + 1}`, 'terminal_idle', 0.66, 0.31, p.x, p.y, p.z, '+z', { text: texts[i] }); });
     b.bx('painted_dark', 8.68, 1.03, -179.1, 9.32, 1.47, -179.012);
     b.bx('painted_dark', 8.97, 1.002, -179.16, 9.03, 1.03, -179.1);

@@ -68,9 +68,9 @@ const blinkOf = (t: number, hz: number) => Math.floor(t * hz * 2) % 2 === 0;
 /** Colour of a trunk status value by its words. */
 export function trunkColour(v: string): string {
   const u = v.toUpperCase();
-  if (/\bLOS\b|HAZARD|FAULT|OFFLINE|LOW\b|FIRED|REFUS|DENIED|위험|고장|오프라인/.test(u)) return K.red;
+  if (/\bLOS\b|HAZARD|FAULT|OFFLINE|LOW\b|FIRED|REFUS|DENIED|위험|고장|오프라인|신호 손실/.test(u)) return K.red;
   if (/LOWERING|AWAITING|STANDBY|STOPPED|WORKING|IN WELL|MANUAL|PUMP|PIN IN|INSERT|CYCLING|QUEUED/.test(u)) return K.amber;
-  if (/ACTIVE|READY|OPEN|\bAUTO\b|NOMINAL|\bOK\b|TAUT|준비/.test(u)) return K.green;
+  if (/ACTIVE|READY|OPEN|\bAUTO\b|NOMINAL|\bOK\b|TAUT|준비|자동|활성|팽팽함/.test(u)) return K.green;
   return K.text;
 }
 

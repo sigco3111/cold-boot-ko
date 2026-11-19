@@ -1298,7 +1298,7 @@ function navyOr(L: LevelBuild): Mat { return libOr6(L, 'navy_grey', 'wall_panel_
 
 export const CONSOLE6 = { x0: -46.0, x1: -42.0, z0: -158.6, z1: -157.8, y: -16, h: 1.0, screen: [-44.0, -14.2, -157.9], w: 3.2, sh: 1.4 } as const;
 /** Idle page: the dock board's lines (§6.4). */
-export const CONSOLE6_IDLE = 'HEAD-END REPEATER — DOCK\nMOON POOL — DOCK — 2,140 M\nCARGO LOCK: INNER DOOR CLOSED\nDEWATERING: 34 % — STOPPED\nTETHER: TAUT — BUOY: STANDBY';
+export const CONSOLE6_IDLE = '헤드엔드 중계기 — 도크\n문풀 — 도크 — 2,140 M\n화물 록: 내부 문 닫힘\n배수: 34 % — 정지됨\n테더: 팽팽함 — 부이: 대기';
 export type ConsolePage6 = 'idle' | 'manifest' | 'feed' | 'cctv' | 'static' | 'choir' | 'black';
 
 /**

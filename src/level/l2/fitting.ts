@@ -85,7 +85,7 @@ export function buildFitting(L: LevelBuild) {
   b.detail(() => b.quad(engravedMat(['기준 패턴 00', '레예스, S.'], 0.34 / 0.12, { px: 512 }), REF.x - 0.15, 1.18, REF.z + 0.85 + 0.0225, 0.32, 0.11, '+z'));
   L.interact('tag2_rig', 'log', '태그 읽기', REF.x - 0.15, 1.18, REF.z + 0.9, true, 1.9);
   const ro = new THREE.Object3D(); ro.name = 'rig_ref'; ro.position.set(REF.x, 0, REF.z); L.root.add(ro); L.objects.set('rig_ref', ro);
-  L.screen('fitting_rig_screen', 'terminal_idle', 0.42, 0.28, REF.x - 1.06, 1.37, REF.z, '+x', { tilt: 0, text: 'REF 00 — MASTER\nLOCKED · DO NOT OVERWRITE' });
+  L.screen('fitting_rig_screen', 'terminal_idle', 0.42, 0.28, REF.x - 1.06, 1.37, REF.z, '+x', { tilt: 0, text: '기준 00 — 마스터\n잠김 · 덮어쓰기 금지' });
   // the ring's projection of a walking outline (fitting_rig_wake)
   void walkingOutline; // retired, see fitting_rig_wake
 

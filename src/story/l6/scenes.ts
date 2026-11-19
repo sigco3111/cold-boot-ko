@@ -134,13 +134,13 @@ export abstract class Scenes6 extends Boss6 {
 
   /** The console's E1 pages (manifest kind, W5 directives): the header, then the scroll at 0.35 s a line. */
   private manifestText(stage: 'head' | 'scroll' | 'totals' | 'consignee'): string {
-    const head = ['@title HEAD-END REPEATER — DOCK', '@rows 13', '트렁크: 신호 손실 · 부이: 신호 손실', '마지막 발송 (버퍼됨): 1건'];
+    const head = ['@title 헤드엔드 중계기 — 도크', '@rows 13', '트렁크: 신호 손실 · 부이: 신호 손실', '마지막 발송 (버퍼됨): 1건'];
     if (stage === 'head') return head.join('\n');
     const reveal = (this.prog.flags as unknown as Record<string, unknown>).revealT;
     const hm = typeof reveal === 'number' ? hhmm6(this.hourAt(reveal)) : '--:--';
     const body = [
       '적하목록 0031-H — 문풀 경유 발송 — 해저 셔틀',
-      ...BATCHES6.map(([b, day, n], i) => (i === 0 ? `${b}  ${day}  CLASP ASSY (CERVICAL) × ${n}` : `${b}  ${day}  × ${n}`)),
+      ...BATCHES6.map(([b, day, n], i) => (i === 0 ? `${b}  ${day}  클라스프 조립체(경추) × ${n}` : `${b}  ${day}  × ${n}`)),
       `B-14  WED ${hm}  × 240  — IN WELL`,
       '합계: 클라스프 조립체(경추) — 발송 2,880 · 이송 중 240',
       '수령인: —',

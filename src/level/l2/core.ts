@@ -157,7 +157,7 @@ export function buildCore(L: LevelBuild) {
 
   // ── side terminal: PATTERN LIBRARY — north wall, west of the door (off the west option card: REVISION 6.1) ──
   b.at(-4.9, 0, -72.2, PI, () => wallTerminal(b, 1.35));
-  L.screen(null, 'terminal_idle', 0.44, 0.3, -4.9, 1.43, -72.2 - 0.126, '-z', { tilt: -0.18, text: 'PATTERN LIBRARY\n00  REYES, S.  (REF)' });
+  L.screen(null, 'terminal_idle', 0.44, 0.3, -4.9, 1.43, -72.2 - 0.126, '-z', { tilt: -0.18, text: '패턴 라이브러리\n00  레예스, S.  (기준)' });
   L.interact('term2_core', 'terminal', '단말기 읽기', -4.9, 1.4, -72.6, true, 2.2);
   b.sign('패턴 라이브러리', 'label', -4.9, 2.25, -72.23, 0.9, 0.12, '-z');
   b.sign('노드 5', 'stencil', 0, 5.4, -72.21, 2.0, 0.42, '-z');

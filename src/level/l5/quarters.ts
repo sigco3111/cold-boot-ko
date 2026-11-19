@@ -493,7 +493,7 @@ const mess5: RoomDress = {
       b.sign('FR 52', 'stencil', 37.79, 2.6, -11.0, 0.4, 0.14, '-x');
     });
     // ── the mess board (`note5_mess` reads it): the cake order ──
-    b.at(24.2, 1.6, -4.0, PI / 2, () => noticeBoard(b, L, { w: 1.2, h: 0.9, notices: ['식당 게시판', '대비 훈련\n9일차\n모두 수고했습니다', 'CAKE 15:00 MON\nCO\'S TREAT', '갤리 휴무\n화 1400–1600'] }));
+    b.at(24.2, 1.6, -4.0, PI / 2, () => noticeBoard(b, L, { w: 1.2, h: 0.9, notices: ['식당 게시판', '대비 훈련\n9일차\n모두 수고했습니다', '케이크 15:00 월\n함장이 쏩니다', '갤리 휴무\n화 1400–1600'] }));
     // ── the ready-use ammunition locker by the spine door (`p5_mess_ammo` (37.4, 1.0, −13.4) on its shelf) ──
     b.at(37.8, 0, -13.4, -PI / 2, () => openShelf(b, L, { w: 0.6, d: 0.55, h: 1.6, shelves: [0.45, 0.97, 1.4] }));
     b.detail(() => b.sign('상시 사용 — 5.56', 'stencil', 37.79, 1.75, -12.95, 0.6, 0.08, '-x'));

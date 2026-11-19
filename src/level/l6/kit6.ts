@@ -1367,9 +1367,9 @@ export interface HatchSpec6 {
   rooms?: string[];
 }
 /** §2.6.7: the vault's trench hatch (1.2 × 2.4, opens from above, two-way, hinged on its south edge). */
-export const HATCH6_VAULT: HatchSpec6 = { name: 'hatch6_vault', x0: -13.0, x1: -11.8, z0: -160.4, z1: -158.0, wheel: 'top', topText: 'CABLE TRENCH\nTO HEAD-END\nCROUCH', stopper: [-13.0, -1.4, -159.85, -11.8, -0.02, -158.0], rooms: ['vault6'] };
+export const HATCH6_VAULT: HatchSpec6 = { name: 'hatch6_vault', x0: -13.0, x1: -11.8, z0: -160.4, z1: -158.0, wheel: 'top', topText: '케이블 트렌치\n헤드엔드 방면\n웅크리기', stopper: [-13.0, -1.4, -159.85, -11.8, -0.02, -158.0], rooms: ['vault6'] };
 /** §2.6.6: the head-end's trench exit (1.2 × 2.2, dogged from below, hinged on its south edge). */
-export const HATCH6_HE: HatchSpec6 = { name: 'hatch6_he', x0: 2.4, x1: 3.6, z0: -177.6, z1: -175.4, wheel: 'bottom', topText: 'TRENCH\nDOGGED FROM BELOW\nACCESS VIA VAULT', lamp: true, stopper: [2.4, -1.4, -177.05, 3.6, -0.02, -175.4], rooms: ['he6'] };
+export const HATCH6_HE: HatchSpec6 = { name: 'hatch6_he', x0: 2.4, x1: 3.6, z0: -177.6, z1: -175.4, wheel: 'bottom', topText: '트렌치\n아래에서 잠김\n볼트 경유 출입', lamp: true, stopper: [2.4, -1.4, -177.05, 3.6, -0.02, -175.4], rooms: ['he6'] };
 
 function handwheel(b: Builder, mat: Mat, R: number, t: number, spokes: number) {
   b.torus(mat, 0, 0, 0, R, t, 'z', 24);

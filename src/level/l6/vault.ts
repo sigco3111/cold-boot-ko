@@ -353,7 +353,7 @@ const vault6: RoomDress = {
     stencil6(b, 'BRAKE ON — CD 2 — JOB 6-114 (RØD)', -16.32, 1.95, -161.86, 0.5, 0.06, '+z', { style: 'label' });
 
     // ── the beach joint enclosure (W7's bj6): its laser and hull plates; the green spill is `bj6_glow` ──
-    stencil6(b, 'LASER RADIATION — CLASS 1M\nDO NOT VIEW FIBRE ENDS', -9.0, 2.15, -179.79, 0.62, 0.16, '+z', { style: 'warning' });
+    stencil6(b, '레이저 방사선 — 클래스 1M\n파이버 단면을 들여다보지 마세요', -9.0, 2.15, -179.79, 0.62, 0.16, '+z', { style: 'warning' });
 
     // ── the sea-cable penetrator (−8.0, 1.0, −179.8): flange Ø 1.2, bolts, the gland, the bellmouth; the dark port ──
     b.cyl('navy_grey', -8.0, 1.0, -179.76, 0.6, 0.08, 'z', 32);
@@ -361,7 +361,7 @@ const vault6: RoomDress = {
     b.cyl('steel_raw', -8.0, 1.0, -179.57, 0.3, 0.3, 'z', 24);
     b.cyl('navy_grey', -8.0, 1.0, -179.4, 0.2, 0.06, 'z', 20, 0.1);
     b.detail(() => { for (let k = 0; k < 8; k++) { const a = (k / 8) * PI * 2 + 0.2; b.cyl('steel_raw', -8.0 + Math.cos(a) * 0.26, 1.0 + Math.sin(a) * 0.26, -179.41, 0.02, 0.02, 'z', 6); } });
-    stencil6(b, 'HULL PENETRATOR HP-2\nSEA CABLE — DO NOT DISTURB', -8.0, 1.85, -179.79, 0.7, 0.14, '+z', { style: 'stencil' });
+    stencil6(b, '선체 관통구 HP-2\n해저 케이블 — 건드리지 마세요', -8.0, 1.85, -179.79, 0.7, 0.14, '+z', { style: 'stencil' });
     b.cyl('steel_raw', -7.2, 1.0, -179.74, 0.17, 0.12, 'z', 20);
     b.cyl('navy_grey', -7.2, 1.0, -179.675, 0.15, 0.012, 'z', 20, 0.13);
     b.cyl('screen_off', -7.2, 1.0, -179.69, 0.125, 0.012, 'z', 20);
@@ -504,7 +504,7 @@ const vault6: RoomDress = {
         green.setFlicker(k >= 0.7 ? 'fluorescent' : 'none');
       });
       L.vignette('bj6_strain', () => { following = true; }, { toggle: true, snap: () => { following = false; } });
-      const losScreens = () => { for (const n of ['he6_desk_1', 'he6_desk_2', 'he6_desk_3']) { const s = L.screens.get(n); if (s) ctx.materials.setScreen(s, 'terminal_alert', { text: 'TRUNK FIBRE — LOS\nBACKUP LINK — ACOUSTIC BUOY — ACTIVE' }); } };
+      const losScreens = () => { for (const n of ['he6_desk_1', 'he6_desk_2', 'he6_desk_3']) { const s = L.screens.get(n); if (s) ctx.materials.setScreen(s, 'terminal_alert', { text: '트렁크 파이버 — 신호 손실\n백업 링크 — 음향 부이 — 활성' }); } };
       L.vignette('bj6_rip', () => {
         const u = bj();
         if (!u) return;

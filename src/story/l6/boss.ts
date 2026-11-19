@@ -795,7 +795,7 @@ export abstract class Boss6 extends Base6 {
   /** The console's idle page (the dock board's lines; after the cut the trunk is LOS). */
   protected consoleIdle(): void {
     const t = this.f.trunkCut
-      ? 'HEAD-END REPEATER — DOCK\nTRUNK: LOS · BUOY: LOS\nMOON POOL — DOCK — 2,140 M\nCARGO LOCK: INNER DOOR CLOSED\nLAST OUTBOUND (BUFFERED): 1 ITEM'
+      ? '헤드엔드 중계기 — 도크\n트렁크: 신호 손실 · 부이: 신호 손실\n문풀 — 도크 — 2,140 M\n화물 록: 내부 문 닫힘\n마지막 발송 (버퍼됨): 1건'
       : undefined;
     this.call('console6', 'page', 'idle', t ? { text: t } : {});
   }

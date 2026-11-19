@@ -463,7 +463,7 @@ export function boardFrame(b: Builder, L: LevelBuild, o: { w: number; h: number 
  */
 export function noticeBoard(b: Builder, L: LevelBuild, o: { w?: number; h?: number; notices?: string[] } = {}) {
   const w = o.w ?? 1.2, h = o.h ?? 0.9, N: Mat = 'navy_grey';
-  const notes = o.notices ?? ['WATCH BILL — POST 4\nMON  0800–1200  MODULE', '경계 상태\n브라보', '개인 기기\n이 지점 너머 반입 금지'];
+  const notes = o.notices ?? ['근무 명단 — 초소 4\n월  0800–1200  모듈', '경계 상태\n브라보', '개인 기기\n이 지점 너머 반입 금지'];
   b.bx(N, -w / 2, -h / 2, 0, w / 2, h / 2, 0.015);
   for (const s of [-1, 1]) { b.bx(N, -w / 2 - 0.02, s > 0 ? h / 2 : -h / 2 - 0.02, 0, w / 2 + 0.02, s > 0 ? h / 2 + 0.02 : -h / 2, 0.03); b.bx(N, s > 0 ? w / 2 : -w / 2 - 0.02, -h / 2, 0, s > 0 ? w / 2 + 0.02 : -w / 2, h / 2, 0.03); }
   const cols = notes.length > 2 ? 2 : notes.length, rows = Math.ceil(notes.length / cols), cw = (w - 0.1) / cols, rh = (h - 0.1) / rows;

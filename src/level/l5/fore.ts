@@ -347,7 +347,7 @@ function buildGate(L: LevelBuild): GateParts {
   // ── east wall: first-aid cabinet (`p5_gate_med` (5.4, 1.0, −6.0) on its dropped door) ──
   b.at(5.8, 1.0, -6.0, -PI / 2, () => firstAidCabinet(b, L));
   // west wall: the gate notices; the weapon-clearing barrel in the south-west corner (the shell's box is its collider)
-  b.at(-5.8, 1.55, -3.65, PI / 2, () => noticeBoard(b, L, { notices: ['경계 상태\n브라보', 'ALL VISITORS\nSIGN IN AT THE BOOTH', '개인 기기\n이 지점 너머 반입 금지', '모든 총기 안전 처리\n당직실 입실 전'] }));
+  b.at(-5.8, 1.55, -3.65, PI / 2, () => noticeBoard(b, L, { notices: ['경계 상태\n브라보', '모든 방문객\n부스에 서명하세요', '개인 기기\n이 지점 너머 반입 금지', '모든 총기 안전 처리\n당직실 입실 전'] }));
   b.at(-5.2, 0, -8.6, PI / 2, () => clearingBarrel(b, L, { collide: false }));
   deckLine(b, L, -5.8, -7.85, -4.45, -7.85, { w: 0.06 });
   deckLine(b, L, -4.45, -9.8, -4.45, -7.85, { w: 0.06 });
@@ -445,7 +445,7 @@ function buildDuty(L: LevelBuild): DutyParts {
   });
   mug(b, 3.8, 0.9, -10.5); mug(b, 3.95, 0.9, -10.38, PI / 2); mug(b, 4.25, 0.9, -10.55);
   // north wall, west of the door: the watch bill board
-  b.at(-4.6, 1.6, -10.2, PI, () => noticeBoard(b, L, { w: 1.4, notices: ['WATCH BILL\nDUTY ROOM — MON', 'LINK DRILL\nALL STATIONS 08:40', '대비 훈련\n9일차', 'SDV 턴\n잠항 — 다이브 보드 참조'] }));
+  b.at(-4.6, 1.6, -10.2, PI, () => noticeBoard(b, L, { w: 1.4, notices: ['근무 명단\n당직실 — 월', '링크 훈련\n전 근무지 08:40', '대비 훈련\n9일차', 'SDV 턴\n잠항 — 다이브 보드 참조'] }));
 
   // ── structure: frames, cable tray, pipes, luminaires, emergency fitting ──
   const st = vesselRoom(b, L, {
@@ -530,7 +530,7 @@ function buildReady(L: LevelBuild): ReadyParts {
   navySign(b, '의무', 3.795, 1.35, -23.0, 0.5, 0.08, '-x');
   navySign(b, '5.56 — 상시 사용', -11.795, 1.35, -30.0, 0.7, 0.08, '+x');
   // the west wall board: kit check, the collar check (Brekke's note answers it)
-  b.at(-11.8, 1.6, -25.6, PI / 2, () => noticeBoard(b, L, { notices: ['대기실\n장비 점검 매일 07:30', '칼라 점검\n월 08:40 — 전원', 'WEAPON LIGHTS\nON — DARKEN SHIP'] }));
+  b.at(-11.8, 1.6, -25.6, PI / 2, () => noticeBoard(b, L, { notices: ['대기실\n장비 점검 매일 07:30', '칼라 점검\n월 08:40 — 전원', '무기 조명\n켬 — 함 소등'] }));
   navySign(b, '대기실 — 파견대', -4.0, 2.75, -37.795, 2.2, 0.14, '+z');
 
   // ── lived in (B1): a carbine stripped for cleaning on C1, the radio chargers on C2, weapon lights on C3, kit bags,
