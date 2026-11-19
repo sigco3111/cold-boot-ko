@@ -142,12 +142,12 @@ export abstract class Scenes6 extends Boss6 {
       '적하목록 0031-H — 문풀 경유 발송 — 해저 셔틀',
       ...BATCHES6.map(([b, day, n], i) => (i === 0 ? `${b}  ${day}  CLASP ASSY (CERVICAL) × ${n}` : `${b}  ${day}  × ${n}`)),
       `B-14  WED ${hm}  × 240  — IN WELL`,
-      'TOTAL: CLASP ASSY (CERVICAL) — DISPATCHED 2,880 · IN TRANSFER 240',
+      '합계: 클라스프 조립체(경추) — 발송 2,880 · 이송 중 240',
       '수령인: —',
     ];
     const dir = ['@rate 0.35'];
-    if (stage === 'totals' || stage === 'consignee') dir.push('@hl DISPATCHED 2,880');
-    if (stage === 'consignee') dir.push('@cursor CONSIGNEE');
+    if (stage === 'totals' || stage === 'consignee') dir.push('@hl 발송 2,880');
+    if (stage === 'consignee') dir.push('@cursor 수령인');
     return [...head, ...dir, ...body].join('\n');
   }
   /** `hh:mm:ss` of the test clock now. */
@@ -163,7 +163,7 @@ export abstract class Scenes6 extends Boss6 {
     // (IA-6, the E2 OSD "overdraw": on one line the running seconds landed on the feed's red-lit FLOODED sign at the
     //  top right and read as garbled digits; the clock now runs on its own line under the camera title, on the dark wall)
     const lines = ['초소 4 — 서브베이 — CAM 2', this.clockHms()];
-    if (full) lines.push(`SDV TERN — LAUNCHED ${launch}`, '발사 권한: AAS, L. (중위) — 손바닥 — 활성');
+    if (full) lines.push(`SDV 턴 — 발사 ${launch}`, '발사 권한: AAS, L. (중위) — 손바닥 — 활성');
     return lines.join('\n');
   }
   private page(id: string, o: { text?: string; texture?: THREE.Texture } = {}): void {

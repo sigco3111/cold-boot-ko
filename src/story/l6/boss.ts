@@ -769,11 +769,11 @@ export abstract class Boss6 extends Base6 {
     const rams = (f.ramE ? 1 : 0) + (f.ramW ? 1 : 0);
     const rows = [
       '문풀 — 도크 — 2,140 M',
-      `TRANSFER B-14: ${lowered ? 'IN WELL — AWAITING LOCK CYCLE' : 'LOWERING'}`,
+      `이송 B-14: ${lowered ? '웰 안 — 록 주기 대기' : '하강 중'}`,
       '화물 록: 내부 문 닫힘',
       '배수: 34 % — 정지됨',
       f.trunkCut ? '트렁크: 신호 손실 · 부이: 신호 손실' : `TETHER: TAUT — BUOY: ${f.pulled ? '링크 활성' : '대기'}`,
-      `LOADER DL-2: ${f.loaderDead ? 'OFFLINE' : rams >= 2 ? 'CONTROL FAULT' : f.hostile ? 'HAZARD — PERSONNEL ON DOCK' : 'WORKING'}`,
+      `로더 DL-2: ${f.loaderDead ? '오프라인' : rams >= 2 ? '제어 고장' : f.hostile ? '위험 — 도크에 인원' : '작동 중'}`,
     ];
     const t = rows.join('\n');
     if (t === this.boardText) return;
@@ -787,7 +787,7 @@ export abstract class Boss6 extends Base6 {
     // §6.4's display strings (W5's `gaugeState` reads `n BAR …` as bar, `압력 낮음|k`, `핀 삽입됨`, `발사됨`)
     const bar = Math.round(k * 210);
     const t = f.trunkCut ? '발사됨' : !f.pin ? '핀 삽입됨' : this.now < this.lowUntil ? `압력 낮음|${k.toFixed(3)}`
-      : k >= 1 ? '210 BAR — READY' : bar <= 0 ? '0 BAR — 펌프' : `${bar} BAR`;
+      : k >= 1 ? '210 BAR — 준비' : bar <= 0 ? '0 BAR — 펌프' : `${bar} BAR`;
     if (t === this.gaugeText) return;
     this.gaugeText = t;
     this.screen('gauge6', 'gauge', t);

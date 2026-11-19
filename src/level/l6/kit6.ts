@@ -1971,7 +1971,7 @@ export function slotPaint(b: Builder, L: LevelBuild, o: { x0: number; x1: number
     b.quad(P, x0 + bw / 2, y, (z0 + z1) / 2, bw, z1 - z0 - 2 * bw, '+y', 0, 'box', 0.003);
     b.quad(P, x1 - bw / 2, y, (z0 + z1) / 2, bw, z1 - z0 - 2 * bw, '+y', 0, 'box', 0.003);
   });
-  stencil6(b, `CARGO SLOT ${o.n}`, (x0 + x1) / 2, y + 0.002, z0 + bw + 0.3, Math.min(2.4, x1 - x0 - 1), 0.36, '+y', { style: 'stencil' });
+  stencil6(b, `화물 슬롯 ${o.n}`, (x0 + x1) / 2, y + 0.002, z0 + bw + 0.3, Math.min(2.4, x1 - x0 - 1), 0.36, '+y', { style: 'stencil' });
 }
 
 /**

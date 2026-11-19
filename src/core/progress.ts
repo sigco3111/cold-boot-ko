@@ -20,7 +20,7 @@ const NO_CAST = { foreman: false, human: false, tomasHead: false, soldier: false
 
 /** The entry of a level id that has no implementation yet (none since stage 3d's K: 1 … 6 are all built). */
 export const unbuilt = (id: LevelId): LevelInfo => ({
-  id, tag: `l${id}`, built: false, title: `LEVEL ${id}`, place: `Level ${id}`, bootStatus: `level ${id}`,
+  id, tag: `l${id}`, built: false, title: `레벨 ${id}`, place: `레벨 ${id}`, bootStatus: `레벨 ${id}`,
   screenHeader: '할시온 다이내믹스 // 에리두 심해', camLabel: `L${id}`, idleText: true, powerOnAtLoad: true,
   keycardName: null, endEyebrow: null, menuLine: null, subtitles: 'stacked', cast: NO_CAST,
   direct: { facts: {}, loadout: DIRECT }, healthFloor: 50, next: null,

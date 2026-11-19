@@ -290,7 +290,7 @@ function dressing(L: LevelBuild, b: Builder, R: ReturnType<typeof rng>) {
   L.vignette('hall_screen_count', () => {
     let n = 28;
     const tick = () => {
-      L.ctx.materials.setScreen(bigscreen, 'terminal_idle', { text: `LINE TWO — SECTION C\nYIELD   ${n} / 31\nHEADCOUNT   0` });
+      L.ctx.materials.setScreen(bigscreen, 'terminal_idle', { text: `2번 라인 — 구역 C\n수율   ${n} / 31\n인원   0` });
       L.sfx('terminal_beep', 0, 5, -69, 0.6);
       if (n < 31) { n++; L.after(0.6, tick); } else L.after(1.4, () => { L.ctx.materials.setScreen(bigscreen, 'terminal_alert', { text: '정지됨 — 현장 정지:\n라인 관제' }); L.sfx('alarm_blip', 0, 5, -69, 0.8); });
     };

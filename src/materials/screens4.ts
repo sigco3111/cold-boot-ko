@@ -263,7 +263,7 @@ export function videoLog(s: S4) {
     g.fillText('▶ 기록 41 — 순데', W * 0.03, H * 0.03);
     const sec = 6 + LINE_AT[idx - 1] + Math.min(t, dur + 2);
     g.textAlign = 'right';
-    g.fillText(`SUN 23:${String(10 + Math.floor(sec / 60)).padStart(2, '0')}:${String(Math.floor(sec) % 60).padStart(2, '0')}`, W * 0.97, H * 0.03);
+    g.fillText(`일 23:${String(10 + Math.floor(sec / 60)).padStart(2, '0')}:${String(Math.floor(sec) % 60).padStart(2, '0')}`, W * 0.97, H * 0.03);
     g.fillStyle = 'rgba(220,232,240,0.25)'; g.fillRect(W * 0.03, H * 0.94, W * 0.94, H * 0.012);
     g.fillStyle = 'rgba(220,232,240,0.8)'; g.fillRect(W * 0.03, H * 0.94, W * 0.94 * ((idx - 1 + Math.min(1, t / dur)) / 9), H * 0.012);
     // tape wobble: a faint bright line rolling

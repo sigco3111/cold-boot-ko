@@ -206,7 +206,7 @@ function tickDhm(v: string, t: number): string {
   if (!m) return v;
   const total = Number(m[1]) * 1440 + Number(m[2]) * 60 + Number(m[3]) + Math.floor(t / 60);
   const d = Math.floor(total / 1440), h = Math.floor(total / 60) % 24, mi = total % 60;
-  return v.slice(0, m.index) + `${d}d ${String(h).padStart(2, '0')}h ${String(mi).padStart(2, '0')}m`;
+  return v.slice(0, m.index) + `${d}일 ${String(h).padStart(2, '0')}시간 ${String(mi).padStart(2, '0')}분`;
 }
 function splitLine(ln: string): [string, string] {
   const i = ln.lastIndexOf(' — ');

@@ -453,9 +453,9 @@ function driveArm(L: LevelBuild, arm: THREE.Object3D) {
   };
   const linkOf = (c: ArmCue) => (c === 'handshake' ? '핸드셰이크' : c === 'fail' || c === 'remove' || c === 'regel' || c === 'return' || c === 'idle' ? '실패' : '—');
   const wall = (c: ArmCue) => {
-    if (parked) { setScr('theatre_screen', 'terminal_idle', '[plain]THEATRE 1 — NO PROCEDURE\nARM PARKED'); return; }
-    if (c === 'fail') { setScr('theatre_screen', 'terminal_alert', `[plain]LINK FAILED\nNO PULSE — ATTEMPT ${fmt(cyc.attempt)}`); return; }
-    setScr('theatre_screen', 'terminal_idle', `[plain]THEATRE 1 — FITTING 31 — ATTEMPT ${fmt(cyc.attempt)}\nHOST: STRAND, E.\nPULSE: NONE\nLINK: ${linkOf(c)}\nQUEUE: AUTO — ORDER 0031-H (YIELD)`);
+    if (parked) { setScr('theatre_screen', 'terminal_idle', '[plain]수술실 1 — 처치 없음\n암 주차됨'); return; }
+    if (c === 'fail') { setScr('theatre_screen', 'terminal_alert', `[plain]링크 실패\n맥박 없음 — 시도 ${fmt(cyc.attempt)}`); return; }
+    setScr('theatre_screen', 'terminal_idle', `[plain]수술실 1 — 피팅 31 — 시도 ${fmt(cyc.attempt)}\n호스트: 스트란드, E.\n맥박: 없음\n링크: ${linkOf(c)}\n대기열: 자동 — 오더 0031-H (수율)`);
   };
   const cam = () => {
     if (parked) { setScr('theatre_cam', 'theatre_cam', 'off'); return; }

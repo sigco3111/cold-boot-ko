@@ -433,8 +433,8 @@ export class Holo {
       this.callouts.push({ bone, off, sprite, text, last: '', canvas, tex });
     };
     mk('head', new THREE.Vector3(0.32, 0.22, 0), () => 'REF PATTERN 00 · REYES, S.');
-    mk('shin_l', new THREE.Vector3(0.36, 0.05, 0), (h) => `KNEE  ${h.kneeDeg().toFixed(0).padStart(3, ' ')}°`);
-    mk('hips', new THREE.Vector3(0.4, -0.05, 0), (h) => `HIP  ${h.hipH().toFixed(3)} m`);
+    mk('shin_l', new THREE.Vector3(0.36, 0.05, 0), (h) => `무릎  ${h.kneeDeg().toFixed(0).padStart(3, ' ')}°`);
+    mk('hips', new THREE.Vector3(0.4, -0.05, 0), (h) => `고관절  ${h.hipH().toFixed(3)} m`);
     const lg = new THREE.BufferGeometry();
     lg.setAttribute('position', new THREE.BufferAttribute(new Float32Array(this.callouts.length * 4 * 3), 3));
     this.leaders = new THREE.LineSegments(lg, new THREE.LineBasicMaterial({ color: 0x4fe6ff, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, fog: true }));

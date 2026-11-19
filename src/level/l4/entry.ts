@@ -894,7 +894,7 @@ const node2: RoomDress = {
     for (const [z, row] of [[-20.74, '열 A'], [-23.26, '열 B']] as const) {
       b.bx('stainless', 8.54, Y, z - 0.535, 8.58, Y + 2.0, z + 0.535);
       b.detail(() => {
-        b.sign(`NODE 2 — ${row}`, 'label', 8.581, Y + 1.75, z, 0.5, 0.08, '+x');
+        b.sign(`노드 2 — ${row}`, 'label', 8.581, Y + 1.75, z, 0.5, 0.08, '+x');
         b.quad(rackLedMat(L), 8.582, Y + 1.5, z, 0.03, 0.6, '+x', 0, 'box');
       });
     }

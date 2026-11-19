@@ -68,9 +68,9 @@ const blinkOf = (t: number, hz: number) => Math.floor(t * hz * 2) % 2 === 0;
 /** Colour of a trunk status value by its words. */
 export function trunkColour(v: string): string {
   const u = v.toUpperCase();
-  if (/\bLOS\b|HAZARD|FAULT|OFFLINE|LOW\b|FIRED|REFUS|DENIED/.test(u)) return K.red;
+  if (/\bLOS\b|HAZARD|FAULT|OFFLINE|LOW\b|FIRED|REFUS|DENIED|위험|고장|오프라인/.test(u)) return K.red;
   if (/LOWERING|AWAITING|STANDBY|STOPPED|WORKING|IN WELL|MANUAL|PUMP|PIN IN|INSERT|CYCLING|QUEUED/.test(u)) return K.amber;
-  if (/ACTIVE|READY|OPEN|\bAUTO\b|NOMINAL|\bOK\b|TAUT/.test(u)) return K.green;
+  if (/ACTIVE|READY|OPEN|\bAUTO\b|NOMINAL|\bOK\b|TAUT|준비/.test(u)) return K.green;
   return K.text;
 }
 
@@ -268,7 +268,7 @@ export function manifest(s: S5): boolean {
   g.textBaseline = 'middle'; g.textAlign = 'left'; g.fillStyle = K.text;
   fit(g, doc.title, 800, hb * 0.6, W * 0.7); g.fillText(doc.title, p, hb / 2);
   g.textAlign = 'right'; g.fillStyle = K.label;
-  const tag = typing ? '수신 중' : `${n} LINES`;
+  const tag = typing ? '수신 중' : `${n} 줄`;
   fit(g, tag, 700, hb * 0.45, W * 0.25); g.fillText(tag, W - p, hb / 2);
   // which lines are in view: follow the newest (or @scroll)
   const visible = typing ? full + 1 : full;
@@ -315,7 +315,7 @@ export function interlockState(text: string | undefined): { title: string; st: L
   const raw = lines[1] ?? 'locked';
   const u = raw.toUpperCase();
   const st: LockState = u === '열림' || (/OPEN/.test(u) && !/\bLOS\b/.test(u)) ? 'open' : u === '신호 손실' || /\bLOS\b|FAULT/.test(u) ? 'los' : 'locked';
-  const label = u === '잠김' ? `INSERT KEY ${key}` : u === '열림' ? `KEY ${key} IN — OPEN` : u === '신호 손실' ? '광케이블 — 신호 손실' : raw.toUpperCase();
+  const label = u === '잠김' ? `키 ${key} 삽입` : u === '열림' ? `키 ${key} 삽입 — 열림` : u === '신호 손실' ? '광케이블 — 신호 손실' : raw.toUpperCase();
   return { title, st, label, key };
 }
 
@@ -358,7 +358,7 @@ export function interlock(s: S5): boolean {
   // status, right
   const x0 = W * 0.44, iw = W - x0 - p;
   g.textAlign = 'left';
-  g.fillStyle = K.label; fit(g, `KEY ${key}`, 800, (H - hb) * 0.16, iw); g.fillText(`KEY ${key}`, x0, hb + (H - hb) * 0.24);
+  g.fillStyle = K.label; fit(g, `키 ${key}`, 800, (H - hb) * 0.16, iw); g.fillText(`키 ${key}`, x0, hb + (H - hb) * 0.24);
   const lines = label.includes(' — ') ? label.split(' — ').map((x, i, a) => (i < a.length - 1 ? x + ' —' : x)) : [label];
   const show = st !== 'locked' || blink;
   glow(g, col, (H - hb) * 0.05, () => {
@@ -403,7 +403,7 @@ export function dockBoard(s: S5): boolean {
   const prev = s.aux.bPrev as string[] | null;
   const ft = (i: number, ln: string) => (prev && prev[i] !== ln ? t - (i - 1) * 0.06 : 9);
   const flipping = !!prev && t < 0.45 + lines.length * 0.06;
-  const blinkRows = lines.some((l) => /HAZARD|FAULT/.test(l.toUpperCase()));
+  const blinkRows = lines.some((l) => /HAZARD|FAULT|위험|고장/.test(l.toUpperCase()));
   const blink = blinkOf(t, 1);
   if (!changed(s, `db|${text}|${flipping ? t.toFixed(2) : 'x'}|${blinkRows && blink}|${W}x${H}`)) return false;
   g.fillStyle = K.bg; g.fillRect(0, 0, W, H);
@@ -422,7 +422,7 @@ export function dockBoard(s: S5): boolean {
     const col = trunkColour(value0);
     const y = hb + p * 0.5 + rh * (j + 0.5);
     if (j > 0) { g.fillStyle = K.line; g.fillRect(p, y - rh / 2, W - p * 2, Math.max(1, H * 0.004)); }
-    const warn = /HAZARD|FAULT/.test(value0.toUpperCase());
+    const warn = /HAZARD|FAULT|위험|고장/.test(value0.toUpperCase());
     const on = !warn || blink;
     g.globalAlpha = on ? 1 : 0.3;
     glow(g, col, rh * 0.3, () => { g.fillStyle = col; g.beginPath(); g.arc(p + rh * 0.22, y, rh * 0.16, 0, Math.PI * 2); g.fill(); });
@@ -528,7 +528,7 @@ export function gauge(s: S5): boolean {
   if (gs.st === 'pin') { msg = '핀 삽입됨'; col = K.amber; }
   else if (gs.st === 'fired') { msg = '발사됨'; col = K.red; }
   else if (lowMsg) { msg = '압력 낮음'; col = K.red; }
-  else if (ready) { msg = `${GAUGE_FULL_BAR} BAR — READY`; col = K.green; }
+  else if (ready) { msg = `${GAUGE_FULL_BAR} BAR — 준비`; col = K.green; }
   else if (bar <= 0) { msg = '0 BAR — 펌프'; col = K.amber; }
   else { msg = `${bar} BAR`; col = K.text; }
   const dim = (gs.st === 'pin' || lowMsg || ready) && !blink;

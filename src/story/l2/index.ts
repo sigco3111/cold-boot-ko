@@ -44,7 +44,7 @@ export async function createStoryL2(ctx: GameContext): Promise<StorySystem> {
       e.eyebrow, '',
       ...END_CARDS[choice](left), END_CARDS.unit14[unit14], '',
       e.status(left),
-      `TIME: ${fmtTime(stats.time)}`, `MACHINES STOPPED: ${stats.kills}`, `RECORDS RECOVERED: ${logs.size} / ${LOG_IDS_L2.length}`,
+      `시간: ${fmtTime(stats.time)}`, `정지시킨 기계: ${stats.kills}`, `RECORDS RECOVERED: ${logs.size} / ${LOG_IDS_L2.length}`,
       ...(levelOf(ctx).next === null ? ['', ENDING_L2.tbc] : []),
     ];
     try {

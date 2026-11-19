@@ -422,7 +422,7 @@ export class ScreenManager {
     g.fillStyle = dim; g.fillRect(0, H - fs * 1.6, W, 1);
     g.fillStyle = fg;
     const blink = Math.floor(s.t * 2) % 2 === 0;
-    g.fillText(this.navy ? `WATCH: ---   SURFACE: NO CARRIER   ${blink ? '█' : ' '}` : `OPERATOR: ---   LINK: NO CARRIER   ${blink ? '█' : ' '}`, fs * 0.5, H - fs * 1.35);
+    g.fillText(this.navy ? `근무: ---   지상: 무통신   ${blink ? '█' : ' '}` : `운용자: ---   링크: 무통신   ${blink ? '█' : ' '}`, fs * 0.5, H - fs * 1.35);
   }
 
   /** Stage 3b: a pinned message filling (top … bottom), lines sized to fit, the first line brightest. */
@@ -470,7 +470,7 @@ export class ScreenManager {
     g.shadowBlur = 0;
     if (plain) return;
     g.font = `${Math.round(H * 0.06)}px ${MONO}`; g.fillStyle = '#ff6a50';
-    g.fillText(`CHOIR PRIORITY OVERRIDE  ·  CODE ${(s.seed % 900 + 100)}-R`, W / 2, H - b * 2.2);
+    g.fillText(`CHOIR 우선 재정의  ·  코드 ${(s.seed % 900 + 100)}-R`, W / 2, H - b * 2.2);
   }
 
   private staticNoise(s: Screen) {
@@ -726,7 +726,7 @@ export class ScreenManager {
     const head = stop ? '정지' : '명령';
     const sub = stop ? '노드 5 꺼짐' : '관리자: 레예스, S.';
     const fate = stop ? '그들은 깨어나지 않습니다' : '그들은 깨어 있습니다';
-    const count = stop ? `UNITS ON THIS LINE: ${n} → 0` : `UNITS AWAITING ORDERS: ${n}`;
+    const count = stop ? `이 라인의 유닛: ${n} → 0` : `명령 대기 유닛: ${n}`;
     const plate = stop ? '황색 플레이트' : '백색 플레이트';
     // The pictogram's clock: the units go dark one after another (STOP) / a glance runs down the row (COMMAND).
     const P = 8, ph = (t % P) / P;
@@ -1020,13 +1020,13 @@ export class ScreenManager {
       g.font = `600 ${Math.round(H * 0.05)}px ${HAB}`; g.fillStyle = 'rgba(244,241,232,0.7)';
       g.fillText('kPa', cx, H * 0.72);
       const dots = '.'.repeat(1 + (Math.floor(t * 3) % 3));
-      g.fillText(`STAND CLEAR${dots}`, cx, H * 0.82);
+      g.fillText(`물러나세요${dots}`, cx, H * 0.82);
     } else if (state === '해제됨') {
       glow(GREEN, () => { g.fillStyle = GREEN; this.fit(g, '해제됨', 800, H * 0.24, W * 0.86); g.fillText('해제됨', cx, H * 0.38); });
       g.fillStyle = WHITE;
       const who = (arg || 'CHOIR').toUpperCase();
-      this.fit(g, `AUTHORISED: ${who}`, 700, H * 0.1, W * 0.86);
-      g.fillText(`AUTHORISED: ${who}`, cx, H * 0.6);
+      this.fit(g, `인가됨: ${who}`, 700, H * 0.1, W * 0.86);
+      g.fillText(`인가됨: ${who}`, cx, H * 0.6);
       g.fillStyle = 'rgba(244,241,232,0.65)'; this.fit(g, '시험 중단  ·  문 원격 제어 중', 600, H * 0.055, W * 0.86);
       g.fillText('시험 중단  ·  문 원격 제어 중', cx, H * 0.76);
       this.lockIcon(g, cx, H * 0.88, H * 0.08, GREEN, true);
@@ -1205,7 +1205,7 @@ export class ScreenManager {
         g.beginPath(); g.arc(cx + R * 0.3, cy, R * (0.3 + k * 0.22), -0.7, 0.7); g.stroke();
       }
       g.fillStyle = C(1);
-      const msg = st === 'idle' ? '배지를 대세요' : `READING${'.'.repeat(1 + (Math.floor(t * 3) % 3))}`;
+      const msg = st === 'idle' ? '배지를 대세요' : `읽는 중${'.'.repeat(1 + (Math.floor(t * 3) % 3))}`;
       this.fit(g, '배지를 대세요', 800, H * 0.085, W - m * 3); g.fillText(msg, cx, H * 0.75);
       if (detail) { g.fillStyle = 'rgba(244,241,232,0.6)'; this.fit(g, detail.toUpperCase(), 600, H * 0.055, W - m * 3); g.fillText(detail.toUpperCase(), cx, H * 0.86); }
     } else if (st === 'accepted') {
